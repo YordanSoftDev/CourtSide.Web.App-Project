@@ -49,11 +49,24 @@
 
         public async Task<bool> DeletePlayerAsync(int id)
         {
-            int rowsAffected = await this.context.Players
-                .Where(m => m.Id == id)
-                .ExecuteDeleteAsync();
+            Player? playerToDelete = await this.context.Players
+                .FirstOrDefaultAsync(p => p.Id == id);
 
-            return rowsAffected > 0;
+            if (playerToDelete == null)
+            {
+                return false;
+            }
+
+            try
+            {
+                this.context.Players.Remove(playerToDelete);
+                await this.context.SaveChangesAsync();
+                return true;
+            }
+            catch (DbUpdateException ex)
+            {
+                throw new InvalidOperationException("This player cannot be deleted because it has associated coach(es) records.", ex);
+            }
         }
 
         public async Task<PlayerDetailsViewModel?> GetPlayerDetailsByIdAsync(int id)

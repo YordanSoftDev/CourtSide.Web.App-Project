@@ -5,6 +5,11 @@
     using CourtSide.Data.Models;
     public class CountryConfiguration : IEntityTypeConfiguration<Country>
     {
+        public void Configure(EntityTypeBuilder<Country> builder)
+        {
+            builder.HasData(DefaultCountries);
+        }
+
         public static IEnumerable<Country> DefaultCountries =>
              new List<Country> 
              {
@@ -204,9 +209,5 @@
                   new Country { Id = 194, Name = "Zambia" },
                   new Country { Id = 195, Name = "Zimbabwe" }
              };
-        public void Configure(EntityTypeBuilder<Country> builder)
-        {
-            builder.HasData(DefaultCountries);             
-        }
     }
 }

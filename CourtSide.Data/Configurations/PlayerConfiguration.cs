@@ -7,6 +7,19 @@
 
     public class PlayerConfiguration : IEntityTypeConfiguration<Player>
     {
+        public void Configure(EntityTypeBuilder<Player> builder)
+        {
+            builder.Property(t => t.Gender)
+                   .HasConversion<string>();
+
+            builder.HasMany(p => p.Coaches)
+                .WithOne(c => c.Player)
+                .HasForeignKey(c => c.PlayerId)
+                .IsRequired(true)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            builder.HasData(DefaultMensPlayers.Concat(DefaultWomensPlayers));
+        }
         public static IEnumerable<Player> DefaultMensPlayers =>
              new List<Player>
              {
@@ -3316,19 +3329,6 @@
                      Points = 748,
                      TournamentsPlayed = 24
                  }
-   };
-        public void Configure(EntityTypeBuilder<Player> builder)
-        {
-            builder.Property(t => t.Gender)
-                   .HasConversion<string>();
-
-            builder.HasMany(p => p.Coaches)
-                .WithOne(c => c.Player)
-                .HasForeignKey(c => c.PlayerId)
-                .IsRequired(true)
-                .OnDelete(DeleteBehavior.Restrict);
-
-            builder.HasData(DefaultMensPlayers.Concat(DefaultWomensPlayers));
-        }
+             };
     }
 }

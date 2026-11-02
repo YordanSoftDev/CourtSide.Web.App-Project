@@ -52,11 +52,11 @@
         public async Task<bool> DeleteTournamentAsync(int id)
         {
             Tournament? tournamentToDelete = await this.context.Tournaments
-                .FirstOrDefaultAsync(m => m.Id == id);
+                .FirstOrDefaultAsync(t => t.Id == id);
 
             if (tournamentToDelete == null)
             {
-                throw new ArgumentException("The tournament does not exist");
+                return false;
             }
 
             if (tournamentToDelete.IsActive == true)

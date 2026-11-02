@@ -7,6 +7,19 @@
 
     public class MatchConfiguration : IEntityTypeConfiguration<Match>
     {
+        public void Configure(EntityTypeBuilder<Match> builder)
+        {
+            builder.Property(m => m.MatchStatus)
+                .HasConversion<string>();
+
+            builder.Property(m => m.MatchRound)
+                .HasConversion<string>();
+
+            builder.Property(m => m.CourtSurface)
+                .HasConversion<string>();
+
+            builder.HasData(DefaultMatches);
+        }
         public static IEnumerable<Match> DefaultMatches =>
             new List<Match>
             { 
@@ -113,19 +126,5 @@
                     WinnerId = 91
                 },
             };
-
-        public void Configure(EntityTypeBuilder<Match> builder)
-        {
-            builder.Property(m => m.MatchStatus)
-                .HasConversion<string>();
-
-            builder.Property(m => m.MatchRound)
-                .HasConversion<string>();
-
-            builder.Property(m => m.CourtSurface)
-                .HasConversion<string>();
-
-            builder.HasData(DefaultMatches);
-        }
     }
 }

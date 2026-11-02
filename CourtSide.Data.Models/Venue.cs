@@ -7,6 +7,8 @@
         [Key]
         public int Id { get; set; }
 
+        //example value
+        //Melbourne Park (Australian Open)
         [Required]
         [MaxLength(NameMaxLength)]                          
         public required string Name { get; set; }

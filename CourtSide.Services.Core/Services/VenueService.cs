@@ -5,7 +5,6 @@
     using CourtSide.Data.Models;
     using CourtSide.Data.Persistance;
     using CourtSide.Services.Core.Contracts;
-    using CourtSide.ViewModels.Players;
     using CourtSide.ViewModels.Venues;
     using Microsoft.EntityFrameworkCore;
 

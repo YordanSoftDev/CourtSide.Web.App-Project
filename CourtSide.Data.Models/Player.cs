@@ -47,9 +47,9 @@
 
         public required int Rank { get; set; }
 
-        public required int? Points { get; set; }
+        public int? Points { get; set; }
 
-        public required int? TournamentsPlayed { get; set; }
+        public int? TournamentsPlayed { get; set; }
 
         public virtual ICollection<Coach> Coaches { get; set; } = new List<Coach>();
     }
