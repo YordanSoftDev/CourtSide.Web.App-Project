@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="16.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.Extensions" Version="6.0.36" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CourtSide.Data.Models\CourtSide.Data.Models.csproj" />
+    <ProjectReference Include="..\CourtSide.Data\CourtSide.Data.csproj" />
+    <ProjectReference Include="..\CourtSide.ViewModels\CourtSide.ViewModels.csproj" />
+    <ProjectReference Include="..\CourtSide.Data.Models\CourtSide.Data.Models.csproj" />
+    <ProjectReference Include="..\CourtSide.Data\CourtSide.Data.csproj" />
+    <ProjectReference Include="..\CourtSide.ViewModels\CourtSide.ViewModels.csproj" />
+  </ItemGroup>
+
+</Project>

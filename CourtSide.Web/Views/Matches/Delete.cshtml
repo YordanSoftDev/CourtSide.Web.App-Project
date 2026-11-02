@@ -1,0 +1,31 @@
+﻿@model CourtSide.ViewModels.Matches.MatchDetailsViewModel
+
+@{
+    ViewData["Title"] = "Delete Match";
+}
+
+<div class="container py-5" style="max-width: 700px;">
+    <div class="card shadow-sm border-danger">
+        <div class="card-header bg-danger text-white">
+            <h3 class="mb-0">Are you sure you want to delete this match?</h3>
+        </div>
+        <div class="card-body">
+            <dl class="row">
+                <dt class="col-sm-3">Tournament</dt>
+                <dd class="col-sm-9">@Model.TournamentName</dd>
+
+                <dt class="col-sm-3">Players</dt>
+                <dd class="col-sm-9">@Model.FirstPlayerFullName vs @Model.SecondPlayerFullName</dd>
+
+                <dt class="col-sm-3">Date Time</dt>
+                <dd class="col-sm-9">@Model.DateTime.ToString("dd MMM yyyy HH:mm")</dd>
+            </dl>
+
+            <form asp-action="DeleteConfirmed" method="post">
+                <input type="hidden" asp-for="Id" />
+                <button type="submit" class="btn btn-danger fw-bold">Yes, Delete</button>
+                <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+            </form>
+        </div>
+    </div>
+</div>

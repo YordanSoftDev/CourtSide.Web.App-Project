@@ -1,0 +1,8 @@
+<Solution>
+  <Project Path="CourtSide.Common/CourtSide.Common.csproj" />
+  <Project Path="CourtSide.Data.Models/CourtSide.Data.Models.csproj" />
+  <Project Path="CourtSide.Data/CourtSide.Data.csproj" />
+  <Project Path="CourtSide.Services.Core/CourtSide.Services.Core.csproj" />
+  <Project Path="CourtSide.ViewModels/CourtSide.ViewModels.csproj" />
+  <Project Path="CourtSide.Web/CourtSide.Web.csproj" />
+</Solution>

@@ -1,0 +1,256 @@
+﻿@{
+    ViewData["Title"] = "Tournaments";
+}
+
+<div class="tournaments-page-wrapper py-4" style="background-color: #EAF0E9; min-height: 100vh;">
+    <div class="container py-4">
+
+        <!-- 1. TOP HEADER SECTION -->
+        <div class="row align-items-center mb-3">
+            <div class="col-md-8">
+                <h1 class="fw-bold display-5 mb-1" style="color: #0D3025; font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;">
+                    The tour, at a glance.
+                </h1>
+                <p class="text-muted mb-0">
+                    Follow the season from first serve to final. Find your next tournament.
+                </p>
+            </div>
+        </div>
+
+        <!-- 2. TOURNAMENT SPOTLIGHT CARD -->
+        <div class="card border-0 shadow-sm rounded-4 overflow-hidden mb-5" style="background-color: #123F30; color: #ffffff; font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;">
+            <div class="row g-0 align-items-stretch">
+
+                <!-- Left Info Panel -->
+                <div class="col-lg-7 p-4 p-md-5 d-flex flex-column justify-content-between">
+                    <div>
+                        <!-- Badges -->
+                        <div class="d-flex align-items-center gap-2 mb-3">
+                            <span class="badge px-2 py-1 rounded-pill text-dark fw-bold" style="background-color: #D5EF68; font-size: 0.75rem;">
+                                &bull; Live
+                            </span>
+                            <span class="text-uppercase fw-semibold text-white-50" style="font-size: 0.75rem; letter-spacing: 1px;">
+                                TOURNAMENT SPOTLIGHT
+                            </span>
+                        </div>
+
+                        <!-- Category & Title -->
+                        <div class="text-uppercase fw-bold mb-1" style="color: #D5EF68; font-size: 0.8rem; letter-spacing: 1px;">
+                            ATP MASTERS 1000
+                        </div>
+                        <h2 class="display-6 fw-bold mb-1" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;">
+                            Shanghai Masters
+                        </h2>
+                        <p class="text-white-50 mb-4" style="font-size: 0.95rem;">
+                            Qizhong Tennis Centre &bull; Shanghai, China
+                        </p>
+                    </div>
+
+                    <!-- Footer Specs & Action -->
+                    <div>
+                        <div class="row text-uppercase g-3 mb-4" style="font-size: 0.75rem;">
+                            <div class="col-auto me-4">
+                                <span class="text-white-50 d-block">DATES</span>
+                                <span class="fw-bold fs-6 text-white">07–18 Oct</span>
+                            </div>
+                            <div class="col-auto me-4">
+                                <span class="text-white-50 d-block">SURFACE</span>
+                                <span class="fw-bold fs-6 text-white">Outdoor hard</span>
+                            </div>
+                            <div class="col-auto">
+                                <span class="text-white-50 d-block">DRAW</span>
+                                <span class="fw-bold fs-6 text-white">96 singles</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Image Banner -->
+                <div class="col-lg-5 position-relative min-vh-25" style="min-height: 280px;">
+                    <img src="~/images/tournament-section/shanghai-stadium.png"
+                         alt="Shanghai Masters Stadium"
+                         class="w-100 h-100 object-fit-cover"
+                         style="object-fit: cover; object-position: center;" />
+
+                    <!-- Location Pill Overlay -->
+                    <div class="position-absolute bottom-0 start-0 m-3 px-3 py-1 bg-white text-dark rounded-pill shadow-sm small fw-medium d-flex align-items-center gap-1">
+                        <i class="bi bi-geo-alt-fill text-secondary"></i> SHANGHAI - CHN
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- 3. OCTOBER TOURNAMENTS TABLE SECTION -->
+        <div class="card border-0 shadow-sm rounded-4 overflow-hidden" style="background-color: #FFFFFF; font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;">
+
+            <!-- Padding wrapper around header text only -->
+            <div class="p-4 pb-0">
+                <h4 class="fw-bold mb-1" style="color: #0D3025;">October Tournaments</h4>
+                <h4 class="mb-3 fw-light" style="color: #708078; font-size: 1.0rem;">01-31 October 2026 &bull; Events overlapping this month</h4>
+            </div>
+
+            <div class="table-responsive">
+                <table class="table align-middle mb-0">
+                    <thead>
+                        <tr class="small text-uppercase">
+                            <th scope="col" class="py-3 ps-4 fw-normal" style="background-color: #EAF0E9 !important; color: #708078;font-size: 1.0rem;">Tournament / Location</th>
+                            <th scope="col" class="py-3 fw-normal" style="background-color: #EAF0E9 !important; color: #708078;">Dates</th>
+                            <th scope="col" class="py-3 fw-normal" style="background-color: #EAF0E9 !important; color: #708078;">Surface</th>
+                            <th scope="col" class="py-3 fw-normal" style="background-color: #EAF0E9 !important; color: #708078;">Tour/Level</th>
+                            <th scope="col" class="py-3 pe-4 fw-normal" style="background-color: #EAF0E9 !important; color: #708078;">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="ps-4 py-3">
+                                <div class="fw-bold" style="color: #142F26;">Shanghai Masters</div>
+                                <div class="small" style="color: #708078;">Shanghai, China</div>
+                            </td>
+                            <td class="py-3">07–18 Oct</td>
+                            <td class="py-3">
+                                <div class="fw-normal" style="color: #142F26;">Hard</div>
+                                <div class="small" style="color: #708078;">Outdoor</div>
+                            </td>
+
+                            <td class="py-3">
+                                <span class="badge border-0" style="background-color: #F5F6F2; color: #123F30;">ATP 500</span>
+                            </td>
+                            <td class="pe-4 py-3"><span class="badge" style="background-color: #D5EF68; color: #123F30;">&bull; Live</span></td>
+                        </tr>
+                        <tr>
+                            <td class="ps-4 py-3">
+                                <div class="fw-bold" style="color: #142F26;">Swiss Indoors Basel</div>
+                                <div class="small" style="color: #708078;">Basel, Switzerland</div>
+                            </td>
+                            <td class="py-3">24 Oct–01 Nov</td>
+                            <td class="py-3">
+                                <div class="fw-normal" style="color: #142F26;">Hard</div>
+                                <div class="small" style="color: #708078;">Indoor</div>
+                            </td>
+                            <td class="py-3">
+                                <span class="badge border-0" style="background-color: #F5F6F2; color: #123F30;">ATP 500</span>
+                            </td>
+                            <td class="pe-4 py-3">
+                                <span class="badge border-0" style="background-color: #F5F6F2; color: #123F30;">Upcoming</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="ps-4 py-3">
+                                <div class="fw-bold" style="color: #142F26;">Erste Bank Open</div>
+                                <div class="small" style="color: #708078;">Vienna, Austria</div>
+                            </td>
+                            <td class="py-3">24 Oct–01 Nov</td>
+                            <td class="py-3">
+                                <div class="fw-normal" style="color: #142F26;">Hard</div>
+                                <div class="small" style="color: #708078;">Indoor</div>
+                            </td>
+                            <td class="py-3">
+                                <span class="badge border-0" style="background-color: #F5F6F2; color: #123F30;">ATP 500</span>
+                            </td>
+                            <td class="pe-4 py-3">
+                                <span class="badge border-0" style="background-color: #F5F6F2; color: #123F30;">Upcoming</span>
+                            </td>
+                        </tr>
+
+                        <tr class="small">
+                            <th colspan="5" class="py-3 ps-4" style="background-color: #F5F6F2 !important; color: #123F30;">Coming up</th>
+                        </tr>
+
+                        <tr>
+                            <td class="ps-4 py-3">
+                                <div class="fw-bold" style="color: #142F26;">Rolex Paris Masters</div>
+                                <div class="small" style="color: #708078;">Paris, France</div>
+                            </td>
+                            <td class="py-3">02–08 Nov</td>
+                            <td class="py-3">
+                                <div class="fw-normal" style="color: #142F26;">Hard</div>
+                                <div class="small" style="color: #708078;">Indoor</div>
+                            </td>
+                            <td class="py-3">
+                                <span class="badge border-0" style="background-color: #F5F6F2; color: #123F30;">ATP 1000</span>
+                            </td>
+                            <td class="pe-4 py-3">
+                                <span class="badge border-0" style="background-color: #F5F6F2; color: #123F30;">Upcoming</span>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="ps-4 py-3">
+                                <div class="fw-bold" style="color: #142F26;">Bybit Stockholm Open</div>
+                                <div class="small" style="color: #708078;">Stockholm, Sweden</div>
+                            </td>
+                            <td class="py-3">08–14 Nov</td>
+                            <td class="py-3">
+                                <div class="fw-normal" style="color: #142F26;">Hard</div>
+                                <div class="small" style="color: #708078;">Indoor</div>
+                            </td>
+                            <td class="py-3">
+                                <span class="badge border-0" style="background-color: #F5F6F2; color: #123F30;">ATP 250</span>
+                            </td>
+                            <td class="pe-4 py-3">
+                                <span class="badge border-0" style="background-color: #F5F6F2; color: #123F30;">Upcoming</span>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="ps-4 py-3">
+                                <div class="fw-bold" style="color: #142F26;">Nitto ATP Finals</div>
+                                <div class="small" style="color: #708078;">Turin, Italy</div>
+                            </td>
+                            <td class="py-3">15–22 Nov</td>
+                            <td class="py-3">
+                                <div class="fw-normal" style="color: #142F26;">Hard</div>
+                                <div class="small" style="color: #708078;">Indoor</div>
+                            </td>
+                            <td class="py-3">
+                                <span class="badge border-0" style="background-color: #F5F6F2; color: #123F30;">ATP Finals</span>
+                            </td>
+                            <td class="pe-4 py-3">
+                                <span class="badge border-0" style="background-color: #F5F6F2; color: #123F30;">Upcoming</span>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="ps-4 py-3">
+                                <div class="fw-bold" style="color: #142F26;">Davis Cup Finals</div>
+                                <div class="small" style="color: #708078;">Bologna, Italy</div>
+                            </td>
+                            <td class="py-3">23–29 Nov</td>
+                            <td class="py-3">
+                                <div class="fw-normal" style="color: #142F26;">Hard</div>
+                                <div class="small" style="color: #708078;">Indoor</div>
+                            </td>
+                            <td class="py-3">
+                                <span class="badge border-0" style="background-color: #F5F6F2; color: #123F30;">ITF</span>
+                            </td>
+                            <td class="pe-4 py-3">
+                                <span class="badge border-0" style="background-color: #F5F6F2; color: #123F30;">Upcoming</span>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="ps-4 py-3">
+                                <div class="fw-bold" style="color: #142F26;">Next Gen ATP Finals</div>
+                                <div class="small" style="color: #708078;">Reggio Calabria, Italy</div>
+                            </td>
+                            <td class="py-3">09–13 Dec</td>
+                            <td class="py-3">
+                                <div class="fw-normal" style="color: #142F26;">Hard</div>
+                                <div class="small" style="color: #708078;">Indoor</div>
+                            </td>
+                            <td class="py-3">
+                                <span class="badge border-0" style="background-color: #F5F6F2; color: #123F30;">Next Gen Finals</span>
+                            </td>
+                            <td class="pe-4 py-3">
+                                <span class="badge border-0" style="background-color: #F5F6F2; color: #123F30;">Upcoming</span>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+</div>
