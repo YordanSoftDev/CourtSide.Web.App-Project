@@ -79,8 +79,8 @@
         }
 
         .player-name {
-            font-size: 1.05rem;
-            font-weight: 550 !important;
+            font-size: 14px !important;
+            font-weight: 500 !important;
             color: #142D25 !important;
             letter-spacing: -0.2px;
         }
@@ -89,7 +89,12 @@
             display: flex;
             align-items: center;
             gap: 8px;
-            font-size: 0.95rem;
+        }
+
+        .match-score-cell {
+            font-size: 16px !important;
+            font-weight: 400 !important;
+            color: #142D25 !important;
         }
 
         .serving-dot {
@@ -171,8 +176,8 @@
 
             @if (User.IsInRole("Admin"))
             {
-                <a asp-action="Create" class="btn btn-success shadow-sm fw-bold">
-                    <i class="bi bi-plus-circle"></i> Create New Match
+                <a asp-action="Create" class="btn text-white fw-bold px-4 py-2 rounded-3 shadow-sm" style="background-color: #079C52; border: none;">
+                    Create New Match
                 </a>
             }
         </div>
@@ -182,7 +187,7 @@
             <div class="d-flex justify-content-between align-items-center mb-3">
                 <div class="d-flex align-items-center gap-2">
                     <div class="badge-live">
-                        <span class="badge-live-dot"></span> LIVE
+                        <span class="badge-live-dot"></span> Live
                     </div>
                     <span class="small text-uppercase" style="color: #B7CCC0 !important; font-weight: 400 !important; letter-spacing: 0.5px; font-size: 0.8rem;">
                         ATP 1000 &bull; Shanghai Masters &bull; Final
@@ -299,32 +304,50 @@
                                     string[] sets = match.ScoreResult != null ? match.ScoreResult.Split(' ') : new string[0];
 
                                     <tr class="border-bottom">
-                                        <td class="ps-4">
+                                        <td class="ps-4 align-middle">
                                             @if (match.MatchStatus == MatchStatus.Cancelled)
                                             {
                                                 <div class="d-flex flex-column align-items-center text-center mb-1" style="width: fit-content;">
                                                     <div class="badge-cancelled mb-1">
-                                                        CANCELLED
+                                                        Cancelled
                                                     </div>
                                                     <div class="fw-semibold small text-muted">@match.DateTime.ToString("HH:mm")</div>
+                                                    <div style="color: #718078 !important; font-size: 0.85rem;">
+                                                        @match.MatchRound
+                                                    </div>
                                                 </div>
                                             }
-                                            else if (string.IsNullOrEmpty(match.WinnerFullName))
+                                            else if (match.MatchStatus == MatchStatus.InProgress)
                                             {
                                                 <div class="d-flex flex-column align-items-center text-center mb-1" style="width: fit-content;">
                                                     <div class="badge-live mb-1">
-                                                        <span class="badge-live-dot"></span> LIVE
+                                                        <span class="badge-live-dot"></span> Live
                                                     </div>
                                                     <div class="fw-semibold small text-dark">@match.DateTime.ToString("HH:mm")</div>
+                                                    <div style="color: #718078 !important; font-size: 0.85rem;">
+                                                        @match.MatchRound
+                                                    </div>
                                                 </div>
                                             }
-                                            else
+                                            else if (match.MatchStatus == MatchStatus.Completed)
                                             {
-                                                <div class="fw-normal small mb-1" style="color: #718078 !important;">FINISHED</div>
+                                                <div class="d-flex flex-column align-items-center text-center mb-1" style="width: fit-content;">
+                                                    <div class="fw-normal small mb-1" style="color: #718078 !important;">Finished</div>
+                                                    <div style="color: #718078 !important; font-size: 0.85rem;">
+                                                        @match.MatchRound
+                                                    </div>
+                                                </div>
                                             }
-                                            <div style="color: #718078 !important; font-size: 0.85rem;">
-                                                @match.MatchRound
-                                            </div>
+                                            else if (match.MatchStatus == MatchStatus.Scheduled)
+                                            {
+                                                <div class="d-flex flex-column align-items-center text-center mb-1" style="width: fit-content;">
+                                                    <div class="fw-normal small" style="color: #718078 !important;">Not started</div>
+                                                    <div class="fw-semibold small text-dark">@match.DateTime.ToString("HH:mm")</div>
+                                                    <div style="color: #718078 !important; font-size: 0.85rem;">
+                                                        @match.MatchRound
+                                                    </div>
+                                                </div>
+                                            }
                                         </td>
 
                                         <td>
@@ -346,51 +369,55 @@
                                             </div>
                                         </td>
 
-                                        <td class="text-center fw-bold">
+                                        <!-- Set 1 (Regular 16px) -->
+                                        <td class="text-center match-score-cell">
                                             @if (sets.Length > 0 && sets[0].Contains('-'))
                                             {
                                                 var scores = sets[0].Split('-');
-                                                <div style="color: #142D25 !important;">@scores[0]</div>
-                                                <div style="color: #142D25 !important;">@scores[1]</div>
+                                                <div>@scores[0]</div>
+                                                <div>@scores[1]</div>
                                             }
                                             else
                                             {
-                                                <div style="color: #142D25 !important;">-</div>
-                                                <div style="color: #142D25 !important;">-</div>
+                                                <div>-</div>
+                                                <div>-</div>
                                             }
                                         </td>
 
-                                        <td class="text-center fw-bold">
+                                        <!-- Set 2 (Regular 16px) -->
+                                        <td class="text-center match-score-cell">
                                             @if (sets.Length > 1 && sets[1].Contains('-'))
                                             {
                                                 var scores = sets[1].Split('-');
-                                                <div style="color: #142D25 !important;">@scores[0]</div>
-                                                <div style="color: #142D25 !important;">@scores[1]</div>
+                                                <div>@scores[0]</div>
+                                                <div>@scores[1]</div>
                                             }
                                             else
                                             {
-                                                <div style="color: #142D25 !important;">-</div>
-                                                <div style="color: #142D25 !important;">-</div>
+                                                <div>-</div>
+                                                <div>-</div>
                                             }
                                         </td>
 
-                                        <td class="text-center fw-bold">
+                                        <!-- Set 3 (Regular 16px) -->
+                                        <td class="text-center match-score-cell">
                                             @if (sets.Length > 2 && sets[2].Contains('-'))
                                             {
                                                 var scores = sets[2].Split('-');
-                                                <div style="color: #142D25 !important;">@scores[0]</div>
-                                                <div style="color: #142D25 !important;">@scores[1]</div>
+                                                <div>@scores[0]</div>
+                                                <div>@scores[1]</div>
                                             }
                                             else
                                             {
-                                                <div style="color: #142D25 !important;">-</div>
-                                                <div style="color: #142D25 !important;">-</div>
+                                                <div>-</div>
+                                                <div>-</div>
                                             }
                                         </td>
 
-                                        <td class="text-center fw-bold">
-                                            <div style="color: #142D25 !important;">-</div>
-                                            <div style="color: #142D25 !important;">-</div>
+                                        <!-- PTS (Regular 16px) -->
+                                        <td class="text-center match-score-cell">
+                                            <div>-</div>
+                                            <div>-</div>
                                         </td>
 
                                         <td class="text-center">

@@ -52,11 +52,11 @@
         public async Task<bool> DeleteTournamentAsync(int id)
         {
             Tournament? tournamentToDelete = await this.context.Tournaments
-                .FirstOrDefaultAsync(t => t.Id == id);
+                .FirstOrDefaultAsync(m => m.Id == id);
 
             if (tournamentToDelete == null)
             {
-                return false;
+                throw new ArgumentException("The tournament does not exist");
             }
 
             if (tournamentToDelete.IsActive == true)
@@ -100,6 +100,22 @@
                 .AsNoTracking()
                 .OrderByDescending(t => t.StartDate)
                 .ProjectTo<TournamentInfoViewModel>(this.mapper.ConfigurationProvider)
+                .ToListAsync();
+        }
+
+        public async Task<IEnumerable<TournamentSelectItemViewModel>> GetTournamentsByTourWithVenueAsync(string tour)
+        {
+            return await this.context.Tournaments
+                .AsNoTracking()
+                .Where(t => tour == "ATP"
+                    ? (t.TournamentType.StartsWith("ATP") || t.TournamentType.Contains("Mens"))
+                    : (t.TournamentType.StartsWith("WTA") || t.TournamentType.Contains("Women")))
+                .Select(t => new TournamentSelectItemViewModel
+                {
+                    Id = t.Id,
+                    Name = t.TournamentName,
+                    VenueId = t.TournamentVenues.Select(tv => tv.VenueId).FirstOrDefault()
+                })
                 .ToListAsync();
         }
     }

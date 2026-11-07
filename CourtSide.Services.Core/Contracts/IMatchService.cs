@@ -16,6 +16,8 @@
         public Task<MatchFormViewModel?> GetMatchForEditByIdAsync(int id);
 
         public Task<IEnumerable<MatchInfoViewModel>> GetAllMatchesForIndexAsync();
+
+        Task PopulateMatchFormViewModelAsync(MatchFormViewModel model);
     }
 }
 

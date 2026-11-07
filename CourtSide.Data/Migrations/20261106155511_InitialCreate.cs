@@ -555,10 +555,21 @@ namespace CourtSide.Data.Migrations
                     { 15, "Indoor", "Hard", new DateTime(2026, 11, 29, 0, 0, 0, 0, DateTimeKind.Utc), "Bologna, Italy", new DateTime(2026, 11, 23, 0, 0, 0, 0, DateTimeKind.Utc), "Davis Cup Finals", "ITF Mens" },
                     { 16, "Indoor", "Hard", new DateTime(2026, 12, 13, 0, 0, 0, 0, DateTimeKind.Utc), "Reggio Calabria, Italy", new DateTime(2026, 12, 9, 0, 0, 0, 0, DateTimeKind.Utc), "Next Gen Finals", "ATP" },
                     { 101, "Indoor", "Hard", new DateTime(2026, 3, 7, 0, 0, 0, 0, DateTimeKind.Utc), "Lyon, France", new DateTime(2026, 3, 1, 0, 0, 0, 0, DateTimeKind.Utc), "Open 6ème Sens Métropole de  Lyon", "WTA 250" },
-                    { 102, "Outdoor", "Clay", new DateTime(2026, 5, 9, 0, 0, 0, 0, DateTimeKind.Utc), "Madrid, Spain", new DateTime(2026, 4, 27, 0, 0, 0, 0, DateTimeKind.Utc), "Mutua Madrid Open", "WTA 1000" },
-                    { 103, "Outdoor", "Clay", new DateTime(2026, 5, 17, 0, 0, 0, 0, DateTimeKind.Utc), "Rome, Italy", new DateTime(2026, 5, 11, 0, 0, 0, 0, DateTimeKind.Utc), "Internazionali BNL d'Italia", "WTA 1000" },
-                    { 104, "Outdoor", "Hard", new DateTime(2026, 9, 13, 0, 0, 0, 0, DateTimeKind.Utc), "New York, USA", new DateTime(2026, 8, 31, 0, 0, 0, 0, DateTimeKind.Utc), "US Open", "Grand Slam" },
-                    { 105, "Indoor", "Hard", new DateTime(2026, 11, 20, 0, 0, 0, 0, DateTimeKind.Utc), "Seville, Spain", new DateTime(2026, 11, 12, 0, 0, 0, 0, DateTimeKind.Utc), "Billie Jean King Cup Finals", "ITF Women" }
+                    { 102, "Outdoor", "Hard", new DateTime(2026, 9, 13, 0, 0, 0, 0, DateTimeKind.Utc), "New York, USA", new DateTime(2026, 8, 31, 0, 0, 0, 0, DateTimeKind.Utc), "US Open", "Grand Slam Women" },
+                    { 103, "Outdoor", "Hard", new DateTime(2026, 1, 31, 0, 0, 0, 0, DateTimeKind.Utc), "Melbourne, Australia", new DateTime(2026, 1, 18, 0, 0, 0, 0, DateTimeKind.Utc), "Australian Open", "Grand Slam Women" },
+                    { 104, "Outdoor", "Clay", new DateTime(2026, 5, 9, 0, 0, 0, 0, DateTimeKind.Utc), "Madrid, Spain", new DateTime(2026, 4, 27, 0, 0, 0, 0, DateTimeKind.Utc), "Mutua Madrid Open", "WTA 1000" },
+                    { 105, "Outdoor", "Clay", new DateTime(2026, 5, 17, 0, 0, 0, 0, DateTimeKind.Utc), "Rome, Italy", new DateTime(2026, 5, 11, 0, 0, 0, 0, DateTimeKind.Utc), "Internazionali BNL d'Italia", "WTA 1000" },
+                    { 106, "Indoor", "Hard", new DateTime(2026, 11, 20, 0, 0, 0, 0, DateTimeKind.Utc), "Seville, Spain", new DateTime(2026, 11, 12, 0, 0, 0, 0, DateTimeKind.Utc), "Billie Jean King Cup Finals", "ITF Women" },
+                    { 107, "Outdoor", "Hard", new DateTime(2026, 2, 14, 0, 0, 0, 0, DateTimeKind.Utc), "Doha, Qatar", new DateTime(2026, 2, 8, 0, 0, 0, 0, DateTimeKind.Utc), "Qatar TotalEnergies Open", "WTA 1000" },
+                    { 108, "Outdoor", "Hard", new DateTime(2026, 3, 15, 0, 0, 0, 0, DateTimeKind.Utc), "Indian Wells, USA", new DateTime(2026, 3, 4, 0, 0, 0, 0, DateTimeKind.Utc), "BNP Paribas Open", "WTA 1000" },
+                    { 109, "Outdoor", "Hard", new DateTime(2026, 3, 29, 0, 0, 0, 0, DateTimeKind.Utc), "Miami, USA", new DateTime(2026, 3, 17, 0, 0, 0, 0, DateTimeKind.Utc), "Miami Open", "WTA 1000" },
+                    { 110, "Indoor", "Clay", new DateTime(2026, 4, 19, 0, 0, 0, 0, DateTimeKind.Utc), "Stuttgart, Germany", new DateTime(2026, 4, 13, 0, 0, 0, 0, DateTimeKind.Utc), "Porsche Tennis Grand Prix", "WTA 500" },
+                    { 111, "Outdoor", "Clay", new DateTime(2026, 6, 7, 0, 0, 0, 0, DateTimeKind.Utc), "Paris, France", new DateTime(2026, 5, 24, 0, 0, 0, 0, DateTimeKind.Utc), "Roland Garros", "Grand Slam Women" },
+                    { 112, "Outdoor", "Grass", new DateTime(2026, 6, 27, 0, 0, 0, 0, DateTimeKind.Utc), "Eastbourne, United Kingdom", new DateTime(2026, 6, 22, 0, 0, 0, 0, DateTimeKind.Utc), "Rothesay International  Eastbourne", "WTA 500" },
+                    { 113, "Outdoor", "Grass", new DateTime(2026, 7, 12, 0, 0, 0, 0, DateTimeKind.Utc), "London, United Kingdom", new DateTime(2026, 6, 29, 0, 0, 0, 0, DateTimeKind.Utc), "Wimbledon", "Grand Slam Women" },
+                    { 114, "Outdoor", "Hard", new DateTime(2026, 8, 16, 0, 0, 0, 0, DateTimeKind.Utc), "Montreal, Canada", new DateTime(2026, 8, 10, 0, 0, 0, 0, DateTimeKind.Utc), "National Bank Open", "WTA 1000" },
+                    { 115, "Outdoor", "Hard", new DateTime(2026, 10, 11, 0, 0, 0, 0, DateTimeKind.Utc), "Beijing, China", new DateTime(2026, 9, 28, 0, 0, 0, 0, DateTimeKind.Utc), "China Open", "WTA 1000" },
+                    { 116, "Indoor", "Hard", new DateTime(2026, 11, 8, 0, 0, 0, 0, DateTimeKind.Utc), "Riyadh, Saudi Arabia", new DateTime(2026, 11, 1, 0, 0, 0, 0, DateTimeKind.Utc), "WTA Finals", "WTA" }
                 });
 
             migrationBuilder.InsertData(
@@ -568,20 +579,31 @@ namespace CourtSide.Data.Migrations
                 {
                     { 1, "Palais des Sports de Gerland (Lyon Open)" },
                     { 2, "Accor Arena / Paris La Défense Arena (Rolex Paris Masters)" },
-                    { 3, "USTA Billie Jean King National Tennis   Center (US Open)" },
+                    { 3, "USTA Billie Jean King National Tennis Center (US Open)" },
                     { 4, "Almaty Arena (Almaty Open)" },
                     { 5, "Melbourne Park (Australian Open)" },
-                    { 6, "Monte-Carlo Country Club (Monte-Carlo   Masters)" },
+                    { 6, "Monte-Carlo Country Club (Monte-Carlo Masters)" },
                     { 7, "Caja Mágica (Mutua Madrid Open)" },
                     { 8, "Foro Italico (Italian Open)" },
                     { 9, "Queen's Club (Cinch Championships)" },
                     { 10, "St. Jakobshalle (Swiss Indoors Basel)" },
-                    { 11, "Qizhong Forest Sports City Arena   ( Shanghai Masters)" },
-                    { 12, "Sportpaleis Antwerp / Lotto Arena    ( European Open)" },
-                    { 13, "Kungliga Tennishallen (Bybit  Stockholm Open)" },
+                    { 11, "Qizhong Forest Sports City Arena (Shanghai Masters)" },
+                    { 12, "Sportpaleis Antwerp / Lotto Arena (European Open)" },
+                    { 13, "Kungliga Tennishallen (Bybit Stockholm Open)" },
                     { 14, "Inalpi Arena (Nitto Finals)" },
                     { 15, "Unipol Arena (Davis Cup Finals)" },
-                    { 16, "PalaTennis 'Corrado Barazzutti' (Next   Gen Finals)" }
+                    { 16, "PalaTennis 'Corrado Barazzutti' (Next Gen Finals)" },
+                    { 17, "Estadio La Cartuja (Billie Jean King Cup Finals)" },
+                    { 18, "Khalifa International Tennis & Squash Complex (Qatar TotalEnergies Open)" },
+                    { 19, "Indian Wells Tennis Garden (BNP Paribas Open)" },
+                    { 20, "Hard Rock Stadium (Miami Open)" },
+                    { 21, "Porsche-Arena (Porsche Tennis Grand Prix)" },
+                    { 22, "Stade Roland Garros (Roland Garros)" },
+                    { 23, "Devonshire Park Lawn Tennis Club (Rothesay International Eastbourne)" },
+                    { 24, "All England Lawn Tennis and Croquet Club (Wimbledon)" },
+                    { 25, "IGA Stadium / Stade IGA (National Bank Open)" },
+                    { 26, "National Tennis Center (China Open)" },
+                    { 27, "King Saud University Indoor Arena (WTA Finals Riyadh)" }
                 });
 
             migrationBuilder.InsertData(
@@ -831,7 +853,23 @@ namespace CourtSide.Data.Migrations
                     { 13, 13 },
                     { 14, 14 },
                     { 15, 15 },
-                    { 16, 16 }
+                    { 16, 16 },
+                    { 101, 1 },
+                    { 102, 3 },
+                    { 103, 5 },
+                    { 104, 7 },
+                    { 105, 8 },
+                    { 106, 17 },
+                    { 107, 18 },
+                    { 108, 19 },
+                    { 109, 20 },
+                    { 110, 21 },
+                    { 111, 22 },
+                    { 112, 23 },
+                    { 113, 24 },
+                    { 114, 25 },
+                    { 115, 26 },
+                    { 116, 27 }
                 });
 
             migrationBuilder.InsertData(

@@ -8,10 +8,13 @@
     {
         public void Configure(EntityTypeBuilder<TournamentVenue> builder)
         {
-            builder.HasData(DefaultTournamentVenues);
+            builder.HasKey(tv => new { tv.TournamentId, tv.VenueId });
+
+            builder.HasData(DefaultMensTournamentVenues.Concat
+                (DefaultWomensTournamentVenues));
         }
 
-        public static IEnumerable<TournamentVenue>  DefaultTournamentVenues => new List<TournamentVenue>
+        public static IEnumerable<TournamentVenue> DefaultMensTournamentVenues => new List<TournamentVenue>
         {
                 new TournamentVenue
                 {
@@ -94,7 +97,93 @@
                     VenueId = 16
                 }
         };
+
+        public static IEnumerable<TournamentVenue> DefaultWomensTournamentVenues => new List<TournamentVenue>
+        {
+                new TournamentVenue
+                {
+                    TournamentId = 101,
+                    VenueId =  1
+                },
+                new TournamentVenue
+                {
+                    TournamentId = 102,
+                    VenueId =  3
+                },
+                new TournamentVenue
+                {
+                    TournamentId = 103,
+                    VenueId= 5
+                },
+                new TournamentVenue
+                {
+                    TournamentId = 104,
+                    VenueId =  7
+                },
+                new TournamentVenue
+                {
+                    TournamentId = 105,
+                    VenueId = 8
+                },
+                new TournamentVenue
+                {
+                    TournamentId = 106,
+                    VenueId = 17
+                },
+                new TournamentVenue
+                {
+                    TournamentId = 107,
+                    VenueId = 18
+                },
+                new TournamentVenue
+                {
+                    TournamentId = 108,
+                    VenueId = 19
+                },
+                new TournamentVenue
+                {
+                    TournamentId = 109,
+                    VenueId = 20
+                },
+                new TournamentVenue
+                {
+                    TournamentId = 110,
+                    VenueId = 21
+                },
+                new TournamentVenue
+                {
+                    TournamentId = 111,
+                    VenueId = 22
+                },
+                new TournamentVenue
+                {
+                    TournamentId = 112,
+                    VenueId = 23
+                },
+                new TournamentVenue
+                {
+                    TournamentId = 113,
+                    VenueId = 24
+                },
+                new TournamentVenue
+                {
+                    TournamentId = 114,
+                    VenueId = 25
+                },
+                new TournamentVenue
+                {
+                    TournamentId = 115,
+                    VenueId = 26
+                },
+                new TournamentVenue
+                {
+                    TournamentId = 116,
+                    VenueId = 27
+                }
+        };
     }
+
 }
+
 
 

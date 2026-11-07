@@ -2,13 +2,10 @@
 {
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
-    using Microsoft.AspNetCore.Mvc.Rendering;
     using CourtSide.Common.MatchEnumerations;
     using CourtSide.Services.Core.Contracts;
     using CourtSide.ViewModels.Matches;
     using CourtSide.ViewModels.Players;
-    using CourtSide.ViewModels.Tournaments;
-    using CourtSide.ViewModels.Venues;
 
     public class MatchesController : BaseController
     {
@@ -20,7 +17,8 @@
         public MatchesController(
             IMatchService matchService,
             ITournamentService tournamentService,
-            IVenueService venueService, IPlayerService playerService)
+            IVenueService venueService,
+            IPlayerService playerService)
         {
             this.matchService = matchService;
             this.tournamentService = tournamentService;
@@ -63,7 +61,7 @@
         public async Task<IActionResult> Create()
         {
             MatchFormViewModel model = new MatchFormViewModel();
-            await this.PopulateDropdownsAsync(model);
+            await this.matchService.PopulateMatchFormViewModelAsync(model);
 
             return this.View(model);
         }
@@ -100,7 +98,7 @@
 
             if (!this.ModelState.IsValid)
             {
-                await this.PopulateDropdownsAsync(matchForm);
+                await this.matchService.PopulateMatchFormViewModelAsync(matchForm);
                 return this.View(matchForm);
             }
 
@@ -128,7 +126,7 @@
                 return this.NotFound();
             }
 
-            await this.PopulateDropdownsAsync(matchForm);
+            await this.matchService.PopulateMatchFormViewModelAsync(matchForm);
             return this.View(matchForm);
         }
 
@@ -142,13 +140,11 @@
                 return this.BadRequest();
             }
 
-            // 1. Scheduled matches MUST NOT have a score result
             if (matchForm.MatchStatus == MatchStatus.Scheduled && !string.IsNullOrWhiteSpace(matchForm.ScoreResult))
             {
                 this.ModelState.AddModelError(nameof(matchForm.ScoreResult), "Score result cannot be entered for a scheduled match.");
             }
 
-            // 2. Completed OR InProgress matches MUST have a score result
             bool isCompleted = matchForm.MatchStatus == MatchStatus.Completed;
             bool isInProgress = matchForm.MatchStatus == MatchStatus.InProgress;
 
@@ -157,7 +153,6 @@
                 this.ModelState.AddModelError(nameof(matchForm.ScoreResult), "Score result is required when status is Completed or In Progress.");
             }
 
-            // 3. Winner validations for Completed status
             if (isCompleted && !matchForm.WinnerId.HasValue)
             {
                 this.ModelState.AddModelError(nameof(matchForm.WinnerId),
@@ -170,10 +165,9 @@
                     "A winner can only be assigned if the match status is Completed.");
             }
 
-            // 4. Validate ModelState after all checks
             if (!this.ModelState.IsValid)
             {
-                await this.PopulateDropdownsAsync(matchForm);
+                await this.matchService.PopulateMatchFormViewModelAsync(matchForm);
                 return this.View(matchForm);
             }
 
@@ -223,30 +217,6 @@
             return this.RedirectToAction(nameof(Index));
         }
 
-        private async Task PopulateDropdownsAsync(MatchFormViewModel model)
-        {
-            IEnumerable<PlayerSelectViewModel>? players = await this.playerService.GetPlayersForSelectAsync();
-            model.Players = players.Select(p => new SelectListItem
-            {
-                Value = p.Id.ToString(),
-                Text = p.FullName
-            });
-
-            IEnumerable<TournamentInfoViewModel>? tournaments = await this.tournamentService.GetAllTournamentsForIndexAsync();
-            model.Tournaments = tournaments.Select(t => new SelectListItem
-            {
-                Value = t.Id.ToString(),
-                Text = $"{t.TournamentName} ({t.TournamentType})"
-            });
-
-            IEnumerable<VenueSelectViewModel>? venues = await this.venueService.GetAllVenuesAsync();
-            model.Venues = venues.Select(v => new SelectListItem
-            {
-                Value = v.Id.ToString(),
-                Text = v.Name
-            });
-        }
-
         [HttpGet]
         public async Task<IActionResult> GetPlayersByTournament(int? tournamentId)
         {
@@ -260,6 +230,41 @@
             {
                 players = await this.playerService.GetPlayersByTournamentIdAsync(tournamentId.Value);
             }
+
+            var result = players.Select(p => new
+            {
+                id = p.Id,
+                fullName = p.FullName
+            });
+
+            return this.Json(result);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetTournamentsByTour(string tour)
+        {
+            var tournaments = await this.tournamentService.GetTournamentsByTourWithVenueAsync(tour);
+            return this.Json(tournaments);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetAllVenues()
+        {
+            var venues = await this.venueService.GetAllVenuesAsync();
+
+            var result = venues.Select(v => new
+            {
+                id = v.Id,
+                name = v.Name
+            });
+
+            return this.Json(result);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetPlayersByTour(string tour)
+        {
+            IEnumerable<PlayerSelectViewModel> players = await this.playerService.GetPlayersByTourAsync(tour);
 
             var result = players.Select(p => new
             {

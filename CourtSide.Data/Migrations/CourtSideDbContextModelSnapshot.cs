@@ -4809,6 +4809,28 @@ namespace CourtSide.Data.Migrations
                         {
                             Id = 102,
                             CourtEnvironment = "Outdoor",
+                            CourtSurface = "Hard",
+                            EndDate = new DateTime(2026, 9, 13, 0, 0, 0, 0, DateTimeKind.Utc),
+                            Location = "New York, USA",
+                            StartDate = new DateTime(2026, 8, 31, 0, 0, 0, 0, DateTimeKind.Utc),
+                            TournamentName = "US Open",
+                            TournamentType = "Grand Slam Women"
+                        },
+                        new
+                        {
+                            Id = 103,
+                            CourtEnvironment = "Outdoor",
+                            CourtSurface = "Hard",
+                            EndDate = new DateTime(2026, 1, 31, 0, 0, 0, 0, DateTimeKind.Utc),
+                            Location = "Melbourne, Australia",
+                            StartDate = new DateTime(2026, 1, 18, 0, 0, 0, 0, DateTimeKind.Utc),
+                            TournamentName = "Australian Open",
+                            TournamentType = "Grand Slam Women"
+                        },
+                        new
+                        {
+                            Id = 104,
+                            CourtEnvironment = "Outdoor",
                             CourtSurface = "Clay",
                             EndDate = new DateTime(2026, 5, 9, 0, 0, 0, 0, DateTimeKind.Utc),
                             Location = "Madrid, Spain",
@@ -4818,7 +4840,7 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 103,
+                            Id = 105,
                             CourtEnvironment = "Outdoor",
                             CourtSurface = "Clay",
                             EndDate = new DateTime(2026, 5, 17, 0, 0, 0, 0, DateTimeKind.Utc),
@@ -4829,18 +4851,7 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 104,
-                            CourtEnvironment = "Outdoor",
-                            CourtSurface = "Hard",
-                            EndDate = new DateTime(2026, 9, 13, 0, 0, 0, 0, DateTimeKind.Utc),
-                            Location = "New York, USA",
-                            StartDate = new DateTime(2026, 8, 31, 0, 0, 0, 0, DateTimeKind.Utc),
-                            TournamentName = "US Open",
-                            TournamentType = "Grand Slam"
-                        },
-                        new
-                        {
-                            Id = 105,
+                            Id = 106,
                             CourtEnvironment = "Indoor",
                             CourtSurface = "Hard",
                             EndDate = new DateTime(2026, 11, 20, 0, 0, 0, 0, DateTimeKind.Utc),
@@ -4848,6 +4859,116 @@ namespace CourtSide.Data.Migrations
                             StartDate = new DateTime(2026, 11, 12, 0, 0, 0, 0, DateTimeKind.Utc),
                             TournamentName = "Billie Jean King Cup Finals",
                             TournamentType = "ITF Women"
+                        },
+                        new
+                        {
+                            Id = 107,
+                            CourtEnvironment = "Outdoor",
+                            CourtSurface = "Hard",
+                            EndDate = new DateTime(2026, 2, 14, 0, 0, 0, 0, DateTimeKind.Utc),
+                            Location = "Doha, Qatar",
+                            StartDate = new DateTime(2026, 2, 8, 0, 0, 0, 0, DateTimeKind.Utc),
+                            TournamentName = "Qatar TotalEnergies Open",
+                            TournamentType = "WTA 1000"
+                        },
+                        new
+                        {
+                            Id = 108,
+                            CourtEnvironment = "Outdoor",
+                            CourtSurface = "Hard",
+                            EndDate = new DateTime(2026, 3, 15, 0, 0, 0, 0, DateTimeKind.Utc),
+                            Location = "Indian Wells, USA",
+                            StartDate = new DateTime(2026, 3, 4, 0, 0, 0, 0, DateTimeKind.Utc),
+                            TournamentName = "BNP Paribas Open",
+                            TournamentType = "WTA 1000"
+                        },
+                        new
+                        {
+                            Id = 109,
+                            CourtEnvironment = "Outdoor",
+                            CourtSurface = "Hard",
+                            EndDate = new DateTime(2026, 3, 29, 0, 0, 0, 0, DateTimeKind.Utc),
+                            Location = "Miami, USA",
+                            StartDate = new DateTime(2026, 3, 17, 0, 0, 0, 0, DateTimeKind.Utc),
+                            TournamentName = "Miami Open",
+                            TournamentType = "WTA 1000"
+                        },
+                        new
+                        {
+                            Id = 110,
+                            CourtEnvironment = "Indoor",
+                            CourtSurface = "Clay",
+                            EndDate = new DateTime(2026, 4, 19, 0, 0, 0, 0, DateTimeKind.Utc),
+                            Location = "Stuttgart, Germany",
+                            StartDate = new DateTime(2026, 4, 13, 0, 0, 0, 0, DateTimeKind.Utc),
+                            TournamentName = "Porsche Tennis Grand Prix",
+                            TournamentType = "WTA 500"
+                        },
+                        new
+                        {
+                            Id = 111,
+                            CourtEnvironment = "Outdoor",
+                            CourtSurface = "Clay",
+                            EndDate = new DateTime(2026, 6, 7, 0, 0, 0, 0, DateTimeKind.Utc),
+                            Location = "Paris, France",
+                            StartDate = new DateTime(2026, 5, 24, 0, 0, 0, 0, DateTimeKind.Utc),
+                            TournamentName = "Roland Garros",
+                            TournamentType = "Grand Slam Women"
+                        },
+                        new
+                        {
+                            Id = 112,
+                            CourtEnvironment = "Outdoor",
+                            CourtSurface = "Grass",
+                            EndDate = new DateTime(2026, 6, 27, 0, 0, 0, 0, DateTimeKind.Utc),
+                            Location = "Eastbourne, United Kingdom",
+                            StartDate = new DateTime(2026, 6, 22, 0, 0, 0, 0, DateTimeKind.Utc),
+                            TournamentName = "Rothesay International  Eastbourne",
+                            TournamentType = "WTA 500"
+                        },
+                        new
+                        {
+                            Id = 113,
+                            CourtEnvironment = "Outdoor",
+                            CourtSurface = "Grass",
+                            EndDate = new DateTime(2026, 7, 12, 0, 0, 0, 0, DateTimeKind.Utc),
+                            Location = "London, United Kingdom",
+                            StartDate = new DateTime(2026, 6, 29, 0, 0, 0, 0, DateTimeKind.Utc),
+                            TournamentName = "Wimbledon",
+                            TournamentType = "Grand Slam Women"
+                        },
+                        new
+                        {
+                            Id = 114,
+                            CourtEnvironment = "Outdoor",
+                            CourtSurface = "Hard",
+                            EndDate = new DateTime(2026, 8, 16, 0, 0, 0, 0, DateTimeKind.Utc),
+                            Location = "Montreal, Canada",
+                            StartDate = new DateTime(2026, 8, 10, 0, 0, 0, 0, DateTimeKind.Utc),
+                            TournamentName = "National Bank Open",
+                            TournamentType = "WTA 1000"
+                        },
+                        new
+                        {
+                            Id = 115,
+                            CourtEnvironment = "Outdoor",
+                            CourtSurface = "Hard",
+                            EndDate = new DateTime(2026, 10, 11, 0, 0, 0, 0, DateTimeKind.Utc),
+                            Location = "Beijing, China",
+                            StartDate = new DateTime(2026, 9, 28, 0, 0, 0, 0, DateTimeKind.Utc),
+                            TournamentName = "China Open",
+                            TournamentType = "WTA 1000"
+                        },
+                        new
+                        {
+                            Id = 116,
+                            CourtEnvironment = "Indoor",
+                            CourtSurface = "Hard",
+                            EndDate = new DateTime(2026, 11, 8, 0, 0, 0, 0, DateTimeKind.Utc),
+                            Location = "Riyadh, Saudi Arabia",
+                            StartDate = new DateTime(2026, 11, 1, 0, 0, 0, 0, DateTimeKind.Utc),
+                            TournamentName = "WTA Finals",
+                            TournamentType = "WTA"
                         });
                 });
 
@@ -4945,6 +5066,86 @@ namespace CourtSide.Data.Migrations
                         {
                             TournamentId = 16,
                             VenueId = 16
+                        },
+                        new
+                        {
+                            TournamentId = 101,
+                            VenueId = 1
+                        },
+                        new
+                        {
+                            TournamentId = 102,
+                            VenueId = 3
+                        },
+                        new
+                        {
+                            TournamentId = 103,
+                            VenueId = 5
+                        },
+                        new
+                        {
+                            TournamentId = 104,
+                            VenueId = 7
+                        },
+                        new
+                        {
+                            TournamentId = 105,
+                            VenueId = 8
+                        },
+                        new
+                        {
+                            TournamentId = 106,
+                            VenueId = 17
+                        },
+                        new
+                        {
+                            TournamentId = 107,
+                            VenueId = 18
+                        },
+                        new
+                        {
+                            TournamentId = 108,
+                            VenueId = 19
+                        },
+                        new
+                        {
+                            TournamentId = 109,
+                            VenueId = 20
+                        },
+                        new
+                        {
+                            TournamentId = 110,
+                            VenueId = 21
+                        },
+                        new
+                        {
+                            TournamentId = 111,
+                            VenueId = 22
+                        },
+                        new
+                        {
+                            TournamentId = 112,
+                            VenueId = 23
+                        },
+                        new
+                        {
+                            TournamentId = 113,
+                            VenueId = 24
+                        },
+                        new
+                        {
+                            TournamentId = 114,
+                            VenueId = 25
+                        },
+                        new
+                        {
+                            TournamentId = 115,
+                            VenueId = 26
+                        },
+                        new
+                        {
+                            TournamentId = 116,
+                            VenueId = 27
                         });
                 });
 
@@ -4979,7 +5180,7 @@ namespace CourtSide.Data.Migrations
                         new
                         {
                             Id = 3,
-                            Name = "USTA Billie Jean King National Tennis   Center (US Open)"
+                            Name = "USTA Billie Jean King National Tennis Center (US Open)"
                         },
                         new
                         {
@@ -4994,7 +5195,7 @@ namespace CourtSide.Data.Migrations
                         new
                         {
                             Id = 6,
-                            Name = "Monte-Carlo Country Club (Monte-Carlo   Masters)"
+                            Name = "Monte-Carlo Country Club (Monte-Carlo Masters)"
                         },
                         new
                         {
@@ -5019,17 +5220,17 @@ namespace CourtSide.Data.Migrations
                         new
                         {
                             Id = 11,
-                            Name = "Qizhong Forest Sports City Arena   (Shanghai Masters)"
+                            Name = "Qizhong Forest Sports City Arena (Shanghai Masters)"
                         },
                         new
                         {
                             Id = 12,
-                            Name = "Sportpaleis Antwerp / Lotto Arena    (European Open)"
+                            Name = "Sportpaleis Antwerp / Lotto Arena (European Open)"
                         },
                         new
                         {
                             Id = 13,
-                            Name = "Kungliga Tennishallen (Bybit  Stockholm Open)"
+                            Name = "Kungliga Tennishallen (Bybit Stockholm Open)"
                         },
                         new
                         {
@@ -5044,7 +5245,62 @@ namespace CourtSide.Data.Migrations
                         new
                         {
                             Id = 16,
-                            Name = "PalaTennis 'Corrado Barazzutti' (Next   Gen Finals)"
+                            Name = "PalaTennis 'Corrado Barazzutti' (Next Gen Finals)"
+                        },
+                        new
+                        {
+                            Id = 17,
+                            Name = "Estadio La Cartuja (Billie Jean King Cup Finals)"
+                        },
+                        new
+                        {
+                            Id = 18,
+                            Name = "Khalifa International Tennis & Squash Complex (Qatar TotalEnergies Open)"
+                        },
+                        new
+                        {
+                            Id = 19,
+                            Name = "Indian Wells Tennis Garden (BNP Paribas Open)"
+                        },
+                        new
+                        {
+                            Id = 20,
+                            Name = "Hard Rock Stadium (Miami Open)"
+                        },
+                        new
+                        {
+                            Id = 21,
+                            Name = "Porsche-Arena (Porsche Tennis Grand Prix)"
+                        },
+                        new
+                        {
+                            Id = 22,
+                            Name = "Stade Roland Garros (Roland Garros)"
+                        },
+                        new
+                        {
+                            Id = 23,
+                            Name = "Devonshire Park Lawn Tennis Club (Rothesay International Eastbourne)"
+                        },
+                        new
+                        {
+                            Id = 24,
+                            Name = "All England Lawn Tennis and Croquet Club (Wimbledon)"
+                        },
+                        new
+                        {
+                            Id = 25,
+                            Name = "IGA Stadium / Stade IGA (National Bank Open)"
+                        },
+                        new
+                        {
+                            Id = 26,
+                            Name = "National Tennis Center (China Open)"
+                        },
+                        new
+                        {
+                            Id = 27,
+                            Name = "King Saud University Indoor Arena (WTA Finals Riyadh)"
                         });
                 });
 

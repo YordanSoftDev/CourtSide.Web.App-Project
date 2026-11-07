@@ -21,5 +21,7 @@
         public Task<IEnumerable<PlayerSelectViewModel>> GetPlayersForSelectAsync();
 
         public Task<IEnumerable<PlayerSelectViewModel>> GetPlayersByTournamentIdAsync(int tournamentId);
+
+        public Task<IEnumerable<PlayerSelectViewModel>> GetPlayersByTourAsync(string tour);
     }
 }

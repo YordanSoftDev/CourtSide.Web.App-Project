@@ -152,5 +152,28 @@
                 .ProjectTo<PlayerSelectViewModel>(this.mapper.ConfigurationProvider)
                 .ToListAsync();
         }
+
+        public async Task<IEnumerable<PlayerSelectViewModel>> GetPlayersByTourAsync(string tour)
+        {
+            var query = this.context.Players.AsNoTracking();
+
+            if (!string.IsNullOrEmpty(tour))
+            {
+                if (tour.Equals("WTA", StringComparison.OrdinalIgnoreCase))
+                {
+                    query = query.Where(p => p.Gender == Gender.Female);
+                }
+                else if (tour.Equals("ATP", StringComparison.OrdinalIgnoreCase))
+                {
+                    query = query.Where(p => p.Gender == Gender.Male);
+                }
+            }
+
+            return await query
+                .OrderBy(p => p.LastName)
+                .ThenBy(p => p.FirstName)
+                .ProjectTo<PlayerSelectViewModel>(this.mapper.ConfigurationProvider)
+                .ToListAsync();
+        }
     }
 }

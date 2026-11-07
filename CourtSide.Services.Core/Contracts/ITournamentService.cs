@@ -15,5 +15,7 @@
         public Task<TournamentFormViewModel?> GetTournamentForEditByIdAsync(int id);
 
         public Task<IEnumerable<TournamentInfoViewModel>> GetAllTournamentsForIndexAsync();
+
+        Task<IEnumerable<TournamentSelectItemViewModel>> GetTournamentsByTourWithVenueAsync(string tour);
     }
 }

@@ -8,177 +8,380 @@
 @section MainStyle {
     <style>
         .create-match-bg {
-            position: absolute;
-            top: 56px;
-            left: 0;
-            width: 100vw;
+            background-color: #12181B;
             min-height: calc(100vh - 56px);
-            background-image: url('/images/matches-button/matches.jpg') !important;
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            padding-top: 1.5rem;
-            padding-bottom: 3rem;
-            overflow-y: auto;
-        }
-
-        .custom-form-container {
-            max-width: 950px;
-            margin: 0 auto;
+            padding: 2rem 1rem 4rem 1rem;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
         }
 
         .create-match-card {
-            background: rgba(13, 35, 58, 0.88);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            border-radius: 10px;
+            max-width: 680px;
+            width: 100%;
+            background-color: #ffffff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.1);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: #1e293b;
         }
 
-        .form-section-title {
-            color: #64b5f6;
-            font-size: 0.8rem;
-            font-weight: 600;
-            letter-spacing: 0.5px;
+        .modal-header-custom {
+            background-color: #0C2D23;
+            color: #ffffff;
+            padding: 1.5rem 1.75rem;
+            position: relative;
+        }
+
+        .modal-header-tag {
+            font-size: 10px !important;
+            font-weight: 700 !important;
+            letter-spacing: 1px;
+            color: #B7CDBF;
             text-transform: uppercase;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-            padding-bottom: 2px;
-            margin-top: 0.2rem;
-            margin-bottom: 0.4rem;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-bottom: 0.5rem;
         }
 
-        .form-control-xs, .form-select-xs {
-            padding: 0.15rem 0.4rem !important;
-            font-size: 0.8rem !important;
-            min-height: calc(1.4em + 0.3rem + 2px) !important;
+        .modal-header-tag-dot {
+            width: 6px;
+            height: 6px;
+            background-color: #D5EF68;
+            border-radius: 50%;
         }
 
-        .form-label-xs {
-            font-size: 0.75rem !important;
-            margin-bottom: 0.1rem !important;
+        .modal-title-custom {
+            font-size: 30px !important;
+            font-weight: 600 !important;
+            margin-bottom: 0.25rem;
+            letter-spacing: -0.3px;
+            color: #ffffff;
         }
+
+        .modal-subtitle-custom {
+            font-size: 13px !important;
+            font-weight: 400 !important;
+            color: #B7CDBF;
+        }
+
+        .form-section-header {
+            font-size: 15px !important;
+            font-weight: 600 !important;
+            color: #142F26 !important;
+            margin-top: 1.25rem;
+            margin-bottom: 0.75rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .required-fields-note {
+            font-size: 11px !important;
+            font-weight: 400 !important;
+            color: #708078;
+        }
+
+        .section-header-note {
+            font-size: 11px !important;
+            font-weight: 400 !important;
+            color: #708078 !important;
+        }
+
+        .custom-form-label {
+            font-size: 12px !important;
+            font-weight: 600 !important;
+            color: #142F26 !important;
+            margin-bottom: 0.35rem;
+        }
+
+        .required-asterisk {
+            color: #123F30 !important;
+            font-weight: 700;
+        }
+
+        .custom-form-control {
+            border: 1px solid #CBD5E1;
+            border-radius: 6px;
+            padding: 0.5rem 0.75rem;
+            font-size: 0.875rem;
+            color: #142F26 !important;
+            background-color: #ffffff;
+            transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+        }
+
+            .custom-form-control option {
+                color: #142F26 !important;
+                background-color: #ffffff;
+            }
+
+            .custom-form-control:focus {
+                border-color: #0E3628;
+                box-shadow: 0 0 0 2px rgba(14, 54, 40, 0.15);
+                outline: none;
+            }
+
+            .custom-form-control[readonly] {
+                background-color: #F8FAFC !important;
+                color: #64748B !important;
+                cursor: not-allowed;
+            }
+
+        .toggle-group {
+            display: flex;
+            background-color: #F1F5F9;
+            border-radius: 6px;
+            padding: 3px;
+            gap: 4px;
+        }
+
+        .toggle-btn {
+            flex: 1;
+            border: 1px solid transparent;
+            padding: 0.45rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+            .toggle-btn.active {
+                background-color: #123F30 !important;
+                color: #ffffff !important;
+                border: 1px solid #123F30 !important;
+                font-size: 13px !important;
+                font-weight: 600 !important;
+            }
+
+            .toggle-btn:not(.active) {
+                background-color: #F5F6F2 !important;
+                color: #708078 !important;
+                border: 1px solid transparent !important;
+                font-size: 13px !important;
+                font-weight: 500 !important;
+            }
+
+        .field-subtext {
+            font-size: 11px !important;
+            font-weight: 400 !important;
+            color: #64748B;
+            margin-top: 0.25rem;
+        }
+
+        .modal-footer-custom {
+            background-color: #F8FAFC;
+            border-top: 1px solid #E2E8F0;
+            padding: 1rem 1.75rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .btn-cancel-custom {
+            border: 1px solid #CBD5E1;
+            background-color: #ffffff;
+            color: #142F26 !important;
+            font-weight: 600;
+            font-size: 0.85rem;
+            padding: 0.5rem 1.25rem;
+            border-radius: 6px;
+            text-decoration: none;
+            transition: background-color 0.15s ease;
+        }
+
+            .btn-cancel-custom:hover {
+                background-color: #F1F5F9;
+                color: #142F26 !important;
+            }
+
+        .btn-submit-custom {
+            background-color: #123F30 !important;
+            color: #ffffff;
+            border: none;
+            font-weight: 600;
+            font-size: 0.85rem;
+            padding: 0.5rem 1.25rem;
+            border-radius: 6px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: background-color 0.15s ease;
+        }
+
+            .btn-submit-custom:hover {
+                background-color: #164e3b;
+            }
 
         span.text-danger {
             font-size: 0.7rem !important;
             display: block;
-            line-height: 1;
-            margin-top: 1px;
-            margin-bottom: 2px;
+            margin-top: 2px;
         }
     </style>
 }
 
-<div class="create-match-bg py-2">
-    <div class="container" style="max-width: 850px;">
-        <div class="card create-match-card shadow-lg border-0 text-white">
-            <div class="card-header bg-primary bg-gradient py-2 px-3">
-                <h5 class="mb-0 fs-6"><i class="bi bi-plus-circle me-2"></i>Create New Match</h5>
+<div class="create-match-bg">
+    <div class="create-match-card">
+        <!-- HEADER -->
+        <div class="modal-header-custom">
+            <div class="modal-header-tag">
+                <span class="modal-header-tag-dot"></span> COURTSIDE / ADMINISTRATOR
             </div>
-            <div class="card-body p-3">
-                <form asp-action="Create" method="post">
-                    <div asp-validation-summary="ModelOnly" class="text-danger mb-2"></div>
-
-                    <!-- 1. Players -->
-                    <div class="form-section-title">Players</div>
-                    <div class="row g-2 mb-2">
-                        <div class="col-md-6">
-                            <label asp-for="FirstPlayerId" class="form-label-xs fw-semibold"></label>
-                            <select asp-for="FirstPlayerId" asp-items="Model.Players" id="firstPlayerSelect" class="form-select form-select-xs">
-                                <option value="">-- Select First Player --</option>
-                            </select>
-                            <span asp-validation-for="FirstPlayerId" class="text-danger"></span>
-                        </div>
-                        <div class="col-md-6">
-                            <label asp-for="SecondPlayerId" class="form-label-xs fw-semibold"></label>
-                            <select asp-for="SecondPlayerId" asp-items="Model.Players" id="secondPlayerSelect" class="form-select form-select-xs">
-                                <option value="">-- Select Second Player --</option>
-                            </select>
-                            <span asp-validation-for="SecondPlayerId" class="text-danger"></span>
-                        </div>
-                    </div>
-
-                    <!-- 2. Schedule -->
-                    <div class="form-section-title">Schedule</div>
-                    <div class="row g-2 mb-2">
-                        <div class="col-md-6">
-                            <label asp-for="DateTime" class="form-label-xs fw-semibold"></label>
-                            <input asp-for="DateTime" class="form-control form-control-xs" type="datetime-local" min="@DateTime.Now.ToString("yyyy-MM-ddTHH:mm")" />
-                            <span asp-validation-for="DateTime" class="text-danger"></span>
-                        </div>
-                        <div class="col-md-6">
-                            <label asp-for="MatchStatus" class="form-label-xs fw-semibold"></label>
-                            <select asp-for="MatchStatus" asp-items="Html.GetEnumSelectList<MatchStatus>()" class="form-select form-select-xs">
-                                <option value="">-- Select Status --</option>
-                            </select>
-                            <span asp-validation-for="MatchStatus" class="text-danger"></span>
-                        </div>
-                    </div>
-
-                    <!-- 3. Stage and Location -->
-                    <div class="form-section-title">Court Details</div>
-                    <div class="row g-2 mb-2">
-                        <div class="col-md-6">
-                            <label asp-for="MatchRound" class="form-label-xs fw-semibold"></label>
-                            <select asp-for="MatchRound" asp-items="Html.GetEnumSelectList<MatchRound>()" class="form-select form-select-xs">
-                                <option value="">-- Select Match Round --</option>
-                            </select>
-                            <span asp-validation-for="MatchRound" class="text-danger"></span>
-                        </div>
-                        <div class="col-md-6">
-                            <label asp-for="CourtName" class="form-label-xs fw-semibold"></label>
-                            <input asp-for="CourtName" class="form-control form-control-xs" type="text" placeholder="e.g. Court 1 or Arthur Ashe Stadium" />
-                            <span asp-validation-for="CourtName" class="text-danger"></span>
-                        </div>
-                    </div>
-
-                    <!-- 4. Tournament & Venue -->
-                    <div class="form-section-title">Tournament & Venue</div>
-                    <div class="row g-2 mb-2">
-                        <div class="col-md-6">
-                            <label asp-for="TournamentId" class="form-label-xs fw-semibold"></label>
-                            <select asp-for="TournamentId" asp-items="Model.Tournaments" id="TournamentId" class="form-select form-select-xs">
-                                <option value="">-- Select Tournament --</option>
-                            </select>
-                            <span asp-validation-for="TournamentId" class="text-danger"></span>
-                        </div>
-                        <div class="col-md-6">
-                            <label asp-for="VenueId" class="form-label-xs fw-semibold"></label>
-                            <select asp-for="VenueId" asp-items="Model.Venues" class="form-select form-select-xs">
-                                <option value="">-- Select Venue --</option>
-                            </select>
-                            <span asp-validation-for="VenueId" class="text-danger"></span>
-                        </div>
-                    </div>
-
-                    <!-- 5. Results (Optional) -->
-                    <div class="form-section-title">Results (Optional)</div>
-                    <div class="row g-2 mb-3">
-                        <div class="col-md-6">
-                            <label asp-for="ScoreResult" class="form-label-xs fw-semibold"></label>
-                            <input asp-for="ScoreResult" id="scoreResultInput" class="form-control form-control-xs" placeholder="e.g. 6-4, 6-3" />
-                            <span asp-validation-for="ScoreResult" class="text-danger"></span>
-                        </div>
-                        <div class="col-md-6">
-                            <label asp-for="WinnerId" class="form-label-xs fw-semibold"></label>
-                            <select asp-for="WinnerId" id="winnerSelect" class="form-select form-select-xs" disabled>
-                                <option value="">-- Select Winner --</option>
-                            </select>
-                            <span asp-validation-for="WinnerId" class="text-danger"></span>
-                        </div>
-                    </div>
-
-                    <!-- Actions -->
-                    <div class="d-flex justify-content-between pt-1">
-                        <a asp-action="Index" class="btn btn-outline-secondary btn-sm">
-                            <i class="bi bi-arrow-left me-1"></i>Back to Matches
-                        </a>
-                        <button type="submit" class="btn btn-primary btn-sm px-3">
-                            <i class="bi bi-check-circle me-1"></i>Save Match
-                        </button>
-                    </div>
-                </form>
-            </div>
+            <h2 class="modal-title-custom">Create Match</h2>
+            <p class="modal-subtitle-custom mb-0">Set the players, schedule and rules for a new match.</p>
         </div>
+
+        <!-- FORM BODY -->
+        <form asp-action="Create" method="post" class="p-4">
+            <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+            <!-- SECTION 1: TOURNAMENT & EVENT -->
+            <div class="form-section-header">
+                <span>Tournament & event</span>
+                <span class="required-fields-note"><span class="required-asterisk">*</span> Required fields</span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="TournamentId" class="custom-form-label">
+                    Tournament <span class="required-asterisk">*</span>
+                </label>
+                <select asp-for="TournamentId" asp-items="Model.Tournaments" id="TournamentId" class="form-select custom-form-control">
+                    <option value="">-- Select Tournament --</option>
+                </select>
+                <span asp-validation-for="TournamentId" class="text-danger"></span>
+                <div id="tournamentSubtext" class="field-subtext"></div>
+            </div>
+
+            <div class="row g-3 mb-3">
+                <div class="col-md-6">
+                    <label class="custom-form-label">Tour <span class="required-asterisk">*</span></label>
+                    <select id="tourSelect" class="form-select custom-form-control">
+                        <option value="">-- Select Tour --</option>
+                        <option value="ATP">ATP</option>
+                        <option value="WTA">WTA</option>
+                    </select>
+                </div>
+                <div class="col-md-6">
+                    <label class="custom-form-label">Discipline <span class="required-asterisk">*</span></label>
+                    <input type="hidden" id="disciplineInput" name="Discipline" value="Singles" />
+                    <div class="toggle-group" id="disciplineToggleGroup">
+                        <button type="button" class="toggle-btn active" data-value="Singles">Singles</button>
+                        <button type="button" class="toggle-btn" data-value="Doubles">Doubles</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECTION 2: OPPONENTS -->
+            <div class="form-section-header">
+                <span>Opponents</span>
+                <span id="opponentsSubtext" class="section-header-note"></span>
+            </div>
+
+            <div class="row g-3 mb-3">
+                <div class="col-md-6">
+                    <label asp-for="FirstPlayerId" class="custom-form-label">Player 1 <span class="required-asterisk">*</span></label>
+                    <select asp-for="FirstPlayerId" asp-items="Model.Players" id="firstPlayerSelect" class="form-select custom-form-control">
+                        <option value="">-- Select First Player --</option>
+                    </select>
+                    <span asp-validation-for="FirstPlayerId" class="text-danger"></span>
+                </div>
+                <div class="col-md-6">
+                    <label asp-for="SecondPlayerId" class="custom-form-label">Player 2 <span class="required-asterisk">*</span></label>
+                    <select asp-for="SecondPlayerId" asp-items="Model.Players" id="secondPlayerSelect" class="form-select custom-form-control">
+                        <option value="">-- Select Second Player --</option>
+                    </select>
+                    <span asp-validation-for="SecondPlayerId" class="text-danger"></span>
+                </div>
+            </div>
+
+            <!-- SECTION 3: SCHEDULE & MATCH SETTINGS -->
+            <div class="form-section-header">
+                <span>Schedule & match settings</span>
+            </div>
+
+            <div class="row g-3 mb-2">
+                <div class="col-md-6">
+                    <label asp-for="DateTime" class="custom-form-label">Scheduled date & time <span class="required-asterisk">*</span></label>
+                    <input asp-for="DateTime" class="form-control custom-form-control" type="datetime-local" min="@DateTime.Now.ToString("yyyy-MM-ddTHH:mm")" />
+                    <span asp-validation-for="DateTime" class="text-danger"></span>
+                </div>
+                <div class="col-md-6">
+                    <label asp-for="MatchStatus" class="custom-form-label">Initial status <span class="required-asterisk">*</span></label>
+                    <select asp-for="MatchStatus" asp-items="Html.GetEnumSelectList<MatchStatus>()" class="form-select custom-form-control">
+                        <option value="">-- Select Status --</option>
+                    </select>
+                    <span asp-validation-for="MatchStatus" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="field-subtext mb-3">Scheduled matches appear as upcoming. Scores remain empty until play begins.</div>
+
+            <div class="row g-3 mb-3">
+                <div class="col-md-6">
+                    <label asp-for="MatchRound" class="custom-form-label">Round <span class="required-asterisk">*</span></label>
+                    <select asp-for="MatchRound" asp-items="Html.GetEnumSelectList<MatchRound>()" class="form-select custom-form-control">
+                        <option value="">-- Select Match Round --</option>
+                    </select>
+                    <span asp-validation-for="MatchRound" class="text-danger"></span>
+                </div>
+                <div class="col-md-6">
+                    <label asp-for="CourtName" class="custom-form-label">Court <span class="required-asterisk">*</span></label>
+                    <input asp-for="CourtName" class="form-control custom-form-control" type="text" placeholder="e.g. Stadium Court" />
+                    <span asp-validation-for="CourtName" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="row g-3 mb-3">
+                <div class="col-md-6">
+                    <label asp-for="VenueId" class="custom-form-label">Venue <span class="required-asterisk">*</span></label>
+                    <!-- Hidden field to post the actual VenueId -->
+                    <input type="hidden" asp-for="VenueId" id="venueIdInput" />
+                    <!-- Clean text input (no dropdown arrow!) -->
+                    <input type="text" id="venueNameInput" class="form-control custom-form-control" readonly placeholder="Auto-selected from tournament" />
+                    <span asp-validation-for="VenueId" class="text-danger"></span>
+                </div>
+                <div class="col-md-6">
+                    <label class="custom-form-label">Surface <span class="required-asterisk">*</span></label>
+                    <select class="form-select custom-form-control">
+                        <option value="Outdoor hard">Outdoor hard</option>
+                        <option value="Indoor hard">Indoor hard</option>
+                        <option value="Red clay">Red clay</option>
+                        <option value="Grass">Grass</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- SECTION 4: RESULTS (OPTIONAL) -->
+            <div class="form-section-header">
+                <span>Results (Optional)</span>
+            </div>
+
+            <div class="row g-3 mb-4">
+                <div class="col-md-6">
+                    <label asp-for="ScoreResult" class="custom-form-label">Score Result</label>
+                    <input asp-for="ScoreResult" id="scoreResultInput" class="form-control custom-form-control" placeholder="e.g. 6-4, 6-3" />
+                    <span asp-validation-for="ScoreResult" class="text-danger"></span>
+                </div>
+                <div class="col-md-6">
+                    <label asp-for="WinnerId" class="custom-form-label">Winner</label>
+                    <select asp-for="WinnerId" id="winnerSelect" class="form-select custom-form-control" disabled>
+                        <option value="">-- Select Winner --</option>
+                    </select>
+                    <span asp-validation-for="WinnerId" class="text-danger"></span>
+                </div>
+            </div>
+
+            <!-- FOOTER ACTIONS -->
+            <div class="modal-footer-custom mx-n4 mb-n4">
+                <div class="small text-muted"></div>
+                <div class="d-flex gap-2">
+                    <a asp-action="Index" class="btn-cancel-custom">Cancel</a>
+                    <button type="submit" class="btn-submit-custom">
+                        Create Match <i class="bi bi-box-arrow-up-right ms-1"></i>
+                    </button>
+                </div>
+            </div>
+        </form>
     </div>
 </div>
 
@@ -186,8 +389,13 @@
     <partial name="_ValidationScriptsPartial" />
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', async function() {
             const tournamentSelect = document.getElementById('TournamentId');
+            const tourSelect = document.getElementById('tourSelect');
+            const venueIdInput = document.getElementById('venueIdInput');
+            const venueNameInput = document.getElementById('venueNameInput');
+            const tournamentSubtext = document.getElementById('tournamentSubtext');
+            const opponentsSubtext = document.getElementById('opponentsSubtext');
             const firstPlayer = document.getElementById('firstPlayerSelect');
             const secondPlayer = document.getElementById('secondPlayerSelect');
             const winnerSelect = document.getElementById('winnerSelect');
@@ -195,7 +403,199 @@
             const scoreResultInput = document.getElementById('scoreResultInput');
             const matchForm = document.querySelector('form');
 
+            const disciplineInput = document.getElementById('disciplineInput');
+            const disciplineToggleGroup = document.getElementById('disciplineToggleGroup');
+
+            const initialTournamentId = @Json.Serialize(Model.TournamentId.ToString());
             const initialWinnerValue = @Json.Serialize(Model.WinnerId?.ToString() ?? "");
+            const initialVenueId = @Json.Serialize(Model.VenueId.ToString());
+
+            let allVenuesMap = {};
+
+            async function loadAllVenues() {
+                try {
+                    const response = await fetch('/Matches/GetAllVenues');
+                    if (!response.ok) return;
+                    const venues = await response.json();
+
+                    allVenuesMap = {};
+                    venues.forEach(v => {
+                        allVenuesMap[v.id] = v.name;
+                    });
+
+                    if (initialVenueId && initialVenueId !== "0" && allVenuesMap[initialVenueId]) {
+                        venueIdInput.value = initialVenueId;
+                        venueNameInput.value = allVenuesMap[initialVenueId];
+                    }
+                } catch (error) {
+                    console.error('Error loading venues:', error);
+                }
+            }
+
+            function updateOpponentsSubtext() {
+                if (!opponentsSubtext) return;
+                const tour = tourSelect.value;
+                const discipline = disciplineInput ? disciplineInput.value : 'Singles';
+
+                let genderPrefix = '';
+                if (tour === 'ATP') genderPrefix = "Men's";
+                else if (tour === 'WTA') genderPrefix = "Women's";
+
+                if (genderPrefix && discipline) {
+                    opponentsSubtext.textContent = `${genderPrefix} ${discipline.toLowerCase()}`;
+                } else if (discipline) {
+                    opponentsSubtext.textContent = discipline;
+                } else {
+                    opponentsSubtext.textContent = "";
+                }
+            }
+
+            if (disciplineToggleGroup) {
+                const buttons = disciplineToggleGroup.querySelectorAll('.toggle-btn');
+                buttons.forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        buttons.forEach(b => b.classList.remove('active'));
+                        this.classList.add('active');
+
+                        const selectedDiscipline = this.getAttribute('data-value');
+                        if (disciplineInput) {
+                            disciplineInput.value = selectedDiscipline;
+                        }
+                        updateOpponentsSubtext();
+                    });
+                });
+            }
+
+            async function fetchAndPopulatePlayers(url) {
+                try {
+                    const response = await fetch(url);
+                    if (!response.ok) return;
+                    const players = await response.json();
+
+                    const currentFirst = firstPlayer.value;
+                    const currentSecond = secondPlayer.value;
+
+                    [firstPlayer, secondPlayer].forEach(selectElement => {
+                        if (selectElement) {
+                            selectElement.innerHTML = selectElement.id === 'firstPlayerSelect'
+                                ? '<option value="">-- Select First Player --</option>'
+                                : '<option value="">-- Select Second Player --</option>';
+
+                            players.forEach(p => {
+                                const option = document.createElement('option');
+                                option.value = p.id;
+                                option.textContent = p.fullName || (p.firstName + ' ' + p.lastName);
+                                selectElement.appendChild(option);
+                            });
+                        }
+                    });
+
+                    if (currentFirst && Array.from(firstPlayer.options).some(o => o.value === currentFirst)) {
+                        firstPlayer.value = currentFirst;
+                    }
+                    if (currentSecond && Array.from(secondPlayer.options).some(o => o.value === currentSecond)) {
+                        secondPlayer.value = currentSecond;
+                    }
+
+                    filterPlayerOptions();
+                } catch (error) {
+                    console.error('Error fetching players:', error);
+                }
+            }
+
+            function syncVenueFromTournament() {
+                if (!tournamentSelect) return;
+
+                const selectedOption = tournamentSelect.options[tournamentSelect.selectedIndex];
+                const venueId = selectedOption ? selectedOption.getAttribute('data-venue-id') : null;
+
+                if (venueId && allVenuesMap[venueId]) {
+                    venueIdInput.value = venueId;
+                    venueNameInput.value = allVenuesMap[venueId];
+                } else {
+                    venueIdInput.value = "";
+                    venueNameInput.value = "";
+                }
+            }
+
+            async function handleTourChange() {
+                const selectedTour = tourSelect.value;
+
+                if (!selectedTour) {
+                    if (tournamentSubtext) tournamentSubtext.textContent = "";
+                    updateOpponentsSubtext();
+                    tournamentSelect.innerHTML = '<option value="">-- Select Tournament --</option>';
+                    venueIdInput.value = "";
+                    venueNameInput.value = "";
+                    firstPlayer.innerHTML = '<option value="">-- Select First Player --</option>';
+                    secondPlayer.innerHTML = '<option value="">-- Select Second Player --</option>';
+                    filterPlayerOptions();
+                    return;
+                }
+
+                if (selectedTour === 'ATP') {
+                    if (tournamentSubtext) tournamentSubtext.textContent = "ATP Tournaments • Men's division";
+                } else if (selectedTour === 'WTA') {
+                    if (tournamentSubtext) tournamentSubtext.textContent = "WTA Tournaments • Women's division";
+                }
+                updateOpponentsSubtext();
+
+                try {
+                    const tourResponse = await fetch(`/Matches/GetTournamentsByTour?tour=${selectedTour}`);
+                    if (tourResponse.ok) {
+                        const tournaments = await tourResponse.json();
+                        const currentTournamentVal = tournamentSelect.value || initialTournamentId;
+                        tournamentSelect.innerHTML = '<option value="">-- Select Tournament --</option>';
+
+                        tournaments.forEach(t => {
+                            const option = document.createElement('option');
+                            option.value = t.id;
+                            option.textContent = t.name;
+                            if (t.venueId) {
+                                option.setAttribute('data-venue-id', t.venueId);
+                            }
+                            tournamentSelect.appendChild(option);
+                        });
+
+                        if (currentTournamentVal && Array.from(tournamentSelect.options).some(o => o.value == currentTournamentVal)) {
+                            tournamentSelect.value = currentTournamentVal;
+                            syncVenueFromTournament();
+                        }
+                    }
+
+                    const currentTournamentId = tournamentSelect.value;
+                    if (currentTournamentId) {
+                        await fetchAndPopulatePlayers(`/Matches/GetPlayersByTournament?tournamentId=${currentTournamentId}&tour=${selectedTour}`);
+                    } else {
+                        await fetchAndPopulatePlayers(`/Matches/GetPlayersByTour?tour=${selectedTour}`);
+                    }
+
+                } catch (error) {
+                    console.error('Error fetching data by tour:', error);
+                }
+            }
+
+            if (tourSelect) {
+                tourSelect.addEventListener('change', handleTourChange);
+            }
+
+            if (tournamentSelect) {
+                tournamentSelect.addEventListener('change', async function() {
+                    const tournamentId = this.value;
+                    const selectedTour = tourSelect.value;
+
+                    syncVenueFromTournament();
+
+                    let requestUrl = '';
+                    if (tournamentId) {
+                        requestUrl = `/Matches/GetPlayersByTournament?tournamentId=${tournamentId}&tour=${selectedTour}`;
+                    } else {
+                        requestUrl = `/Matches/GetPlayersByTour?tour=${selectedTour}`;
+                    }
+
+                    await fetchAndPopulatePlayers(requestUrl);
+                });
+            }
 
             function isMatchCompleted() {
                 if (!matchStatusSelect || !matchStatusSelect.value) return false;
@@ -217,7 +617,6 @@
             }
 
             function updateMatchStatusBehaviors() {
-                // 1. Handle Score Result rules based on MatchStatus
                 if (scoreResultInput) {
                     if (isMatchScheduled()) {
                         scoreResultInput.value = "";
@@ -231,8 +630,6 @@
                         scoreResultInput.removeAttribute("required");
                     }
                 }
-
-                // 2. Handle Winner options based on Completed status
                 updateWinnerOptions(firstPlayer.value, secondPlayer.value);
             }
 
@@ -255,7 +652,6 @@
 
             function updateWinnerOptions(firstVal, secondVal) {
                 const currentWinnerVal = winnerSelect.value || initialWinnerValue;
-
                 winnerSelect.innerHTML = '<option value="">-- Select Winner --</option>';
 
                 if (firstVal && secondVal && isMatchCompleted()) {
@@ -283,56 +679,6 @@
                 }
             }
 
-            // AJAX Tournament Change Listener for Cascading Player Filtering
-            if (tournamentSelect) {
-                tournamentSelect.addEventListener('change', async function() {
-                    const tournamentId = this.value;
-
-                    const requestUrl = tournamentId
-                        ? `/Matches/GetPlayersByTournament?tournamentId=${tournamentId}`
-                        : `/Matches/GetPlayersByTournament`;
-
-                    try {
-                        const response = await fetch(requestUrl);
-
-                        if (!response.ok) return;
-
-                        const players = await response.json();
-
-                        const currentFirst = firstPlayer.value;
-                        const currentSecond = secondPlayer.value;
-
-                        [firstPlayer, secondPlayer].forEach(selectElement => {
-                            if (selectElement) {
-                                selectElement.innerHTML = selectElement.id === 'firstPlayerSelect'
-                                    ? '<option value="">-- Select First Player --</option>'
-                                    : '<option value="">-- Select Second Player --</option>';
-
-                                players.forEach(p => {
-                                    const option = document.createElement('option');
-                                    option.value = p.id;
-                                    option.textContent = p.fullName;
-                                    selectElement.appendChild(option);
-                                });
-                            }
-                        });
-
-                        if (currentFirst && Array.from(firstPlayer.options).some(o => o.value === currentFirst)) {
-                            firstPlayer.value = currentFirst;
-                        }
-                        if (currentSecond && Array.from(secondPlayer.options).some(o => o.value === currentSecond)) {
-                            secondPlayer.value = currentSecond;
-                        }
-
-                        filterPlayerOptions();
-
-                    } catch (error) {
-                        console.error('Error fetching players:', error);
-                    }
-                });
-            }
-
-            // Temporarily enable disabled fields on submit so empty values bind cleanly
             if (matchForm) {
                 matchForm.addEventListener('submit', function() {
                     if (scoreResultInput) scoreResultInput.removeAttribute('disabled');
@@ -340,13 +686,15 @@
                 });
             }
 
-            firstPlayer.addEventListener('change', filterPlayerOptions);
-            secondPlayer.addEventListener('change', filterPlayerOptions);
+            if (firstPlayer) firstPlayer.addEventListener('change', filterPlayerOptions);
+            if (secondPlayer) secondPlayer.addEventListener('change', filterPlayerOptions);
 
             if (matchStatusSelect) {
                 matchStatusSelect.addEventListener('change', updateMatchStatusBehaviors);
             }
 
+            await loadAllVenues();
+            syncVenueFromTournament();
             filterPlayerOptions();
         });
     </script>
