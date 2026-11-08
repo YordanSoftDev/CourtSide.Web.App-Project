@@ -14,6 +14,12 @@
 
         public string SecondPlayerFullName { get; set; } = string.Empty;
 
+        public string TournamentName { get; set; } = string.Empty;
+
+        public string TournamentType { get; set; } = string.Empty;
+
+        public string Discipline { get; set; } = string.Empty;
+
         public DateTime DateTime { get; set; }
 
         public MatchStatus MatchStatus { get; set; }
@@ -31,10 +37,6 @@
         public string VenueName { get; set; } = string.Empty;
 
         public int TournamentId { get; set; }
-
-        public string TournamentName { get; set; } = string.Empty;
-
-        public string TournamentType { get; set; } = string.Empty;
 
         public string? ScoreResult { get; set; }
 

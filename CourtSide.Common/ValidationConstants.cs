@@ -17,6 +17,12 @@
             public const int NameMaxLength = 100;
         }
 
+        public static class Court
+        {
+            public const int NameMinLength = 2;
+            public const int NameMaxLength = 50;
+        }
+
         public static class Match
         {
             public const int MatchStatusMaxLength = 20;
@@ -54,7 +60,7 @@
         {
             public const int TournamentNameMinLength = 2;
             public const int TournamentNameMaxLength = 100;
-
+            public const int DisciplineMaxLength = 10;
             public const int LocationMinLength = 6;
             public const int LocationMaxLength = 100;
 

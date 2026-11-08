@@ -19,6 +19,11 @@
         [MaxLength(TournamentTypeMaxLength)]
         public required string TournamentType { get; set; }
 
+        //example value Singles
+        [Required]
+        [MaxLength(DisciplineMaxLength)]
+        public required string Discipline { get; set; }
+
         //example value Almaty, Kazakhstan
         [Required]
         [MaxLength(LocationMaxLength)]
@@ -46,7 +51,7 @@
         public bool IsActive =>
             DateTime.Now >= this.StartDate && DateTime.Now <= this.EndDate;
 
-        public virtual  ICollection<TournamentVenue> TournamentVenues { get; set; } =
+        public virtual ICollection<TournamentVenue> TournamentVenues { get; set; } =
             new HashSet<TournamentVenue>();
     }
 }

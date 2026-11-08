@@ -4592,6 +4592,11 @@ namespace CourtSide.Data.Migrations
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)");
 
+                    b.Property<string>("Discipline")
+                        .IsRequired()
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
+
                     b.Property<DateTime>("EndDate")
                         .HasColumnType("datetime2");
 
@@ -4623,6 +4628,7 @@ namespace CourtSide.Data.Migrations
                             Id = 1,
                             CourtEnvironment = "Indoor",
                             CourtSurface = "Hard",
+                            Discipline = "Singles",
                             EndDate = new DateTime(2026, 10, 25, 0, 0, 0, 0, DateTimeKind.Utc),
                             Location = "Lyon, France",
                             StartDate = new DateTime(2026, 10, 19, 0, 0, 0, 0, DateTimeKind.Utc),
@@ -4634,6 +4640,7 @@ namespace CourtSide.Data.Migrations
                             Id = 2,
                             CourtEnvironment = "Indoor",
                             CourtSurface = "Hard",
+                            Discipline = "Singles",
                             EndDate = new DateTime(2026, 11, 8, 0, 0, 0, 0, DateTimeKind.Utc),
                             Location = "Paris, France",
                             StartDate = new DateTime(2026, 11, 2, 0, 0, 0, 0, DateTimeKind.Utc),
@@ -4645,17 +4652,19 @@ namespace CourtSide.Data.Migrations
                             Id = 3,
                             CourtEnvironment = "Outdoor",
                             CourtSurface = "Hard",
+                            Discipline = "Singles",
                             EndDate = new DateTime(2026, 9, 13, 0, 0, 0, 0, DateTimeKind.Utc),
                             Location = "New York, USA",
                             StartDate = new DateTime(2026, 8, 31, 0, 0, 0, 0, DateTimeKind.Utc),
                             TournamentName = "US Open",
-                            TournamentType = "Grand Slam Mens"
+                            TournamentType = "Grand Slam Men"
                         },
                         new
                         {
                             Id = 4,
                             CourtEnvironment = "Indoor",
                             CourtSurface = "Hard",
+                            Discipline = "Singles",
                             EndDate = new DateTime(2026, 10, 25, 0, 0, 0, 0, DateTimeKind.Utc),
                             Location = "Almaty, Kazakhstan",
                             StartDate = new DateTime(2026, 10, 19, 0, 0, 0, 0, DateTimeKind.Utc),
@@ -4667,17 +4676,19 @@ namespace CourtSide.Data.Migrations
                             Id = 5,
                             CourtEnvironment = "Outdoor",
                             CourtSurface = "Hard",
+                            Discipline = "Singles",
                             EndDate = new DateTime(2026, 1, 31, 0, 0, 0, 0, DateTimeKind.Utc),
                             Location = "Melbourne, Australia",
                             StartDate = new DateTime(2026, 1, 18, 0, 0, 0, 0, DateTimeKind.Utc),
                             TournamentName = "Australian Open",
-                            TournamentType = "Grand Slam Mens"
+                            TournamentType = "Grand Slam Men"
                         },
                         new
                         {
                             Id = 6,
                             CourtEnvironment = "Outdoor",
                             CourtSurface = "Clay",
+                            Discipline = "Singles",
                             EndDate = new DateTime(2026, 4, 19, 0, 0, 0, 0, DateTimeKind.Utc),
                             Location = "Roquebrune-Cap-Martin, France",
                             StartDate = new DateTime(2026, 4, 12, 0, 0, 0, 0, DateTimeKind.Utc),
@@ -4689,6 +4700,7 @@ namespace CourtSide.Data.Migrations
                             Id = 7,
                             CourtEnvironment = "Outdoor",
                             CourtSurface = "Clay",
+                            Discipline = "Singles",
                             EndDate = new DateTime(2026, 5, 17, 0, 0, 0, 0, DateTimeKind.Utc),
                             Location = "Madrid, Spain",
                             StartDate = new DateTime(2026, 5, 4, 0, 0, 0, 0, DateTimeKind.Utc),
@@ -4700,6 +4712,7 @@ namespace CourtSide.Data.Migrations
                             Id = 8,
                             CourtEnvironment = "Outdoor",
                             CourtSurface = "Clay",
+                            Discipline = "Singles",
                             EndDate = new DateTime(2026, 5, 24, 0, 0, 0, 0, DateTimeKind.Utc),
                             Location = "Rome, Italy",
                             StartDate = new DateTime(2026, 5, 11, 0, 0, 0, 0, DateTimeKind.Utc),
@@ -4711,6 +4724,7 @@ namespace CourtSide.Data.Migrations
                             Id = 9,
                             CourtEnvironment = "Outdoor",
                             CourtSurface = "Grass",
+                            Discipline = "Singles",
                             EndDate = new DateTime(2026, 6, 21, 0, 0, 0, 0, DateTimeKind.Utc),
                             Location = "London, United Kingdom",
                             StartDate = new DateTime(2026, 6, 15, 0, 0, 0, 0, DateTimeKind.Utc),
@@ -4722,6 +4736,7 @@ namespace CourtSide.Data.Migrations
                             Id = 10,
                             CourtEnvironment = "Indoor",
                             CourtSurface = "Hard",
+                            Discipline = "Singles",
                             EndDate = new DateTime(2026, 11, 1, 0, 0, 0, 0, DateTimeKind.Utc),
                             Location = "Basel, Switzerland",
                             StartDate = new DateTime(2026, 10, 24, 0, 0, 0, 0, DateTimeKind.Utc),
@@ -4733,6 +4748,7 @@ namespace CourtSide.Data.Migrations
                             Id = 11,
                             CourtEnvironment = "Outdoor",
                             CourtSurface = "Hard",
+                            Discipline = "Singles",
                             EndDate = new DateTime(2026, 10, 18, 0, 0, 0, 0, DateTimeKind.Utc),
                             Location = "Shanghai, China",
                             StartDate = new DateTime(2026, 10, 7, 0, 0, 0, 0, DateTimeKind.Utc),
@@ -4744,6 +4760,7 @@ namespace CourtSide.Data.Migrations
                             Id = 12,
                             CourtEnvironment = "Indoor",
                             CourtSurface = "Hard",
+                            Discipline = "Singles",
                             EndDate = new DateTime(2026, 10, 25, 0, 0, 0, 0, DateTimeKind.Utc),
                             Location = "Brussels, Belgium",
                             StartDate = new DateTime(2026, 10, 17, 0, 0, 0, 0, DateTimeKind.Utc),
@@ -4755,6 +4772,7 @@ namespace CourtSide.Data.Migrations
                             Id = 13,
                             CourtEnvironment = "Indoor",
                             CourtSurface = "Hard",
+                            Discipline = "Singles",
                             EndDate = new DateTime(2026, 11, 14, 0, 0, 0, 0, DateTimeKind.Utc),
                             Location = "Stockholm, Sweden",
                             StartDate = new DateTime(2026, 11, 8, 0, 0, 0, 0, DateTimeKind.Utc),
@@ -4766,39 +4784,43 @@ namespace CourtSide.Data.Migrations
                             Id = 14,
                             CourtEnvironment = "Indoor",
                             CourtSurface = "Hard",
+                            Discipline = "Singles",
                             EndDate = new DateTime(2026, 11, 22, 0, 0, 0, 0, DateTimeKind.Utc),
                             Location = "Turin, Italy",
                             StartDate = new DateTime(2026, 11, 15, 0, 0, 0, 0, DateTimeKind.Utc),
                             TournamentName = "Nitto Finals",
-                            TournamentType = "ATP"
+                            TournamentType = "ATP Finals"
                         },
                         new
                         {
                             Id = 15,
                             CourtEnvironment = "Indoor",
                             CourtSurface = "Hard",
+                            Discipline = "Singles",
                             EndDate = new DateTime(2026, 11, 29, 0, 0, 0, 0, DateTimeKind.Utc),
                             Location = "Bologna, Italy",
                             StartDate = new DateTime(2026, 11, 23, 0, 0, 0, 0, DateTimeKind.Utc),
                             TournamentName = "Davis Cup Finals",
-                            TournamentType = "ITF Mens"
+                            TournamentType = "ITF Men"
                         },
                         new
                         {
                             Id = 16,
                             CourtEnvironment = "Indoor",
                             CourtSurface = "Hard",
+                            Discipline = "Singles",
                             EndDate = new DateTime(2026, 12, 13, 0, 0, 0, 0, DateTimeKind.Utc),
                             Location = "Reggio Calabria, Italy",
                             StartDate = new DateTime(2026, 12, 9, 0, 0, 0, 0, DateTimeKind.Utc),
                             TournamentName = "Next Gen Finals",
-                            TournamentType = "ATP"
+                            TournamentType = "ATP Finals"
                         },
                         new
                         {
                             Id = 101,
                             CourtEnvironment = "Indoor",
                             CourtSurface = "Hard",
+                            Discipline = "Singles",
                             EndDate = new DateTime(2026, 3, 7, 0, 0, 0, 0, DateTimeKind.Utc),
                             Location = "Lyon, France",
                             StartDate = new DateTime(2026, 3, 1, 0, 0, 0, 0, DateTimeKind.Utc),
@@ -4810,6 +4832,7 @@ namespace CourtSide.Data.Migrations
                             Id = 102,
                             CourtEnvironment = "Outdoor",
                             CourtSurface = "Hard",
+                            Discipline = "Singles",
                             EndDate = new DateTime(2026, 9, 13, 0, 0, 0, 0, DateTimeKind.Utc),
                             Location = "New York, USA",
                             StartDate = new DateTime(2026, 8, 31, 0, 0, 0, 0, DateTimeKind.Utc),
@@ -4821,6 +4844,7 @@ namespace CourtSide.Data.Migrations
                             Id = 103,
                             CourtEnvironment = "Outdoor",
                             CourtSurface = "Hard",
+                            Discipline = "Singles",
                             EndDate = new DateTime(2026, 1, 31, 0, 0, 0, 0, DateTimeKind.Utc),
                             Location = "Melbourne, Australia",
                             StartDate = new DateTime(2026, 1, 18, 0, 0, 0, 0, DateTimeKind.Utc),
@@ -4832,6 +4856,7 @@ namespace CourtSide.Data.Migrations
                             Id = 104,
                             CourtEnvironment = "Outdoor",
                             CourtSurface = "Clay",
+                            Discipline = "Singles",
                             EndDate = new DateTime(2026, 5, 9, 0, 0, 0, 0, DateTimeKind.Utc),
                             Location = "Madrid, Spain",
                             StartDate = new DateTime(2026, 4, 27, 0, 0, 0, 0, DateTimeKind.Utc),
@@ -4843,6 +4868,7 @@ namespace CourtSide.Data.Migrations
                             Id = 105,
                             CourtEnvironment = "Outdoor",
                             CourtSurface = "Clay",
+                            Discipline = "Singles",
                             EndDate = new DateTime(2026, 5, 17, 0, 0, 0, 0, DateTimeKind.Utc),
                             Location = "Rome, Italy",
                             StartDate = new DateTime(2026, 5, 11, 0, 0, 0, 0, DateTimeKind.Utc),
@@ -4854,6 +4880,7 @@ namespace CourtSide.Data.Migrations
                             Id = 106,
                             CourtEnvironment = "Indoor",
                             CourtSurface = "Hard",
+                            Discipline = "Singles",
                             EndDate = new DateTime(2026, 11, 20, 0, 0, 0, 0, DateTimeKind.Utc),
                             Location = "Seville, Spain",
                             StartDate = new DateTime(2026, 11, 12, 0, 0, 0, 0, DateTimeKind.Utc),
@@ -4865,6 +4892,7 @@ namespace CourtSide.Data.Migrations
                             Id = 107,
                             CourtEnvironment = "Outdoor",
                             CourtSurface = "Hard",
+                            Discipline = "Singles",
                             EndDate = new DateTime(2026, 2, 14, 0, 0, 0, 0, DateTimeKind.Utc),
                             Location = "Doha, Qatar",
                             StartDate = new DateTime(2026, 2, 8, 0, 0, 0, 0, DateTimeKind.Utc),
@@ -4876,6 +4904,7 @@ namespace CourtSide.Data.Migrations
                             Id = 108,
                             CourtEnvironment = "Outdoor",
                             CourtSurface = "Hard",
+                            Discipline = "Singles",
                             EndDate = new DateTime(2026, 3, 15, 0, 0, 0, 0, DateTimeKind.Utc),
                             Location = "Indian Wells, USA",
                             StartDate = new DateTime(2026, 3, 4, 0, 0, 0, 0, DateTimeKind.Utc),
@@ -4887,6 +4916,7 @@ namespace CourtSide.Data.Migrations
                             Id = 109,
                             CourtEnvironment = "Outdoor",
                             CourtSurface = "Hard",
+                            Discipline = "Singles",
                             EndDate = new DateTime(2026, 3, 29, 0, 0, 0, 0, DateTimeKind.Utc),
                             Location = "Miami, USA",
                             StartDate = new DateTime(2026, 3, 17, 0, 0, 0, 0, DateTimeKind.Utc),
@@ -4898,6 +4928,7 @@ namespace CourtSide.Data.Migrations
                             Id = 110,
                             CourtEnvironment = "Indoor",
                             CourtSurface = "Clay",
+                            Discipline = "Singles",
                             EndDate = new DateTime(2026, 4, 19, 0, 0, 0, 0, DateTimeKind.Utc),
                             Location = "Stuttgart, Germany",
                             StartDate = new DateTime(2026, 4, 13, 0, 0, 0, 0, DateTimeKind.Utc),
@@ -4909,6 +4940,7 @@ namespace CourtSide.Data.Migrations
                             Id = 111,
                             CourtEnvironment = "Outdoor",
                             CourtSurface = "Clay",
+                            Discipline = "Singles",
                             EndDate = new DateTime(2026, 6, 7, 0, 0, 0, 0, DateTimeKind.Utc),
                             Location = "Paris, France",
                             StartDate = new DateTime(2026, 5, 24, 0, 0, 0, 0, DateTimeKind.Utc),
@@ -4920,6 +4952,7 @@ namespace CourtSide.Data.Migrations
                             Id = 112,
                             CourtEnvironment = "Outdoor",
                             CourtSurface = "Grass",
+                            Discipline = "Singles",
                             EndDate = new DateTime(2026, 6, 27, 0, 0, 0, 0, DateTimeKind.Utc),
                             Location = "Eastbourne, United Kingdom",
                             StartDate = new DateTime(2026, 6, 22, 0, 0, 0, 0, DateTimeKind.Utc),
@@ -4931,6 +4964,7 @@ namespace CourtSide.Data.Migrations
                             Id = 113,
                             CourtEnvironment = "Outdoor",
                             CourtSurface = "Grass",
+                            Discipline = "Singles",
                             EndDate = new DateTime(2026, 7, 12, 0, 0, 0, 0, DateTimeKind.Utc),
                             Location = "London, United Kingdom",
                             StartDate = new DateTime(2026, 6, 29, 0, 0, 0, 0, DateTimeKind.Utc),
@@ -4942,6 +4976,7 @@ namespace CourtSide.Data.Migrations
                             Id = 114,
                             CourtEnvironment = "Outdoor",
                             CourtSurface = "Hard",
+                            Discipline = "Singles",
                             EndDate = new DateTime(2026, 8, 16, 0, 0, 0, 0, DateTimeKind.Utc),
                             Location = "Montreal, Canada",
                             StartDate = new DateTime(2026, 8, 10, 0, 0, 0, 0, DateTimeKind.Utc),
@@ -4953,22 +4988,24 @@ namespace CourtSide.Data.Migrations
                             Id = 115,
                             CourtEnvironment = "Outdoor",
                             CourtSurface = "Hard",
+                            Discipline = "Singles",
                             EndDate = new DateTime(2026, 10, 11, 0, 0, 0, 0, DateTimeKind.Utc),
                             Location = "Beijing, China",
                             StartDate = new DateTime(2026, 9, 28, 0, 0, 0, 0, DateTimeKind.Utc),
                             TournamentName = "China Open",
-                            TournamentType = "WTA 1000"
+                            TournamentType = "WTA 100"
                         },
                         new
                         {
                             Id = 116,
                             CourtEnvironment = "Indoor",
                             CourtSurface = "Hard",
+                            Discipline = "Singles",
                             EndDate = new DateTime(2026, 11, 8, 0, 0, 0, 0, DateTimeKind.Utc),
                             Location = "Riyadh, Saudi Arabia",
                             StartDate = new DateTime(2026, 11, 1, 0, 0, 0, 0, DateTimeKind.Utc),
                             TournamentName = "WTA Finals",
-                            TournamentType = "WTA"
+                            TournamentType = "WTA Finals"
                         });
                 });
 

@@ -15,5 +15,8 @@
 
         public virtual ICollection<TournamentVenue> TournamentVenues { get; set; } =
             new HashSet<TournamentVenue>();
+
+        public virtual ICollection<Court> Courts { get; set; } =
+            new HashSet<Court>();
     }
 }

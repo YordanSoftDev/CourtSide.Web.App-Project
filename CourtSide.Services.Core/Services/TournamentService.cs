@@ -106,16 +106,21 @@
         public async Task<IEnumerable<TournamentSelectItemViewModel>> GetTournamentsByTourWithVenueAsync(string tour)
         {
             return await this.context.Tournaments
-                .AsNoTracking()
-                .Where(t => tour == "ATP"
-                    ? (t.TournamentType.StartsWith("ATP") || t.TournamentType.Contains("Mens"))
-                    : (t.TournamentType.StartsWith("WTA") || t.TournamentType.Contains("Women")))
+        .AsNoTracking()
+        .Where(t => tour == "ATP"
+            ? (t.TournamentType.StartsWith("ATP") ||
+               t.TournamentType.EndsWith(" Men"))
+            : (t.TournamentType.StartsWith("WTA") ||
+               t.TournamentType.Contains("Women")))
                 .Select(t => new TournamentSelectItemViewModel
                 {
                     Id = t.Id,
                     Name = t.TournamentName,
-                    VenueId = t.TournamentVenues.Select(tv => tv.VenueId).FirstOrDefault()
+                    VenueId = t.TournamentVenues.Select(tv => tv.VenueId).FirstOrDefault(),
+                    CourtSurface = t.CourtSurface,
+                    CourtEnvironment = t.CourtEnvironment
                 })
+                .OrderBy(t => t.Name)
                 .ToListAsync();
         }
     }

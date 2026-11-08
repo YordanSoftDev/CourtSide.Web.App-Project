@@ -24,6 +24,9 @@
         public IEnumerable<SelectListItem> Players { get; set; } =
                     new List<SelectListItem>();
 
+        [Required(ErrorMessage = "Please select a tour.")]
+        public string Tour { get; set; } = string.Empty;
+
         [Required(ErrorMessage = "Please select a Date and Time.")]
         [Display(Name = "Date Time")]
         [DataType(DataType.DateTime)]
@@ -53,6 +56,7 @@
             ErrorMessage = "Court Name must be between 2 and 100 characters long.")]
         [Display(Name = "Court Name")]
         public string? CourtName { get; set; }
+        public IEnumerable<SelectListItem> Courts { get; set; } = new List<SelectListItem>();
 
         [Required(ErrorMessage = "Please select a Venue.")]
         [Display(Name = "Venue")]
@@ -65,6 +69,9 @@
         public int? TournamentId { get; set; }
         public IEnumerable<SelectListItem> Tournaments { get; set; } =
             new List<SelectListItem>();
+
+        public CourtSurface CourtSurface { get; set; }
+        public CourtEnvironment CourtEnvironment { get; set; }
 
         [Display(Name = "Score Result")]
         [MaxLength(ScoreResultMaxLength, ErrorMessage = "Score Result cannot exceed 100 characters.")]

@@ -2,6 +2,7 @@
 {
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
+
     using CourtSide.Common.MatchEnumerations;
     using CourtSide.Services.Core.Contracts;
     using CourtSide.ViewModels.Matches;
@@ -13,17 +14,20 @@
         private readonly IPlayerService playerService;
         private readonly ITournamentService tournamentService;
         private readonly IVenueService venueService;
+        private readonly ICourtService courtService;
 
         public MatchesController(
             IMatchService matchService,
             ITournamentService tournamentService,
             IVenueService venueService,
-            IPlayerService playerService)
+            IPlayerService playerService,
+            ICourtService courtService)
         {
             this.matchService = matchService;
             this.tournamentService = tournamentService;
             this.venueService = venueService;
             this.playerService = playerService;
+            this.courtService = courtService;
         }
 
         [HttpGet]
@@ -218,17 +222,21 @@
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetPlayersByTournament(int? tournamentId)
+        public async Task<IActionResult> GetPlayersByTournament(int? tournamentId, string? tour)
         {
             IEnumerable<PlayerSelectViewModel> players;
 
-            if (!tournamentId.HasValue || tournamentId.Value <= 0)
+            if (tournamentId.HasValue && tournamentId.Value > 0)
             {
-                players = await this.playerService.GetPlayersForSelectAsync();
+                players = await this.playerService.GetPlayersByTournamentIdAsync(tournamentId.Value);
+            }
+            else if (!string.IsNullOrWhiteSpace(tour))
+            {
+                players = await this.playerService.GetPlayersByTourAsync(tour);
             }
             else
             {
-                players = await this.playerService.GetPlayersByTournamentIdAsync(tournamentId.Value);
+                players = await this.playerService.GetPlayersForSelectAsync();
             }
 
             var result = players.Select(p => new
@@ -273,6 +281,13 @@
             });
 
             return this.Json(result);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetCourtsByVenue(int venueId)
+        {
+            var courts = await this.courtService.GetCourtsByVenueIdAsync(venueId);
+            return this.Json(courts);
         }
     }
 }

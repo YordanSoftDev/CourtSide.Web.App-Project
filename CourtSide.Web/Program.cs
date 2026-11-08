@@ -34,6 +34,7 @@ builder.Services.AddScoped<IMatchService, MatchService>();
 builder.Services.AddScoped<IPlayerService, PlayerService>();
 builder.Services.AddScoped<ITournamentService, TournamentService>();
 builder.Services.AddScoped<IVenueService, VenueService>();
+builder.Services.AddScoped<ICourtService, CourtService>();
 
 WebApplication? app = builder.Build();
 

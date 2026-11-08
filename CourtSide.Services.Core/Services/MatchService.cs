@@ -93,21 +93,33 @@
 
         public async Task PopulateMatchFormViewModelAsync(MatchFormViewModel model)
         {
-            var players = await this.playerService.GetPlayersForSelectAsync();
-            model.Players = players.Select(p => new SelectListItem
-            {
-                Value = p.Id.ToString(),
-                Text = p.FullName
-            });
 
-            var tournaments = await this.tournamentService.GetAllTournamentsForIndexAsync();
-            model.Tournaments = tournaments.Select(t => new SelectListItem
+            if (!string.IsNullOrWhiteSpace(model.Tour))
             {
-                Value = t.Id.ToString(),
-                Text = $"{t.TournamentName} ({t.TournamentType})"
-            });
+                IEnumerable<ViewModels.Tournaments.TournamentSelectItemViewModel>? tourTournaments = await this.tournamentService.GetTournamentsByTourWithVenueAsync(model.Tour);
+                model.Tournaments = tourTournaments.Select(t => new SelectListItem
+                {
+                    Value = t.Id.ToString(),
+                    Text = t.Name
+                });
 
-            model.Venues = Enumerable.Empty<SelectListItem>();
+                IEnumerable<ViewModels.Players.PlayerSelectViewModel>? tourPlayers = await this.playerService.GetPlayersByTourAsync(model.Tour);
+                model.Players = tourPlayers.Select(p => new SelectListItem
+                {
+                    Value = p.Id.ToString(),
+                    Text = p.FullName
+                });
+            }
+            else
+            {
+                model.Tournaments = Enumerable.Empty<SelectListItem>();
+                IEnumerable<ViewModels.Players.PlayerSelectViewModel>? players = await this.playerService.GetPlayersForSelectAsync();
+                model.Players = players.Select(p => new SelectListItem
+                {
+                    Value = p.Id.ToString(),
+                    Text = p.FullName
+                });
+            }
         }
     }
 }
