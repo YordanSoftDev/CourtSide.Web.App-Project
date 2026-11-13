@@ -8,7 +8,11 @@
     using CourtSide.Data.Models;
     using CourtSide.Data.Persistance;
     using CourtSide.Services.Core.Contracts;
+    using CourtSide.ViewModels.Courts;
     using CourtSide.ViewModels.Matches;
+    using CourtSide.ViewModels.Players;
+    using CourtSide.ViewModels.Tournaments;
+
 
 
     public class MatchService : IMatchService
@@ -17,14 +21,16 @@
         private readonly IMapper mapper;
         private readonly IPlayerService playerService;
         private readonly ITournamentService tournamentService;
+        private readonly ICourtService courtService;
 
         public MatchService(CourtSideDbContext context,
-        IMapper mapper, IPlayerService playerService, ITournamentService tournamentService)
+        IMapper mapper, IPlayerService playerService, ITournamentService tournamentService, ICourtService courtService)
         {
             this.context = context;
             this.mapper = mapper;
             this.playerService = playerService;
             this.tournamentService = tournamentService;
+            this.courtService = courtService;
         }
 
         public async Task<int> CreateMatchAsync(MatchFormViewModel matchForm)
@@ -93,15 +99,10 @@
 
         public async Task PopulateMatchFormViewModelAsync(MatchFormViewModel model)
         {
-
             if (!string.IsNullOrWhiteSpace(model.Tour))
             {
-                IEnumerable<ViewModels.Tournaments.TournamentSelectItemViewModel>? tourTournaments = await this.tournamentService.GetTournamentsByTourWithVenueAsync(model.Tour);
-                model.Tournaments = tourTournaments.Select(t => new SelectListItem
-                {
-                    Value = t.Id.ToString(),
-                    Text = t.Name
-                });
+                model.Tournaments = await this.tournamentService.GetTournamentsByTourWithVenueAsync(model.Tour)
+                            ??Enumerable.Empty<CourtSide.ViewModels.Tournaments.TournamentSelectItemViewModel>();
 
                 IEnumerable<ViewModels.Players.PlayerSelectViewModel>? tourPlayers = await this.playerService.GetPlayersByTourAsync(model.Tour);
                 model.Players = tourPlayers.Select(p => new SelectListItem
@@ -112,13 +113,27 @@
             }
             else
             {
-                model.Tournaments = Enumerable.Empty<SelectListItem>();
-                IEnumerable<ViewModels.Players.PlayerSelectViewModel>? players = await this.playerService.GetPlayersForSelectAsync();
+                model.Tournaments = Enumerable.Empty<TournamentSelectItemViewModel>();
+                IEnumerable<PlayerSelectViewModel>? players = await this.playerService.GetPlayersForSelectAsync();
                 model.Players = players.Select(p => new SelectListItem
                 {
                     Value = p.Id.ToString(),
                     Text = p.FullName
                 });
+            }
+
+            if (model.VenueId > 0)
+            {
+                IEnumerable<CourtSelectViewModel>? courts = await this.courtService.GetCourtsByVenueIdAsync((int)model.VenueId);
+                model.Courts = courts.Select(c => new SelectListItem
+                {
+                    Value = c.Name,
+                    Text = c.Name
+                });
+            }
+            else
+            {
+                model.Courts = Enumerable.Empty<SelectListItem>();
             }
         }
     }

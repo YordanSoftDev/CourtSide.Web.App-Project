@@ -1,8 +1,9 @@
 ﻿namespace CourtSide.ViewModels.Matches
 {
+    using CourtSide.Common.MatchEnumerations;
+    using CourtSide.ViewModels.Tournaments;
     using Microsoft.AspNetCore.Mvc.Rendering;
     using System.ComponentModel.DataAnnotations;
-    using CourtSide.Common.MatchEnumerations;
     using static CourtSide.Common.ValidationConstants.Match;
 
 
@@ -52,8 +53,8 @@
         //public string? MatchDuration { get; set; }
 
         [Required(ErrorMessage = "Please select a Court Name.")]
-        [StringLength(CourtNameMaxLength, MinimumLength = CourtNameMinLength,
-            ErrorMessage = "Court Name must be between 2 and 100 characters long.")]
+        [StringLength(CourtNameMaxLength, 
+            ErrorMessage = "Court Name cannot exceed 50 characters long.")]
         [Display(Name = "Court Name")]
         public string? CourtName { get; set; }
         public IEnumerable<SelectListItem> Courts { get; set; } = new List<SelectListItem>();
@@ -67,8 +68,9 @@
         [Required(ErrorMessage = "Please select a Tournament.")]
         [Display(Name = "Tournament")]
         public int? TournamentId { get; set; }
-        public IEnumerable<SelectListItem> Tournaments { get; set; } =
-            new List<SelectListItem>();
+
+        public IEnumerable<TournamentSelectItemViewModel> Tournaments { get; set; } =
+            new List<TournamentSelectItemViewModel>();
 
         public CourtSurface CourtSurface { get; set; }
         public CourtEnvironment CourtEnvironment { get; set; }

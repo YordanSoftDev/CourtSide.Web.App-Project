@@ -7,6 +7,7 @@
     using CourtSide.Services.Core.Contracts;
     using CourtSide.ViewModels.Matches;
     using CourtSide.ViewModels.Players;
+    using CourtSide.ViewModels.Courts;
 
     public class MatchesController : BaseController
     {
@@ -286,7 +287,8 @@
         [HttpGet]
         public async Task<IActionResult> GetCourtsByVenue(int venueId)
         {
-            var courts = await this.courtService.GetCourtsByVenueIdAsync(venueId);
+          IEnumerable<CourtSelectViewModel> courts = await this.courtService.GetCourtsByVenueIdAsync(venueId);
+
             return this.Json(courts);
         }
     }

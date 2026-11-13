@@ -234,6 +234,26 @@ namespace CourtSide.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Courts",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    VenueId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Courts", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Courts_Venues_VenueId",
+                        column: x => x.VenueId,
+                        principalTable: "Venues",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "TournamentVenues",
                 columns: table => new
                 {
@@ -290,7 +310,7 @@ namespace CourtSide.Data.Migrations
                     MatchStatus = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
                     MatchRound = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
                     CourtSurface = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
-                    CourtName = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    CourtName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     CourtEnvironment = table.Column<int>(type: "int", maxLength: 20, nullable: true),
                     VenueId = table.Column<int>(type: "int", nullable: false),
                     TournamentId = table.Column<int>(type: "int", nullable: false),
@@ -605,6 +625,70 @@ namespace CourtSide.Data.Migrations
                     { 25, "IGA Stadium / Stade IGA (National Bank Open)" },
                     { 26, "National Tennis Center (China Open)" },
                     { 27, "King Saud University Indoor Arena (WTA Finals Riyadh)" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Courts",
+                columns: new[] { "Id", "Name", "VenueId" },
+                values: new object[,]
+                {
+                    { 1, "Centre Court", 1 },
+                    { 2, "Court 1", 1 },
+                    { 3, "Court Central", 2 },
+                    { 4, "Court 1", 2 },
+                    { 5, "Arthur Ashe Stadium", 3 },
+                    { 6, "Louis Armstrong Stadium", 3 },
+                    { 7, "Grandstand", 3 },
+                    { 8, "Court 17", 3 },
+                    { 9, "Center Court", 4 },
+                    { 10, "Court 1", 4 },
+                    { 11, "Rod Laver Arena", 5 },
+                    { 12, "John Cain Arena", 5 },
+                    { 13, "Margaret Court Arena", 5 },
+                    { 14, "Kia Arena", 5 },
+                    { 15, "Court Rainier III", 6 },
+                    { 16, "Court Des Princes", 6 },
+                    { 17, "Manolo Santana Stadium", 7 },
+                    { 18, "Arantxa Sánchez Vicario Stadium", 7 },
+                    { 19, "Stadium 3", 7 },
+                    { 20, "Campo Centrale", 8 },
+                    { 21, "Grandstand Arena", 8 },
+                    { 22, "Pietrangeli", 8 },
+                    { 23, "Centre Court", 9 },
+                    { 24, "Court 1", 9 },
+                    { 25, "Centre Court", 10 },
+                    { 26, "Court 1", 10 },
+                    { 27, "Center Court", 11 },
+                    { 28, "Grandstand", 11 },
+                    { 29, "Center Court", 12 },
+                    { 30, "Centre Court", 13 },
+                    { 31, "Centre Court", 14 },
+                    { 32, "Centre Court", 15 },
+                    { 33, "Centre Court", 16 },
+                    { 34, "Centre Court", 17 },
+                    { 35, "Centre Court", 18 },
+                    { 36, "Grandstand 1", 18 },
+                    { 37, "Stadium 1", 19 },
+                    { 38, "Stadium 2", 19 },
+                    { 39, "Stadium 3", 19 },
+                    { 40, "Stadium Court", 20 },
+                    { 41, "Grandstand", 20 },
+                    { 42, "Centre Court", 21 },
+                    { 43, "Court Philippe-Chatrier", 22 },
+                    { 44, "Court Suzanne-Lenglen", 22 },
+                    { 45, "Court Simonne-Mathieu", 22 },
+                    { 46, "Centre Court", 23 },
+                    { 47, "Court 1", 23 },
+                    { 48, "Centre Court", 24 },
+                    { 49, "No. 1 Court", 24 },
+                    { 50, "No. 2 Court", 24 },
+                    { 51, "No. 3 Court", 24 },
+                    { 52, "Court Central", 25 },
+                    { 53, "National Bank Court", 25 },
+                    { 54, "Diamond Court", 26 },
+                    { 55, "Lotus Court", 26 },
+                    { 56, "Moon Court", 26 },
+                    { 57, "Center Court", 27 }
                 });
 
             migrationBuilder.InsertData(
@@ -931,6 +1015,11 @@ namespace CourtSide.Data.Migrations
                 column: "PlayerId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Courts_VenueId",
+                table: "Courts",
+                column: "VenueId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Matches_FirstPlayerId",
                 table: "Matches",
                 column: "FirstPlayerId");
@@ -986,6 +1075,9 @@ namespace CourtSide.Data.Migrations
 
             migrationBuilder.DropTable(
                 name: "Coaches");
+
+            migrationBuilder.DropTable(
+                name: "Courts");
 
             migrationBuilder.DropTable(
                 name: "Matches");

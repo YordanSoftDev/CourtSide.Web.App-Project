@@ -339,15 +339,27 @@
             </div>
 
             <div class="mb-3">
-                <label asp-for="TournamentId" class="custom-form-label">
-                    Tournament <span class="required-asterisk">*</span>
-                </label>
-                <select asp-for="TournamentId" asp-items="Model.Tournaments" id="TournamentId" class="form-select custom-form-control" disabled>
-                    <option value="">-- Please select a tour first --</option>
-                </select>
-                <span asp-validation-for="TournamentId" class="text-danger"></span>
-                <div id="tournamentSubtext" class="field-subtext">Select an ATP or WTA tour above to populate the available tournaments.</div>
-            </div>
+    <label asp-for="TournamentId" class="custom-form-label">
+        Tournament <span class="required-asterisk">*</span>
+    </label>
+    <select asp-for="TournamentId" id="TournamentId" class="form-select custom-form-control">
+        <option value="">-- Please select a tour first --</option>
+        @if (Model.Tournaments != null)
+        {
+            @foreach (var t in Model.Tournaments)
+            {
+                <option value="@t.Id"
+                        data-venue-id="@t.VenueId"
+                        data-surface="@((int)t.CourtSurface)"
+                        data-environment="@((int)t.CourtEnvironment)">
+                    @t.Name
+                </option>
+            }
+        }
+    </select>
+    <span asp-validation-for="TournamentId" class="text-danger"></span>
+    <div id="tournamentSubtext" class="field-subtext">Select an ATP or WTA tour above to populate the available tournaments.</div>
+</div>
 
             <!-- SECTION 2: OPPONENTS -->
             <div class="form-section-header">
@@ -402,7 +414,7 @@
                     <span asp-validation-for="MatchRound" class="text-danger"></span>
                 </div>
                 <div class="col-md-6">
-                    <label asp-for="CourtName" class="custom-form-label">Court <span class="required-asterisk">*</span></label>
+                    <label asp-for="CourtName" for="courtSelect" class="custom-form-label">Court <span class="required-asterisk">*</span></label>
                     <select asp-for="CourtName" asp-items="Model.Courts" id="courtSelect" class="form-select custom-form-control" disabled>
                         <option value="">-- Please select a tournament first --</option>
                     </select>
@@ -614,7 +626,7 @@
             async function fetchAndPopulateCourts(venueId) {
                 if (!courtSelect) return;
 
-                if (!venueId || venueId === "0") {
+                if (!venueId || venueId === "0" || venueId === "null" || venueId === null || venueId === undefined) {
                     courtSelect.innerHTML = '<option value="">-- Please select a tournament first --</option>';
                     courtSelect.disabled = true;
                     courtSelect.value = '';
@@ -622,7 +634,7 @@
                 }
 
                 try {
-                    const response = await fetch(`/Matches/GetCourtsByVenue?venueId=${venueId}`);
+                    const response = await fetch(`/Matches/GetCourtsByVenue?venueId=${encodeURIComponent(venueId)}`);
                     if (!response.ok) return;
                     const courts = await response.json();
 
@@ -631,16 +643,16 @@
 
                     courts.forEach(c => {
                         const option = document.createElement('option');
-                        option.value = c.name;
-                        option.textContent = c.name;
+                        const courtName = c.name || c.Name || c.courtName || c.CourtName;
+                        option.value = courtName;
+                        option.textContent = courtName;
                         courtSelect.appendChild(option);
                     });
 
-                    // Explicitly clear disabled attribute and state
+                    debugger;
                     courtSelect.removeAttribute('disabled');
                     courtSelect.disabled = false;
 
-                    // Force layout reflow to unlock dropdown click list
                     courtSelect.style.display = 'none';
                     courtSelect.offsetHeight;
                     courtSelect.style.display = 'block';
@@ -648,6 +660,8 @@
                     if (currentCourt && Array.from(courtSelect.options).some(o => o.value === currentCourt)) {
                         courtSelect.value = currentCourt;
                     }
+
+                    
                 } catch (error) {
                     console.error('Error fetching courts:', error);
                 }
@@ -677,9 +691,8 @@
 
                 const selectedOption = tournamentSelect.options[tournamentSelect.selectedIndex];
 
-                // 1. Sync Venue & Courts
                 const venueId = selectedOption ? selectedOption.getAttribute('data-venue-id') : null;
-                if (venueId && allVenuesMap[venueId]) {
+                if (venueId && venueId !== "0" && allVenuesMap[venueId]) {
                     venueIdInput.value = venueId;
                     venueNameInput.value = allVenuesMap[venueId];
                     await fetchAndPopulateCourts(venueId);
@@ -689,7 +702,6 @@
                     clearAndDisableCourts();
                 }
 
-                // 2. Sync Surface & Environment
                 const surfaceVal = selectedOption ? selectedOption.getAttribute('data-surface') : null;
                 const envVal = selectedOption ? selectedOption.getAttribute('data-environment') : null;
 
@@ -746,12 +758,16 @@
 
                         tournaments.forEach(t => {
                             const option = document.createElement('option');
-                            option.value = t.id;
-                            option.textContent = t.name || t.tournamentName || "Tournament";
+                            option.value = t.id ?? t.Id;
+                            option.textContent = t.name ?? t.Name ?? t.tournamentName ?? "Tournament";
 
-                            if (t.venueId) option.setAttribute('data-venue-id', t.venueId);
-                            if (t.courtSurface !== undefined) option.setAttribute('data-surface', t.courtSurface);
-                            if (t.courtEnvironment !== undefined) option.setAttribute('data-environment', t.courtEnvironment);
+                            const venueId = t.venueId ?? t.VenueId;
+                            const surface = t.courtSurface ?? t.CourtSurface;
+                            const environment = t.courtEnvironment ?? t.CourtEnvironment;
+
+                            if (venueId && venueId != 0) option.setAttribute('data-venue-id', venueId);
+                            if (surface !== undefined) option.setAttribute('data-surface', surface);
+                            if (environment !== undefined) option.setAttribute('data-environment', environment);
 
                             tournamentSelect.appendChild(option);
                         });
@@ -878,6 +894,7 @@
                     if (firstPlayer) firstPlayer.removeAttribute('disabled');
                     if (secondPlayer) secondPlayer.removeAttribute('disabled');
                     if (courtSelect) courtSelect.removeAttribute('disabled');
+                    if (tournamentSelect) tournamentSelect.removeAttribute('disabled');
                 });
             }
 
@@ -886,6 +903,14 @@
 
             if (matchStatusSelect) {
                 matchStatusSelect.addEventListener('change', updateMatchStatusBehaviors);
+            }
+
+            if (courtSelect) {
+                courtSelect.addEventListener('change', function() {
+                    if (typeof $ !== 'undefined') {
+                        $('#courtSelect').valid();
+                    }
+                });
             }
 
             await loadAllVenues();

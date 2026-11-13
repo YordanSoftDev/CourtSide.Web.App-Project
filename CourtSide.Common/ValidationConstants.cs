@@ -30,7 +30,7 @@
             public const int CourtSurfaceMaxLength = 20;
 
             public const int CourtNameMinLength = 2;
-            public const int CourtNameMaxLength = 100;
+            public const int CourtNameMaxLength = 50;
 
             public const int CourtEnvironmentMaxLength = 20;
             public const int ScoreResultMaxLength = 100;           

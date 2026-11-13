@@ -9,6 +9,7 @@
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="16.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.Extensions" Version="6.0.36" />
+    <PackageReference Include="Microsoft.AspNetCore.WebUtilities" Version="10.0.15" />
   </ItemGroup>
 
   <ItemGroup>

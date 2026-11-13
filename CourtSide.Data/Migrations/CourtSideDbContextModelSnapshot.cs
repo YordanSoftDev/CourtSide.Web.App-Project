@@ -1045,6 +1045,373 @@ namespace CourtSide.Data.Migrations
                         });
                 });
 
+            modelBuilder.Entity("CourtSide.Data.Models.Court", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<int>("VenueId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("VenueId");
+
+                    b.ToTable("Courts");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "Centre Court",
+                            VenueId = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "Court 1",
+                            VenueId = 1
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Name = "Court Central",
+                            VenueId = 2
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Name = "Court 1",
+                            VenueId = 2
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Name = "Arthur Ashe Stadium",
+                            VenueId = 3
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Name = "Louis Armstrong Stadium",
+                            VenueId = 3
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Name = "Grandstand",
+                            VenueId = 3
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Name = "Court 17",
+                            VenueId = 3
+                        },
+                        new
+                        {
+                            Id = 9,
+                            Name = "Center Court",
+                            VenueId = 4
+                        },
+                        new
+                        {
+                            Id = 10,
+                            Name = "Court 1",
+                            VenueId = 4
+                        },
+                        new
+                        {
+                            Id = 11,
+                            Name = "Rod Laver Arena",
+                            VenueId = 5
+                        },
+                        new
+                        {
+                            Id = 12,
+                            Name = "John Cain Arena",
+                            VenueId = 5
+                        },
+                        new
+                        {
+                            Id = 13,
+                            Name = "Margaret Court Arena",
+                            VenueId = 5
+                        },
+                        new
+                        {
+                            Id = 14,
+                            Name = "Kia Arena",
+                            VenueId = 5
+                        },
+                        new
+                        {
+                            Id = 15,
+                            Name = "Court Rainier III",
+                            VenueId = 6
+                        },
+                        new
+                        {
+                            Id = 16,
+                            Name = "Court Des Princes",
+                            VenueId = 6
+                        },
+                        new
+                        {
+                            Id = 17,
+                            Name = "Manolo Santana Stadium",
+                            VenueId = 7
+                        },
+                        new
+                        {
+                            Id = 18,
+                            Name = "Arantxa Sánchez Vicario Stadium",
+                            VenueId = 7
+                        },
+                        new
+                        {
+                            Id = 19,
+                            Name = "Stadium 3",
+                            VenueId = 7
+                        },
+                        new
+                        {
+                            Id = 20,
+                            Name = "Campo Centrale",
+                            VenueId = 8
+                        },
+                        new
+                        {
+                            Id = 21,
+                            Name = "Grandstand Arena",
+                            VenueId = 8
+                        },
+                        new
+                        {
+                            Id = 22,
+                            Name = "Pietrangeli",
+                            VenueId = 8
+                        },
+                        new
+                        {
+                            Id = 23,
+                            Name = "Centre Court",
+                            VenueId = 9
+                        },
+                        new
+                        {
+                            Id = 24,
+                            Name = "Court 1",
+                            VenueId = 9
+                        },
+                        new
+                        {
+                            Id = 25,
+                            Name = "Centre Court",
+                            VenueId = 10
+                        },
+                        new
+                        {
+                            Id = 26,
+                            Name = "Court 1",
+                            VenueId = 10
+                        },
+                        new
+                        {
+                            Id = 27,
+                            Name = "Center Court",
+                            VenueId = 11
+                        },
+                        new
+                        {
+                            Id = 28,
+                            Name = "Grandstand",
+                            VenueId = 11
+                        },
+                        new
+                        {
+                            Id = 29,
+                            Name = "Center Court",
+                            VenueId = 12
+                        },
+                        new
+                        {
+                            Id = 30,
+                            Name = "Centre Court",
+                            VenueId = 13
+                        },
+                        new
+                        {
+                            Id = 31,
+                            Name = "Centre Court",
+                            VenueId = 14
+                        },
+                        new
+                        {
+                            Id = 32,
+                            Name = "Centre Court",
+                            VenueId = 15
+                        },
+                        new
+                        {
+                            Id = 33,
+                            Name = "Centre Court",
+                            VenueId = 16
+                        },
+                        new
+                        {
+                            Id = 34,
+                            Name = "Centre Court",
+                            VenueId = 17
+                        },
+                        new
+                        {
+                            Id = 35,
+                            Name = "Centre Court",
+                            VenueId = 18
+                        },
+                        new
+                        {
+                            Id = 36,
+                            Name = "Grandstand 1",
+                            VenueId = 18
+                        },
+                        new
+                        {
+                            Id = 37,
+                            Name = "Stadium 1",
+                            VenueId = 19
+                        },
+                        new
+                        {
+                            Id = 38,
+                            Name = "Stadium 2",
+                            VenueId = 19
+                        },
+                        new
+                        {
+                            Id = 39,
+                            Name = "Stadium 3",
+                            VenueId = 19
+                        },
+                        new
+                        {
+                            Id = 40,
+                            Name = "Stadium Court",
+                            VenueId = 20
+                        },
+                        new
+                        {
+                            Id = 41,
+                            Name = "Grandstand",
+                            VenueId = 20
+                        },
+                        new
+                        {
+                            Id = 42,
+                            Name = "Centre Court",
+                            VenueId = 21
+                        },
+                        new
+                        {
+                            Id = 43,
+                            Name = "Court Philippe-Chatrier",
+                            VenueId = 22
+                        },
+                        new
+                        {
+                            Id = 44,
+                            Name = "Court Suzanne-Lenglen",
+                            VenueId = 22
+                        },
+                        new
+                        {
+                            Id = 45,
+                            Name = "Court Simonne-Mathieu",
+                            VenueId = 22
+                        },
+                        new
+                        {
+                            Id = 46,
+                            Name = "Centre Court",
+                            VenueId = 23
+                        },
+                        new
+                        {
+                            Id = 47,
+                            Name = "Court 1",
+                            VenueId = 23
+                        },
+                        new
+                        {
+                            Id = 48,
+                            Name = "Centre Court",
+                            VenueId = 24
+                        },
+                        new
+                        {
+                            Id = 49,
+                            Name = "No. 1 Court",
+                            VenueId = 24
+                        },
+                        new
+                        {
+                            Id = 50,
+                            Name = "No. 2 Court",
+                            VenueId = 24
+                        },
+                        new
+                        {
+                            Id = 51,
+                            Name = "No. 3 Court",
+                            VenueId = 24
+                        },
+                        new
+                        {
+                            Id = 52,
+                            Name = "Court Central",
+                            VenueId = 25
+                        },
+                        new
+                        {
+                            Id = 53,
+                            Name = "National Bank Court",
+                            VenueId = 25
+                        },
+                        new
+                        {
+                            Id = 54,
+                            Name = "Diamond Court",
+                            VenueId = 26
+                        },
+                        new
+                        {
+                            Id = 55,
+                            Name = "Lotus Court",
+                            VenueId = 26
+                        },
+                        new
+                        {
+                            Id = 56,
+                            Name = "Moon Court",
+                            VenueId = 26
+                        },
+                        new
+                        {
+                            Id = 57,
+                            Name = "Center Court",
+                            VenueId = 27
+                        });
+                });
+
             modelBuilder.Entity("CourtSide.Data.Models.Match", b =>
                 {
                     b.Property<int>("Id")
@@ -1059,8 +1426,8 @@ namespace CourtSide.Data.Migrations
 
                     b.Property<string>("CourtName")
                         .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("CourtSurface")
                         .IsRequired()
@@ -5554,6 +5921,17 @@ namespace CourtSide.Data.Migrations
                     b.Navigation("Player");
                 });
 
+            modelBuilder.Entity("CourtSide.Data.Models.Court", b =>
+                {
+                    b.HasOne("CourtSide.Data.Models.Venue", "Venue")
+                        .WithMany("Courts")
+                        .HasForeignKey("VenueId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Venue");
+                });
+
             modelBuilder.Entity("CourtSide.Data.Models.Match", b =>
                 {
                     b.HasOne("CourtSide.Data.Models.Player", "FirstPlayer")
@@ -5689,6 +6067,8 @@ namespace CourtSide.Data.Migrations
 
             modelBuilder.Entity("CourtSide.Data.Models.Venue", b =>
                 {
+                    b.Navigation("Courts");
+
                     b.Navigation("TournamentVenues");
                 });
 #pragma warning restore 612, 618

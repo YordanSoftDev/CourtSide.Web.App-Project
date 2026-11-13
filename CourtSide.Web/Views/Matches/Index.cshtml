@@ -261,7 +261,7 @@
         {
             @foreach (var dateGroup in Model.GroupBy(m => m.DateTime.Date).OrderByDescending(g => g.Key))
             {
-                <!-- GROUP BY TOUR & DISCIPLINE (Explicit Func delegate resolves CS1977) -->
+                <!-- GROUP BY TOUR & DISCIPLINE -->
                 @foreach (var categoryGroup in dateGroup.GroupBy(new Func<CourtSide.ViewModels.Matches.MatchInfoViewModel, string>(m =>
                 {
                     string tourPrefix = (m.TournamentType != null && m.TournamentType.StartsWith("WTA", StringComparison.OrdinalIgnoreCase)) ? "WTA" : "ATP";
@@ -278,7 +278,7 @@
                     </div>
 
                     <!-- GROUP BY TOURNAMENT / VENUE / SURFACE -->
-                    @foreach (var tournamentGroup in categoryGroup.GroupBy(m => new { m.TournamentName, m.VenueName, m.CourtSurface, m.TournamentType }))
+                    @foreach (var tournamentGroup in categoryGroup.GroupBy(m => new { m.TournamentName, m.VenueName, m.CourtSurface, m.TournamentType, m.Discipline }))
                     {
                         <!-- TOURNAMENT CARD FOR THIS GROUP -->
                         <div class="tournament-card shadow-lg mb-4">
@@ -300,8 +300,8 @@
                                 <table class="table table-borderless align-middle mb-0">
                                     <thead class="border-bottom" style="background-color: #f8fafc;">
                                         <tr>
-                                            <th style="width: 22%; font-weight: 400 !important; color: #718078 !important; font-size: 0.8rem;" class="ps-4">STATUS / ROUND</th>
-                                            <th style="width: 40%; font-weight: 400 !important; color: #718078 !important; font-size: 0.8rem;">@(tournamentGroup.Key.TournamentType?.ToUpper())</th>
+                                            <th style="width: 22%; font-weight: 400 !important; color: #718078 !important; font-size: 0.8rem;" class="ps-4">STATUS / TIME / ROUND</th>
+                                            <th style="width: 40%; font-weight: 400 !important; color: #718078 !important; font-size: 0.8rem;">@(tournamentGroup.Key.Discipline.ToUpper())</th>
                                             <th class="text-center" style="width: 5%; font-weight: 400 !important; color: #718078 !important; font-size: 0.8rem;">1</th>
                                             <th class="text-center" style="width: 5%; font-weight: 400 !important; color: #718078 !important; font-size: 0.8rem;">2</th>
                                             <th class="text-center" style="width: 5%; font-weight: 400 !important; color: #718078 !important; font-size: 0.8rem;">3</th>
