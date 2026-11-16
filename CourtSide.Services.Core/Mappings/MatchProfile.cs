@@ -27,13 +27,7 @@
                 .ForMember(dest => dest.MatchStatus, opt => opt.MapFrom(src => src.MatchStatus))
                 .ForMember(dest => dest.CourtName, opt => opt.MapFrom(src => src.CourtName));
 
-            this.CreateMap<Match, MatchDetailsViewModel>()
-                .ForMember(dest => dest.VenueName,
-                opt => opt
-                .MapFrom(src => src.Venue.Name))
-                .ForMember(dest => dest.TournamentName,
-                opt => opt
-                .MapFrom(src => src.Tournament.TournamentName))
+             this.CreateMap<Match, MatchDetailsViewModel>()
                 .ForMember(dest => dest.FirstPlayerFullName,
                 opt => opt
                 .MapFrom(src => $"{src.FirstPlayer.FirstName} " +
@@ -42,6 +36,21 @@
                 opt => opt
                 .MapFrom(src => $"{src.SecondPlayer.FirstName} " +
                 $"{src.SecondPlayer.LastName}"))
+                .ForMember(d => d.Tour, opt => opt.MapFrom(s => s.Tournament.TournamentType))
+                .ForMember(dest => dest.Discipline,
+                opt => opt
+                .MapFrom(src => src.Tournament.Discipline))
+                .ForMember(d => d.CourtEnvironment, opt => opt.MapFrom(s => s.Tournament.CourtEnvironment))
+                .ForMember(dest => dest.VenueName,
+                 opt => opt
+                .MapFrom(src => src.Tournament.TournamentVenues.Select(tv => tv.Venue.Name).FirstOrDefault() ?? src.Venue.Name))
+                .ForMember(dest => dest.TournamentName,
+                opt => opt
+                .MapFrom(src => src.Tournament.TournamentName))
+                .ForMember(dest => dest.MatchFormat,
+                opt => opt.MapFrom(src => src.Tournament.MatchFormat))
+                .ForMember(dest => dest.TieBreakRule,
+                opt => opt.MapFrom(src => src.Tournament.TieBreakRule))
                 .ForMember(dest => dest.WinnerFullName,
                 opt => opt
                 .MapFrom(src => src.Winner != null ? $"{src.Winner.FirstName} " +

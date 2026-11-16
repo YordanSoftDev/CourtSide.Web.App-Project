@@ -1,6 +1,7 @@
 ﻿namespace CourtSide.ViewModels.Matches
 {
     using CourtSide.Common.MatchEnumerations;
+    using CourtSide.Common.TournamentEnumerations;
 
     public class MatchDetailsViewModel
     {
@@ -14,6 +15,10 @@
 
         public string SecondPlayerFullName { get; set; } = string.Empty;
 
+        public string Tour { get; set; } = string.Empty;
+
+        public string Discipline { get; set; } = string.Empty;
+
         public DateTime DateTime { get; set; }
 
         public MatchStatus MatchStatus { get; set; }
@@ -24,7 +29,13 @@
 
         public CourtSurface CourtSurface { get; set; }
 
+        public CourtEnvironment CourtEnvironment { get; set; }
+
         public string CourtName { get; set; } = string.Empty;
+
+        public MatchFormat MatchFormat { get; set; }
+
+        public TieBreakRule TieBreakRule { get; set; }
 
         public int VenueId { get; set; }
 

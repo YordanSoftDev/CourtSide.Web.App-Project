@@ -1,162 +1,544 @@
-﻿@* @model CourtSide.ViewModels.Matches.MatchDetailsViewModel
+﻿@model CourtSide.ViewModels.Matches.MatchDetailsViewModel
 
 @{
-    ViewData["Title"] = $"Match Details - {Model.FirstPlayerFullName} vs {Model.SecondPlayerFullName}";
+    ViewData["Title"] = "Match Details";
+
+    // Helper to extract initials (e.g., "Alexander Zverev" -> "AZ")
+    string GetInitials(string? fullName)
+    {
+        if (string.IsNullOrWhiteSpace(fullName)) return "??";
+        var parts = fullName.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+        return parts.Length >= 2
+            ? $"{parts[0][0]}{parts[^1][0]}".ToUpper()
+            : parts[0][..Math.Min(2, parts[0].Length)].ToUpper();
+    }
+
+    bool isCompleted = Model.MatchStatus.ToString() == "Completed";
+    bool isScheduled = Model.MatchStatus.ToString() == "Scheduled";
+
+    // Helper to parse score strings like "7-5 4-6 3-6" into individual set scores
+    List<(string p1, string p2)> ParseSets(string? scoreResult)
+    {
+        var result = new List<(string, string)>();
+        if (string.IsNullOrWhiteSpace(scoreResult)) return result;
+
+        var sets = scoreResult.Trim().Split(' ', StringSplitOptions.RemoveEmptyEntries);
+        foreach (var set in sets)
+        {
+            var parts = set.Split('-');
+            if (parts.Length == 2)
+            {
+                result.Add((parts[0].Trim(), parts[1].Trim()));
+            }
+        }
+        return result;
+    }
+
+    var setScores = ParseSets(Model.ScoreResult);
+
+    // Determine total set columns dynamically
+    int totalSets = 3;
+    string formatStr = Model.MatchFormat.ToString();
+    if (formatStr.Contains("Five") || formatStr.Contains("5"))
+    {
+        totalSets = 5;
+    }
+
+    if (setScores.Count > totalSets)
+    {
+        totalSets = setScores.Count;
+    }
 }
 
-<div class="container py-3">
-    <div class="card shadow-sm border-0">
-        <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center py-3">
-            <h4 class="mb-0"><i class="bi bi-info-circle"></i> Match Details</h4>
-            <span class="badge bg-primary fs-6">@Model.DateTime.ToString("f")</span>
-        </div>
-        
-        <div class="card-body p-4">
-            <div class="row align-items-center text-center bg-light rounded p-4 mb-4 border">
-                <div class="col-md-5">
-                    <h3 class="mb-1">@Model.FirstPlayerFullName</h3>
-                    @if (Model.WinnerFullName == Model.FirstPlayerFullName)
-                    {
-                        <span class="badge bg-success mt-1"><i class="bi bi-trophy-fill"></i> Winner</span>
-                    }
-                </div>
-                <div class="col-md-2 my-3 my-md-0">
-                    <span class="badge bg-danger fs-5 px-3 py-2">VS</span>
-                </div>
-                <div class="col-md-5">
-                    <h3 class="mb-1">@Model.SecondPlayerFullName</h3>
-                    @if (Model.WinnerFullName == Model.SecondPlayerFullName)
-                    {
-                        <span class="badge bg-success mt-1"><i class="bi bi-trophy-fill"></i> Winner</span>
-                    }
-                </div>
-            </div>
+<style>
+    .match-centre-wrapper {
+        padding: 2rem 1rem;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
 
-            <div class="row g-3">
-                <div class="col-md-6">
-                    <div class="p-3 border rounded h-100 bg-white">
-                        <h6 class="text-muted uppercase fw-bold mb-2">Tournament Info</h6>
-                        <p class="fs-5 mb-0">
-                            <i class="bi bi-diagram-3 text-primary me-2"></i>
-                            @(Model.TournamentName ?? "Exhibition / Standalone Match")
-                        </p>
-                    </div>
-                </div>
+    .match-centre-modal {
+        background-color: #F4F4EE;
+        border-radius: 20px;
+        width: 100%;
+        max-width: 720px;
+        padding: 28px 32px;
+        box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+        border: 1px solid #E5E3DC;
+    }
 
-                <div class="col-md-6">
-                    <div class="p-3 border rounded h-100 bg-white">
-                        <h6 class="text-muted uppercase fw-bold mb-2">Venue Location</h6>
-                        <p class="fs-5 mb-0">
-                            <i class="bi bi-geo-alt text-danger me-2"></i>
-                            @(Model.VenueName ?? "Unassigned Court")
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
+    /* Header Typography */
+    .mc-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+    }
 
-        <div class="card-footer bg-light p-3 d-flex justify-content-between">
-            <a asp-action="Index" class="btn btn-outline-secondary">
-                <i class="bi bi-arrow-left"></i> Back to List
-            </a>
+    .mc-eyebrow {
+        font-size: 10px;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        color: #64736A;
+        text-transform: uppercase;
+        margin-bottom: 2px;
+    }
+
+    .mc-title {
+        font-size: 28px;
+        font-weight: 600;
+        color: #1D3028;
+        margin: 0;
+        line-height: 1.2;
+    }
+
+    .mc-close-circle {
+        width: 34px;
+        height: 34px;
+        border-radius: 50%;
+        background-color: #FFFFFF;
+        color: #1D3028;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+        font-size: 13px;
+    }
+
+    /* Hero Card (#143E30) */
+    .mc-hero-card {
+        background-color: #143E30;
+        border-radius: 16px;
+        padding: 20px 24px 26px;
+        color: #FFFFFF;
+        margin-bottom: 16px;
+    }
+
+    .mc-hero-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 22px;
+    }
+
+    .mc-hero-tournament {
+        font-size: 10px;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        color: #D9EF73;
+    }
+
+    .mc-hero-round {
+        font-size: 12px;
+        font-weight: 400;
+        color: #C8D8CD;
+        margin-top: 2px;
+    }
+
+    .mc-status-badge {
+        background-color: #D9EF73;
+        color: #143E30;
+        font-size: 11px;
+        font-weight: 600;
+        padding: 4px 12px;
+        border-radius: 999px;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+    }
+
+    .mc-status-dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background-color: #143E30;
+    }
+
+    .mc-matchup-grid {
+        display: grid;
+        grid-template-columns: 1fr auto 1fr;
+        align-items: center;
+        text-align: center;
+        gap: 16px;
+    }
+
+    .mc-avatar {
+        width: 46px;
+        height: 46px;
+        border-radius: 50%;
+        background-color: rgba(255, 255, 255, 0.12);
+        color: #D9EF73;
+        font-weight: 600;
+        font-size: 18px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 10px;
+    }
+
+    .mc-player-name {
+        font-size: 23px;
+        font-weight: 600;
+        color: #FFFFFF;
+    }
+
+    .mc-vs {
+        font-size: 12px;
+        font-weight: 700;
+        color: #D9EF73;
+        letter-spacing: 0.08em;
+    }
+
+    /* White Content Cards */
+    .mc-card {
+        background-color: #FFFFFF;
+        border-radius: 14px;
+        padding: 18px 22px;
+        margin-bottom: 16px;
+        border: 1px solid #EAE8E1;
+    }
+
+    .mc-schedule-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+        padding-bottom: 12px;
+        border-bottom: 1px solid #F0EFEA;
+    }
+
+    .mc-schedule-note {
+        font-size: 11px;
+        color: #7D8A83;
+        padding-top: 10px;
+    }
+
+    .mc-two-col {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+    }
+
+    .mc-card-heading {
+        font-size: 15px;
+        font-weight: 600;
+        color: #1D3028;
+        margin-bottom: 12px;
+    }
+
+    .mc-tournament-title {
+        font-size: 15px;
+        font-weight: 600;
+        color: #1D3028;
+    }
+
+    .mc-sub-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+    }
+
+    .mc-label {
+        font-size: 11px;
+        color: #7D8A83;
+        margin-bottom: 2px;
+    }
+
+    .mc-value {
+        font-size: 13px;
+        font-weight: 600;
+        color: #1D3028;
+    }
+
+    .mc-subtext {
+        font-size: 12px;
+        color: #7D8A83;
+    }
+
+    /* Scoreboard */
+    .mc-score-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 14px;
+    }
+
+    .mc-pill-muted {
+        background-color: #EEF1EF;
+        color: #4E5D55;
+        font-size: 11px;
+        font-weight: 600;
+        padding: 4px 12px;
+        border-radius: 999px;
+    }
+
+    .mc-scoreboard {
+        background-color: #F7F6F2;
+        border-radius: 10px;
+        padding: 6px 14px;
+        margin-bottom: 12px;
+    }
+
+    .mc-sb-row {
+        display: grid;
+        align-items: center;
+        padding: 10px 0;
+        border-bottom: 1px solid #EAE8E1;
+    }
+
+        .mc-sb-row:last-child {
+            border-bottom: none;
+        }
+
+    .mc-sb-head {
+        font-size: 10px;
+        font-weight: 600;
+        color: #7D8A83;
+        letter-spacing: 0.05em;
+        padding: 8px 0;
+    }
+
+    .mc-sb-player {
+        font-size: 13px;
+        font-weight: 600;
+        color: #1D3028;
+    }
+
+    .mc-score-footer {
+        font-size: 11px;
+        color: #7D8A83;
+    }
+
+    /* Footer */
+    .mc-footer {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        margin-top: 24px;
+    }
+
+    .mc-btn-primary {
+        background-color: #143E30;
+        color: #FFFFFF;
+        font-size: 13px;
+        font-weight: 600;
+        padding: 8px 24px;
+        border-radius: 8px;
+        border: none;
+        text-decoration: none;
+    }
+
+        .mc-btn-primary:hover {
+            background-color: #0F2F24;
+            color: #FFFFFF;
+        }
+
+    .mc-btn-outline {
+        background-color: #FFFFFF;
+        color: #143E30;
+        border: 1px solid #D5DBD7;
+        font-size: 13px;
+        font-weight: 600;
+        padding: 8px 18px;
+        border-radius: 8px;
+        text-decoration: none;
+    }
+</style>
+
+<div class="match-centre-wrapper">
+    <div class="match-centre-modal">
+        <!-- Top Header -->
+        <div class="mc-header">
             <div>
-                <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning me-2">
-                    <i class="bi bi-pencil-square"></i> Edit Match
-                </a>
-                <a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger">
-                    <i class="bi bi-trash"></i> Delete
-                </a>
+                <div class="mc-eyebrow">COURTSIDE / MATCH CENTRE</div>
+                <h1 class="mc-title">Match Details</h1>
+            </div>
+            <a asp-action="Index" class="mc-close-circle" title="Close">
+                <i class="bi bi-x-lg"></i>
+            </a>
+        </div>
+
+        <!-- Hero Matchup Card (#143E30) -->
+        <div class="mc-hero-card">
+            <div class="mc-hero-top">
+                <div>
+                    <div class="mc-hero-tournament">@Model.TournamentName.ToUpper()</div>
+                    <div class="mc-hero-round">
+                        @Html.DisplayFor(model => model.MatchRound) ·
+                        @Model.Discipline
+                    </div>
+                </div>
+                <div class="mc-status-badge">
+                    <span class="mc-status-dot"></span> @Model.MatchStatus
+                </div>
+            </div>
+
+            <div class="mc-matchup-grid">
+                <!-- Player 1 -->
+                <div class="mc-player-col">
+                    <div class="mc-avatar">@GetInitials(Model.FirstPlayerFullName)</div>
+                    <div class="mc-player-name">@Model.FirstPlayerFullName</div>
+                </div>
+
+                <!-- VS Divider -->
+                <div class="mc-vs">VS</div>
+
+                <!-- Player 2 -->
+                <div class="mc-player-col">
+                    <div class="mc-avatar">@GetInitials(Model.SecondPlayerFullName)</div>
+                    <div class="mc-player-name">@Model.SecondPlayerFullName</div>
+                </div>
             </div>
         </div>
-    </div>
-</div>
-}
- *@
 
-@model CourtSide.ViewModels.Matches.MatchDetailsViewModel
+        <!-- Compact Schedule Summary Card -->
+        <div class="mc-card">
+            <div class="mc-schedule-grid">
+                <div>
+                    <div class="mc-label">Scheduled date</div>
+                    <div class="mc-value">@Model.DateTime.ToString("dd MMM yyyy")</div>
+                </div>
+                <div>
+                    <div class="mc-label">Start time · UTC (UTC+00:00)</div>
+                    <div class="mc-value">@Model.DateTime.ToString("HH:mm")</div>
+                </div>
+                <div>
+                    <div class="mc-label">Court</div>
+                    <div class="mc-value">@Model.CourtName</div>
+                </div>
+            </div>
+            <div class="mc-schedule-note">
+                All score desk times are shown in UTC.
+            </div>
+        </div>
 
-@{
-    ViewData["Title"] = $"Match Details - {Model.FirstPlayerFullName} vs {Model.SecondPlayerFullName}";
-}
+        <!-- Tournament & Rules Two-Column Grid -->
+        <div class="mc-two-col">
+            <!-- Left: Tournament & venue -->
+            <div class="mc-card mb-0">
+                <h2 class="mc-card-heading">Tournament &amp; venue</h2>
+                <div class="mc-label">Tournament</div>
+                <div class="mc-tournament-title">@Model.TournamentName</div>
 
-@* CHANGE 1: Add the page container background style to match Index.cshtml *@
-<div class="py-4" style="background-color: #EFF3EA; min-height: 100vh;">
-    <div class="container">
-        @* CHANGE 2: Replace 'shadow-sm' with 'shadow-lg rounded-4 overflow-hidden' for a softer, modern card look *@
-        <div class="card shadow-lg border-0 rounded-4 overflow-hidden">
+                <div class="mt-3">
+                    <div class="mc-label">Venue</div>
+                    <div class="mc-value">@Model.VenueName</div>
+                </div>
 
-            @* CHANGE 3: Replace 'bg-dark text-white' header with your custom soft primary green background (#EAF0E9) and dark text *@
-            <div class="card-header p-4 d-flex justify-content-between align-items-center border-bottom" style="background-color: #EAF0E9 !important;">
-                <h4 class="mb-0 fw-bold" style="color: #142D25 !important;"><i class="bi bi-info-circle"></i> Match Details</h4>
+                <div class="mc-sub-grid mt-4">
+                    <div>
+                        <div class="mc-label">Tour</div>
+                        <div class="mc-value">@Model.Tour</div>
+                    </div>
+                    <div>
+                        <div class="mc-label">Category</div>
+                        <div class="mc-value">@Model.Discipline</div>
+                    </div>
+                </div>
+            </div>
 
-                @* CHANGE 4: Update date badge style to match forest green theme *@
-                <span class="badge px-3 py-2 fs-6 rounded-pill" style="background-color: #142D25 !important; color: #ffffff;">
-                    @Model.DateTime.ToString("f")
+            <!-- Right: Format & rules -->
+            <div class="mc-card mb-0">
+                <h2 class="mc-card-heading">Format &amp; rules</h2>
+
+                <div class="mb-3">
+                    <div class="mc-label">Match format</div>
+                    <div class="mc-value">@Html.DisplayFor(model => model.MatchFormat)</div>
+                </div>
+
+                <div class="mb-3">
+                    <div class="mc-label">Tie-break rule</div>
+                    <div class="mc-value">@Html.DisplayFor(model => model.TieBreakRule)</div>
+                </div>
+
+                <div>
+                    <div class="mc-label">Surface / Environment</div>
+                    <div class="mc-value">@Html.DisplayFor(model => model.CourtEnvironment) @Model.CourtSurface.ToString().ToLower()</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Score Card -->
+        <div class="mc-card mt-3">
+            <div class="mc-score-header">
+                <div>
+                    <h2 class="mc-card-heading mb-0">Score</h2>
+                    @if (isScheduled)
+                    {
+                        <div class="mc-subtext">Awaiting first serve</div>
+                    }
+                </div>
+                <span class="mc-pill-muted">
+                    @(isCompleted ? "Final" : "Not started")
                 </span>
             </div>
 
-            <div class="card-body p-4 bg-white">
-                <div class="row align-items-center text-center bg-light rounded-4 p-4 mb-4 border">
-                    <div class="col-md-5">
-                        <h3 class="mb-1 fw-bold" style="color: #142D25;">@Model.FirstPlayerFullName</h3>
-                        @if (Model.WinnerFullName == Model.FirstPlayerFullName)
-                        {
-                            <span class="badge bg-success mt-1"><i class="bi bi-trophy-fill"></i> Winner</span>
-                        }
-                    </div>
-                    <div class="col-md-2 my-3 my-md-0">
-                        <span class="badge bg-danger fs-5 px-3 py-2 rounded-pill">VS</span>
-                    </div>
-                    <div class="col-md-5">
-                        <h3 class="mb-1 fw-bold" style="color: #142D25;">@Model.SecondPlayerFullName</h3>
-                        @if (Model.WinnerFullName == Model.SecondPlayerFullName)
-                        {
-                            <span class="badge bg-success mt-1"><i class="bi bi-trophy-fill"></i> Winner</span>
-                        }
-                    </div>
+            <div class="mc-scoreboard">
+                <!-- Header Row -->
+                <div class="mc-sb-row" style="grid-template-columns: 2fr repeat(@totalSets, 52px);">
+                    <div class="mc-sb-head">PLAYER</div>
+                    @for (int i = 1; i <= totalSets; i++)
+                    {
+                        <div class="text-center mc-sb-head">SET @i</div>
+                    }
                 </div>
 
-                <div class="row g-3">
-                    <div class="col-md-6">
-                        <div class="p-3 border rounded-3 h-100 bg-white">
-                            <h6 class="text-muted text-uppercase fw-bold mb-2" style="font-size: 0.75rem;">Tournament Info</h6>
-                            <p class="fs-5 mb-0 fw-semibold" style="color: #142D25;">
-                                <i class="bi bi-diagram-3 text-success me-2"></i>
-                                @(Model.TournamentName ?? "Exhibition / Standalone Match")
-                            </p>
-                        </div>
+                <!-- Player 1 Row -->
+                <div class="mc-sb-row" style="grid-template-columns: 2fr repeat(@totalSets, 52px);">
+                    <div>
+                        <div class="mc-sb-player">@Model.FirstPlayerFullName</div>
                     </div>
+                    @for (int i = 0; i < totalSets; i++)
+                    {
+                        string p1Score = i < setScores.Count ? setScores[i].p1 : "—";
+                        <div class="text-center @(i < setScores.Count ? "mc-sb-player" : "text-muted")">@p1Score</div>
+                    }
+                </div>
 
-                    <div class="col-md-6">
-                        <div class="p-3 border rounded-3 h-100 bg-white">
-                            <h6 class="text-muted text-uppercase fw-bold mb-2" style="font-size: 0.75rem;">Venue Location</h6>
-                            @* DYNAMIC VENUE: Uses Model.VenueName (which will now display Palais des Sports de Gerland) *@
-                            <p class="fs-5 mb-0 fw-semibold" style="color: #142D25;">
-                                <i class="bi bi-geo-alt text-danger me-2"></i>
-                                @(Model.VenueName ?? "Unassigned Court")
-                            </p>
-                        </div>
+                <!-- Player 2 Row -->
+                <div class="mc-sb-row" style="grid-template-columns: 2fr repeat(@totalSets, 52px);">
+                    <div>
+                        <div class="mc-sb-player">@Model.SecondPlayerFullName</div>
                     </div>
+                    @for (int i = 0; i < totalSets; i++)
+                    {
+                        string p2Score = i < setScores.Count ? setScores[i].p2 : "—";
+                        <div class="text-center @(i < setScores.Count ? "mc-sb-player" : "text-muted")">@p2Score</div>
+                    }
                 </div>
             </div>
 
-            @* CHANGE 5: Clean up card footer and wrap Edit/Delete buttons in admin check *@
-            <div class="card-footer bg-white p-3 border-top d-flex justify-content-between align-items-center">
-                <a asp-action="Index" class="btn btn-outline-secondary fw-semibold">
-                    <i class="bi bi-arrow-left"></i> Back to List
-                </a>
-
-                @if (User.IsInRole("Admin"))
+            <div class="mc-score-footer">
+                @if (isScheduled)
                 {
-                    <div class="d-flex gap-2">
-                        <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-outline-warning fw-semibold">
-                            <i class="bi bi-pencil-square"></i> Edit Match
-                        </a>
-                        <a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-outline-danger fw-semibold">
-                            <i class="bi bi-trash"></i> Delete
-                        </a>
+                    <div>
+                        Serving: Not started &nbsp;·&nbsp; @(totalSets == 5 ? "Set 5 only if needed" : "Set 3 only if needed")
+                    </div>
+                    <div class="mt-1">Scores remain empty while scheduled. Games by set will appear here once play begins.</div>
+                }
+                else if (isCompleted)
+                {
+                    <div>
+                        Winner: @Model.WinnerFullName
                     </div>
                 }
+                else
+                {
+                    <div>
+                        Winner: @(string.IsNullOrWhiteSpace(Model.WinnerFullName) ? "Not decided" : Model.WinnerFullName) &nbsp;·&nbsp;
+                        Serving: In progress &nbsp;·&nbsp; @(totalSets == 5 ? "Set 5 only if needed" : "Set 3 only if needed")
+                    </div>
+                }
+            </div>
+        </div>
+
+        <!-- Bottom Action Bar -->
+        <div class="mc-footer">
+            <div class="d-flex gap-2">
+                <a asp-action="Edit" asp-route-id="@Model.Id" class="btn mc-btn-outline">Edit</a>
+                <a asp-action="Index" class="btn mc-btn-primary">Close</a>
             </div>
         </div>
     </div>

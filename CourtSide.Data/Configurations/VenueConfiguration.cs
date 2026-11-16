@@ -21,165 +21,192 @@
              {
                 new Venue
                 {
+                    // Tournament name - Lyon Open
                     // men's and women's venue
                     Id = 1,
-                    Name = "Palais des Sports de Gerland (Lyon Open)"
+                    Name = "Palais des Sports de Gerland"
                 },
                 new Venue
                 {
+                    // Tournament name - Rolex Paris Masters
                     // men's venue
                     Id = 2,
-                    Name = "Accor Arena / Paris La Défense Arena (Rolex Paris Masters)"
+                    Name = "Accor Arena / Paris La Défense Arena"
                 },
                 new Venue
                 {
+                    // Tournament name - US Open
                     // men's and women's venue
                     Id = 3,
-                    Name = "USTA Billie Jean King National Tennis Center (US Open)"
+                    Name = "USTA Billie Jean King National Tennis Center"
                 },
                 new Venue
                 {
+                    // Tournament name - Almaty Open
                     // men's venue
                     Id = 4,
-                    Name = "Almaty Arena (Almaty Open)"
+                    Name = "Almaty Arena"
                 },
                 new Venue
                 {
+                    // Tournament name - Australian Open
                     // men's and women's venue
                     Id = 5,
-                    Name = "Melbourne Park (Australian Open)"
+                    Name = "Melbourne Park"
                 },
                 new Venue
                 {
+                    // Tournament name - Monte-Carlo Masters
                     // men's venue
                     Id = 6,
-                    Name = "Monte-Carlo Country Club (Monte-Carlo Masters)"
+                    Name = "Monte-Carlo Country Club"
                 },
                 new Venue
                 {
+                    // Tournament name - Mutua Madrid Open
                     // men's and women's venue
                     Id = 7,
-                    Name = "Caja Mágica (Mutua Madrid Open)"
+                    Name = "Caja Mágica"
                 },
                 new Venue
                 {
+                    // Tournament name - Italian Open
                     // men's and women's venue
                     Id = 8,
-                    Name = "Foro Italico (Italian Open)"
+                    Name = "Foro Italico"
                 },
                 new Venue
                 {
+                    // Tournament name - Cinch Championships
                     // men's venue
                     Id = 9,
-                    Name = "Queen's Club (Cinch Championships)"
+                    Name = "Queen's Club"
                 },
                 new Venue
                 {
+                    // Tournament name - Swiss Indoors Basel
                     // men's venue
                     Id = 10,
-                    Name = "St. Jakobshalle (Swiss Indoors Basel)"
+                    Name = "St. Jakobshalle"
                 },
                 new Venue
                 {
+                    // Tournament name - Shanghai Masters
                     // men's venue
                     Id = 11,
-                    Name = "Qizhong Forest Sports City Arena (Shanghai Masters)"
+                    Name = "Qizhong Forest Sports City Arena"
                 },
                 new Venue
                 {
+                    // Tournament name - European Open
                     // men's venue
                     Id = 12,
-                    Name = "Sportpaleis Antwerp / Lotto Arena (European Open)"
+                    Name = "Sportpaleis Antwerp / Lotto Arena"
                 },
                 new Venue
                 {
+                    // Tournament name - Bybit Stockholm Open
                     // men's venue
                     Id = 13,
-                    Name = "Kungliga Tennishallen (Bybit Stockholm Open)"
+                    Name = "Kungliga Tennishallen"
                 },
                 new Venue
                 {
+                    // Tournament name - Nitto Finals
                     // men's venue
                     Id = 14,
-                    Name = "Inalpi Arena (Nitto Finals)"
+                    Name = "Inalpi Arena"
                 },
                 new Venue
                 {
+                    // Tournament name - Davis Cup Finals
                     // men's venue
                     Id = 15,
-                    Name = "Unipol Arena (Davis Cup Finals)"
+                    Name = "Unipol Arena"
                 },
                 new Venue
                 {
+                    // Tournament name - Next Gen Finals
                     // men's venue
                     Id = 16,
-                    Name = "PalaTennis 'Corrado Barazzutti' (Next Gen Finals)"
+                    Name = "PalaTennis 'Corrado Barazzutti'"
                 },
                 new Venue
                 {
+                    // Tournament name - Billie Jean King Cup Finals
                     // women's venue
                     Id = 17,
-                    Name = "Estadio La Cartuja (Billie Jean King Cup Finals)"
+                    Name = "Estadio La Cartuja"
                 },
                 new Venue
                 {
+                    // Tournament name - Qatar TotalEnergies Open
                     // women's venue
                     Id = 18,
-                    Name = "Khalifa International Tennis & Squash Complex (Qatar TotalEnergies Open)"
+                    Name = "Khalifa International Tennis & Squash Complex"
                 },
                 new Venue
                 {
+                    // Tournament name - BNP Paribas Open
                     // men's and women's venue
                     Id = 19,
-                    Name = "Indian Wells Tennis Garden (BNP Paribas Open)"
+                    Name = "Indian Wells Tennis Garden"
                 },
                 new Venue
                 {
+                    // Tournament name - Miami Open
                     // men's and women's venue
                     Id = 20,
-                    Name = "Hard Rock Stadium (Miami Open)"
+                    Name = "Hard Rock Stadium"
                 },
                 new Venue
                 {
+                    // Tournament name - Porsche Tennis Grand Prix
                     // women's venue
                     Id = 21,
-                    Name = "Porsche-Arena (Porsche Tennis Grand Prix)"
+                    Name = "Porsche-Arena"
                 },
                 new Venue
                 {
+                    // Tournament name - Roland Garros
                     // men's and women's venue
                     Id = 22,
-                    Name = "Stade Roland Garros (Roland Garros)"
+                    Name = "Stade Roland Garros"
                 },
                 new Venue
                 {
+                    // Tournament name - Rothesay International Eastbourne
                     // women's venue
                     Id = 23,
-                    Name = "Devonshire Park Lawn Tennis Club (Rothesay International Eastbourne)"
+                    Name = "Devonshire Park Lawn Tennis Club"
                 },
                 new Venue
                 {
+                    // Tournament name - Wimbledon
                     // men's and women's venue
                     Id = 24,
-                    Name = "All England Lawn Tennis and Croquet Club (Wimbledon)"
+                    Name = "All England Lawn Tennis and Croquet Club"
                 },
                 new Venue
                 {
+                    // Tournament name - National Bank Open
                     // men's and women's venue
                     Id = 25,
-                    Name = "IGA Stadium / Stade IGA (National Bank Open)"
+                    Name = "IGA Stadium / Stade IGA"
                 },
                 new Venue
                 {
+                    // Tournament name - China Open
                     // men's and women's venue
                     Id = 26,
-                    Name = "National Tennis Center (China Open)"
+                    Name = "National Tennis Center"
                 },
                 new Venue
                 {
+                    // Tournament name - WTA Finals Riyadh
                     // women's venue
                     Id = 27,
-                    Name = "King Saud University Indoor Arena (WTA Finals Riyadh)"
+                    Name = "King Saud University Indoor Arena"
                 }
              };
     }

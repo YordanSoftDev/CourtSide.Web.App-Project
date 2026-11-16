@@ -1,8 +1,9 @@
 ﻿namespace CourtSide.Data.Models
 {
+    using CourtSide.Common.MatchEnumerations;
+    using CourtSide.Common.TournamentEnumerations;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
-    using CourtSide.Common.MatchEnumerations;
     using static CourtSide.Common.ValidationConstants.Tournament;
     public class Tournament
     {
@@ -40,12 +41,22 @@
         public required DateTime EndDate { get; set; }
 
         //the variants are Grass, Clay, Hard, Carpet 
+        [Required]
         [MaxLength(CourtSurfaceMaxLength)]
         public required CourtSurface CourtSurface { get; set; }
 
         //the variants are Indoor, Outdoor
+        [Required]
         [MaxLength(CourtEnvironmentMaxLength)]
         public required CourtEnvironment CourtEnvironment { get; set; }
+
+        [Required]
+        [MaxLength(MatchFormatMaxLength)]
+        public required MatchFormat MatchFormat { get; set; }
+
+        [Required]
+        [MaxLength(TieBreakRuleMaxLength)]
+        public required TieBreakRule TieBreakRule { get; set; }
 
         [NotMapped]
         public bool IsActive =>

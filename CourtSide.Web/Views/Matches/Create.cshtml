@@ -396,7 +396,7 @@
                     <span asp-validation-for="DateTime" class="text-danger"></span>
                 </div>
                 <div class="col-md-6">
-                    <label asp-for="MatchStatus" class="custom-form-label">Initial status <span class="required-asterisk">*</span></label>
+                    <label asp-for="MatchStatus" class="custom-form-label">Match status <span class="required-asterisk">*</span></label>
                     <select asp-for="MatchStatus" asp-items="Html.GetEnumSelectList<MatchStatus>()" class="form-select custom-form-control">
                         <option value="">-- Select Status --</option>
                     </select>
@@ -430,7 +430,7 @@
                     <span asp-validation-for="VenueId" class="text-danger"></span>
                 </div>
                 <div class="col-md-6">
-                    <label class="custom-form-label">Surface/Environment <span class="required-asterisk">*</span></label>
+                    <label class="custom-form-label">Surface / Environment <span class="required-asterisk">*</span></label>
                     <input type="hidden" asp-for="CourtSurface" id="courtSurfaceInput" />
                     <input type="hidden" asp-for="CourtEnvironment" id="courtEnvironmentInput" />
                     <input type="text" id="surfaceEnvironmentInput" class="form-control custom-form-control" readonly placeholder="Auto-selected from tournament" />

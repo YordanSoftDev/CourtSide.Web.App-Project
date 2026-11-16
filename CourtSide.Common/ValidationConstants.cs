@@ -60,7 +60,7 @@
         {
             public const int TournamentNameMinLength = 2;
             public const int TournamentNameMaxLength = 100;
-            public const int DisciplineMaxLength = 10;
+            public const int DisciplineMaxLength = 20;
             public const int LocationMinLength = 6;
             public const int LocationMaxLength = 100;
 
@@ -69,6 +69,10 @@
 
             public const int CourtSurfaceMaxLength = 20;
             public const int CourtEnvironmentMaxLength = 20;
+
+            public const int MatchFormatMaxLength = 30;
+
+            public const int TieBreakRuleMaxLength = 50;
         }
 
         public static class Venue
