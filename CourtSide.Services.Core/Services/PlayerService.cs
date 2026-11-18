@@ -21,7 +21,7 @@
             this.mapper = mapper;
         }
 
-        public async Task<int> CreatePlayerAsync(PlayerFormViewModel playerForm)
+        public async Task<Guid> CreatePlayerAsync(PlayerFormViewModel playerForm)
         {
             Player newPlayer = this.mapper.Map<Player>(playerForm);
 
@@ -31,7 +31,7 @@
             return newPlayer.Id;
         }
 
-        public async Task<bool> UpdatePlayerAsync(int id, PlayerFormViewModel playerForm)
+        public async Task<bool> UpdatePlayerAsync(Guid id, PlayerFormViewModel playerForm)
         {
             Player? playerToUpdate = await this.context.Players.FindAsync(id);
 
@@ -47,7 +47,7 @@
             return true;
         }
 
-        public async Task<bool> DeletePlayerAsync(int id)
+        public async Task<bool> DeletePlayerAsync(Guid id)
         {
             Player? playerToDelete = await this.context.Players
                 .FirstOrDefaultAsync(p => p.Id == id);
@@ -69,7 +69,7 @@
             }
         }
 
-        public async Task<PlayerDetailsViewModel?> GetPlayerDetailsByIdAsync(int id)
+        public async Task<PlayerDetailsViewModel?> GetPlayerDetailsByIdAsync(Guid id)
         {
             return await this.context.Players
                 .AsNoTracking()
@@ -77,7 +77,7 @@
                 .ProjectTo<PlayerDetailsViewModel>(this.mapper.ConfigurationProvider)
                 .FirstOrDefaultAsync();
         }
-        public async Task<PlayerFormViewModel?> GetPlayerForEditByIdAsync(int id)
+        public async Task<PlayerFormViewModel?> GetPlayerForEditByIdAsync(Guid id)
         {
             return await this.context.Players
                 .AsNoTracking()
@@ -89,8 +89,8 @@
         public async Task<IEnumerable<PlayerInfoViewModel>> GetAllMensPlayersForIndexAsync()
         {
             return await this.context.Players
-                .Where(p=> p.Id > 0 && p.Id < 133)
                 .AsNoTracking()
+                .Where(p => p.Gender == Gender.Male)
                 .OrderBy(p => p.Rank)
                 .ThenBy(p => p.Id)
                 .Take(100)
@@ -101,8 +101,8 @@
         public async Task<IEnumerable<PlayerInfoViewModel>> GetAllWomensPlayersForIndexAsync()
         {
             return await this.context.Players
-                .Where(p => p.Id > 1000)
                 .AsNoTracking()
+                .Where(p => p.Gender == Gender.Female)
                 .OrderBy(p => p.Rank)
                 .ThenBy(p => p.Id)
                 .Take(100)
@@ -120,7 +120,7 @@
                 .ToListAsync();
         }
 
-        public async Task<IEnumerable<PlayerSelectViewModel>> GetPlayersByTournamentIdAsync(int tournamentId)
+        public async Task<IEnumerable<PlayerSelectViewModel>> GetPlayersByTournamentIdAsync(Guid tournamentId)
         {
             var tournament = await this.context.Tournaments
                 .AsNoTracking()

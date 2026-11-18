@@ -19,7 +19,6 @@
 
         public static class Court
         {
-            public const int NameMinLength = 2;
             public const int NameMaxLength = 50;
         }
 

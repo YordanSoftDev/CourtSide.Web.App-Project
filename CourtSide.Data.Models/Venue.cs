@@ -5,10 +5,9 @@
     public class Venue
     {
         [Key]
-        public int Id { get; set; }
+        public Guid Id { get; set; }
 
-        //example value
-        //Melbourne Park (Australian Open)
+        //example value Melbourne Park
         [Required]
         [MaxLength(NameMaxLength)]                          
         public required string Name { get; set; }

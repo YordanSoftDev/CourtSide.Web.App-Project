@@ -5,13 +5,13 @@
 
     public class MatchDetailsViewModel
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
 
-        public int FirstPlayerId { get; set; }
+        public Guid FirstPlayerId { get; set; }
 
         public string FirstPlayerFullName { get; set; } = string.Empty;
 
-        public int SecondPlayerId { get; set; }
+        public Guid SecondPlayerId { get; set; }
 
         public string SecondPlayerFullName { get; set; } = string.Empty;
 
@@ -37,17 +37,17 @@
 
         public TieBreakRule TieBreakRule { get; set; }
 
-        public int VenueId { get; set; }
+        public Guid VenueId { get; set; }
 
         public string VenueName { get; set; } = string.Empty;
 
-        public int TournamentId { get; set; }
+        public Guid TournamentId { get; set; }
 
         public string TournamentName { get; set; } = string.Empty;
 
         public string? ScoreResult { get; set; }
 
-        public int? WinnerId { get; set; }
+        public Guid? WinnerId { get; set; }
 
         public string? WinnerFullName { get; set; }
 

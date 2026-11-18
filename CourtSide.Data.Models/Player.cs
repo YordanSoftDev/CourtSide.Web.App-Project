@@ -9,7 +9,7 @@
     public class Player
     {
         [Key]
-        public int Id { get; set; }
+        public Guid Id { get; set; }
 
         [Required]
         [MaxLength(FirstNameMaxLength)]
@@ -34,7 +34,7 @@
         [MaxLength(HeightMaxLength)]
         public required string Height { get; set; }
 
-        public required int CountryId { get; set; }
+        public required Guid CountryId { get; set; }
 
         [ForeignKey(nameof(CountryId))]
         [DeleteBehavior(DeleteBehavior.Restrict)]

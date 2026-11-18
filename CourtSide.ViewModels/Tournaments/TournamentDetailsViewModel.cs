@@ -4,7 +4,7 @@
 
     public class TournamentDetailsViewModel
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
 
         public string TournamentName { get; set; } = string.Empty;
 

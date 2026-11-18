@@ -416,11 +416,11 @@
                     <span asp-validation-for="MatchRound" class="text-danger"></span>
                 </div>
                 <div class="col-md-6">
-                    <label asp-for="CourtName" for="courtSelect" class="custom-form-label">Court <span class="required-asterisk">*</span></label>
-                    <select asp-for="CourtName" asp-items="Model.Courts" id="courtSelect" class="form-select custom-form-control">
+                    <label asp-for="CourtId" for="courtSelect" class="custom-form-label">Court <span class="required-asterisk">*</span></label>
+                    <select asp-for="CourtId" id="courtSelect" class="form-select custom-form-control">
                         <option value="">-- Please select a tournament first --</option>
                     </select>
-                    <span asp-validation-for="CourtName" class="text-danger"></span>
+                    <span asp-validation-for="CourtId" class="text-danger"></span>
                 </div>
             </div>
 
@@ -511,15 +511,15 @@
             const disciplineInput = document.getElementById('disciplineInput');
             const disciplineToggleGroup = document.getElementById('disciplineToggleGroup');
 
-            const initialTournamentId = @Json.Serialize(Model.TournamentId.ToString());
+            const initialTournamentId = @Json.Serialize(Model.TournamentId?.ToString() ?? "");
             const initialStatusValue = @Json.Serialize(Model.MatchStatus.HasValue ? ((int)Model.MatchStatus.Value).ToString() : "");
-            const initialCourtValue = @Json.Serialize(Model.CourtName ?? "");
+            const initialCourtValue = @Json.Serialize(Model.CourtId != Guid.Empty ? Model.CourtId.ToString() : "");
             const initialWinnerValue = @Json.Serialize(Model.WinnerId?.ToString() ?? "");
-            const initialVenueId = @Json.Serialize(Model.VenueId.ToString());
+            const initialVenueId = @Json.Serialize(Model.VenueId?.ToString() ?? "");
             const initialTourValue = @Json.Serialize(Model.Tour?.ToString() ?? "");
             const initialFirstPlayer = @Json.Serialize(Model.FirstPlayerId?.ToString() ?? "");
             const initialSecondPlayer = @Json.Serialize(Model.SecondPlayerId?.ToString() ?? "");
-            const initialRoundValue = @Json.Serialize(Model.MatchRound.ToString());
+            const initialRoundValue = @Json.Serialize(Model.MatchRound?.ToString() ?? "");
 
             // Enum Lookup Mappings
             const surfaceMap = {
@@ -544,7 +544,7 @@
 
                     allVenuesMap = {};
                     venues.forEach(v => {
-                        allVenuesMap[v.id] = v.name;
+                        allVenuesMap[v.id || v.Id] = v.name || v.Name;
                     });
 
                     if (initialVenueId && initialVenueId !== "0" && allVenuesMap[initialVenueId]) {
@@ -555,110 +555,6 @@
                     console.error('Error loading venues:', error);
                 }
             }
-
-            // 1. Set initial tour & tournament values
-            if (initialTourValue && tourSelect) {
-                tourSelect.value = initialTourValue;
-            }
-
-            if (initialTournamentId && tournamentSelect) {
-                tournamentSelect.value = initialTournamentId;
-            }
-
-            // 2. Fetch venues and populate venue/surface metadata
-            await loadAllVenues();
-
-            if (initialTournamentId && tournamentSelect) {
-                const selectedOption = tournamentSelect.options[tournamentSelect.selectedIndex];
-                if (selectedOption && selectedOption.value) {
-                    const surfaceVal = selectedOption.getAttribute('data-surface');
-                    const envVal = selectedOption.getAttribute('data-environment');
-
-                    if (surfaceVal !== null && surfaceMap[surfaceVal]) {
-                        const surfaceText = surfaceMap[surfaceVal];
-                        const envText = envVal !== null && environmentMap[envVal] ? environmentMap[envVal] : '';
-                        
-                        surfaceEnvironmentInput.value = envText ? `${envText} ${surfaceText}` : surfaceText;
-                        if (courtSurfaceInput) courtSurfaceInput.value = surfaceVal;
-                        if (courtEnvironmentInput) courtEnvironmentInput.value = envVal;
-                    }
-                }
-            }
-
-            // 3. Status UI & Winner Dropdown Synchronization
-            function syncMatchStatusUI() {
-                if (!matchStatusSelect || !winnerSelect) return;
-
-                const selectedOption = matchStatusSelect.options[matchStatusSelect.selectedIndex];
-                const statusText = selectedOption ? selectedOption.text.trim() : "";
-                const isCompleted = statusText === "Completed" || matchStatusSelect.value === "Completed";
-
-                if (isCompleted) {
-                    winnerSelect.disabled = false;
-
-                    const currentWinner = winnerSelect.value || initialWinnerValue;
-                    winnerSelect.innerHTML = '<option value="">-- Select Winner --</option>';
-
-                    [firstPlayer, secondPlayer].forEach(playerSelect => {
-                        if (playerSelect && playerSelect.value) {
-                            const pOption = playerSelect.options[playerSelect.selectedIndex];
-                            const opt = document.createElement('option');
-                            opt.value = playerSelect.value;
-                            opt.textContent = pOption.text;
-                            if (opt.value === currentWinner) {
-                                opt.selected = true;
-                            }
-                            winnerSelect.appendChild(opt);
-                        }
-                    });
-                } else {
-                    winnerSelect.value = "";
-                    winnerSelect.disabled = true;
-                }
-            }
-
-            if (matchStatusSelect) {
-                matchStatusSelect.value = initialStatusValue;
-                matchStatusSelect.addEventListener('change', syncMatchStatusUI);
-                syncMatchStatusUI();
-            }
-
-            function updateOpponentsSubtext() {
-                if (!opponentsSubtext) return;
-                const tour = tourSelect.value;
-                const discipline = disciplineInput ? disciplineInput.value : 'Singles';
-
-                let genderPrefix = '';
-                if (tour === 'ATP') genderPrefix = "Men's";
-                else if (tour === 'WTA') genderPrefix = "Women's";
-
-                if (genderPrefix && discipline) {
-                    opponentsSubtext.textContent = `${genderPrefix} ${discipline.toLowerCase()}`;
-                } else if (discipline) {
-                    opponentsSubtext.textContent = discipline;
-                } else {
-                    opponentsSubtext.textContent = "";
-                }
-            }
-
-            if (disciplineToggleGroup) {
-                const buttons = disciplineToggleGroup.querySelectorAll('.toggle-btn');
-                buttons.forEach(btn => {
-                    btn.addEventListener('click', function() {
-                        buttons.forEach(b => b.classList.remove('active'));
-                        this.classList.add('active');
-
-                        const selectedDiscipline = this.getAttribute('data-value');
-                        if (disciplineInput) {
-                            disciplineInput.value = selectedDiscipline;
-                        }
-                        updateOpponentsSubtext();
-                    });
-                });
-            }
-        });
-    </script>
-}
 
             async function fetchAndPopulatePlayers(url) {
                 try {
@@ -677,8 +573,8 @@
 
                             players.forEach(p => {
                                 const option = document.createElement('option');
-                                option.value = p.id;
-                                option.textContent = p.fullName || (p.firstName + ' ' + p.lastName);
+                                option.value = p.id || p.Id;
+                                option.textContent = p.fullName || p.FullName || (p.firstName + ' ' + p.lastName);
                                 selectElement.appendChild(option);
                             });
 
@@ -719,26 +615,22 @@
 
                     courts.forEach(c => {
                         const option = document.createElement('option');
+                        const courtId = c.id || c.Id;
                         const courtName = c.name || c.Name || c.courtName || c.CourtName;
-                        option.value = courtName;
+                        
+                        // CRITICAL FIX: Assign the Guid ID as the option value for model binding
+                        option.value = courtId;
                         option.textContent = courtName;
                         courtSelect.appendChild(option);
                     });
 
-                    debugger;
                     courtSelect.removeAttribute('disabled');
                     courtSelect.disabled = false;
 
-                    courtSelect.style.display = 'none';
-                    courtSelect.offsetHeight;
-                    courtSelect.style.display = 'block';
-
                     if (currentCourt && Array.from(courtSelect.options).some(o => o.value === currentCourt)) {
                         courtSelect.value = currentCourt;
-                        courtSelect.dispatchEvent(new Event('change')); 
+                        courtSelect.dispatchEvent(new Event('change'));
                     }
-
-                    
                 } catch (error) {
                     console.error('Error fetching courts:', error);
                 }
@@ -764,47 +656,44 @@
             }
 
             async function syncTournamentMetadata() {
-                 if (!tournamentSelect) return;
-                
-                 const selectedOption = tournamentSelect.options[tournamentSelect.selectedIndex];
-                
-                 const venueId = selectedOption ? selectedOption.getAttribute('data-venue-id') : null;
-                 
-                 if (venueId && venueId !== "0") {
-                     if (venueIdInput) venueIdInput.value = venueId;
-                     
-                     // Safely set venue name if dictionary exists, otherwise leave/handle it
-                     if (venueNameInput && typeof allVenuesMap !== 'undefined' && allVenuesMap[venueId]) {
-                         venueNameInput.value = allVenuesMap[venueId];
-                     }
-                
-                     // CRITICAL: Fetch courts directly when venueId is present, regardless of allVenuesMap
-                     await fetchAndPopulateCourts(venueId);
-                 } else {
-                     if (venueIdInput) venueIdInput.value = "";
-                     if (venueNameInput) venueNameInput.value = "";
-                     clearAndDisableCourts();
-                 }
-                
-                 const surfaceVal = selectedOption ? selectedOption.getAttribute('data-surface') : null;
-                 const envVal = selectedOption ? selectedOption.getAttribute('data-environment') : null;
-                
-                 if (surfaceVal && envVal) {
-                     if (courtSurfaceInput) courtSurfaceInput.value = surfaceVal;
-                     if (courtEnvironmentInput) courtEnvironmentInput.value = envVal;
-                
-                     const envText = (typeof environmentMap !== 'undefined' && environmentMap[envVal]) ? environmentMap[envVal] : envVal;
-                     const surfText = (typeof surfaceMap !== 'undefined' && surfaceMap[surfaceVal]) ? surfaceMap[surfaceVal] : surfaceVal;
-                
-                     if (surfaceEnvironmentInput) {
-                         surfaceEnvironmentInput.value = `${envText} ${surfText}`.trim();
-                     }
-                 } else {
-                     if (courtSurfaceInput) courtSurfaceInput.value = "";
-                     if (courtEnvironmentInput) courtEnvironmentInput.value = "";
-                     if (surfaceEnvironmentInput) surfaceEnvironmentInput.value = "";
-                 }
-              }
+                if (!tournamentSelect) return;
+               
+                const selectedOption = tournamentSelect.options[tournamentSelect.selectedIndex];
+                const venueId = selectedOption ? selectedOption.getAttribute('data-venue-id') : null;
+               
+                if (venueId && venueId !== "0") {
+                    if (venueIdInput) venueIdInput.value = venueId;
+                   
+                    if (venueNameInput && typeof allVenuesMap !== 'undefined' && allVenuesMap[venueId]) {
+                        venueNameInput.value = allVenuesMap[venueId];
+                    }
+               
+                    await fetchAndPopulateCourts(venueId);
+                } else {
+                    if (venueIdInput) venueIdInput.value = "";
+                    if (venueNameInput) venueNameInput.value = "";
+                    clearAndDisableCourts();
+                }
+               
+                const surfaceVal = selectedOption ? selectedOption.getAttribute('data-surface') : null;
+                const envVal = selectedOption ? selectedOption.getAttribute('data-environment') : null;
+               
+                if (surfaceVal && envVal) {
+                    if (courtSurfaceInput) courtSurfaceInput.value = surfaceVal;
+                    if (courtEnvironmentInput) courtEnvironmentInput.value = envVal;
+               
+                    const envText = (typeof environmentMap !== 'undefined' && environmentMap[envVal]) ? environmentMap[envVal] : envVal;
+                    const surfText = (typeof surfaceMap !== 'undefined' && surfaceMap[surfaceVal]) ? surfaceMap[surfaceVal] : surfaceVal;
+               
+                    if (surfaceEnvironmentInput) {
+                        surfaceEnvironmentInput.value = `${envText} ${surfText}`.trim();
+                    }
+                } else {
+                    if (courtSurfaceInput) courtSurfaceInput.value = "";
+                    if (courtEnvironmentInput) courtEnvironmentInput.value = "";
+                    if (surfaceEnvironmentInput) surfaceEnvironmentInput.value = "";
+                }
+            }
 
             async function handleTourChange() {
                 const selectedTour = tourSelect.value;
@@ -887,16 +776,6 @@
                         clearAndDisableCourts();
                     }
                 });
-            }
-
-            if (initialStatusValue && matchStatusSelect) {
-                matchStatusSelect.value = initialStatusValue;
-                matchStatusSelect.dispatchEvent(new Event('change')); // Triggers status UI behavior rules on load
-            }            if (initialRoundValue && matchRoundSelect) matchRoundSelect.value = initialRoundValue;
-            
-            if (initialTourValue && tourSelect) {
-                tourSelect.value = initialTourValue;
-                await handleTourChange();  
             }
 
             function isMatchCompleted() {
@@ -1010,6 +889,7 @@
             await loadAllVenues();
 
             if (tourSelect && tourSelect.value) {
+                tourSelect.value = initialTourValue;
                 await handleTourChange();
             } else {
                 if (tournamentSelect) tournamentSelect.disabled = true;
@@ -1017,13 +897,20 @@
                 clearAndDisableCourts();
             }
 
-            if (tournamentSelect && tournamentSelect.value) {
+            if (tournamentSelect && initialTournamentId) {
+                tournamentSelect.value = initialTournamentId;
                 await syncTournamentMetadata();
             }
-            if (initialCourtValue && Array.from(courtSelect.options).some(o => o.value === initialCourtValue)) {
-                courtSelect.value = initialCourtValue;
-                courtSelect.dispatchEvent(new Event('change')); // Updates hidden surface/environment inputs
+
+            // Ensure initial CourtId is re-selected if present (e.g. after validation failure redisplay)
+            if (initialCourtValue && courtSelect) {
+                const optionExists = Array.from(courtSelect.options).some(o => o.value === initialCourtValue);
+                if (optionExists) {
+                    courtSelect.value = initialCourtValue;
+                    courtSelect.dispatchEvent(new Event('change'));
+                }
             }
+
             filterPlayerOptions();
         });
     </script>

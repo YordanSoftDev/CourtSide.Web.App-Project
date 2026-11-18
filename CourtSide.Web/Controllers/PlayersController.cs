@@ -37,9 +37,9 @@
 
         [HttpGet]
         [AllowAnonymous]
-        public async Task<IActionResult> Details(int id)
+        public async Task<IActionResult> Details(Guid id)
         {
-            if (id <= 0)
+            if (id == Guid.Empty)
             {
                 return this.BadRequest();
             }
@@ -72,7 +72,7 @@
                 return this.View(playerForm);
             }
 
-            int createdPlayerId = await this.service
+            Guid createdPlayerId = await this.service
                 .CreatePlayerAsync(playerForm);
 
             return this.RedirectToAction(nameof(Details),
@@ -80,9 +80,9 @@
         }
 
         [HttpGet]
-        public async Task<IActionResult?> Edit(int id)
+        public async Task<IActionResult?> Edit(Guid id)
         {
-            if (id <= 0)
+            if (id == Guid.Empty)
             {
                 return this.BadRequest();
             }
@@ -100,9 +100,9 @@
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, PlayerFormViewModel playerForm)
+        public async Task<IActionResult> Edit(Guid id, PlayerFormViewModel playerForm)
         {
-            if (id <= 0)
+            if (id == Guid.Empty)
             {
                 return this.BadRequest();
             }
@@ -125,9 +125,9 @@
         }
 
         [HttpGet]
-        public async Task<IActionResult> Delete(int id)
+        public async Task<IActionResult> Delete(Guid id)
         {
-            if (id <= 0)
+            if (id == Guid.Empty)
             {
                 return this.BadRequest();
             }
@@ -145,7 +145,7 @@
 
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> DeleteConfirmed(Guid id)
         {
             bool isDeleted = await this.service.DeletePlayerAsync(id);
 

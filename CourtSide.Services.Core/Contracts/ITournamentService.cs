@@ -4,15 +4,15 @@
 
     public interface ITournamentService
     {
-        public Task<int> CreateTournamentAsync(TournamentFormViewModel tournamentForm);
+        public Task<Guid> CreateTournamentAsync(TournamentFormViewModel tournamentForm);
 
-        public Task<bool> UpdateTournamentAsync(int id, TournamentFormViewModel tournamentForm);
+        public Task<bool> UpdateTournamentAsync(Guid id, TournamentFormViewModel tournamentForm);
 
-        public Task<bool> DeleteTournamentAsync(int id);
+        public Task<bool> DeleteTournamentAsync(Guid id);
 
-        public Task<TournamentDetailsViewModel?> GetTournamentDetailsByIdAsync(int id);
+        public Task<TournamentDetailsViewModel?> GetTournamentDetailsByIdAsync(Guid id);
 
-        public Task<TournamentFormViewModel?> GetTournamentForEditByIdAsync(int id);
+        public Task<TournamentFormViewModel?> GetTournamentForEditByIdAsync(Guid id);
 
         public Task<IEnumerable<TournamentInfoViewModel>> GetAllTournamentsForIndexAsync();
 

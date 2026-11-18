@@ -26,6 +26,16 @@
         {
             base.OnModelCreating(modelBuilder);
 
+            var playerEntityType = modelBuilder.Model.FindEntityType(typeof(Player));
+            if (playerEntityType != null)
+            {
+                var seeds = playerEntityType.GetSeedData();
+                foreach (var seed in seeds)
+                {
+                    System.Diagnostics.Debug.WriteLine($"Player Seed -> ID: {seed["Id"]}, Name: {(seed.ContainsKey("FirstName") ? seed["FirstName"] : "N/A")} {(seed.ContainsKey("LastName") ? seed["LastName"] : "")}");
+                }
+            }
+
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(CourtSideDbContext).Assembly);
 
             this.OnModelCreatingPartial(modelBuilder);

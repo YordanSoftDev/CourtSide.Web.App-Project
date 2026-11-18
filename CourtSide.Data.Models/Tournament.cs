@@ -1,14 +1,15 @@
 ﻿namespace CourtSide.Data.Models
 {
-    using CourtSide.Common.MatchEnumerations;
-    using CourtSide.Common.TournamentEnumerations;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
+
+    using CourtSide.Common.MatchEnumerations;
+    using CourtSide.Common.TournamentEnumerations;
     using static CourtSide.Common.ValidationConstants.Tournament;
     public class Tournament
     {
         [Key]
-        public int Id { get; set; }
+        public Guid Id { get; set; }
 
         //example value Almaty Open
         [Required]

@@ -9,19 +9,21 @@
     public class Court
     {
         [Key]
-        public int Id { get; set; }
+        public Guid Id { get; set; }
 
         // example value "Centre Court", "Court 1"
         [Required]
         [MaxLength(NameMaxLength)]
         public string Name { get; set; } = string.Empty;
 
-        [Required]
-        public int VenueId { get; set; }
+        public Guid VenueId { get; set; }
 
         [ForeignKey(nameof(VenueId))]
         [DeleteBehavior(DeleteBehavior.Restrict)]
 
         public Venue Venue { get; set; } = null!;
+
+        public ICollection<Match> Matches { get; set; } = new List<Match>();
+
     }
 }

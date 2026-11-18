@@ -23,7 +23,7 @@
             this.mapper = mapper;
         }
 
-        public async Task<int> CreateTournamentAsync(TournamentFormViewModel tournamentForm)
+        public async Task<Guid> CreateTournamentAsync(TournamentFormViewModel tournamentForm)
         {
             Tournament newTournament = this.mapper.Map<Tournament>(tournamentForm);
 
@@ -33,7 +33,7 @@
             return newTournament.Id;
         }
 
-        public async Task<bool> UpdateTournamentAsync(int id, TournamentFormViewModel tournamentForm)
+        public async Task<bool> UpdateTournamentAsync(Guid id, TournamentFormViewModel tournamentForm)
         {
             var tournamentToUpdate = await this.context.Tournaments.FindAsync(id);
 
@@ -49,7 +49,7 @@
             return true;
         }
 
-        public async Task<bool> DeleteTournamentAsync(int id)
+        public async Task<bool> DeleteTournamentAsync(Guid id)
         {
             Tournament? tournamentToDelete = await this.context.Tournaments
                 .FirstOrDefaultAsync(m => m.Id == id);
@@ -76,7 +76,7 @@
             }
         }
 
-        public async Task<TournamentDetailsViewModel?> GetTournamentDetailsByIdAsync(int id)
+        public async Task<TournamentDetailsViewModel?> GetTournamentDetailsByIdAsync(Guid id)
         {
             return await this.context.Tournaments
                 .AsNoTracking()
@@ -85,7 +85,7 @@
                 .FirstOrDefaultAsync();
         }
 
-        public async Task<TournamentFormViewModel?> GetTournamentForEditByIdAsync(int id)
+        public async Task<TournamentFormViewModel?> GetTournamentForEditByIdAsync(Guid id)
         {
             return await this.context.Tournaments
                 .AsNoTracking()
@@ -106,11 +106,11 @@
         public async Task<IEnumerable<TournamentSelectItemViewModel>> GetTournamentsByTourWithVenueAsync(string tour)
         {
             return await this.context.Tournaments
-        .AsNoTracking()
-        .Where(t => tour == "ATP"
-            ? (t.TournamentType.StartsWith("ATP") ||
+             .AsNoTracking()
+             .Where(t => tour == "ATP"
+             ? (t.TournamentType.StartsWith("ATP") ||
                t.TournamentType.EndsWith(" Men"))
-            : (t.TournamentType.StartsWith("WTA") ||
+             : (t.TournamentType.StartsWith("WTA") ||
                t.TournamentType.Contains("Women")))
                 .Select(t => new TournamentSelectItemViewModel
                 {

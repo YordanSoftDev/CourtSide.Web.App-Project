@@ -5,6 +5,7 @@
     using System.Security.Claims;
 
     [Authorize]
+    [AutoValidateAntiforgeryToken]
     public abstract class BaseController : Controller
     {
         protected bool IsUserAuthenticated =>
@@ -12,5 +13,8 @@
 
         protected string? GetUserId() =>
             this.User?.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+
+        protected string? GetUserEmail() =>
+            this.User.FindFirstValue(ClaimTypes.Email);
     }
 }

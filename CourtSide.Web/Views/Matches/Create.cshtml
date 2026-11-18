@@ -414,11 +414,11 @@
                     <span asp-validation-for="MatchRound" class="text-danger"></span>
                 </div>
                 <div class="col-md-6">
-                    <label asp-for="CourtName" for="courtSelect" class="custom-form-label">Court <span class="required-asterisk">*</span></label>
-                    <select asp-for="CourtName" asp-items="Model.Courts" id="courtSelect" class="form-select custom-form-control" disabled>
+                    <label asp-for="CourtId" for="courtSelect" class="custom-form-label">Court <span class="required-asterisk">*</span></label>
+                    <select asp-for="CourtId" id="courtSelect" class="form-select custom-form-control" disabled>
                         <option value="">-- Please select a tournament first --</option>
                     </select>
-                    <span asp-validation-for="CourtName" class="text-danger"></span>
+                    <span asp-validation-for="CourtId" class="text-danger"></span>
                 </div>
             </div>
 
@@ -513,7 +513,7 @@
             const initialTournamentId = @Json.Serialize(Model.TournamentId.ToString());
             const initialWinnerValue = @Json.Serialize(Model.WinnerId?.ToString() ?? "");
             const initialVenueId = @Json.Serialize(Model.VenueId.ToString());
-            const initialCourtValue = @Json.Serialize(Model.CourtName?.ToString() ?? "");
+            const initialCourtValue = @Json.Serialize(Model.CourtId.ToString() ?? "");
 
             // Enum Lookup Mappings
             const surfaceMap = {

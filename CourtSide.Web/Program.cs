@@ -1,10 +1,13 @@
-using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
+using CourtSide.Data.Configurations;
 using CourtSide.Data.Persistance;
 using CourtSide.Services.Core.Contracts;
 using CourtSide.Services.Core.Services;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 
 WebApplicationBuilder? builder = WebApplication.CreateBuilder(args);
+
+SeedingValidator.ValidateSeedConsistency();
 
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
@@ -18,7 +21,7 @@ if (string.IsNullOrWhiteSpace(connectionString))
 }
 
 builder.Services.AddDbContext<CourtSideDbContext>(options =>
-    options.UseSqlServer(connectionString));
+    options.UseSqlServer(connectionString).EnableSensitiveDataLogging().EnableDetailedErrors());
 
 builder.Services.AddDefaultIdentity<IdentityUser>(options =>
 {
@@ -89,4 +92,40 @@ static void ConfigureIdentityOptions(ConfigurationManager
 
     options.User.RequireUniqueEmail = configuration
         .GetValue<bool>("IdentitySettings:User:RequireUniqueEmail");
+}
+
+public static class SeedingValidator
+{
+    public static void ValidateSeedConsistency()
+    {
+        // 1. Gather all valid Venue IDs from VenueConfiguration
+        var venueIds = VenueConfiguration.DefaultVenues.Select(v => v.Id).ToHashSet();
+
+        // 2. Collect all Tournament Venues
+        var tournamentVenues = TournamentVenueConfiguration.DefaultMensTournamentVenues
+            .Concat(TournamentVenueConfiguration.DefaultWomensTournamentVenues)
+            .ToList();
+
+        // 3. Find any TournamentVenue pointing to a Venue ID that doesn't exist
+        var orphanVenues = tournamentVenues
+            .Where(tv => !venueIds.Contains(tv.VenueId))
+            .ToList();
+
+        if (orphanVenues.Any())
+        {
+            throw new InvalidOperationException($"Found {orphanVenues.Count} TournamentVenue(s) with missing Venue seed records!");
+        }
+
+        // 4. Do the same for Courts if desired
+        var orphanCourts = CourtConfiguration.DefaultCourts
+            .Where(c => !venueIds.Contains(c.VenueId))
+            .ToList();
+
+        if (orphanCourts.Any())
+        {
+            throw new InvalidOperationException($"Found {orphanCourts.Count} Court(s) with missing Venue seed records!");
+        }
+
+        Console.WriteLine("All seed relationships are 100% synchronized!");
+    }
 }

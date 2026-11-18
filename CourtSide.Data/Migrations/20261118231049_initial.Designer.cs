@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CourtSide.Data.Migrations
 {
     [DbContext(typeof(CourtSideDbContext))]
-    [Migration("20261116205101_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20261118231049_initial")]
+    partial class initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -27,11 +27,9 @@ namespace CourtSide.Data.Migrations
 
             modelBuilder.Entity("CourtSide.Data.Models.Coach", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("FirstName")
                         .IsRequired()
@@ -43,8 +41,8 @@ namespace CourtSide.Data.Migrations
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)");
 
-                    b.Property<int>("PlayerId")
-                        .HasColumnType("int");
+                    b.Property<Guid>("PlayerId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
 
@@ -55,11 +53,9 @@ namespace CourtSide.Data.Migrations
 
             modelBuilder.Entity("CourtSide.Data.Models.Country", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -73,996 +69,994 @@ namespace CourtSide.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = 1,
+                            Id = new Guid("7bb5dc85-2541-0a8b-06fc-3be7deb8094f"),
                             Name = "Afghanistan"
                         },
                         new
                         {
-                            Id = 2,
+                            Id = new Guid("75e947b9-1db1-1d25-0590-373f18b725b0"),
                             Name = "Albania"
                         },
                         new
                         {
-                            Id = 3,
+                            Id = new Guid("a071c251-edb4-8085-fcd6-3dc6ecb08dad"),
                             Name = "Algeria"
                         },
                         new
                         {
-                            Id = 4,
+                            Id = new Guid("7b6e13f1-4041-fc30-0f0c-f9c59ed8cdf4"),
                             Name = "Andorra"
                         },
                         new
                         {
-                            Id = 5,
+                            Id = new Guid("2cade91f-16fb-f944-82a9-843628e94e32"),
                             Name = "Angola"
                         },
                         new
                         {
-                            Id = 6,
+                            Id = new Guid("a4b706d4-f2b0-d6c1-827e-36163f74cb39"),
                             Name = "Antigua and Barbuda"
                         },
                         new
                         {
-                            Id = 7,
+                            Id = new Guid("37e511fc-60d5-4a3b-74bd-9b9b007a97fb"),
                             Name = "Argentina"
                         },
                         new
                         {
-                            Id = 8,
+                            Id = new Guid("63e8301a-102e-9527-651a-fafe14c50951"),
                             Name = "Armenia"
                         },
                         new
                         {
-                            Id = 9,
+                            Id = new Guid("38cb61dd-3fb5-4481-fa07-bcc7d36f5690"),
                             Name = "Australia"
                         },
                         new
                         {
-                            Id = 10,
+                            Id = new Guid("aaa12cd3-4b12-d434-874e-d5ee1f99397a"),
                             Name = "Austria"
                         },
                         new
                         {
-                            Id = 11,
+                            Id = new Guid("822b319e-4b4b-a5c1-b0b1-44025fc1f6c7"),
                             Name = "Azerbaijan"
                         },
                         new
                         {
-                            Id = 12,
+                            Id = new Guid("4bc477ac-cee6-ec99-602e-47327725bd93"),
                             Name = "Bahamas"
                         },
                         new
                         {
-                            Id = 13,
+                            Id = new Guid("b344a091-8586-4111-74d9-b8ee079eaa02"),
                             Name = "Bahrain"
                         },
                         new
                         {
-                            Id = 14,
+                            Id = new Guid("1335982f-2af1-4bd9-856b-4b254b85c23b"),
                             Name = "Bangladesh"
                         },
                         new
                         {
-                            Id = 15,
+                            Id = new Guid("ebcd6139-e0f8-9c8a-173c-16a54e1d12cf"),
                             Name = "Barbados"
                         },
                         new
                         {
-                            Id = 16,
+                            Id = new Guid("55df2aa9-83f5-b024-1ec1-5f8a2df9e24b"),
                             Name = "Belarus"
                         },
                         new
                         {
-                            Id = 17,
+                            Id = new Guid("a07e8fbb-e337-1765-6b98-62fc46244a7a"),
                             Name = "Belgium"
                         },
                         new
                         {
-                            Id = 18,
+                            Id = new Guid("6e1c0409-a38d-8f5d-07ed-e83fd9839bfc"),
                             Name = "Belize"
                         },
                         new
                         {
-                            Id = 19,
+                            Id = new Guid("02df6b28-fd03-7218-5910-8b859caf1e90"),
                             Name = "Benin"
                         },
                         new
                         {
-                            Id = 20,
+                            Id = new Guid("831e03bc-bdbc-0c48-ab88-8c05bd154435"),
                             Name = "Bhutan"
                         },
                         new
                         {
-                            Id = 21,
+                            Id = new Guid("699d495d-5f2d-2922-c8ae-049043d4f326"),
                             Name = "Bolivia"
                         },
                         new
                         {
-                            Id = 22,
+                            Id = new Guid("e9c32735-2cab-4595-25af-8ead9b5ccf77"),
                             Name = "Bosnia and Herzegovina"
                         },
                         new
                         {
-                            Id = 23,
+                            Id = new Guid("fab102bf-b5f1-1dc9-77c8-88a8f25ec011"),
                             Name = "Botswana"
                         },
                         new
                         {
-                            Id = 24,
+                            Id = new Guid("4decd5d6-b64c-9f4d-185b-d4443500a732"),
                             Name = "Brazil"
                         },
                         new
                         {
-                            Id = 25,
+                            Id = new Guid("434d62d9-6339-89ee-0fa2-ba0385c98b47"),
                             Name = "Brunei"
                         },
                         new
                         {
-                            Id = 26,
+                            Id = new Guid("71304549-dfa2-acec-aa49-2be5657ce2ab"),
                             Name = "Bulgaria"
                         },
                         new
                         {
-                            Id = 27,
+                            Id = new Guid("7f20a7cc-0aaa-8c85-ee73-b397ed591ef2"),
                             Name = "Burkina Faso"
                         },
                         new
                         {
-                            Id = 28,
+                            Id = new Guid("bf0fbb61-7cc0-0ea6-d8dc-4985981cbd28"),
                             Name = "Burundi"
                         },
                         new
                         {
-                            Id = 29,
+                            Id = new Guid("7e0578f9-12b8-f138-186a-f2043065af01"),
                             Name = "Cabo Verde"
                         },
                         new
                         {
-                            Id = 30,
+                            Id = new Guid("a30fb6a1-48da-8efc-1cfa-c70cf1c30d1d"),
                             Name = "Cambodia"
                         },
                         new
                         {
-                            Id = 31,
+                            Id = new Guid("f37c8a86-531a-aee7-258c-b49ff571e93f"),
                             Name = "Cameroon"
                         },
                         new
                         {
-                            Id = 32,
+                            Id = new Guid("8c72bb01-f139-1b8e-d31f-2520d9c63b98"),
                             Name = "Canada"
                         },
                         new
                         {
-                            Id = 33,
+                            Id = new Guid("b17547c4-388b-c4d0-b04e-0c68f237e2be"),
                             Name = "Central African Republic"
                         },
                         new
                         {
-                            Id = 34,
+                            Id = new Guid("1a9916b5-bac9-69ae-5196-7a5988152168"),
                             Name = "Chad"
                         },
                         new
                         {
-                            Id = 35,
+                            Id = new Guid("09678de0-a810-11e4-8792-4914194808ec"),
                             Name = "Chile"
                         },
                         new
                         {
-                            Id = 36,
+                            Id = new Guid("185127cd-c953-e57d-3c8e-21bc517e67a6"),
                             Name = "China"
                         },
                         new
                         {
-                            Id = 37,
+                            Id = new Guid("a1d65bf8-02d6-df04-ce84-9b614353f054"),
                             Name = "Colombia"
                         },
                         new
                         {
-                            Id = 38,
+                            Id = new Guid("66ea5e96-896d-65e8-d2c2-30c67de53fed"),
                             Name = "Comoros"
                         },
                         new
                         {
-                            Id = 39,
+                            Id = new Guid("f09b59c7-ff23-1589-0ce5-ba9e9bccbadc"),
                             Name = "Congo (Brazzaville)"
                         },
                         new
                         {
-                            Id = 40,
+                            Id = new Guid("dfd7c9b0-2e1a-4d30-d08f-a7d46b87e891"),
                             Name = "Costa Rica"
                         },
                         new
                         {
-                            Id = 41,
+                            Id = new Guid("2ffc56a1-8b48-2058-c5ba-73b476366843"),
                             Name = "Côte d'Ivoire"
                         },
                         new
                         {
-                            Id = 42,
+                            Id = new Guid("fafe6ec9-732a-44f2-e128-cf590e7bd447"),
                             Name = "Croatia"
                         },
                         new
                         {
-                            Id = 43,
+                            Id = new Guid("acacea66-2429-4a8a-1ff6-c21ebd65d5ce"),
                             Name = "Cuba"
                         },
                         new
                         {
-                            Id = 44,
+                            Id = new Guid("2eca314d-8e01-a89b-dc72-9ce4b37901ed"),
                             Name = "Cyprus"
                         },
                         new
                         {
-                            Id = 45,
-                            Name = "Czechia (Czech Republic)"
+                            Id = new Guid("1265c601-0d79-510b-f5c2-dca5d6db2050"),
+                            Name = "Czech Republic"
                         },
                         new
                         {
-                            Id = 46,
+                            Id = new Guid("6b08eedc-910d-78a4-1686-74bbe3428f53"),
                             Name = "Democratic Republic of the Congo"
                         },
                         new
                         {
-                            Id = 47,
+                            Id = new Guid("aeee815e-f648-88b2-cb54-93e6c9921b10"),
                             Name = "Denmark"
                         },
                         new
                         {
-                            Id = 48,
+                            Id = new Guid("49b0e9c5-b060-55d4-7164-e4c538850f92"),
                             Name = "Djibouti"
                         },
                         new
                         {
-                            Id = 49,
+                            Id = new Guid("6165486d-2371-1510-d806-5d17165991c1"),
                             Name = "Dominica"
                         },
                         new
                         {
-                            Id = 50,
+                            Id = new Guid("5a76cb54-3ce5-28b9-cc2a-3435a71f94b6"),
                             Name = "Dominican Republic"
                         },
                         new
                         {
-                            Id = 51,
+                            Id = new Guid("3821c37b-f4b1-6cf1-ea0c-2d2d44e25600"),
                             Name = "Ecuador"
                         },
                         new
                         {
-                            Id = 52,
+                            Id = new Guid("4c948dae-5b45-5037-ba9c-977cceab6750"),
                             Name = "Egypt"
                         },
                         new
                         {
-                            Id = 53,
+                            Id = new Guid("874f6fde-5b5f-3c5a-4b2c-fa72dca72450"),
                             Name = "El Salvador"
                         },
                         new
                         {
-                            Id = 54,
+                            Id = new Guid("8509ac11-f3f9-c65f-538d-466aafce2e26"),
                             Name = "Equatorial Guinea"
                         },
                         new
                         {
-                            Id = 55,
+                            Id = new Guid("0401f956-fea7-4ed0-18bf-33d642094729"),
                             Name = "Eritrea"
                         },
                         new
                         {
-                            Id = 56,
+                            Id = new Guid("793d6e08-4b5c-1895-d2cf-b3308e19d18e"),
                             Name = "Estonia"
                         },
                         new
                         {
-                            Id = 57,
+                            Id = new Guid("556da8cb-da33-7a7d-d668-fa6ab0aeff6f"),
                             Name = "Eswatini"
                         },
                         new
                         {
-                            Id = 58,
+                            Id = new Guid("4050e978-8fd3-368f-aca1-4248e366b6b3"),
                             Name = "Ethiopia"
                         },
                         new
                         {
-                            Id = 59,
+                            Id = new Guid("97515b37-c2fa-6b91-b3b4-df07b815bdc0"),
                             Name = "Fiji"
                         },
                         new
                         {
-                            Id = 60,
+                            Id = new Guid("c4eb5bb0-97a8-b3c1-14bf-02dba2fb1893"),
                             Name = "Finland"
                         },
                         new
                         {
-                            Id = 61,
+                            Id = new Guid("133ed024-88c6-251c-6207-e2469cd1b5b9"),
                             Name = "France"
                         },
                         new
                         {
-                            Id = 62,
+                            Id = new Guid("7750521e-3be7-187f-df2d-e49ef7e9f275"),
                             Name = "Gabon"
                         },
                         new
                         {
-                            Id = 63,
+                            Id = new Guid("d5ff4132-0bb3-897e-5d6c-2a327e79afcf"),
                             Name = "Gambia"
                         },
                         new
                         {
-                            Id = 64,
+                            Id = new Guid("4a392f39-ce99-6c69-5984-6d018b8c0150"),
                             Name = "Georgia"
                         },
                         new
                         {
-                            Id = 65,
+                            Id = new Guid("5f096f4b-8929-65de-fd36-db7558756437"),
                             Name = "Germany"
                         },
                         new
                         {
-                            Id = 66,
+                            Id = new Guid("034b0186-da17-fa28-0816-c47b7766fba0"),
                             Name = "Ghana"
                         },
                         new
                         {
-                            Id = 67,
+                            Id = new Guid("ad04f235-a5b4-84ef-fea5-0c81750d6db8"),
                             Name = "Greece"
                         },
                         new
                         {
-                            Id = 68,
+                            Id = new Guid("f99aba81-e494-8111-59b1-b8149a9094bd"),
                             Name = "Grenada"
                         },
                         new
                         {
-                            Id = 69,
+                            Id = new Guid("e898f629-48c8-5ba8-89ac-8079b4814377"),
                             Name = "Guatemala"
                         },
                         new
                         {
-                            Id = 70,
+                            Id = new Guid("67282f7d-7a53-e707-ebe7-8448cb23d1d3"),
                             Name = "Guinea"
                         },
                         new
                         {
-                            Id = 71,
+                            Id = new Guid("81549952-2be2-313f-9117-f276a18ecbcc"),
                             Name = "Guinea-Bissau"
                         },
                         new
                         {
-                            Id = 72,
+                            Id = new Guid("52eb80a6-ca53-b044-5291-dd534aafcb5e"),
                             Name = "Guyana"
                         },
                         new
                         {
-                            Id = 73,
+                            Id = new Guid("8179a68f-5711-7b1d-e014-89084ebbb6f3"),
                             Name = "Haiti"
                         },
                         new
                         {
-                            Id = 74,
+                            Id = new Guid("5d9503e5-da9b-1b6f-af16-394b2310e4e4"),
                             Name = "Holy See"
                         },
                         new
                         {
-                            Id = 75,
+                            Id = new Guid("ff1a7a06-47dd-96e8-c309-0024bacaea03"),
                             Name = "Honduras"
                         },
                         new
                         {
-                            Id = 76,
+                            Id = new Guid("d3ff130b-5386-50ad-568a-09890b9fa9b9"),
                             Name = "Hungary"
                         },
                         new
                         {
-                            Id = 77,
+                            Id = new Guid("93055199-47cf-3e0a-2bd8-c126ece743bd"),
                             Name = "Iceland"
                         },
                         new
                         {
-                            Id = 78,
+                            Id = new Guid("72a8812b-e88c-c3b6-53c2-41dfc273ee55"),
                             Name = "India"
                         },
                         new
                         {
-                            Id = 79,
+                            Id = new Guid("53fa4969-ca32-0bd3-303b-a9db2ac86f1c"),
                             Name = "Indonesia"
                         },
                         new
                         {
-                            Id = 80,
+                            Id = new Guid("75324c44-0aa6-2886-23fc-b5b13c330752"),
                             Name = "Iran"
                         },
                         new
                         {
-                            Id = 81,
+                            Id = new Guid("fc0b2577-3c07-68f2-5ad4-e22a59816df4"),
                             Name = "Iraq"
                         },
                         new
                         {
-                            Id = 82,
+                            Id = new Guid("8d4a5241-680c-c361-7e7e-0078f4804705"),
                             Name = "Ireland"
                         },
                         new
                         {
-                            Id = 83,
+                            Id = new Guid("1f7fdc55-7cab-9257-e3a2-237f741da4b4"),
                             Name = "Israel"
                         },
                         new
                         {
-                            Id = 84,
+                            Id = new Guid("5d5e3c89-2beb-f2bd-7773-ce812f45bebe"),
                             Name = "Italy"
                         },
                         new
                         {
-                            Id = 85,
+                            Id = new Guid("ce3470d1-42f0-ce8c-0137-c272d95ad33e"),
                             Name = "Jamaica"
                         },
                         new
                         {
-                            Id = 86,
+                            Id = new Guid("f10c1873-805a-8efd-4570-4e3acd4bb54a"),
                             Name = "Japan"
                         },
                         new
                         {
-                            Id = 87,
+                            Id = new Guid("62ea4034-bfd0-6f91-38a6-1cb072981e99"),
                             Name = "Jordan"
                         },
                         new
                         {
-                            Id = 88,
+                            Id = new Guid("71dd9f8e-0ac6-8873-e309-4710e48eeaef"),
                             Name = "Kazakhstan"
                         },
                         new
                         {
-                            Id = 89,
+                            Id = new Guid("39eeac90-06ea-1fbd-0f45-1dfb5027d658"),
                             Name = "Kenya"
                         },
                         new
                         {
-                            Id = 90,
+                            Id = new Guid("bcd8f34e-cf9e-0e27-2634-f9fd7641e75d"),
                             Name = "Kiribati"
                         },
                         new
                         {
-                            Id = 91,
+                            Id = new Guid("1384d758-5c6b-a7ca-7500-098a5121ecf4"),
                             Name = "Kuwait"
                         },
                         new
                         {
-                            Id = 92,
+                            Id = new Guid("afaf367c-a6f8-8062-58ce-a267ea019eb0"),
                             Name = "Kyrgyzstan"
                         },
                         new
                         {
-                            Id = 93,
+                            Id = new Guid("0632e4f3-f45f-1685-c723-b5debab46ad7"),
                             Name = "Laos"
                         },
                         new
                         {
-                            Id = 94,
+                            Id = new Guid("bc9618b2-5e31-be53-774d-31d580708859"),
                             Name = "Latvia"
                         },
                         new
                         {
-                            Id = 95,
+                            Id = new Guid("494bd034-9519-44a4-05af-41eadce5dc4b"),
                             Name = "Lebanon"
                         },
                         new
                         {
-                            Id = 96,
+                            Id = new Guid("b9168f16-9d17-a908-28f8-727ccafbf3ad"),
                             Name = "Lesotho"
                         },
                         new
                         {
-                            Id = 97,
+                            Id = new Guid("2b615fa4-84c2-8bfb-8031-502bf5f022c9"),
                             Name = "Liberia"
                         },
                         new
                         {
-                            Id = 98,
+                            Id = new Guid("99e87dfb-f2ea-12dc-0b5b-ccc99712a908"),
                             Name = "Libya"
                         },
                         new
                         {
-                            Id = 99,
+                            Id = new Guid("b7e3cb8a-6042-6b4c-e78f-23e9abfeff50"),
                             Name = "Liechtenstein"
                         },
                         new
                         {
-                            Id = 100,
+                            Id = new Guid("67aaa934-331b-91ed-5fa4-12e9a6e71580"),
                             Name = "Lithuania"
                         },
                         new
                         {
-                            Id = 101,
+                            Id = new Guid("994884f9-51f3-591d-be60-502cc7abef2c"),
                             Name = "Luxembourg"
                         },
                         new
                         {
-                            Id = 102,
+                            Id = new Guid("e79c95e9-66f7-7cb1-2d14-8ddfeaab185e"),
                             Name = "Madagascar"
                         },
                         new
                         {
-                            Id = 103,
+                            Id = new Guid("8c0d9600-f3cb-6701-02c1-f7d3e2e33751"),
                             Name = "Malawi"
                         },
                         new
                         {
-                            Id = 104,
+                            Id = new Guid("719c2faf-0605-0d8a-be2c-2ed2512b702d"),
                             Name = "Malaysia"
                         },
                         new
                         {
-                            Id = 105,
+                            Id = new Guid("6bceeccd-1374-fd7f-d91c-e60a093e07b6"),
                             Name = "Maldives"
                         },
                         new
                         {
-                            Id = 106,
+                            Id = new Guid("02cd4e92-696f-f50f-440d-ae6fa114a8ec"),
                             Name = "Mali"
                         },
                         new
                         {
-                            Id = 107,
+                            Id = new Guid("97c3ccff-1cca-e766-97c4-b7e8e7f9f1c6"),
                             Name = "Malta"
                         },
                         new
                         {
-                            Id = 108,
+                            Id = new Guid("d72a2a0d-83b6-d441-c40e-e82e8d57b836"),
                             Name = "Marshall Islands"
                         },
                         new
                         {
-                            Id = 109,
+                            Id = new Guid("772b17c4-210d-90dc-1635-aae9eb34f502"),
                             Name = "Mauritania"
                         },
                         new
                         {
-                            Id = 110,
+                            Id = new Guid("caf7e0b6-cb80-d36a-ef40-08edad595cba"),
                             Name = "Mauritius"
                         },
                         new
                         {
-                            Id = 111,
+                            Id = new Guid("a9652dc0-ac92-433b-dd92-d6598149823b"),
                             Name = "Mexico"
                         },
                         new
                         {
-                            Id = 112,
+                            Id = new Guid("2910aa10-3829-16a5-cd30-d6eef830df08"),
                             Name = "Micronesia"
                         },
                         new
                         {
-                            Id = 113,
+                            Id = new Guid("dd30551f-0c7e-6316-c248-eef7d50ba4d7"),
                             Name = "Moldova"
                         },
                         new
                         {
-                            Id = 114,
+                            Id = new Guid("717a1e86-e443-a658-a307-a399e8988dfe"),
                             Name = "Monaco"
                         },
                         new
                         {
-                            Id = 115,
+                            Id = new Guid("ab149043-0197-42f8-21fc-8d82d569650f"),
                             Name = "Mongolia"
                         },
                         new
                         {
-                            Id = 116,
+                            Id = new Guid("d8b5b059-d695-e610-ed34-8f73116b6a19"),
                             Name = "Montenegro"
                         },
                         new
                         {
-                            Id = 117,
+                            Id = new Guid("df9949c3-ebf0-1960-9031-a61ed220417b"),
                             Name = "Morocco"
                         },
                         new
                         {
-                            Id = 118,
+                            Id = new Guid("35898a8e-1f4e-9909-16e4-f19eeb20f6af"),
                             Name = "Mozambique"
                         },
                         new
                         {
-                            Id = 119,
+                            Id = new Guid("7ef8ac46-0670-9893-1b52-a6d2ecf85a62"),
                             Name = "Myanmar (Burma)"
                         },
                         new
                         {
-                            Id = 120,
+                            Id = new Guid("adb0fd75-1c43-25c7-ef84-1949b9a27392"),
                             Name = "Namibia"
                         },
                         new
                         {
-                            Id = 121,
+                            Id = new Guid("52fff4c8-4a02-8cff-0161-900bc34e7cc6"),
                             Name = "Nauru"
                         },
                         new
                         {
-                            Id = 122,
+                            Id = new Guid("31065125-4a0a-8226-7ef4-373d232909bb"),
                             Name = "Nepal"
                         },
                         new
                         {
-                            Id = 123,
+                            Id = new Guid("89fa8d38-0138-e506-b39d-9c30a8a73146"),
                             Name = "Netherlands"
                         },
                         new
                         {
-                            Id = 124,
+                            Id = new Guid("cf861546-ceeb-93d7-905f-c081eed2dd91"),
                             Name = "New Zealand"
                         },
                         new
                         {
-                            Id = 125,
+                            Id = new Guid("58d2cb88-d692-5b52-0c35-7cd3bb67819b"),
                             Name = "Nicaragua"
                         },
                         new
                         {
-                            Id = 126,
+                            Id = new Guid("3b497f86-4e54-0171-a87b-29f3324f5bdf"),
                             Name = "Niger"
                         },
                         new
                         {
-                            Id = 127,
+                            Id = new Guid("701743a7-417e-25c2-a18a-42cfa7f82daf"),
                             Name = "Nigeria"
                         },
                         new
                         {
-                            Id = 128,
+                            Id = new Guid("3d0073dc-3b6a-2d44-2e74-7df2aa676d9d"),
                             Name = "North Korea"
                         },
                         new
                         {
-                            Id = 129,
+                            Id = new Guid("89eef427-e7b0-1434-1c39-ad90877fdd4a"),
                             Name = "North Macedonia"
                         },
                         new
                         {
-                            Id = 130,
+                            Id = new Guid("3354ec5b-2e6c-f880-75fd-d27587980c58"),
                             Name = "Norway"
                         },
                         new
                         {
-                            Id = 131,
+                            Id = new Guid("50d77856-509b-5356-b628-39b9524c8e86"),
                             Name = "Oman"
                         },
                         new
                         {
-                            Id = 132,
+                            Id = new Guid("8742629d-e1ea-1c3d-5d35-d2886a2978a6"),
                             Name = "Pakistan"
                         },
                         new
                         {
-                            Id = 133,
+                            Id = new Guid("f53ac03d-f424-20e0-d3ac-50592c435647"),
                             Name = "Palau"
                         },
                         new
                         {
-                            Id = 134,
+                            Id = new Guid("83d3faf7-290a-0aa5-ab53-002c56c7fa43"),
                             Name = "Palestine State"
                         },
                         new
                         {
-                            Id = 135,
+                            Id = new Guid("2a933e76-a10e-0e19-a673-9c8ec0fc3e6b"),
                             Name = "Panama"
                         },
                         new
                         {
-                            Id = 136,
+                            Id = new Guid("3d1ce2f9-ba43-9525-4b48-afcd896bb7a4"),
                             Name = "Papua New Guinea"
                         },
                         new
                         {
-                            Id = 137,
+                            Id = new Guid("4ecc0b9c-72b3-0ac4-6334-9d63e698bf08"),
                             Name = "Paraguay"
                         },
                         new
                         {
-                            Id = 138,
+                            Id = new Guid("8e87e6e7-b38d-7ed7-2b47-fab7d15b0bef"),
                             Name = "Peru"
                         },
                         new
                         {
-                            Id = 139,
+                            Id = new Guid("b011104c-0e25-9420-322f-40eed30b96d5"),
                             Name = "Philippines"
                         },
                         new
                         {
-                            Id = 140,
+                            Id = new Guid("ac05715a-891e-88df-93cf-93012a398933"),
                             Name = "Poland"
                         },
                         new
                         {
-                            Id = 141,
+                            Id = new Guid("aeb3e1f0-0cc4-8dcd-db4d-626e1da8d798"),
                             Name = "Portugal"
                         },
                         new
                         {
-                            Id = 142,
+                            Id = new Guid("ba6dff51-56d1-3943-e5c9-0985e561a870"),
                             Name = "Qatar"
                         },
                         new
                         {
-                            Id = 143,
+                            Id = new Guid("a5a94fd0-3af9-a186-fbde-1ba8c50f141c"),
                             Name = "Romania"
                         },
                         new
                         {
-                            Id = 144,
+                            Id = new Guid("7cd806df-4622-802c-1e6f-5ebbbd58762d"),
                             Name = "Russia"
                         },
                         new
                         {
-                            Id = 145,
+                            Id = new Guid("35c84cb1-05db-6c27-1195-046233e13be5"),
                             Name = "Rwanda"
                         },
                         new
                         {
-                            Id = 146,
+                            Id = new Guid("96ae7aa1-92fa-1163-7479-1fb2727ee71c"),
                             Name = "Saint Kitts and Nevis"
                         },
                         new
                         {
-                            Id = 147,
+                            Id = new Guid("da8012e8-6afc-9ec5-9067-3792c8f835c0"),
                             Name = "Saint Lucia"
                         },
                         new
                         {
-                            Id = 148,
+                            Id = new Guid("0411d57e-64c2-95ce-1b39-ae218af18ee1"),
                             Name = "Saint Vincent and the Grenadines"
                         },
                         new
                         {
-                            Id = 149,
+                            Id = new Guid("e18409f3-13cd-03c8-d2ab-5b4a30b93ad8"),
                             Name = "Samoa"
                         },
                         new
                         {
-                            Id = 150,
+                            Id = new Guid("6de17520-fdb8-b123-69e6-bf17f4613dde"),
                             Name = "San Marino"
                         },
                         new
                         {
-                            Id = 151,
+                            Id = new Guid("8b714b91-782f-d2d8-12ea-b047ab58ed4e"),
                             Name = "Sao Tome and Principe"
                         },
                         new
                         {
-                            Id = 152,
+                            Id = new Guid("04ede756-d514-696e-2456-039c4837c19a"),
                             Name = "Saudi Arabia"
                         },
                         new
                         {
-                            Id = 153,
+                            Id = new Guid("5742bbcf-4458-5b41-346c-a0aceb814e8e"),
                             Name = "Senegal"
                         },
                         new
                         {
-                            Id = 154,
+                            Id = new Guid("b98c2b1b-82d0-15d4-3ec1-5adac5f856e3"),
                             Name = "Serbia"
                         },
                         new
                         {
-                            Id = 155,
+                            Id = new Guid("2a8a5ae7-2982-bc62-86fb-772d5d215cea"),
                             Name = "Seychelles"
                         },
                         new
                         {
-                            Id = 156,
+                            Id = new Guid("e7a30774-eb95-2f4f-9ee7-dfe166205c6a"),
                             Name = "Sierra Leone"
                         },
                         new
                         {
-                            Id = 157,
+                            Id = new Guid("e14ff148-8ede-1b4a-8ffc-c618d8a0d837"),
                             Name = "Singapore"
                         },
                         new
                         {
-                            Id = 158,
+                            Id = new Guid("3303b1e1-a815-51fb-de5e-44ca510e189c"),
                             Name = "Slovakia"
                         },
                         new
                         {
-                            Id = 159,
+                            Id = new Guid("96aed746-f45c-05ca-f53c-19abaef7b281"),
                             Name = "Slovenia"
                         },
                         new
                         {
-                            Id = 160,
+                            Id = new Guid("83410ea0-5e0a-76b5-0e4a-bdba5e182585"),
                             Name = "Solomon Islands"
                         },
                         new
                         {
-                            Id = 161,
+                            Id = new Guid("2c6571f7-3e09-9af1-18f1-007fc6a09ba1"),
                             Name = "Somalia"
                         },
                         new
                         {
-                            Id = 162,
+                            Id = new Guid("ec81362f-cda4-033b-ab0b-e27d95a3903f"),
                             Name = "South Africa"
                         },
                         new
                         {
-                            Id = 163,
+                            Id = new Guid("85030daa-b187-20ac-4b97-81ba33adc5bf"),
                             Name = "South Korea"
                         },
                         new
                         {
-                            Id = 164,
+                            Id = new Guid("2f775571-d309-3996-349c-9e8b256f89e5"),
                             Name = "South Sudan"
                         },
                         new
                         {
-                            Id = 165,
+                            Id = new Guid("6cd49520-ad18-21af-4b07-3b15a7626b1d"),
                             Name = "Spain"
                         },
                         new
                         {
-                            Id = 166,
+                            Id = new Guid("fc398a93-e156-321d-7e2f-0171692a70bb"),
                             Name = "Sri Lanka"
                         },
                         new
                         {
-                            Id = 167,
+                            Id = new Guid("6ccc4ce4-a354-3827-6ac4-81d0d122edf1"),
                             Name = "Sudan"
                         },
                         new
                         {
-                            Id = 168,
+                            Id = new Guid("708d839c-0311-0f27-23a6-f9b22cf9008e"),
                             Name = "Suriname"
                         },
                         new
                         {
-                            Id = 169,
+                            Id = new Guid("437fc064-51ca-048f-27d3-895df2f365ba"),
                             Name = "Sweden"
                         },
                         new
                         {
-                            Id = 170,
+                            Id = new Guid("b17223a3-ff40-8c56-3136-e4c95b187f48"),
                             Name = "Switzerland"
                         },
                         new
                         {
-                            Id = 171,
+                            Id = new Guid("7ac27870-70b7-f619-6b7d-fe3fce0119ab"),
                             Name = "Syria"
                         },
                         new
                         {
-                            Id = 172,
+                            Id = new Guid("ce9470a0-8342-648d-cc6f-78d2fcdb58c9"),
                             Name = "Tajikistan"
                         },
                         new
                         {
-                            Id = 173,
+                            Id = new Guid("e6bfe824-d7f7-f321-3c8f-99b823479846"),
                             Name = "Tanzania"
                         },
                         new
                         {
-                            Id = 174,
+                            Id = new Guid("ee0d57c9-f60c-b24e-1be2-a76aa645bc22"),
                             Name = "Thailand"
                         },
                         new
                         {
-                            Id = 175,
+                            Id = new Guid("063b7b24-142f-988a-d408-cedbf3739f9b"),
                             Name = "Timor-Leste"
                         },
                         new
                         {
-                            Id = 176,
+                            Id = new Guid("e5ede489-8b0a-518b-b299-342d9fd2eb28"),
                             Name = "Togo"
                         },
                         new
                         {
-                            Id = 177,
+                            Id = new Guid("8766a659-d8b0-fef0-83d0-7915341a771d"),
                             Name = "Tonga"
                         },
                         new
                         {
-                            Id = 178,
+                            Id = new Guid("4ddf884a-e7a4-ba46-31a9-fa1c7b44500c"),
                             Name = "Trinidad and Tobago"
                         },
                         new
                         {
-                            Id = 179,
+                            Id = new Guid("e582efa0-f448-9b8e-81ec-140e0759401b"),
                             Name = "Tunisia"
                         },
                         new
                         {
-                            Id = 180,
+                            Id = new Guid("030a4b3c-9650-a761-143c-b5d512416450"),
                             Name = "Turkey"
                         },
                         new
                         {
-                            Id = 181,
+                            Id = new Guid("324f36ac-a157-0376-cabf-749cb21f8da4"),
                             Name = "Turkmenistan"
                         },
                         new
                         {
-                            Id = 182,
+                            Id = new Guid("3b96c728-d343-f8d6-fda5-fc05c21618a7"),
                             Name = "Tuvalu"
                         },
                         new
                         {
-                            Id = 183,
+                            Id = new Guid("d0972e9a-d72a-78dd-13b8-7b1f37891963"),
                             Name = "Uganda"
                         },
                         new
                         {
-                            Id = 184,
+                            Id = new Guid("abcfdd20-fa0d-06da-8097-d34273efc7b3"),
                             Name = "Ukraine"
                         },
                         new
                         {
-                            Id = 185,
+                            Id = new Guid("d9d45239-54ae-585f-d8a9-65188bbd7fe2"),
                             Name = "United Arab Emirates"
                         },
                         new
                         {
-                            Id = 186,
+                            Id = new Guid("e20b2069-d8fe-ec08-f16e-dc2fae4e6b20"),
                             Name = "United Kingdom"
                         },
                         new
                         {
-                            Id = 187,
+                            Id = new Guid("e5948bc3-6513-2bab-7f42-e6ce69e45199"),
                             Name = "United States of America"
                         },
                         new
                         {
-                            Id = 188,
+                            Id = new Guid("4c4eec64-a1d4-3de1-2177-139fdc6e755b"),
                             Name = "Uruguay"
                         },
                         new
                         {
-                            Id = 189,
+                            Id = new Guid("6e20db1b-a1ea-86e5-8ed2-59eb01b8f091"),
                             Name = "Uzbekistan"
                         },
                         new
                         {
-                            Id = 190,
+                            Id = new Guid("3321bad3-eec7-c712-6875-64f821ea4f46"),
                             Name = "Vanuatu"
                         },
                         new
                         {
-                            Id = 191,
+                            Id = new Guid("e4f6c47a-df7f-3784-3885-86f86b36c656"),
                             Name = "Venezuela"
                         },
                         new
                         {
-                            Id = 192,
+                            Id = new Guid("628eeefb-2a3b-3132-2e0e-d39460edff05"),
                             Name = "Vietnam"
                         },
                         new
                         {
-                            Id = 193,
+                            Id = new Guid("72a09b33-a328-a5a7-ca35-5bad85778db8"),
                             Name = "Yemen"
                         },
                         new
                         {
-                            Id = 194,
+                            Id = new Guid("35543cc1-56e7-9fa1-ba20-73e9cd5bec7c"),
                             Name = "Zambia"
                         },
                         new
                         {
-                            Id = 195,
+                            Id = new Guid("f04d4af9-891d-81e4-842e-950d11d8a76f"),
                             Name = "Zimbabwe"
                         });
                 });
 
             modelBuilder.Entity("CourtSide.Data.Models.Court", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<int>("VenueId")
-                        .HasColumnType("int");
+                    b.Property<Guid>("VenueId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
 
@@ -1073,364 +1067,360 @@ namespace CourtSide.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = 1,
+                            Id = new Guid("08ae1a86-2ae3-1d62-8721-65520137a629"),
                             Name = "Centre Court",
-                            VenueId = 1
+                            VenueId = new Guid("66eabd34-a820-bb37-c757-4081b5dc4f39")
                         },
                         new
                         {
-                            Id = 2,
+                            Id = new Guid("e9a2d4c9-7404-f05b-8497-5dfdc3ad5b07"),
                             Name = "Court 1",
-                            VenueId = 1
+                            VenueId = new Guid("66eabd34-a820-bb37-c757-4081b5dc4f39")
                         },
                         new
                         {
-                            Id = 3,
+                            Id = new Guid("3c004f5a-2baa-39b4-4091-6fd41518f9f6"),
                             Name = "Court Central",
-                            VenueId = 2
+                            VenueId = new Guid("fd8a4796-4b11-af79-77ff-367a3a157017")
                         },
                         new
                         {
-                            Id = 4,
+                            Id = new Guid("82b22f96-9416-7c8e-ac08-430308ab6d92"),
                             Name = "Court 1",
-                            VenueId = 2
+                            VenueId = new Guid("fd8a4796-4b11-af79-77ff-367a3a157017")
                         },
                         new
                         {
-                            Id = 5,
+                            Id = new Guid("cdfd9bda-afd8-b1e0-590b-b04166996175"),
                             Name = "Arthur Ashe Stadium",
-                            VenueId = 3
+                            VenueId = new Guid("285e787f-ba96-5559-64ea-77fdb69d3e9a")
                         },
                         new
                         {
-                            Id = 6,
+                            Id = new Guid("5d3256f6-b0a8-812c-44a7-9db8b10a6015"),
                             Name = "Louis Armstrong Stadium",
-                            VenueId = 3
+                            VenueId = new Guid("285e787f-ba96-5559-64ea-77fdb69d3e9a")
                         },
                         new
                         {
-                            Id = 7,
+                            Id = new Guid("c7c8a1ea-94cd-ad7c-4261-67b5727f45b1"),
                             Name = "Grandstand",
-                            VenueId = 3
+                            VenueId = new Guid("285e787f-ba96-5559-64ea-77fdb69d3e9a")
                         },
                         new
                         {
-                            Id = 8,
+                            Id = new Guid("6b61d437-70db-ef38-ae29-2287922c3b4a"),
                             Name = "Court 17",
-                            VenueId = 3
+                            VenueId = new Guid("285e787f-ba96-5559-64ea-77fdb69d3e9a")
                         },
                         new
                         {
-                            Id = 9,
+                            Id = new Guid("bb2c1f2f-e1b8-c172-8d87-220e378e9180"),
                             Name = "Center Court",
-                            VenueId = 4
+                            VenueId = new Guid("4802b018-5151-da85-21a6-4be35a67fd85")
                         },
                         new
                         {
-                            Id = 10,
+                            Id = new Guid("40e92c37-6fb9-8008-0593-96370b6c46e3"),
                             Name = "Court 1",
-                            VenueId = 4
+                            VenueId = new Guid("4802b018-5151-da85-21a6-4be35a67fd85")
                         },
                         new
                         {
-                            Id = 11,
+                            Id = new Guid("24b9c7b4-0ef5-aa8d-2fc7-2c571ed939ab"),
                             Name = "Rod Laver Arena",
-                            VenueId = 5
+                            VenueId = new Guid("8b5b88b3-8c2f-f2fe-ae8b-b3c8ed532cd8")
                         },
                         new
                         {
-                            Id = 12,
+                            Id = new Guid("29de55c9-f880-2bf7-19e8-df08c2ffbd29"),
                             Name = "John Cain Arena",
-                            VenueId = 5
+                            VenueId = new Guid("8b5b88b3-8c2f-f2fe-ae8b-b3c8ed532cd8")
                         },
                         new
                         {
-                            Id = 13,
+                            Id = new Guid("7218ae1b-cc4a-90c8-621e-ad08c29fb6e3"),
                             Name = "Margaret Court Arena",
-                            VenueId = 5
+                            VenueId = new Guid("8b5b88b3-8c2f-f2fe-ae8b-b3c8ed532cd8")
                         },
                         new
                         {
-                            Id = 14,
+                            Id = new Guid("6d535bc9-e84b-ee4f-4c5c-10ebb00b50c2"),
                             Name = "Kia Arena",
-                            VenueId = 5
+                            VenueId = new Guid("8b5b88b3-8c2f-f2fe-ae8b-b3c8ed532cd8")
                         },
                         new
                         {
-                            Id = 15,
+                            Id = new Guid("c6a6f263-1666-9d87-58e1-93dc2fab9c30"),
                             Name = "Court Rainier III",
-                            VenueId = 6
+                            VenueId = new Guid("28b193c2-afff-79d2-0375-161185f00d6a")
                         },
                         new
                         {
-                            Id = 16,
+                            Id = new Guid("f4b8640e-7d43-5574-b595-da49a4719275"),
                             Name = "Court Des Princes",
-                            VenueId = 6
+                            VenueId = new Guid("28b193c2-afff-79d2-0375-161185f00d6a")
                         },
                         new
                         {
-                            Id = 17,
+                            Id = new Guid("58e31634-c50f-7708-877f-3ced925d93ce"),
                             Name = "Manolo Santana Stadium",
-                            VenueId = 7
+                            VenueId = new Guid("e901ac40-4167-6ed4-33c5-38adef64d6aa")
                         },
                         new
                         {
-                            Id = 18,
+                            Id = new Guid("159cb66a-ea50-f091-98ec-65577c960527"),
                             Name = "Arantxa Sánchez Vicario Stadium",
-                            VenueId = 7
+                            VenueId = new Guid("e901ac40-4167-6ed4-33c5-38adef64d6aa")
                         },
                         new
                         {
-                            Id = 19,
+                            Id = new Guid("3340272b-1a10-51d1-e16c-7c7bcf897d26"),
                             Name = "Stadium 3",
-                            VenueId = 7
+                            VenueId = new Guid("e901ac40-4167-6ed4-33c5-38adef64d6aa")
                         },
                         new
                         {
-                            Id = 20,
+                            Id = new Guid("a16267dd-c8ff-1885-6dc9-e76dc900af05"),
                             Name = "Campo Centrale",
-                            VenueId = 8
+                            VenueId = new Guid("fed03ef4-494e-b021-1973-2389bd8f283e")
                         },
                         new
                         {
-                            Id = 21,
+                            Id = new Guid("360bc4f3-a086-bcc4-1dbe-3d64aa4c2b08"),
                             Name = "Grandstand Arena",
-                            VenueId = 8
+                            VenueId = new Guid("fed03ef4-494e-b021-1973-2389bd8f283e")
                         },
                         new
                         {
-                            Id = 22,
+                            Id = new Guid("221bd6e9-d4f8-c96c-7369-f3da518a65d6"),
                             Name = "Pietrangeli",
-                            VenueId = 8
+                            VenueId = new Guid("fed03ef4-494e-b021-1973-2389bd8f283e")
                         },
                         new
                         {
-                            Id = 23,
+                            Id = new Guid("e39915cb-f835-11dd-81dd-83a447f92add"),
                             Name = "Centre Court",
-                            VenueId = 9
+                            VenueId = new Guid("01398289-742d-3688-178d-0b7ac0f3db44")
                         },
                         new
                         {
-                            Id = 24,
+                            Id = new Guid("aa06fba9-5abd-a4e7-7b12-6f44fb3c51c0"),
                             Name = "Court 1",
-                            VenueId = 9
+                            VenueId = new Guid("01398289-742d-3688-178d-0b7ac0f3db44")
                         },
                         new
                         {
-                            Id = 25,
+                            Id = new Guid("b2cf4329-cb3b-90f4-68c1-7a3a18ef3201"),
                             Name = "Centre Court",
-                            VenueId = 10
+                            VenueId = new Guid("b46bf0d7-9420-f9bb-8cb7-551b28e533e9")
                         },
                         new
                         {
-                            Id = 26,
+                            Id = new Guid("6815f6a7-a27e-a785-dc81-0c23cc04475f"),
                             Name = "Court 1",
-                            VenueId = 10
+                            VenueId = new Guid("b46bf0d7-9420-f9bb-8cb7-551b28e533e9")
                         },
                         new
                         {
-                            Id = 27,
+                            Id = new Guid("b6d2527c-83b2-a58c-b226-91e2f19b74c1"),
                             Name = "Center Court",
-                            VenueId = 11
+                            VenueId = new Guid("f4e815bd-2c5a-8a71-e0d2-deb6e4180f28")
                         },
                         new
                         {
-                            Id = 28,
+                            Id = new Guid("30dce0a5-3b5d-e69d-9bc8-8e3e33f5a102"),
                             Name = "Grandstand",
-                            VenueId = 11
+                            VenueId = new Guid("f4e815bd-2c5a-8a71-e0d2-deb6e4180f28")
                         },
                         new
                         {
-                            Id = 29,
+                            Id = new Guid("fdfaa559-c2df-41e2-1877-f6c325759fe5"),
                             Name = "Center Court",
-                            VenueId = 12
+                            VenueId = new Guid("6caac657-0e0b-25d4-226f-4a6cdd07c7e9")
                         },
                         new
                         {
-                            Id = 30,
+                            Id = new Guid("3c9d581b-3553-d7fe-bcf0-9242493f9fb0"),
                             Name = "Centre Court",
-                            VenueId = 13
+                            VenueId = new Guid("dcbca76e-1aa3-cd66-7d38-6b547fb207f4")
                         },
                         new
                         {
-                            Id = 31,
+                            Id = new Guid("f42322f1-dbcb-c4e6-6e2e-8b6d7c9414ef"),
                             Name = "Centre Court",
-                            VenueId = 14
+                            VenueId = new Guid("812c72e4-2f62-6626-265e-4e26c1b40174")
                         },
                         new
                         {
-                            Id = 32,
+                            Id = new Guid("10e97bab-ac6a-2e4a-aea8-8d774e832253"),
                             Name = "Centre Court",
-                            VenueId = 15
+                            VenueId = new Guid("4240c5f1-47f3-8993-9f84-c34f886a8fa8")
                         },
                         new
                         {
-                            Id = 33,
+                            Id = new Guid("a3ea1ced-850b-c859-f6b3-ff094ef3f41c"),
                             Name = "Centre Court",
-                            VenueId = 16
+                            VenueId = new Guid("1b10f29e-d2d7-4b17-1370-ce61e2826157")
                         },
                         new
                         {
-                            Id = 34,
+                            Id = new Guid("f7c3eb67-97eb-a7f3-03d0-e6ec529a0365"),
                             Name = "Centre Court",
-                            VenueId = 17
+                            VenueId = new Guid("3248537d-9728-1dda-efd3-5d6baedcff40")
                         },
                         new
                         {
-                            Id = 35,
+                            Id = new Guid("7a6d3933-8afc-e318-0bc5-576022f834d4"),
                             Name = "Centre Court",
-                            VenueId = 18
+                            VenueId = new Guid("8b9928a7-30eb-959c-3878-24bf034406cd")
                         },
                         new
                         {
-                            Id = 36,
+                            Id = new Guid("51a4fdc8-3e97-e972-dd17-b23d1e76d2f1"),
                             Name = "Grandstand 1",
-                            VenueId = 18
+                            VenueId = new Guid("8b9928a7-30eb-959c-3878-24bf034406cd")
                         },
                         new
                         {
-                            Id = 37,
+                            Id = new Guid("520433f6-ca5b-0675-a4a7-dbe3a7560d3d"),
                             Name = "Stadium 1",
-                            VenueId = 19
+                            VenueId = new Guid("19b8a897-43ca-78c6-1405-0a5b63aa02c7")
                         },
                         new
                         {
-                            Id = 38,
+                            Id = new Guid("9c608ae4-e4bb-c812-4e21-523865bb56b4"),
                             Name = "Stadium 2",
-                            VenueId = 19
+                            VenueId = new Guid("19b8a897-43ca-78c6-1405-0a5b63aa02c7")
                         },
                         new
                         {
-                            Id = 39,
+                            Id = new Guid("f394515f-52bd-d78b-6749-8fc6b635e17b"),
                             Name = "Stadium 3",
-                            VenueId = 19
+                            VenueId = new Guid("19b8a897-43ca-78c6-1405-0a5b63aa02c7")
                         },
                         new
                         {
-                            Id = 40,
+                            Id = new Guid("96cc294e-348a-c317-c61f-c035977a53af"),
                             Name = "Stadium Court",
-                            VenueId = 20
+                            VenueId = new Guid("247d28ed-57e6-07e8-580a-dd4f43548bcd")
                         },
                         new
                         {
-                            Id = 41,
+                            Id = new Guid("0fd01a0e-2f44-933d-794a-c192f0720339"),
                             Name = "Grandstand",
-                            VenueId = 20
+                            VenueId = new Guid("247d28ed-57e6-07e8-580a-dd4f43548bcd")
                         },
                         new
                         {
-                            Id = 42,
+                            Id = new Guid("c8814727-671a-8e79-748c-9af3a3a723a8"),
                             Name = "Centre Court",
-                            VenueId = 21
+                            VenueId = new Guid("9c712670-3363-37fa-3a4e-237e22c90951")
                         },
                         new
                         {
-                            Id = 43,
+                            Id = new Guid("0ba87dde-f6c7-a158-0f10-734609e77f75"),
                             Name = "Court Philippe-Chatrier",
-                            VenueId = 22
+                            VenueId = new Guid("ee8e8214-bff6-9fea-66bc-83713f1781ec")
                         },
                         new
                         {
-                            Id = 44,
+                            Id = new Guid("f039dd4a-a2da-b0f1-e779-e461e97760b1"),
                             Name = "Court Suzanne-Lenglen",
-                            VenueId = 22
+                            VenueId = new Guid("ee8e8214-bff6-9fea-66bc-83713f1781ec")
                         },
                         new
                         {
-                            Id = 45,
+                            Id = new Guid("a06222a1-2114-03ef-2b9e-b46ab3373926"),
                             Name = "Court Simonne-Mathieu",
-                            VenueId = 22
+                            VenueId = new Guid("ee8e8214-bff6-9fea-66bc-83713f1781ec")
                         },
                         new
                         {
-                            Id = 46,
+                            Id = new Guid("a216b45b-cb41-23c6-8752-1ba22a4f9613"),
                             Name = "Centre Court",
-                            VenueId = 23
+                            VenueId = new Guid("efa8e236-d522-f001-fc5a-ebd68c1ca1b4")
                         },
                         new
                         {
-                            Id = 47,
+                            Id = new Guid("1f609712-4b54-d2fb-ccaf-04d26f2c2ef9"),
                             Name = "Court 1",
-                            VenueId = 23
+                            VenueId = new Guid("efa8e236-d522-f001-fc5a-ebd68c1ca1b4")
                         },
                         new
                         {
-                            Id = 48,
+                            Id = new Guid("7c63895d-cdaf-d9b9-4c58-939a206c63da"),
                             Name = "Centre Court",
-                            VenueId = 24
+                            VenueId = new Guid("0a093d19-917e-4a21-972e-b1e89b39416d")
                         },
                         new
                         {
-                            Id = 49,
+                            Id = new Guid("9187f722-09e7-d15b-3429-324c543b5b06"),
                             Name = "No. 1 Court",
-                            VenueId = 24
+                            VenueId = new Guid("0a093d19-917e-4a21-972e-b1e89b39416d")
                         },
                         new
                         {
-                            Id = 50,
+                            Id = new Guid("0dfbb3d7-831d-de9f-c878-0c3e5ce3b42d"),
                             Name = "No. 2 Court",
-                            VenueId = 24
+                            VenueId = new Guid("0a093d19-917e-4a21-972e-b1e89b39416d")
                         },
                         new
                         {
-                            Id = 51,
+                            Id = new Guid("82a88caa-d02a-f588-e263-fcb892a30e94"),
                             Name = "No. 3 Court",
-                            VenueId = 24
+                            VenueId = new Guid("0a093d19-917e-4a21-972e-b1e89b39416d")
                         },
                         new
                         {
-                            Id = 52,
+                            Id = new Guid("eab87777-d8b6-a2c8-f387-041a8f780f34"),
                             Name = "Court Central",
-                            VenueId = 25
+                            VenueId = new Guid("1d0f7e07-6c4c-2b8b-1631-216839c5fd2e")
                         },
                         new
                         {
-                            Id = 53,
+                            Id = new Guid("9f541f9f-de08-5439-e273-92aec834de82"),
                             Name = "National Bank Court",
-                            VenueId = 25
+                            VenueId = new Guid("1d0f7e07-6c4c-2b8b-1631-216839c5fd2e")
                         },
                         new
                         {
-                            Id = 54,
+                            Id = new Guid("b4187f9c-afe9-7944-3b3c-6f431aae8db1"),
                             Name = "Diamond Court",
-                            VenueId = 26
+                            VenueId = new Guid("dbd84836-dd9d-2a5e-0f03-5df858ea8851")
                         },
                         new
                         {
-                            Id = 55,
+                            Id = new Guid("901a7e52-ae71-bb91-83e9-cbcf06d10dbc"),
                             Name = "Lotus Court",
-                            VenueId = 26
+                            VenueId = new Guid("dbd84836-dd9d-2a5e-0f03-5df858ea8851")
                         },
                         new
                         {
-                            Id = 56,
+                            Id = new Guid("274c98b0-10b2-47bd-6f22-0a4a434165e9"),
                             Name = "Moon Court",
-                            VenueId = 26
+                            VenueId = new Guid("dbd84836-dd9d-2a5e-0f03-5df858ea8851")
                         },
                         new
                         {
-                            Id = 57,
+                            Id = new Guid("066ef2e1-c09a-5ac6-686d-865fd7d9aaef"),
                             Name = "Center Court",
-                            VenueId = 27
+                            VenueId = new Guid("4525054a-483d-f44f-f772-addd74b9daeb")
                         });
                 });
 
             modelBuilder.Entity("CourtSide.Data.Models.Match", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<int?>("CourtEnvironment")
                         .HasMaxLength(20)
                         .HasColumnType("int");
 
-                    b.Property<string>("CourtName")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                    b.Property<Guid>("CourtId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("CourtSurface")
                         .IsRequired()
@@ -1440,8 +1430,8 @@ namespace CourtSide.Data.Migrations
                     b.Property<DateTime>("DateTime")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("FirstPlayerId")
-                        .HasColumnType("int");
+                    b.Property<Guid>("FirstPlayerId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("MatchRound")
                         .IsRequired()
@@ -1457,19 +1447,21 @@ namespace CourtSide.Data.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
-                    b.Property<int>("SecondPlayerId")
-                        .HasColumnType("int");
+                    b.Property<Guid>("SecondPlayerId")
+                        .HasColumnType("uniqueidentifier");
 
-                    b.Property<int>("TournamentId")
-                        .HasColumnType("int");
+                    b.Property<Guid>("TournamentId")
+                        .HasColumnType("uniqueidentifier");
 
-                    b.Property<int>("VenueId")
-                        .HasColumnType("int");
+                    b.Property<Guid>("VenueId")
+                        .HasColumnType("uniqueidentifier");
 
-                    b.Property<int?>("WinnerId")
-                        .HasColumnType("int");
+                    b.Property<Guid?>("WinnerId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CourtId");
 
                     b.HasIndex("FirstPlayerId");
 
@@ -1486,109 +1478,107 @@ namespace CourtSide.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = 1,
+                            Id = new Guid("d054775b-f0e8-b891-f93b-1a2080e48a24"),
                             CourtEnvironment = 1,
-                            CourtName = "Court 1",
+                            CourtId = new Guid("fdfaa559-c2df-41e2-1877-f6c325759fe5"),
                             CourtSurface = "Hard",
                             DateTime = new DateTime(2026, 10, 15, 13, 10, 0, 0, DateTimeKind.Utc),
-                            FirstPlayerId = 5,
+                            FirstPlayerId = new Guid("bde04240-cf13-cf6c-9e42-9a003582c2a0"),
                             MatchRound = "Quarterfinal",
                             MatchStatus = "Completed",
                             ScoreResult = "6-4 5-4",
-                            SecondPlayerId = 11,
-                            TournamentId = 11,
-                            VenueId = 12,
-                            WinnerId = 5
+                            SecondPlayerId = new Guid("d62906b4-21b9-7583-2eab-17a41fec544a"),
+                            TournamentId = new Guid("9ff588d9-efd7-5998-7564-0c60cfa790bd"),
+                            VenueId = new Guid("6caac657-0e0b-25d4-226f-4a6cdd07c7e9"),
+                            WinnerId = new Guid("bde04240-cf13-cf6c-9e42-9a003582c2a0")
                         },
                         new
                         {
-                            Id = 2,
+                            Id = new Guid("30b36737-769a-6f0f-31a9-9f5e2c993b12"),
                             CourtEnvironment = 1,
-                            CourtName = "Court 2",
+                            CourtId = new Guid("fdfaa559-c2df-41e2-1877-f6c325759fe5"),
                             CourtSurface = "Hard",
                             DateTime = new DateTime(2026, 10, 15, 9, 40, 0, 0, DateTimeKind.Utc),
-                            FirstPlayerId = 92,
+                            FirstPlayerId = new Guid("afda09dd-04f8-9b84-c1d5-9bcfcfd35ce1"),
                             MatchRound = "Quarterfinal",
                             MatchStatus = "Completed",
                             ScoreResult = "1-4",
-                            SecondPlayerId = 44,
-                            TournamentId = 11,
-                            VenueId = 12,
-                            WinnerId = 44
+                            SecondPlayerId = new Guid("8ab91b95-266e-6e1f-7c2b-9e70cb72a3db"),
+                            TournamentId = new Guid("9ff588d9-efd7-5998-7564-0c60cfa790bd"),
+                            VenueId = new Guid("6caac657-0e0b-25d4-226f-4a6cdd07c7e9"),
+                            WinnerId = new Guid("8ab91b95-266e-6e1f-7c2b-9e70cb72a3db")
                         },
                         new
                         {
-                            Id = 3,
+                            Id = new Guid("2b616272-fe35-d823-a286-3ddf16791624"),
                             CourtEnvironment = 1,
-                            CourtName = "Centre Court",
+                            CourtId = new Guid("fdfaa559-c2df-41e2-1877-f6c325759fe5"),
                             CourtSurface = "Hard",
                             DateTime = new DateTime(2026, 10, 16, 13, 10, 0, 0, DateTimeKind.Utc),
-                            FirstPlayerId = 4,
+                            FirstPlayerId = new Guid("532828a9-f83f-e29d-f49e-f56fd46deeb9"),
                             MatchRound = "Quarterfinal",
                             MatchStatus = "Completed",
                             ScoreResult = "6-3 1-6 6-3",
-                            SecondPlayerId = 41,
-                            TournamentId = 11,
-                            VenueId = 12,
-                            WinnerId = 4
+                            SecondPlayerId = new Guid("c07cf102-37ed-3bc0-4bfa-a5cef09fa38d"),
+                            TournamentId = new Guid("9ff588d9-efd7-5998-7564-0c60cfa790bd"),
+                            VenueId = new Guid("6caac657-0e0b-25d4-226f-4a6cdd07c7e9"),
+                            WinnerId = new Guid("532828a9-f83f-e29d-f49e-f56fd46deeb9")
                         },
                         new
                         {
-                            Id = 4,
+                            Id = new Guid("07328a2a-1cee-6b58-75e5-94ba73b10e4c"),
                             CourtEnvironment = 1,
-                            CourtName = "Court 1",
+                            CourtId = new Guid("fdfaa559-c2df-41e2-1877-f6c325759fe5"),
                             CourtSurface = "Hard",
                             DateTime = new DateTime(2026, 10, 16, 9, 40, 0, 0, DateTimeKind.Utc),
-                            FirstPlayerId = 91,
+                            FirstPlayerId = new Guid("cee30799-42bc-db04-b50d-9c68565dbdef"),
                             MatchRound = "Quarterfinal",
                             MatchStatus = "Completed",
                             ScoreResult = "4-6 6-4 6-3",
-                            SecondPlayerId = 8,
-                            TournamentId = 11,
-                            VenueId = 12,
-                            WinnerId = 91
+                            SecondPlayerId = new Guid("71c2c435-0a30-5a50-f401-df86e253e265"),
+                            TournamentId = new Guid("9ff588d9-efd7-5998-7564-0c60cfa790bd"),
+                            VenueId = new Guid("6caac657-0e0b-25d4-226f-4a6cdd07c7e9"),
+                            WinnerId = new Guid("cee30799-42bc-db04-b50d-9c68565dbdef")
                         },
                         new
                         {
-                            Id = 5,
+                            Id = new Guid("ed0085a7-ac88-0af0-1fd5-b346a143bc41"),
                             CourtEnvironment = 1,
-                            CourtName = "Centre Court",
+                            CourtId = new Guid("fdfaa559-c2df-41e2-1877-f6c325759fe5"),
                             CourtSurface = "Hard",
                             DateTime = new DateTime(2026, 10, 17, 11, 40, 0, 0, DateTimeKind.Utc),
-                            FirstPlayerId = 5,
+                            FirstPlayerId = new Guid("bde04240-cf13-cf6c-9e42-9a003582c2a0"),
                             MatchRound = "Semifinal",
                             MatchStatus = "Completed",
                             ScoreResult = "7-5 4-6 3-6",
-                            SecondPlayerId = 44,
-                            TournamentId = 11,
-                            VenueId = 12,
-                            WinnerId = 44
+                            SecondPlayerId = new Guid("8ab91b95-266e-6e1f-7c2b-9e70cb72a3db"),
+                            TournamentId = new Guid("9ff588d9-efd7-5998-7564-0c60cfa790bd"),
+                            VenueId = new Guid("6caac657-0e0b-25d4-226f-4a6cdd07c7e9"),
+                            WinnerId = new Guid("8ab91b95-266e-6e1f-7c2b-9e70cb72a3db")
                         },
                         new
                         {
-                            Id = 6,
+                            Id = new Guid("9a46a435-c545-c57a-19c1-f83eb355970a"),
                             CourtEnvironment = 1,
-                            CourtName = "Court 2",
+                            CourtId = new Guid("fdfaa559-c2df-41e2-1877-f6c325759fe5"),
                             CourtSurface = "Hard",
                             DateTime = new DateTime(2026, 10, 17, 14, 10, 0, 0, DateTimeKind.Utc),
-                            FirstPlayerId = 91,
+                            FirstPlayerId = new Guid("cee30799-42bc-db04-b50d-9c68565dbdef"),
                             MatchRound = "Semifinal",
                             MatchStatus = "Completed",
                             ScoreResult = "6-3 6-4",
-                            SecondPlayerId = 4,
-                            TournamentId = 11,
-                            VenueId = 12,
-                            WinnerId = 91
+                            SecondPlayerId = new Guid("532828a9-f83f-e29d-f49e-f56fd46deeb9"),
+                            TournamentId = new Guid("9ff588d9-efd7-5998-7564-0c60cfa790bd"),
+                            VenueId = new Guid("6caac657-0e0b-25d4-226f-4a6cdd07c7e9"),
+                            WinnerId = new Guid("cee30799-42bc-db04-b50d-9c68565dbdef")
                         });
                 });
 
             modelBuilder.Entity("CourtSide.Data.Models.Player", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("Age")
                         .HasColumnType("int");
@@ -1598,8 +1588,8 @@ namespace CourtSide.Data.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
-                    b.Property<int>("CountryId")
-                        .HasColumnType("int");
+                    b.Property<Guid>("CountryId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("FirstName")
                         .IsRequired()
@@ -1644,10 +1634,10 @@ namespace CourtSide.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = 1,
+                            Id = new Guid("d65a558b-0c9a-6dbd-8c7c-1fd0e260247c"),
                             Age = 39,
                             Birthplace = "Belgrade, Serbia",
-                            CountryId = 154,
+                            CountryId = new Guid("b98c2b1b-82d0-15d4-3ec1-5adac5f856e3"),
                             FirstName = "Novak",
                             Gender = "Male",
                             Height = "6'2\"/(188cm)",
@@ -1659,10 +1649,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 2,
+                            Id = new Guid("f57c5e1a-1b22-2edf-574c-f39a21f4ea2f"),
                             Age = 23,
                             Birthplace = "El Palmar, Murcia, Spain",
-                            CountryId = 165,
+                            CountryId = new Guid("6cd49520-ad18-21af-4b07-3b15a7626b1d"),
                             FirstName = "Carlos",
                             Gender = "Male",
                             Height = "6'0\"/(183cm)",
@@ -1674,10 +1664,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 3,
+                            Id = new Guid("82f46a45-2860-ccd2-8e7b-f268321849fb"),
                             Age = 25,
                             Birthplace = "Innichen, Italy",
-                            CountryId = 84,
+                            CountryId = new Guid("5d5e3c89-2beb-f2bd-7773-ce812f45bebe"),
                             FirstName = "Jannik",
                             Gender = "Male",
                             Height = "6'3\"/(191cm)",
@@ -1689,10 +1679,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 4,
+                            Id = new Guid("532828a9-f83f-e29d-f49e-f56fd46deeb9"),
                             Age = 30,
                             Birthplace = "Moscow, Russia",
-                            CountryId = 114,
+                            CountryId = new Guid("717a1e86-e443-a658-a307-a399e8988dfe"),
                             FirstName = "Daniil",
                             Gender = "Male",
                             Height = "6'6\"/(198cm)",
@@ -1704,10 +1694,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 5,
+                            Id = new Guid("bde04240-cf13-cf6c-9e42-9a003582c2a0"),
                             Age = 29,
                             Birthplace = "Hamburg, Germany",
-                            CountryId = 65,
+                            CountryId = new Guid("5f096f4b-8929-65de-fd36-db7558756437"),
                             FirstName = "Alexander",
                             Gender = "Male",
                             Height = "6'6\"/(198cm)",
@@ -1719,10 +1709,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 6,
+                            Id = new Guid("a2681fc4-166d-1550-5031-74fb63e1cf02"),
                             Age = 35,
                             Birthplace = "Haskovo, Bulgaria",
-                            CountryId = 26,
+                            CountryId = new Guid("71304549-dfa2-acec-aa49-2be5657ce2ab"),
                             FirstName = "Grigor",
                             Gender = "Male",
                             Height = "6'3\"/(191cm)",
@@ -1734,10 +1724,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 7,
+                            Id = new Guid("d01047e5-1173-c854-3064-ac0fb5292ffc"),
                             Age = 28,
                             Birthplace = "Athens, Greece",
-                            CountryId = 67,
+                            CountryId = new Guid("ad04f235-a5b4-84ef-fea5-0c81750d6db8"),
                             FirstName = "Stefanos",
                             Gender = "Male",
                             Height = "6'4\"/(193cm)",
@@ -1749,10 +1739,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 8,
+                            Id = new Guid("71c2c435-0a30-5a50-f401-df86e253e265"),
                             Age = 27,
                             Birthplace = "Oslo, Norway",
-                            CountryId = 130,
+                            CountryId = new Guid("3354ec5b-2e6c-f880-75fd-d27587980c58"),
                             FirstName = "Casper",
                             Gender = "Male",
                             Height = "6'0\"/(183cm)",
@@ -1764,10 +1754,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 10,
+                            Id = new Guid("1c7fd1ac-f4bd-2028-cf8d-ddd7cd3fe6fa"),
                             Age = 28,
                             Birthplace = "Rancho Santa Fe, California, USA",
-                            CountryId = 187,
+                            CountryId = new Guid("e5948bc3-6513-2bab-7f42-e6ce69e45199"),
                             FirstName = "Taylor",
                             Gender = "Male",
                             Height = "6'5\"/(196cm)",
@@ -1779,10 +1769,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 11,
+                            Id = new Guid("e198eade-6051-1063-4065-395d4889be02"),
                             Age = 27,
                             Birthplace = "Sydney, Australia",
-                            CountryId = 9,
+                            CountryId = new Guid("38cb61dd-3fb5-4481-fa07-bcc7d36f5690"),
                             FirstName = "Alex",
                             Gender = "Male",
                             Height = "6'0\"/(183cm)",
@@ -1794,10 +1784,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 12,
+                            Id = new Guid("d62906b4-21b9-7583-2eab-17a41fec544a"),
                             Age = 29,
                             Birthplace = "Moscow, Russia",
-                            CountryId = 144,
+                            CountryId = new Guid("7cd806df-4622-802c-1e6f-5ebbbd58762d"),
                             FirstName = "Andrey",
                             Gender = "Male",
                             Height = "6'2\"/(188cm)",
@@ -1809,10 +1799,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 13,
+                            Id = new Guid("dc365279-a64b-c27d-54cc-915c36b9bea8"),
                             Age = 29,
                             Birthplace = "Wroclaw, Poland",
-                            CountryId = 140,
+                            CountryId = new Guid("ac05715a-891e-88df-93cf-93012a398933"),
                             FirstName = "Hubert",
                             Gender = "Male",
                             Height = "6'5\"/(196cm)",
@@ -1824,10 +1814,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 14,
+                            Id = new Guid("bc4391d6-1219-8e0e-9e6b-b4e1f0adff46"),
                             Age = 24,
                             Birthplace = "Atlanta, Georgia, USA",
-                            CountryId = 187,
+                            CountryId = new Guid("e5948bc3-6513-2bab-7f42-e6ce69e45199"),
                             FirstName = "Ben",
                             Gender = "Male",
                             Height = "6'4\"/(193cm)",
@@ -1839,10 +1829,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 15,
+                            Id = new Guid("3c3266f2-f9dd-2915-81d9-6b74c175dab1"),
                             Age = 28,
                             Birthplace = "Hyattsville, Maryland, USA",
-                            CountryId = 187,
+                            CountryId = new Guid("e5948bc3-6513-2bab-7f42-e6ce69e45199"),
                             FirstName = "Frances",
                             Gender = "Male",
                             Height = "6'2\"/(188cm)",
@@ -1854,10 +1844,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 16,
+                            Id = new Guid("7b9782db-09ca-582a-27d3-436255dc2272"),
                             Age = 28,
                             Birthplace = "Metz, France",
-                            CountryId = 61,
+                            CountryId = new Guid("133ed024-88c6-251c-6207-e2469cd1b5b9"),
                             FirstName = "Ugo",
                             Gender = "Male",
                             Height = "6'2\"/(188cm)",
@@ -1869,10 +1859,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 17,
+                            Id = new Guid("6bab745d-2388-f2e5-79e0-4e5a5fd69f0f"),
                             Age = 26,
                             Birthplace = "Bradenton, Florida, USA",
-                            CountryId = 187,
+                            CountryId = new Guid("e5948bc3-6513-2bab-7f42-e6ce69e45199"),
                             FirstName = "Sebastian",
                             Gender = "Male",
                             Height = "6'5\"/(196cm)",
@@ -1884,10 +1874,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 18,
+                            Id = new Guid("88fb6a79-0d08-f090-5200-767b4f466320"),
                             Age = 24,
                             Birthplace = "Carrara, Italy",
-                            CountryId = 84,
+                            CountryId = new Guid("5d5e3c89-2beb-f2bd-7773-ce812f45bebe"),
                             FirstName = "Lorenzo",
                             Gender = "Male",
                             Height = "6'1\"/(185cm)",
@@ -1899,10 +1889,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 19,
+                            Id = new Guid("06f2fdbb-40c6-dd02-d4b9-8dbae368441d"),
                             Age = 24,
                             Birthplace = "Sutton, London, United Kingdom",
-                            CountryId = 186,
+                            CountryId = new Guid("e20b2069-d8fe-ec08-f16e-dc2fae4e6b20"),
                             FirstName = "Jack",
                             Gender = "Male",
                             Height = "6'4\"/(193cm)",
@@ -1914,10 +1904,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 20,
+                            Id = new Guid("810f9c29-4569-5652-c413-cdeeda5f9d12"),
                             Age = 26,
                             Birthplace = "Montreal, Canada",
-                            CountryId = 32,
+                            CountryId = new Guid("8c72bb01-f139-1b8e-d31f-2520d9c63b98"),
                             FirstName = "Felix",
                             Gender = "Male",
                             Height = "6'4\"/(193cm)",
@@ -1929,10 +1919,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 21,
+                            Id = new Guid("74107364-0a09-5fb0-f7c3-51fe840ce735"),
                             Age = 26,
                             Birthplace = "Mar del Plata, Argentina",
-                            CountryId = 7,
+                            CountryId = new Guid("37e511fc-60d5-4a3b-74bd-9b9b007a97fb"),
                             FirstName = "Francisco",
                             Gender = "Male",
                             Height = "5'10\"/(178cm)",
@@ -1944,10 +1934,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 22,
+                            Id = new Guid("c07cf102-37ed-3bc0-4bfa-a5cef09fa38d"),
                             Age = 31,
                             Birthplace = "Johannesburg, South Africa",
-                            CountryId = 186,
+                            CountryId = new Guid("e20b2069-d8fe-ec08-f16e-dc2fae4e6b20"),
                             FirstName = "Cameron",
                             Gender = "Male",
                             Height = "6'2\"/(188cm)",
@@ -1959,10 +1949,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 23,
+                            Id = new Guid("cfa51d65-f041-ef84-124a-a8492219dd19"),
                             Age = 41,
                             Birthplace = "Lausanne, Switzerland",
-                            CountryId = 170,
+                            CountryId = new Guid("b17223a3-ff40-8c56-3136-e4c95b187f48"),
                             FirstName = "Stan",
                             Gender = "Male",
                             Height = "6'0\"/(183cm)",
@@ -1974,10 +1964,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 25,
+                            Id = new Guid("8ab91b95-266e-6e1f-7c2b-9e70cb72a3db"),
                             Age = 30,
                             Birthplace = "Rome, Italy",
-                            CountryId = 84,
+                            CountryId = new Guid("5d5e3c89-2beb-f2bd-7773-ce812f45bebe"),
                             FirstName = "Matteo",
                             Gender = "Male",
                             Height = "6'5\"/(196cm)",
@@ -1989,10 +1979,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 26,
+                            Id = new Guid("45c14476-589d-e6c1-e769-1b7c2df7d980"),
                             Age = 30,
                             Birthplace = "Moscow, Russia",
-                            CountryId = 144,
+                            CountryId = new Guid("7cd806df-4622-802c-1e6f-5ebbbd58762d"),
                             FirstName = "Karen",
                             Gender = "Male",
                             Height = "6'6\"/(198cm)",
@@ -2004,10 +1994,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 27,
+                            Id = new Guid("180acba2-2517-1ddf-1c20-17b8ec35f7e8"),
                             Age = 25,
                             Birthplace = "Buenos Aires, Argentina",
-                            CountryId = 7,
+                            CountryId = new Guid("37e511fc-60d5-4a3b-74bd-9b9b007a97fb"),
                             FirstName = "Sebastian",
                             Gender = "Male",
                             Height = "5'7\"/(170cm)",
@@ -2019,10 +2009,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 28,
+                            Id = new Guid("e82c9316-03d1-1ad9-bc06-bb9dfe193751"),
                             Age = 28,
                             Birthplace = "Buenos Aires, Argentina",
-                            CountryId = 7,
+                            CountryId = new Guid("37e511fc-60d5-4a3b-74bd-9b9b007a97fb"),
                             FirstName = "Francisco",
                             Gender = "Male",
                             Height = "6'1\"/(185cm)",
@@ -2034,10 +2024,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 29,
+                            Id = new Guid("f33e6459-8e50-933e-5375-c3c79f72cce0"),
                             Age = 29,
                             Birthplace = "Toronto, Canada",
-                            CountryId = 35,
+                            CountryId = new Guid("09678de0-a810-11e4-8792-4914194808ec"),
                             FirstName = "Alejandro",
                             Gender = "Male",
                             Height = "6'2\"/(188cm)",
@@ -2049,10 +2039,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 31,
+                            Id = new Guid("1ff0bf2a-71da-a4f9-8bd1-8439c78c16b8"),
                             Age = 27,
                             Birthplace = "La Plata, Argentina",
-                            CountryId = 7,
+                            CountryId = new Guid("37e511fc-60d5-4a3b-74bd-9b9b007a97fb"),
                             FirstName = "Tomas Martin",
                             Gender = "Male",
                             Height = "6'5\"/(196cm)",
@@ -2064,10 +2054,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 32,
+                            Id = new Guid("84d5dbf2-7d19-8ae4-d8e0-8d7f7dbc4359"),
                             Age = 22,
                             Birthplace = "Courcouronnes, France",
-                            CountryId = 61,
+                            CountryId = new Guid("133ed024-88c6-251c-6207-e2469cd1b5b9"),
                             FirstName = "Arthur",
                             Gender = "Male",
                             Height = "6'1\"/(185cm)",
@@ -2079,10 +2069,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 33,
+                            Id = new Guid("657ed5ef-6461-43c1-bc55-ee4fdb331014"),
                             Age = 38,
                             Birthplace = "Soisy-sous-Montmorency, France",
-                            CountryId = 61,
+                            CountryId = new Guid("133ed024-88c6-251c-6207-e2469cd1b5b9"),
                             FirstName = "Adrian",
                             Gender = "Male",
                             Height = "6'0\"/(183cm)",
@@ -2094,10 +2084,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 34,
+                            Id = new Guid("ae36744e-76e8-eaec-4e50-0091ac41c5a7"),
                             Age = 36,
                             Birthplace = "Warstein, Germany",
-                            CountryId = 65,
+                            CountryId = new Guid("5f096f4b-8929-65de-fd36-db7558756437"),
                             FirstName = "Jan-Lennard",
                             Gender = "Male",
                             Height = "6'4\"/(193cm)",
@@ -2109,10 +2099,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 36,
+                            Id = new Guid("b50c267b-75c4-ecb5-870e-e3e29d913b0e"),
                             Age = 29,
                             Birthplace = "Maia, Portugal",
-                            CountryId = 141,
+                            CountryId = new Guid("aeb3e1f0-0cc4-8dcd-db4d-626e1da8d798"),
                             FirstName = "Nuno",
                             Gender = "Male",
                             Height = "6'1\"/(185cm)",
@@ -2124,10 +2114,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 37,
+                            Id = new Guid("0e1328df-eec6-be7f-8f5f-c07a7a01512f"),
                             Age = 27,
                             Birthplace = "Budapest, Hungary",
-                            CountryId = 76,
+                            CountryId = new Guid("d3ff130b-5386-50ad-568a-09890b9fa9b9"),
                             FirstName = "Fabian",
                             Gender = "Male",
                             Height = "6'4\"/(193cm)",
@@ -2139,10 +2129,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 38,
+                            Id = new Guid("97497ad7-5819-845c-5c9c-5b3fe32130dc"),
                             Age = 27,
                             Birthplace = "Sydney, Australia",
-                            CountryId = 9,
+                            CountryId = new Guid("38cb61dd-3fb5-4481-fa07-bcc7d36f5690"),
                             FirstName = "Alexei",
                             Gender = "Male",
                             Height = "6'5\"/(196cm)",
@@ -2154,10 +2144,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 39,
+                            Id = new Guid("830c8ce7-19c3-69c6-1ca1-b0c2332f69eb"),
                             Age = 25,
                             Birthplace = "Sanremo, Italy",
-                            CountryId = 84,
+                            CountryId = new Guid("5d5e3c89-2beb-f2bd-7773-ce812f45bebe"),
                             FirstName = "Matteo",
                             Gender = "Male",
                             Height = "5'11\"/(180cm)",
@@ -2169,10 +2159,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 40,
+                            Id = new Guid("178b887c-29de-d1c4-5de3-d08634fd02c3"),
                             Age = 23,
                             Birthplace = "Lyon, France",
-                            CountryId = 61,
+                            CountryId = new Guid("133ed024-88c6-251c-6207-e2469cd1b5b9"),
                             FirstName = "Giovanni",
                             Gender = "Male",
                             Height = "6'8\"/(203cm)",
@@ -2184,10 +2174,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 41,
+                            Id = new Guid("25298752-2a35-960f-6ec8-11e85558fcd0"),
                             Age = 29,
                             Birthplace = "Voorhees, New Jersey, USA",
-                            CountryId = 187,
+                            CountryId = new Guid("e5948bc3-6513-2bab-7f42-e6ce69e45199"),
                             FirstName = "Tommy",
                             Gender = "Male",
                             Height = "6'1\"/(185cm)",
@@ -2199,10 +2189,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 42,
+                            Id = new Guid("c27385bc-c2c5-8299-2022-9b0b14db0908"),
                             Age = 31,
                             Birthplace = "Turin, Italy",
-                            CountryId = 84,
+                            CountryId = new Guid("5d5e3c89-2beb-f2bd-7773-ce812f45bebe"),
                             FirstName = "Lorenzo",
                             Gender = "Male",
                             Height = "6'3\"/(191cm)",
@@ -2214,10 +2204,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 44,
+                            Id = new Guid("646bbb26-5fd9-7078-1b17-057c2c3c7d56"),
                             Age = 27,
                             Birthplace = "Malaga, Spain",
-                            CountryId = 165,
+                            CountryId = new Guid("6cd49520-ad18-21af-4b07-3b15a7626b1d"),
                             FirstName = "Alejandro",
                             Gender = "Male",
                             Height = "6'0\"/(183cm)",
@@ -2229,10 +2219,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 45,
+                            Id = new Guid("8faa920d-2c19-94f9-08af-b9d29393ba54"),
                             Age = 31,
                             Birthplace = "Senta, Serbia",
-                            CountryId = 154,
+                            CountryId = new Guid("b98c2b1b-82d0-15d4-3ec1-5adac5f856e3"),
                             FirstName = "Laslo",
                             Gender = "Male",
                             Height = "6'1\"/(185cm)",
@@ -2244,10 +2234,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 46,
+                            Id = new Guid("6fc474fa-f6e4-95c7-bd53-52877fbb4280"),
                             Age = 29,
                             Birthplace = "Podolsk, Russia",
-                            CountryId = 144,
+                            CountryId = new Guid("7cd806df-4622-802c-1e6f-5ebbbd58762d"),
                             FirstName = "Roman",
                             Gender = "Male",
                             Height = "6'1\"/(185cm)",
@@ -2259,10 +2249,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 50,
+                            Id = new Guid("58951034-1b8f-4001-cb8e-d41327c85c22"),
                             Age = 31,
                             Birthplace = "Gassin, France",
-                            CountryId = 61,
+                            CountryId = new Guid("133ed024-88c6-251c-6207-e2469cd1b5b9"),
                             FirstName = "Arthur",
                             Gender = "Male",
                             Height = "6'5\"/(196cm)",
@@ -2274,10 +2264,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 52,
+                            Id = new Guid("ae30c2ab-d6c8-1022-b0f1-fcc08448fd96"),
                             Age = 28,
                             Birthplace = "Kempen, Germany",
-                            CountryId = 65,
+                            CountryId = new Guid("5f096f4b-8929-65de-fd36-db7558756437"),
                             FirstName = "Daniel",
                             Gender = "Male",
                             Height = "6'3\"/(191cm)",
@@ -2289,10 +2279,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 53,
+                            Id = new Guid("35b89880-16a7-289c-5b4e-477de59d0cd2"),
                             Age = 27,
                             Birthplace = "Moscow, Russia",
-                            CountryId = 144,
+                            CountryId = new Guid("7cd806df-4622-802c-1e6f-5ebbbd58762d"),
                             FirstName = "Pavel",
                             Gender = "Male",
                             Height = "6'4\"/(193cm)",
@@ -2304,10 +2294,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 54,
+                            Id = new Guid("b3d26dd0-b115-ad8b-c0c0-64e23794a09f"),
                             Age = 26,
                             Birthplace = "Marechal Candido Rondon, Brazil",
-                            CountryId = 24,
+                            CountryId = new Guid("4decd5d6-b64c-9f4d-185b-d4443500a732"),
                             FirstName = "Thiago",
                             Gender = "Male",
                             Height = "6'0\"/(183cm)",
@@ -2319,10 +2309,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 55,
+                            Id = new Guid("13781780-3e57-b533-1fb1-6d9044665c48"),
                             Age = 33,
                             Birthplace = "Thousand Oaks, California, USA",
-                            CountryId = 187,
+                            CountryId = new Guid("e5948bc3-6513-2bab-7f42-e6ce69e45199"),
                             FirstName = "Marcos",
                             Gender = "Male",
                             Height = "5'11\"/(180cm)",
@@ -2334,10 +2324,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 56,
+                            Id = new Guid("d5f73a60-cacc-3324-914d-a7f7fbefd7ff"),
                             Age = 30,
                             Birthplace = "Sydney, Australia",
-                            CountryId = 9,
+                            CountryId = new Guid("38cb61dd-3fb5-4481-fa07-bcc7d36f5690"),
                             FirstName = "Aleksandar",
                             Gender = "Male",
                             Height = "6'2\"/(188cm)",
@@ -2349,10 +2339,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 60,
+                            Id = new Guid("d070a207-3d51-a96b-4256-5f4bbbea1597"),
                             Age = 31,
                             Birthplace = "Wageningen, Netherlands",
-                            CountryId = 123,
+                            CountryId = new Guid("89fa8d38-0138-e506-b39d-9c30a8a73146"),
                             FirstName = "Botic",
                             Gender = "Male",
                             Height = "6'3\"/(191cm)",
@@ -2364,10 +2354,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 61,
+                            Id = new Guid("cc7eee84-ba54-69ea-c788-17f19bff57d4"),
                             Age = 27,
                             Birthplace = "Belgrade, Serbia",
-                            CountryId = 154,
+                            CountryId = new Guid("b98c2b1b-82d0-15d4-3ec1-5adac5f856e3"),
                             FirstName = "Miomir",
                             Gender = "Male",
                             Height = "6'0\"/(183cm)",
@@ -2379,10 +2369,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 62,
+                            Id = new Guid("dc0f3e4d-4a5c-87d3-529f-8dc9f92530af"),
                             Age = 30,
                             Birthplace = "Haarlem, Netherlands",
-                            CountryId = 123,
+                            CountryId = new Guid("89fa8d38-0138-e506-b39d-9c30a8a73146"),
                             FirstName = "Tallon",
                             Gender = "Male",
                             Height = "6'2\"/(188cm)",
@@ -2394,10 +2384,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 63,
+                            Id = new Guid("ddc9dce2-08fd-8a43-02da-2e8866be8d58"),
                             Age = 24,
                             Birthplace = "Florence, Italy",
-                            CountryId = 84,
+                            CountryId = new Guid("5d5e3c89-2beb-f2bd-7773-ce812f45bebe"),
                             FirstName = "Flavio",
                             Gender = "Male",
                             Height = "6'0\"/(183cm)",
@@ -2409,10 +2399,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 64,
+                            Id = new Guid("bcd473d4-aa01-a4a5-621a-13a848dd1205"),
                             Age = 25,
                             Birthplace = "9 de Julio, Argentina",
-                            CountryId = 7,
+                            CountryId = new Guid("37e511fc-60d5-4a3b-74bd-9b9b007a97fb"),
                             FirstName = "Mariano",
                             Gender = "Male",
                             Height = "5'9\"/(175cm)",
@@ -2424,10 +2414,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 65,
+                            Id = new Guid("7cb6c0f2-5a0b-4279-0f22-db428ebbb0cf"),
                             Age = 25,
                             Birthplace = "San Diego, California, USA",
-                            CountryId = 187,
+                            CountryId = new Guid("e5948bc3-6513-2bab-7f42-e6ce69e45199"),
                             FirstName = "Brandon",
                             Gender = "Male",
                             Height = "6'1\"/(185cm)",
@@ -2439,10 +2429,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 66,
+                            Id = new Guid("1379389d-87ed-7acf-2b2b-76423612ee2c"),
                             Age = 33,
                             Birthplace = "New York, New York, USA",
-                            CountryId = 86,
+                            CountryId = new Guid("f10c1873-805a-8efd-4570-4e3acd4bb54a"),
                             FirstName = "Taro",
                             Gender = "Male",
                             Height = "6'3\"/(191cm)",
@@ -2454,10 +2444,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 67,
+                            Id = new Guid("87d4cc3d-e077-b82a-ee0a-ad4cf1531040"),
                             Age = 33,
                             Birthplace = "Tenerife, Spain",
-                            CountryId = 165,
+                            CountryId = new Guid("6cd49520-ad18-21af-4b07-3b15a7626b1d"),
                             FirstName = "Roberto",
                             Gender = "Male",
                             Height = "6'0\"/(183cm)",
@@ -2469,10 +2459,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 68,
+                            Id = new Guid("166dcb17-c8e1-fbb6-f131-60e105a74635"),
                             Age = 29,
                             Birthplace = "Santanyi, Spain",
-                            CountryId = 165,
+                            CountryId = new Guid("6cd49520-ad18-21af-4b07-3b15a7626b1d"),
                             FirstName = "Jaume",
                             Gender = "Male",
                             Height = "6'0\"/(183cm)",
@@ -2484,10 +2474,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 69,
+                            Id = new Guid("e3ce1444-66b0-4d11-610d-29ac28e35ddb"),
                             Age = 21,
                             Birthplace = "Laguna Hills, California, USA",
-                            CountryId = 187,
+                            CountryId = new Guid("e5948bc3-6513-2bab-7f42-e6ce69e45199"),
                             FirstName = "Alex",
                             Gender = "Male",
                             Height = "6'4\"/(193cm)",
@@ -2499,10 +2489,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 70,
+                            Id = new Guid("fa9ef637-8855-ad2f-af38-a9e33a005fb3"),
                             Age = 27,
                             Birthplace = "New York, New York, USA",
-                            CountryId = 187,
+                            CountryId = new Guid("e5948bc3-6513-2bab-7f42-e6ce69e45199"),
                             FirstName = "Aleksandar",
                             Gender = "Male",
                             Height = "6'0\"/(183cm)",
@@ -2514,10 +2504,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 71,
+                            Id = new Guid("be24adc9-3934-45ec-f349-22052eeff0cc"),
                             Age = 28,
                             Birthplace = "Sydney, Australia",
-                            CountryId = 9,
+                            CountryId = new Guid("38cb61dd-3fb5-4481-fa07-bcc7d36f5690"),
                             FirstName = "Max",
                             Gender = "Male",
                             Height = "6'1\"/(185cm)",
@@ -2529,10 +2519,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 72,
+                            Id = new Guid("5ef85fe6-9730-2596-6495-174a30f2916c"),
                             Age = 30,
                             Birthplace = "Adelaide, Australia",
-                            CountryId = 9,
+                            CountryId = new Guid("38cb61dd-3fb5-4481-fa07-bcc7d36f5690"),
                             FirstName = "Thanasi",
                             Gender = "Male",
                             Height = "6'4\"/(193cm)",
@@ -2544,10 +2534,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 73,
+                            Id = new Guid("89e5d1e6-0719-f2dd-d6bf-3748343f68f6"),
                             Age = 25,
                             Birthplace = "Sydney, Australia",
-                            CountryId = 9,
+                            CountryId = new Guid("38cb61dd-3fb5-4481-fa07-bcc7d36f5690"),
                             FirstName = "Rinky",
                             Gender = "Male",
                             Height = "5'10\"/(178cm)",
@@ -2559,10 +2549,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 74,
+                            Id = new Guid("72ceb91c-a514-9937-a3e4-0f0a0bc79f69"),
                             Age = 34,
                             Birthplace = "Sydney, Australia",
-                            CountryId = 9,
+                            CountryId = new Guid("38cb61dd-3fb5-4481-fa07-bcc7d36f5690"),
                             FirstName = "James",
                             Gender = "Male",
                             Height = "6'0\"/(183cm)",
@@ -2574,10 +2564,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 75,
+                            Id = new Guid("405d4687-4353-2c4e-cdb9-087e54337ee3"),
                             Age = 24,
                             Birthplace = "Villa Gesell, Argentina",
-                            CountryId = 84,
+                            CountryId = new Guid("5d5e3c89-2beb-f2bd-7773-ce812f45bebe"),
                             FirstName = "Luciano",
                             Gender = "Male",
                             Height = "6'1\"/(185cm)",
@@ -2589,10 +2579,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 76,
+                            Id = new Guid("911b8de0-c5bc-cf4b-6757-99793c4b63ee"),
                             Age = 24,
                             Birthplace = "Montreal, Canada",
-                            CountryId = 32,
+                            CountryId = new Guid("8c72bb01-f139-1b8e-d31f-2520d9c63b98"),
                             FirstName = "Gabriel",
                             Gender = "Male",
                             Height = "6'8\"/(203cm)",
@@ -2604,10 +2594,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 77,
+                            Id = new Guid("88acd018-671c-52d0-c297-c36dce638c59"),
                             Age = 25,
                             Birthplace = "La Plata, Argentina",
-                            CountryId = 7,
+                            CountryId = new Guid("37e511fc-60d5-4a3b-74bd-9b9b007a97fb"),
                             FirstName = "Thiago Agustín",
                             Gender = "Male",
                             Height = "6'2\"/(188cm)",
@@ -2619,10 +2609,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 78,
+                            Id = new Guid("992f1291-b58d-99fa-ed81-12e3dc4d2212"),
                             Age = 29,
                             Birthplace = "Bondy, France",
-                            CountryId = 61,
+                            CountryId = new Guid("133ed024-88c6-251c-6207-e2469cd1b5b9"),
                             FirstName = "Quentin",
                             Gender = "Male",
                             Height = "6'4\"/(193cm)",
@@ -2634,10 +2624,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 79,
+                            Id = new Guid("c46f5a57-c7b2-e6e4-87a7-74916f5749ba"),
                             Age = 25,
                             Birthplace = "Haarlem, Netherlands",
-                            CountryId = 123,
+                            CountryId = new Guid("89fa8d38-0138-e506-b39d-9c30a8a73146"),
                             FirstName = "Jesper",
                             Gender = "Male",
                             Height = "5'11\"/(180cm)",
@@ -2649,10 +2639,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 80,
+                            Id = new Guid("7d5260d7-7164-5f66-354b-bf94d3ed2efe"),
                             Age = 31,
                             Birthplace = "Nottingham, United Kingdom",
-                            CountryId = 186,
+                            CountryId = new Guid("e20b2069-d8fe-ec08-f16e-dc2fae4e6b20"),
                             FirstName = "Billy",
                             Gender = "Male",
                             Height = "6'2\"/(188cm)",
@@ -2664,10 +2654,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 81,
+                            Id = new Guid("03c2ca4c-136f-9a73-ecbe-8e943099b523"),
                             Age = 23,
                             Birthplace = "Novi Pazar, Serbia",
-                            CountryId = 154,
+                            CountryId = new Guid("b98c2b1b-82d0-15d4-3ec1-5adac5f856e3"),
                             FirstName = "Hamad",
                             Gender = "Male",
                             Height = "6'2\"/(188cm)",
@@ -2679,10 +2669,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 82,
+                            Id = new Guid("c84ad2fa-dce2-901f-e666-63592d2d0743"),
                             Age = 25,
                             Birthplace = "Lyon, France",
-                            CountryId = 61,
+                            CountryId = new Guid("133ed024-88c6-251c-6207-e2469cd1b5b9"),
                             FirstName = "Kyrian",
                             Gender = "Male",
                             Height = "5'10\"/(178cm)",
@@ -2694,10 +2684,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 83,
+                            Id = new Guid("4852a53d-a55c-4f81-e414-63f459aa2724"),
                             Age = 26,
                             Birthplace = "Reims, France",
-                            CountryId = 61,
+                            CountryId = new Guid("133ed024-88c6-251c-6207-e2469cd1b5b9"),
                             FirstName = "Clément",
                             Gender = "Male",
                             Height = "5'8\"/(173cm)",
@@ -2709,10 +2699,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 84,
+                            Id = new Guid("9c665f97-fcc4-1e54-90cd-3c191b417945"),
                             Age = 30,
                             Birthplace = "Nîmes, France",
-                            CountryId = 61,
+                            CountryId = new Guid("133ed024-88c6-251c-6207-e2469cd1b5b9"),
                             FirstName = "Benjamin",
                             Gender = "Male",
                             Height = "6'0\"/(183cm)",
@@ -2724,10 +2714,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 85,
+                            Id = new Guid("32af4a9f-1702-cd66-f644-1946e1bc51ce"),
                             Age = 22,
-                            Birthplace = "Woluwe-Saint-Lambert,Belgium",
-                            CountryId = 61,
+                            Birthplace = "Woluwe-Saint-Lambert, Belgium",
+                            CountryId = new Guid("a07e8fbb-e337-1765-6b98-62fc46244a7a"),
                             FirstName = "Luca",
                             Gender = "Male",
                             Height = "5'10\"/(178cm)",
@@ -2739,10 +2729,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 86,
+                            Id = new Guid("0c23c701-d7e9-07c6-8324-18e3cc6ade61"),
                             Age = 25,
-                            Birthplace = "Villeneuve-SaintGeorges,   France",
-                            CountryId = 61,
+                            Birthplace = "Villeneuve-Saint-Georges, France",
+                            CountryId = new Guid("133ed024-88c6-251c-6207-e2469cd1b5b9"),
                             FirstName = "Titouan",
                             Gender = "Male",
                             Height = "6'3\"/(191cm)",
@@ -2754,25 +2744,25 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 87,
-                            Age = 27,
-                            Birthplace = "Paris, France",
-                            CountryId = 61,
-                            FirstName = "Corentin",
+                            Id = new Guid("ca12c8b8-5a52-fd5f-6550-ff69dca603d9"),
+                            Age = 30,
+                            Birthplace = "Arica, Chile",
+                            CountryId = new Guid("09678de0-a810-11e4-8792-4914194808ec"),
+                            FirstName = "Cristian",
                             Gender = "Male",
-                            Height = "5'11\"/(180cm)",
-                            LastName = "Moutet",
-                            Points = 590,
+                            Height = "6'1\"/(185cm)",
+                            LastName = "Garin",
+                            Points = 588,
                             Rank = 101,
-                            TournamentsPlayed = 20,
-                            Weight = "156 lbs/(71kg)"
+                            TournamentsPlayed = 23,
+                            Weight = "187 lbs/(85kg)"
                         },
                         new
                         {
-                            Id = 88,
+                            Id = new Guid("4e59b16e-d221-bb2d-dbd2-9b8e9247ff1c"),
                             Age = 24,
                             Birthplace = "Sèvres, France",
-                            CountryId = 186,
+                            CountryId = new Guid("e20b2069-d8fe-ec08-f16e-dc2fae4e6b20"),
                             FirstName = "Arthur",
                             Gender = "Male",
                             Height = "5'9\"/(175cm)",
@@ -2784,10 +2774,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 89,
+                            Id = new Guid("0f431394-a311-1b79-a428-8ab2a4f862d0"),
                             Age = 28,
                             Birthplace = "Split, Croatia",
-                            CountryId = 42,
+                            CountryId = new Guid("fafe6ec9-732a-44f2-e128-cf590e7bd447"),
                             FirstName = "Borna",
                             Gender = "Male",
                             Height = "6'5\"/(196cm)",
@@ -2799,10 +2789,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 90,
+                            Id = new Guid("e384741a-ffa3-f530-0a56-bdecb40df540"),
                             Age = 35,
                             Birthplace = "Schiltigheim, France",
-                            CountryId = 61,
+                            CountryId = new Guid("133ed024-88c6-251c-6207-e2469cd1b5b9"),
                             FirstName = "Pierre-Hugues",
                             Gender = "Male",
                             Height = "6'2\"/(188cm)",
@@ -2814,10 +2804,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 91,
+                            Id = new Guid("fed4e693-8dce-1d71-7c9f-c62dd88b9516"),
                             Age = 20,
                             Birthplace = "Madrid, Spain",
-                            CountryId = 165,
+                            CountryId = new Guid("6cd49520-ad18-21af-4b07-3b15a7626b1d"),
                             FirstName = "Rafael",
                             Gender = "Male",
                             Height = "6'3\"/(191cm)",
@@ -2829,10 +2819,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 92,
+                            Id = new Guid("8bc2cede-72c8-75bc-fa6b-2f2d77c9efdb"),
                             Age = 21,
                             Birthplace = "Hyères, France",
-                            CountryId = 75,
+                            CountryId = new Guid("133ed024-88c6-251c-6207-e2469cd1b5b9"),
                             FirstName = "Arthur",
                             Gender = "Male",
                             Height = "6'1\"/(185cm)",
@@ -2844,10 +2834,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 93,
+                            Id = new Guid("36dab34b-7903-70a1-edf3-ee54ba19f33a"),
                             Age = 23,
                             Birthplace = "Gentofte, Denmark",
-                            CountryId = 47,
+                            CountryId = new Guid("aeee815e-f648-88b2-cb54-93e6c9921b10"),
                             FirstName = "Holger",
                             Gender = "Male",
                             Height = "6'2\"/(188cm)",
@@ -2859,10 +2849,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 94,
+                            Id = new Guid("991fcbd8-72df-c169-6630-a4621cec046b"),
                             Age = 21,
                             Birthplace = "Irvine, California, USA",
-                            CountryId = 187,
+                            CountryId = new Guid("e5948bc3-6513-2bab-7f42-e6ce69e45199"),
                             FirstName = "Learner",
                             Gender = "Male",
                             Height = "5'11\"/(180cm)",
@@ -2874,10 +2864,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 95,
+                            Id = new Guid("e7b55586-88e7-8eee-1eac-ec6e54fdd805"),
                             Age = 29,
                             Birthplace = "Gatchina, Russia",
-                            CountryId = 88,
+                            CountryId = new Guid("71dd9f8e-0ac6-8873-e309-4710e48eeaef"),
                             FirstName = "Alexander",
                             Gender = "Male",
                             Height = "6'5\"/(196cm)",
@@ -2889,10 +2879,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 96,
+                            Id = new Guid("cc8ad782-a62b-1f79-4851-8db255248f94"),
                             Age = 25,
                             Birthplace = "Mlada Boleslav, Czech Republic",
-                            CountryId = 45,
+                            CountryId = new Guid("1265c601-0d79-510b-f5c2-dca5d6db2050"),
                             FirstName = "Jiri",
                             Gender = "Male",
                             Height = "6'1\"/(185cm)",
@@ -2904,10 +2894,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 97,
+                            Id = new Guid("15fb5971-3fe8-f9a3-5a22-270ff5a0d61b"),
                             Age = 21,
                             Birthplace = "Antwerp, Belgium",
-                            CountryId = 17,
+                            CountryId = new Guid("a07e8fbb-e337-1765-6b98-62fc46244a7a"),
                             FirstName = "Alexander",
                             Gender = "Male",
                             Height = "6'3\"/(191cm)",
@@ -2919,10 +2909,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 98,
+                            Id = new Guid("e5b6058f-eef2-3945-f26d-e3fc22584627"),
                             Age = 28,
                             Birthplace = "Roquebrune-Cap-Martin, France",
-                            CountryId = 114,
+                            CountryId = new Guid("717a1e86-e443-a658-a307-a399e8988dfe"),
                             FirstName = "Valentin",
                             Gender = "Male",
                             Height = "6'4\"/(193cm)",
@@ -2934,10 +2924,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 99,
+                            Id = new Guid("3592db62-52af-66c8-e8d0-cf259477b46f"),
                             Age = 22,
                             Birthplace = "Lima, Peru",
-                            CountryId = 138,
+                            CountryId = new Guid("8e87e6e7-b38d-7ed7-2b47-fab7d15b0bef"),
                             FirstName = "Ignacio",
                             Gender = "Male",
                             Height = "6'0\"/(183cm)",
@@ -2949,10 +2939,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 100,
+                            Id = new Guid("d494ddc8-22be-8d98-8d9b-970f59f160c7"),
                             Age = 20,
                             Birthplace = "Rio de Janeiro, Brazil",
-                            CountryId = 24,
+                            CountryId = new Guid("4decd5d6-b64c-9f4d-185b-d4443500a732"),
                             FirstName = "Joao",
                             Gender = "Male",
                             Height = "6'1\"/(185cm)",
@@ -2964,10 +2954,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 101,
+                            Id = new Guid("a497e92e-5723-6f3d-06a4-a94a2b34ee6f"),
                             Age = 22,
                             Birthplace = "Asuncion, Paraguay",
-                            CountryId = 137,
+                            CountryId = new Guid("4ecc0b9c-72b3-0ac4-6334-9d63e698bf08"),
                             FirstName = "Adolfo Daniel",
                             Gender = "Male",
                             Height = "6'0\"/(183cm)",
@@ -2979,10 +2969,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 102,
+                            Id = new Guid("09f0ef53-b3bd-0bb3-95d7-94d1d6ff2e72"),
                             Age = 22,
                             Birthplace = "Madrid, Spain",
-                            CountryId = 165,
+                            CountryId = new Guid("6cd49520-ad18-21af-4b07-3b15a7626b1d"),
                             FirstName = "Daniel",
                             Gender = "Male",
                             Height = "6'1\"/(185cm)",
@@ -2994,10 +2984,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 103,
+                            Id = new Guid("bfeea382-efb2-fa92-c732-106b3a5a451c"),
                             Age = 24,
                             Birthplace = "Rochefort, Belgium",
-                            CountryId = 17,
+                            CountryId = new Guid("a07e8fbb-e337-1765-6b98-62fc46244a7a"),
                             FirstName = "Raphael",
                             Gender = "Male",
                             Height = "6'2\"/(188cm)",
@@ -3009,10 +2999,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 104,
+                            Id = new Guid("2b2adf51-269b-770e-bbb5-179faf103d4e"),
                             Age = 23,
                             Birthplace = "Lisbon, Portugal",
-                            CountryId = 141,
+                            CountryId = new Guid("aeb3e1f0-0cc4-8dcd-db4d-626e1da8d798"),
                             FirstName = "Jaime",
                             Gender = "Male",
                             Height = "6'1\"/(185cm)",
@@ -3024,10 +3014,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 105,
+                            Id = new Guid("dc376e6e-65cb-d6cf-3c03-95b2c8efa532"),
                             Age = 20,
                             Birthplace = "Madrid, Spain",
-                            CountryId = 165,
+                            CountryId = new Guid("6cd49520-ad18-21af-4b07-3b15a7626b1d"),
                             FirstName = "Martin",
                             Gender = "Male",
                             Height = "6'3\"/(191cm)",
@@ -3039,10 +3029,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 106,
+                            Id = new Guid("beb773c4-62e9-33e7-25fe-f4361691ab66"),
                             Age = 27,
                             Birthplace = "Buenos Aires, Argentina",
-                            CountryId = 7,
+                            CountryId = new Guid("37e511fc-60d5-4a3b-74bd-9b9b007a97fb"),
                             FirstName = "Camilo",
                             Gender = "Male",
                             Height = "6'1\"/(185cm)",
@@ -3054,10 +3044,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 107,
+                            Id = new Guid("0ed2a638-b982-d12b-d4c2-cb098374eb8a"),
                             Age = 24,
                             Birthplace = "Buenos Aires, Argentina",
-                            CountryId = 7,
+                            CountryId = new Guid("37e511fc-60d5-4a3b-74bd-9b9b007a97fb"),
                             FirstName = "Roman Andres",
                             Gender = "Male",
                             Height = "6'0\"/(183cm)",
@@ -3069,10 +3059,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 108,
+                            Id = new Guid("404e64a0-0b4d-ac06-e1ce-5179f2f4d86f"),
                             Age = 30,
                             Birthplace = "Piotrkow Trybunalski, Poland",
-                            CountryId = 140,
+                            CountryId = new Guid("ac05715a-891e-88df-93cf-93012a398933"),
                             FirstName = "Kamil",
                             Gender = "Male",
                             Height = "5'11\"/(180cm)",
@@ -3084,10 +3074,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 109,
+                            Id = new Guid("9e67303e-4e5b-9b22-5579-b8d6177af452"),
                             Age = 25,
                             Birthplace = "Edinburgh, Scotland",
-                            CountryId = 186,
+                            CountryId = new Guid("e20b2069-d8fe-ec08-f16e-dc2fae4e6b20"),
                             FirstName = "Jacob",
                             Gender = "Male",
                             Height = "6'0\"/(183cm)",
@@ -3099,10 +3089,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 110,
+                            Id = new Guid("4f78c945-fdb0-a732-19e9-15fe95b5a30a"),
                             Age = 36,
                             Birthplace = "Santiago del Estero, Argentina",
-                            CountryId = 7,
+                            CountryId = new Guid("37e511fc-60d5-4a3b-74bd-9b9b007a97fb"),
                             FirstName = "Marco",
                             Gender = "Male",
                             Height = "5'11\"/(180cm)",
@@ -3114,10 +3104,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 111,
+                            Id = new Guid("f6540b7c-fb8c-ad94-b686-49ba873b4ef6"),
                             Age = 34,
                             Birthplace = "Tbilisi, Georgia",
-                            CountryId = 64,
+                            CountryId = new Guid("4a392f39-ce99-6c69-5984-6d018b8c0150"),
                             FirstName = "Nikoloz",
                             Gender = "Male",
                             Height = "6'1\"/(185cm)",
@@ -3129,10 +3119,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 112,
+                            Id = new Guid("c5da432c-8b32-caf7-eaae-d8a04ee97a90"),
                             Age = 38,
-                            Birthplace = "Medjugorje, Bosnia and  Herzegovina",
-                            CountryId = 42,
+                            Birthplace = "Medjugorje, Bosnia and Herzegovina",
+                            CountryId = new Guid("e20b2069-d8fe-ec08-f16e-dc2fae4e6b20"),
                             FirstName = "Marin",
                             Gender = "Male",
                             Height = "6'6\"/(198cm)",
@@ -3144,10 +3134,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 113,
+                            Id = new Guid("e1df88e6-8f3f-751e-ce78-5dd8dcf9da5e"),
                             Age = 22,
                             Birthplace = "Porto, Portugal",
-                            CountryId = 141,
+                            CountryId = new Guid("aeb3e1f0-0cc4-8dcd-db4d-626e1da8d798"),
                             FirstName = "Henrique",
                             Gender = "Male",
                             Height = "6'0\"/(183cm)",
@@ -3159,10 +3149,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 114,
+                            Id = new Guid("cd43c9f9-096b-f613-2eba-0786921edaed"),
                             Age = 22,
                             Birthplace = "Montville, NJ, USA",
-                            CountryId = 187,
+                            CountryId = new Guid("e5948bc3-6513-2bab-7f42-e6ce69e45199"),
                             FirstName = "Michael",
                             Gender = "Male",
                             Height = "5'11\"/(180cm)",
@@ -3174,10 +3164,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 115,
+                            Id = new Guid("a77c1c75-bd94-3a33-8bb0-8ec996ea1382"),
                             Age = 25,
                             Birthplace = "Paris, France",
-                            CountryId = 61,
+                            CountryId = new Guid("133ed024-88c6-251c-6207-e2469cd1b5b9"),
                             FirstName = "Valentin",
                             Gender = "Male",
                             Height = "6'2\"/(188cm)",
@@ -3189,10 +3179,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 116,
+                            Id = new Guid("b10cbe01-9a46-e028-cf79-1f65cd398a5b"),
                             Age = 23,
                             Birthplace = "Aarhus, Denmark",
-                            CountryId = 47,
+                            CountryId = new Guid("aeee815e-f648-88b2-cb54-93e6c9921b10"),
                             FirstName = "Elmer",
                             Gender = "Male",
                             Height = "6'0\"/(183cm)",
@@ -3204,10 +3194,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 117,
+                            Id = new Guid("e331781c-f838-4c8d-5de5-b12ba2354ccd"),
                             Age = 21,
                             Birthplace = "Siauliai, Lithuania",
-                            CountryId = 100,
+                            CountryId = new Guid("67aaa934-331b-91ed-5fa4-12e9a6e71580"),
                             FirstName = "Vilius",
                             Gender = "Male",
                             Height = "6'1\"/(185cm)",
@@ -3219,10 +3209,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 118,
+                            Id = new Guid("ef053a14-8c67-dab1-560f-5d67eb758e23"),
                             Age = 29,
                             Birthplace = "Zagreb, Croatia",
-                            CountryId = 42,
+                            CountryId = new Guid("e20b2069-d8fe-ec08-f16e-dc2fae4e6b20"),
                             FirstName = "Borna",
                             Gender = "Male",
                             Height = "6'1\"/(185cm)",
@@ -3234,10 +3224,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 119,
+                            Id = new Guid("233e3183-55ba-9151-4d1e-7bc38fb05926"),
                             Age = 35,
                             Birthplace = "Rocourt, Belgium",
-                            CountryId = 17,
+                            CountryId = new Guid("a07e8fbb-e337-1765-6b98-62fc46244a7a"),
                             FirstName = "David",
                             Gender = "Male",
                             Height = "5'11\"/(180cm)",
@@ -3249,10 +3239,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 120,
+                            Id = new Guid("78e916d5-bfa9-6c21-7573-025cefe4d095"),
                             Age = 33,
                             Birthplace = "Wiener Neustadt, Austria",
-                            CountryId = 10,
+                            CountryId = new Guid("aaa12cd3-4b12-d434-874e-d5ee1f99397a"),
                             FirstName = "Dominic",
                             Gender = "Male",
                             Height = "6'1\"/(185cm)",
@@ -3264,10 +3254,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 121,
+                            Id = new Guid("3632c6ea-9e70-3321-7d88-e95620541c17"),
                             Age = 35,
                             Birthplace = "Podgorica, Montenegro",
-                            CountryId = 32,
+                            CountryId = new Guid("8c72bb01-f139-1b8e-d31f-2520d9c63b98"),
                             FirstName = "Milos",
                             Gender = "Male",
                             Height = "6'5\"/(196cm)",
@@ -3279,10 +3269,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 122,
+                            Id = new Guid("be0fdcce-baac-95fe-5888-6eaa690b9f7f"),
                             Age = 34,
                             Birthplace = "Buenos Aires, Argentina",
-                            CountryId = 7,
+                            CountryId = new Guid("37e511fc-60d5-4a3b-74bd-9b9b007a97fb"),
                             FirstName = "Diego",
                             Gender = "Male",
                             Height = "5'7\"/(170cm)",
@@ -3294,10 +3284,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 123,
+                            Id = new Guid("9f1d222d-1951-120d-fc46-171e11d7984d"),
                             Age = 28,
                             Birthplace = "Spisska Nova Ves, Slovakia",
-                            CountryId = 158,
+                            CountryId = new Guid("3303b1e1-a815-51fb-de5e-44ca510e189c"),
                             FirstName = "Lukas",
                             Gender = "Male",
                             Height = "6'4\"/(193cm)",
@@ -3309,10 +3299,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 124,
+                            Id = new Guid("b094ba37-082d-d580-ad35-b3be0a12462d"),
                             Age = 27,
                             Birthplace = "Lommel, Belgium",
-                            CountryId = 17,
+                            CountryId = new Guid("a07e8fbb-e337-1765-6b98-62fc46244a7a"),
                             FirstName = "Zizou",
                             Gender = "Male",
                             Height = "6'1\"/(185cm)",
@@ -3324,10 +3314,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 125,
+                            Id = new Guid("efe432f0-67e7-6a02-e307-700fe3fffbc2"),
                             Age = 24,
                             Birthplace = "Bortala, China",
-                            CountryId = 36,
+                            CountryId = new Guid("185127cd-c953-e57d-3c8e-21bc517e67a6"),
                             FirstName = "Bu",
                             Gender = "Male",
                             Height = "6'1\"/(185cm)",
@@ -3339,10 +3329,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 126,
+                            Id = new Guid("14ac1767-bd99-b7ab-f069-043392dfeffe"),
                             Age = 22,
                             Birthplace = "Hong Kong, China",
-                            CountryId = 36,
+                            CountryId = new Guid("185127cd-c953-e57d-3c8e-21bc517e67a6"),
                             FirstName = "Coleman",
                             Gender = "Male",
                             Height = "6'3\"/(191cm)",
@@ -3354,10 +3344,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 127,
+                            Id = new Guid("c9a25969-e661-ebcb-eefe-ac286198874e"),
                             Age = 26,
                             Birthplace = "Toulouse, France",
-                            CountryId = 61,
+                            CountryId = new Guid("133ed024-88c6-251c-6207-e2469cd1b5b9"),
                             FirstName = "Hugo",
                             Gender = "Male",
                             Height = "5'8\"/(173cm)",
@@ -3369,10 +3359,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 128,
+                            Id = new Guid("afda09dd-04f8-9b84-c1d5-9bcfcfd35ce1"),
                             Age = 27,
                             Birthplace = "Paris, France",
-                            CountryId = 61,
+                            CountryId = new Guid("133ed024-88c6-251c-6207-e2469cd1b5b9"),
                             FirstName = "Corentin",
                             Gender = "Male",
                             Height = "5'9\"/(175cm)",
@@ -3384,10 +3374,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 129,
+                            Id = new Guid("a90c8bf4-df15-9553-3cc1-4816c7d5c685"),
                             Age = 21,
                             Birthplace = "Split, Croatia",
-                            CountryId = 42,
+                            CountryId = new Guid("fafe6ec9-732a-44f2-e128-cf590e7bd447"),
                             FirstName = "Dino",
                             Gender = "Male",
                             Height = "6'2\"/(188cm)",
@@ -3399,10 +3389,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 130,
+                            Id = new Guid("dba280da-b60a-5409-8576-c3a534b33bae"),
                             Age = 24,
                             Birthplace = "Bournemouth, United Kingdom",
-                            CountryId = 186,
+                            CountryId = new Guid("e20b2069-d8fe-ec08-f16e-dc2fae4e6b20"),
                             FirstName = "Toby",
                             Gender = "Male",
                             Height = "6'0\"/(183cm)",
@@ -3414,10 +3404,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 131,
+                            Id = new Guid("2d8007c5-a721-72d4-66b5-1fc634aba712"),
                             Age = 24,
                             Birthplace = "Boulogne-sur-Mer, France",
-                            CountryId = 61,
+                            CountryId = new Guid("133ed024-88c6-251c-6207-e2469cd1b5b9"),
                             FirstName = "Terence",
                             Gender = "Male",
                             Height = "6'4\"/(193cm)",
@@ -3429,10 +3419,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 132,
+                            Id = new Guid("c7bae4af-c088-b015-e5da-4f03a9eb23c2"),
                             Age = 26,
                             Birthplace = "Sacramento, California, USA",
-                            CountryId = 187,
+                            CountryId = new Guid("e5948bc3-6513-2bab-7f42-e6ce69e45199"),
                             FirstName = "Jenson",
                             Gender = "Male",
                             Height = "6'4\"/(193cm)",
@@ -3444,10 +3434,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 1001,
+                            Id = new Guid("e3dfc357-f551-ad2f-7936-e86b327dfc7b"),
                             Age = 27,
                             Birthplace = "Moscow, Russia",
-                            CountryId = 113,
+                            CountryId = new Guid("71dd9f8e-0ac6-8873-e309-4710e48eeaef"),
                             FirstName = "Elena",
                             Gender = "Female",
                             Height = "6'0\"/(184cm)",
@@ -3459,10 +3449,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 1002,
+                            Id = new Guid("3aac233c-74a9-3b41-765c-ce1d4a40a5c0"),
                             Age = 28,
                             Birthplace = "Minsk, Belarus",
-                            CountryId = 16,
+                            CountryId = new Guid("55df2aa9-83f5-b024-1ec1-5f8a2df9e24b"),
                             FirstName = "Aryna",
                             Gender = "Female",
                             Height = "6'0\"/(182cm)",
@@ -3474,10 +3464,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 1003,
+                            Id = new Guid("93236ac1-e011-f6ef-997b-c6676e94ad98"),
                             Age = 19,
                             Birthplace = "Krasnoyarsk, Russia",
-                            CountryId = 144,
+                            CountryId = new Guid("7cd806df-4622-802c-1e6f-5ebbbd58762d"),
                             FirstName = "Mirra",
                             Gender = "Female",
                             Height = "5'9\"/(175cm)",
@@ -3489,10 +3479,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 1004,
+                            Id = new Guid("59bfa265-91e9-9c89-7761-81a1cf88f34a"),
                             Age = 32,
                             Birthplace = "Buffalo, New York, USA",
-                            CountryId = 187,
+                            CountryId = new Guid("e5948bc3-6513-2bab-7f42-e6ce69e45199"),
                             FirstName = "Jessica",
                             Gender = "Female",
                             Height = "5'7\"/(170cm)",
@@ -3504,10 +3494,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 1005,
+                            Id = new Guid("2aa029fb-c53d-b9cc-9c47-32a1c3ef7a67"),
                             Age = 22,
                             Birthplace = "Delray Beach, Florida, USA",
-                            CountryId = 187,
+                            CountryId = new Guid("e5948bc3-6513-2bab-7f42-e6ce69e45199"),
                             FirstName = "Coco",
                             Gender = "Female",
                             Height = "5'9\"/(175cm)",
@@ -3519,10 +3509,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 1006,
+                            Id = new Guid("a1d685c8-d217-f85b-6704-a7cbdcd1b2e7"),
                             Age = 32,
                             Birthplace = "Odesa, Ukraine",
-                            CountryId = 184,
+                            CountryId = new Guid("abcfdd20-fa0d-06da-8097-d34273efc7b3"),
                             FirstName = "Elina",
                             Gender = "Female",
                             Height = "5'9\"/(174cm)",
@@ -3534,10 +3524,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 1007,
+                            Id = new Guid("34fde92f-9e0c-cc68-3194-710d8379da76"),
                             Age = 30,
                             Birthplace = "Olomouc, Czech Republic",
-                            CountryId = 45,
+                            CountryId = new Guid("1265c601-0d79-510b-f5c2-dca5d6db2050"),
                             FirstName = "Karolina",
                             Gender = "Female",
                             Height = "5'11\"/(180cm)",
@@ -3549,10 +3539,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 1008,
+                            Id = new Guid("628ec3e3-1826-098c-a278-d1383635d32e"),
                             Age = 21,
                             Birthplace = "Vsetín, Czech Republic",
-                            CountryId = 45,
+                            CountryId = new Guid("1265c601-0d79-510b-f5c2-dca5d6db2050"),
                             FirstName = "Linda",
                             Gender = "Female",
                             Height = "5'10\"/(179cm)",
@@ -3564,10 +3554,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 1009,
+                            Id = new Guid("dc779c82-579f-ad02-dc81-52d5ec227da0"),
                             Age = 25,
                             Birthplace = "Warsaw, Poland",
-                            CountryId = 140,
+                            CountryId = new Guid("ac05715a-891e-88df-93cf-93012a398933"),
                             FirstName = "Iga",
                             Gender = "Female",
                             Height = "5'9\"/(175cm)",
@@ -3579,10 +3569,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 1010,
+                            Id = new Guid("f4fcbb01-548f-e476-c3f0-e0cd4fc063ae"),
                             Age = 24,
                             Birthplace = "Kyiv, Ukraine",
-                            CountryId = 184,
+                            CountryId = new Guid("abcfdd20-fa0d-06da-8097-d34273efc7b3"),
                             FirstName = "Marta",
                             Gender = "Female",
                             Height = "5'9\"/(175cm)",
@@ -3594,10 +3584,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 1011,
+                            Id = new Guid("227a4573-b90a-aec7-1e53-96f4a9bfb7ff"),
                             Age = 25,
                             Birthplace = "Dąbrowa Górnicza, Poland",
-                            CountryId = 140,
+                            CountryId = new Guid("ac05715a-891e-88df-93cf-93012a398933"),
                             FirstName = "Maja",
                             Gender = "Female",
                             Height = "5'5\"/(165cm)",
@@ -3609,10 +3599,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 1012,
+                            Id = new Guid("14856f1e-6e21-29bf-7691-b0fb90e8c35d"),
                             Age = 18,
                             Birthplace = "Torrance, California, USA",
-                            CountryId = 187,
+                            CountryId = new Guid("e5948bc3-6513-2bab-7f42-e6ce69e45199"),
                             FirstName = "Iva",
                             Gender = "Female",
                             Height = "5'8\"/(173cm)",
@@ -3624,10 +3614,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 1013,
+                            Id = new Guid("a888c817-36f5-056a-acf9-de515349d7d0"),
                             Age = 22,
                             Birthplace = "Zhigulyovsk, Russia",
-                            CountryId = 144,
+                            CountryId = new Guid("7cd806df-4622-802c-1e6f-5ebbbd58762d"),
                             FirstName = "Diana",
                             Gender = "Female",
                             Height = "5'8\"/(173cm)",
@@ -3639,10 +3629,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 1014,
+                            Id = new Guid("114bbdd6-4f74-cd7e-531d-69182830407b"),
                             Age = 29,
                             Birthplace = "Flawil, Switzerland",
-                            CountryId = 170,
+                            CountryId = new Guid("b17223a3-ff40-8c56-3136-e4c95b187f48"),
                             FirstName = "Belinda",
                             Gender = "Female",
                             Height = "5'9\"/(175cm)",
@@ -3654,10 +3644,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 1015,
+                            Id = new Guid("8c07f551-2091-be82-d2fa-2055903268b0"),
                             Age = 30,
                             Birthplace = "Leuven, Belgium",
-                            CountryId = 17,
+                            CountryId = new Guid("a07e8fbb-e337-1765-6b98-62fc46244a7a"),
                             FirstName = "Elise",
                             Gender = "Female",
                             Height = "5'10\"/(179cm)",
@@ -3669,10 +3659,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 1016,
+                            Id = new Guid("42c8b4f8-7261-174c-40fa-f8c86a11995b"),
                             Age = 20,
-                            Birthplace = "Charlotte, NorthCarolina,USA",
-                            CountryId = 32,
+                            Birthplace = "Charlotte, North Carolina, USA",
+                            CountryId = new Guid("8c72bb01-f139-1b8e-d31f-2520d9c63b98"),
                             FirstName = "Victoria",
                             Gender = "Female",
                             Height = "5'9\"/(176cm)",
@@ -3684,10 +3674,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 1017,
+                            Id = new Guid("bcf6db6e-42b0-278c-2ef9-d9d75e229bf5"),
                             Age = 36,
                             Birthplace = "Bucharest, Romania",
-                            CountryId = 143,
+                            CountryId = new Guid("a5a94fd0-3af9-a186-fbde-1ba8c50f141c"),
                             FirstName = "Sorana",
                             Gender = "Female",
                             Height = "5'9\"/(176cm)",
@@ -3699,10 +3689,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 1018,
+                            Id = new Guid("fcaf2edb-1c84-bf63-e670-7f50f0a14cba"),
                             Age = 25,
                             Birthplace = "Freehold, New Jersey, USA",
-                            CountryId = 187,
+                            CountryId = new Guid("e5948bc3-6513-2bab-7f42-e6ce69e45199"),
                             FirstName = "Amanda",
                             Gender = "Female",
                             Height = "5'11\"/(180cm)",
@@ -3714,10 +3704,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 1019,
+                            Id = new Guid("64463e3f-a727-cf17-2035-825f925d1785"),
                             Age = 29,
                             Birthplace = "Chuo-ku, Osaka, Japan",
-                            CountryId = 86,
+                            CountryId = new Guid("f10c1873-805a-8efd-4570-4e3acd4bb54a"),
                             FirstName = "Naomi",
                             Gender = "Female",
                             Height = "5'11\"/(180cm)",
@@ -3729,10 +3719,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 1020,
+                            Id = new Guid("62efe32c-4d1e-e691-9ecb-fd5f99249493"),
                             Age = 21,
                             Birthplace = "Quezon City, Philippines",
-                            CountryId = 139,
+                            CountryId = new Guid("b011104c-0e25-9420-322f-40eed30b96d5"),
                             FirstName = "Alexandra",
                             Gender = "Female",
                             Height = "5'9\"/(175cm)",
@@ -3744,10 +3734,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 1021,
+                            Id = new Guid("adc85bbc-531e-cec6-322c-6d17cd0aa433"),
                             Age = 31,
                             Birthplace = "Rock Island, Illinois, USA",
-                            CountryId = 187,
+                            CountryId = new Guid("e5948bc3-6513-2bab-7f42-e6ce69e45199"),
                             FirstName = "Madison",
                             Gender = "Female",
                             Height = "5'10\"/(178cm)",
@@ -3759,10 +3749,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 1022,
+                            Id = new Guid("ce4f8ed9-323e-9c90-bcb0-3a18f885114c"),
                             Age = 24,
                             Birthplace = "Shiyan, Hubei, China",
-                            CountryId = 36,
+                            CountryId = new Guid("185127cd-c953-e57d-3c8e-21bc517e67a6"),
                             FirstName = "Qinwen",
                             Gender = "Female",
                             Height = "5'10\"/(178cm)",
@@ -3774,10 +3764,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 1023,
+                            Id = new Guid("90b13e11-c115-f35c-b1b6-d4688cabdc78"),
                             Age = 27,
                             Birthplace = "Moscow, Russia",
-                            CountryId = 144,
+                            CountryId = new Guid("7cd806df-4622-802c-1e6f-5ebbbd58762d"),
                             FirstName = "Anna",
                             Gender = "Female",
                             Height = "5'9\"/(175cm)",
@@ -3789,10 +3779,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 1024,
+                            Id = new Guid("791650e5-18ff-6b0b-5ca2-2a93eb26b032"),
                             Age = 29,
                             Birthplace = "Riga, Latvia",
-                            CountryId = 94,
+                            CountryId = new Guid("bc9618b2-5e31-be53-774d-31d580708859"),
                             FirstName = "Jelena",
                             Gender = "Female",
                             Height = "5'10\"/(178cm)",
@@ -3804,10 +3794,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 1025,
+                            Id = new Guid("e57d6bbf-ec56-8620-a9eb-e56aac0740bf"),
                             Age = 26,
-                            Birthplace = "King ofPrussiaPennsylvania,    USA",
-                            CountryId = 187,
+                            Birthplace = "King of Prussia, Pennsylvania, USA",
+                            CountryId = new Guid("e5948bc3-6513-2bab-7f42-e6ce69e45199"),
                             FirstName = "Ann",
                             Gender = "Female",
                             Height = "5'7\"/(170cm)",
@@ -3819,10 +3809,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 1026,
+                            Id = new Guid("5021c9e1-5bff-2345-92e9-59e2462ed91a"),
                             Age = 28,
                             Birthplace = "Prague, Czech Republic",
-                            CountryId = 45,
+                            CountryId = new Guid("1265c601-0d79-510b-f5c2-dca5d6db2050"),
                             FirstName = "Marie",
                             Gender = "Female",
                             Height = "5'11\"/(180cm)",
@@ -3834,10 +3824,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 1027,
+                            Id = new Guid("c90f3ce8-88e3-ac63-a114-d23a4938eab1"),
                             Age = 25,
                             Birthplace = "Saratov, Russia",
-                            CountryId = 144,
+                            CountryId = new Guid("7cd806df-4622-802c-1e6f-5ebbbd58762d"),
                             FirstName = "Anastasia",
                             Gender = "Female",
                             Height = "5'9\"/(175cm)",
@@ -3849,10 +3839,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 1028,
+                            Id = new Guid("cb83e9dc-0495-3495-97f8-e5dcf4da1cc4"),
                             Age = 25,
-                            Birthplace = "New York City, New York,USA",
-                            CountryId = 187,
+                            Birthplace = "New York City, New York, USA",
+                            CountryId = new Guid("e5948bc3-6513-2bab-7f42-e6ce69e45199"),
                             FirstName = "Emma",
                             Gender = "Female",
                             Height = "5'7\"/(170cm)",
@@ -3864,10 +3854,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 1029,
+                            Id = new Guid("af40efc1-3554-c8b4-9d4e-8c68a6f69e3b"),
                             Age = 20,
                             Birthplace = "Prague, Czech Republic",
-                            CountryId = 45,
+                            CountryId = new Guid("1265c601-0d79-510b-f5c2-dca5d6db2050"),
                             FirstName = "Nikola",
                             Gender = "Female",
                             Height = "5'8\"/(173cm)",
@@ -3879,10 +3869,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 1030,
+                            Id = new Guid("1025dd50-949e-60a6-490f-88fc55f54d39"),
                             Age = 24,
                             Birthplace = "Montreal, Canada",
-                            CountryId = 32,
+                            CountryId = new Guid("8c72bb01-f139-1b8e-d31f-2520d9c63b98"),
                             FirstName = "Leylah",
                             Gender = "Female",
                             Height = "5'6\"/(168cm)",
@@ -3894,10 +3884,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 1031,
+                            Id = new Guid("d2ad0922-9b10-c775-6cf6-d62f19359c36"),
                             Age = 31,
                             Birthplace = "Athens, Greece",
-                            CountryId = 67,
+                            CountryId = new Guid("ad04f235-a5b4-84ef-fea5-0c81750d6db8"),
                             FirstName = "Maria",
                             Gender = "Female",
                             Height = "5'8\"/(172cm)",
@@ -3909,10 +3899,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 1032,
+                            Id = new Guid("700ad3fc-5367-4bf1-43c8-dc14bbba0b4b"),
                             Age = 20,
-                            Birthplace = "Hrušovany nadJevišovkou,   Czech       Republic",
-                            CountryId = 45,
+                            Birthplace = "Hrušovany nad Jevišovkou, Czech Republic",
+                            CountryId = new Guid("1265c601-0d79-510b-f5c2-dca5d6db2050"),
                             FirstName = "Sara",
                             Gender = "Female",
                             Height = "5'5\"/(165cm)",
@@ -3924,10 +3914,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 1033,
+                            Id = new Guid("a59451c6-a488-e9ae-9f64-f415cb1e67b0"),
                             Age = 31,
                             Birthplace = "Chelyabinsk, Russia",
-                            CountryId = 144,
+                            CountryId = new Guid("7cd806df-4622-802c-1e6f-5ebbbd58762d"),
                             FirstName = "Ekaterina",
                             Gender = "Female",
                             Height = "5'9\"/(175cm)",
@@ -3939,10 +3929,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 1034,
+                            Id = new Guid("40965ba9-defe-6d07-c908-16ef6cf27ac1"),
                             Age = 24,
                             Birthplace = "Nice, France",
-                            CountryId = 61,
+                            CountryId = new Guid("133ed024-88c6-251c-6207-e2469cd1b5b9"),
                             FirstName = "Diane",
                             Gender = "Female",
                             Height = "5'7\"/(170cm)",
@@ -3954,10 +3944,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 1035,
+                            Id = new Guid("dd4333cf-cf89-c851-b98e-f95561994eb7"),
                             Age = 30,
-                            Birthplace = "Castelnuovo diGarfagnana, Italy",
-                            CountryId = 84,
+                            Birthplace = "Castelnuovo di Garfagnana, Italy",
+                            CountryId = new Guid("5d5e3c89-2beb-f2bd-7773-ce812f45bebe"),
                             FirstName = "Jasmine",
                             Gender = "Female",
                             Height = "5'4\"/(163cm)",
@@ -3969,10 +3959,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 1036,
+                            Id = new Guid("906013d4-0a72-c901-a58e-eee02c4e9fad"),
                             Age = 30,
                             Birthplace = "Osijek, Croatia",
-                            CountryId = 42,
+                            CountryId = new Guid("fafe6ec9-732a-44f2-e128-cf590e7bd447"),
                             FirstName = "Donna",
                             Gender = "Female",
                             Height = "5'10\"/(179cm)",
@@ -3984,10 +3974,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 1037,
+                            Id = new Guid("f292a26b-d021-2ada-21eb-2bc16bcf9919"),
                             Age = 25,
                             Birthplace = "Cincinnati, Ohio, USA",
-                            CountryId = 187,
+                            CountryId = new Guid("e5948bc3-6513-2bab-7f42-e6ce69e45199"),
                             FirstName = "Peyton",
                             Gender = "Female",
                             Height = "5'8\"/(173cm)",
@@ -3999,10 +3989,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 1038,
+                            Id = new Guid("8881e88b-4348-9eb2-4e9f-c1f0faee4daf"),
                             Age = 28,
                             Birthplace = "Chisinau, Moldova",
-                            CountryId = 165,
+                            CountryId = new Guid("6cd49520-ad18-21af-4b07-3b15a7626b1d"),
                             FirstName = "Cristina",
                             Gender = "Female",
                             Height = "5'9\"/(175cm)",
@@ -4014,10 +4004,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 1039,
+                            Id = new Guid("d0f145fb-31e6-d59c-e08c-5cad4a4f28ec"),
                             Age = 25,
                             Birthplace = "Shenzhen, China",
-                            CountryId = 36,
+                            CountryId = new Guid("185127cd-c953-e57d-3c8e-21bc517e67a6"),
                             FirstName = "Xinyu",
                             Gender = "Female",
                             Height = "6'0\"/(182cm)",
@@ -4029,10 +4019,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 1040,
+                            Id = new Guid("f985301c-b144-4fa7-2f87-ce7b7a13f593"),
                             Age = 24,
                             Birthplace = "Kyiv, Ukraine",
-                            CountryId = 184,
+                            CountryId = new Guid("abcfdd20-fa0d-06da-8097-d34273efc7b3"),
                             FirstName = "Daria",
                             Gender = "Female",
                             Height = "5'7\"/(170cm)",
@@ -4044,10 +4034,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 1041,
+                            Id = new Guid("e84166c7-adb6-aad0-7a2c-136242ddf7d7"),
                             Age = 28,
                             Birthplace = "Dusseldorf, Germany",
-                            CountryId = 9,
+                            CountryId = new Guid("38cb61dd-3fb5-4481-fa07-bcc7d36f5690"),
                             FirstName = "Kimberly",
                             Gender = "Female",
                             Height = "5'7\"/(170cm)",
@@ -4059,10 +4049,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 1042,
+                            Id = new Guid("24473dea-3249-f23f-44ca-0bbc5a665ad6"),
                             Age = 22,
                             Birthplace = "Perth, Australia",
-                            CountryId = 9,
+                            CountryId = new Guid("38cb61dd-3fb5-4481-fa07-bcc7d36f5690"),
                             FirstName = "Talia",
                             Gender = "Female",
                             Height = "5'9\"/(175cm)",
@@ -4074,10 +4064,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 1043,
+                            Id = new Guid("89249194-7035-51e2-d8e5-74115cccf479"),
                             Age = 27,
                             Birthplace = "Olenegorsk, Russia",
-                            CountryId = 144,
+                            CountryId = new Guid("7cd806df-4622-802c-1e6f-5ebbbd58762d"),
                             FirstName = "Liudmila",
                             Gender = "Female",
                             Height = "5'11\"/(180cm)",
@@ -4089,10 +4079,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 1044,
+                            Id = new Guid("e34c274e-9d99-20e3-b865-85934b6a4402"),
                             Age = 24,
                             Birthplace = "Washington, D.C., USA",
-                            CountryId = 187,
+                            CountryId = new Guid("e5948bc3-6513-2bab-7f42-e6ce69e45199"),
                             FirstName = "Hailey",
                             Gender = "Female",
                             Height = "5'9\"/(175cm)",
@@ -4104,10 +4094,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 1045,
+                            Id = new Guid("7214e7d9-cb02-d983-8e9a-8b0bdee06fd0"),
                             Age = 30,
                             Birthplace = "Brno, Czech Republic",
-                            CountryId = 45,
+                            CountryId = new Guid("1265c601-0d79-510b-f5c2-dca5d6db2050"),
                             FirstName = "Barbora",
                             Gender = "Female",
                             Height = "5'10\"/(178cm)",
@@ -4119,10 +4109,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 1046,
+                            Id = new Guid("09943bf5-f412-57c6-12d7-81dc3c45ebb0"),
                             Age = 24,
                             Birthplace = "Jakarta, Indonesia",
-                            CountryId = 79,
+                            CountryId = new Guid("53fa4969-ca32-0bd3-303b-a9db2ac86f1c"),
                             FirstName = "Janice",
                             Gender = "Female",
                             Height = "5'6\"/(168cm)",
@@ -4134,10 +4124,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 1047,
+                            Id = new Guid("b43903ed-2f3a-8ec0-19f3-c82765849791"),
                             Age = 28,
                             Birthplace = "Łódź, Poland",
-                            CountryId = 140,
+                            CountryId = new Guid("ac05715a-891e-88df-93cf-93012a398933"),
                             FirstName = "Magdalena",
                             Gender = "Female",
                             Height = "5'7\"/(171cm)",
@@ -4149,10 +4139,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 1048,
+                            Id = new Guid("ebd8492b-5880-007c-3d03-81e574f47735"),
                             Age = 34,
                             Birthplace = "Louny, Czech Republic",
-                            CountryId = 45,
+                            CountryId = new Guid("1265c601-0d79-510b-f5c2-dca5d6db2050"),
                             FirstName = "Karolina",
                             Gender = "Female",
                             Height = "6'1\"/(186cm)",
@@ -4164,10 +4154,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 1049,
+                            Id = new Guid("762cda9e-00ff-db1b-a623-30dda5100669"),
                             Age = 24,
                             Birthplace = "London, United Kingdom",
-                            CountryId = 186,
+                            CountryId = new Guid("e20b2069-d8fe-ec08-f16e-dc2fae4e6b20"),
                             FirstName = "Sonay",
                             Gender = "Female",
                             Height = "5'7\"/(170cm)",
@@ -4179,10 +4169,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 1050,
+                            Id = new Guid("96f48553-24e6-9dab-9e22-30cd49e524be"),
                             Age = 26,
                             Birthplace = "Kakhovka, Ukraine",
-                            CountryId = 184,
+                            CountryId = new Guid("abcfdd20-fa0d-06da-8097-d34273efc7b3"),
                             FirstName = "Yuliia",
                             Gender = "Female",
                             Height = "5'8\"/(172cm)",
@@ -4194,10 +4184,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 1051,
+                            Id = new Guid("abdab68f-2ce1-cd4e-4aab-54cd4a9d1bd6"),
                             Age = 29,
                             Birthplace = "Nova Kakhovka, Ukraine",
-                            CountryId = 184,
+                            CountryId = new Guid("abcfdd20-fa0d-06da-8097-d34273efc7b3"),
                             FirstName = "Anhelina",
                             Gender = "Female",
                             Height = "5'10\"/(179cm)",
@@ -4209,10 +4199,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 1052,
+                            Id = new Guid("4c0924b1-ddbf-9000-b3cb-e3b7a8ab0736"),
                             Age = 30,
                             Birthplace = "Cairo, Egypt",
-                            CountryId = 52,
+                            CountryId = new Guid("4c948dae-5b45-5037-ba9c-977cceab6750"),
                             FirstName = "Mayar",
                             Gender = "Female",
                             Height = "5'11\"/(180cm)",
@@ -4224,10 +4214,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 1053,
+                            Id = new Guid("2f0ff947-02ad-998d-bc8f-89ac386c565d"),
                             Age = 22,
                             Birthplace = "Nakhon Ratchasima, Thailand",
-                            CountryId = 174,
+                            CountryId = new Guid("ee0d57c9-f60c-b24e-1be2-a76aa645bc22"),
                             FirstName = "Lanlana",
                             Gender = "Female",
                             Height = "5'8\"/(173cm)",
@@ -4239,10 +4229,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 1054,
+                            Id = new Guid("01cd2833-4709-690b-40d3-b63fea79cc05"),
                             Age = 23,
                             Birthplace = "Copenhagen, Denmark",
-                            CountryId = 47,
+                            CountryId = new Guid("aeee815e-f648-88b2-cb54-93e6c9921b10"),
                             FirstName = "Clara",
                             Gender = "Female",
                             Height = "6'0\"/(182cm)",
@@ -4254,10 +4244,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 1055,
+                            Id = new Guid("20812449-6b03-3428-5df0-36ddd7975aa3"),
                             Age = 22,
                             Birthplace = "Spring, Texas, USA",
-                            CountryId = 187,
+                            CountryId = new Guid("e5948bc3-6513-2bab-7f42-e6ce69e45199"),
                             FirstName = "Ashlyn",
                             Gender = "Female",
                             Height = "6'1\"/(185cm)",
@@ -4269,10 +4259,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 1056,
+                            Id = new Guid("329be20f-7f3a-7dc9-40d8-ab7ca67cdccf"),
                             Age = 31,
                             Birthplace = "Hamburg, Germany",
-                            CountryId = 65,
+                            CountryId = new Guid("5f096f4b-8929-65de-fd36-db7558756437"),
                             FirstName = "Tamara",
                             Gender = "Female",
                             Height = "5'7\"/(170cm)",
@@ -4284,10 +4274,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 1057,
+                            Id = new Guid("26f96264-3feb-1f9a-1cf1-adb64ef8b9fe"),
                             Age = 18,
                             Birthplace = "Lienz, Austria",
-                            CountryId = 10,
+                            CountryId = new Guid("aaa12cd3-4b12-d434-874e-d5ee1f99397a"),
                             FirstName = "Lilli",
                             Gender = "Female",
                             Height = "5'9\"/(175cm)",
@@ -4299,10 +4289,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 1058,
+                            Id = new Guid("2cffc646-d79c-c187-fe74-596057eeef4b"),
                             Age = 30,
                             Birthplace = "Leicester, United Kingdom",
-                            CountryId = 186,
+                            CountryId = new Guid("e20b2069-d8fe-ec08-f16e-dc2fae4e6b20"),
                             FirstName = "Katie",
                             Gender = "Female",
                             Height = "5'11\"/(180cm)",
@@ -4314,10 +4304,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 1059,
+                            Id = new Guid("f02dfbe2-b059-faff-3609-533baaee22e1"),
                             Age = 24,
                             Birthplace = "Cincinnati, Ohio, USA",
-                            CountryId = 187,
+                            CountryId = new Guid("e5948bc3-6513-2bab-7f42-e6ce69e45199"),
                             FirstName = "Caty",
                             Gender = "Female",
                             Height = "5'10\"/(178cm)",
@@ -4329,10 +4319,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 1060,
+                            Id = new Guid("fe24d703-a39a-d332-2991-75170ccc1afc"),
                             Age = 28,
                             Birthplace = "Bucharest, Romania",
-                            CountryId = 143,
+                            CountryId = new Guid("a5a94fd0-3af9-a186-fbde-1ba8c50f141c"),
                             FirstName = "Elena-Gabriela",
                             Gender = "Female",
                             Height = "5'8\"/(172cm)",
@@ -4344,10 +4334,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 1061,
+                            Id = new Guid("cf724c07-c504-b9dd-92c7-5a3950d110e5"),
                             Age = 28,
                             Birthplace = "New York City, USA",
-                            CountryId = 165,
+                            CountryId = new Guid("6cd49520-ad18-21af-4b07-3b15a7626b1d"),
                             FirstName = "Paula",
                             Gender = "Female",
                             Height = "5'11\"/(180cm)",
@@ -4359,10 +4349,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 1062,
+                            Id = new Guid("e0ce359e-4d5d-1080-00d8-95209057c3d3"),
                             Age = 25,
                             Birthplace = "Kyiv, Ukraine",
-                            CountryId = 184,
+                            CountryId = new Guid("abcfdd20-fa0d-06da-8097-d34273efc7b3"),
                             FirstName = "Oleksandra",
                             Gender = "Female",
                             Height = "5'8\"/(173cm)",
@@ -4374,10 +4364,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 1063,
+                            Id = new Guid("d35a44b3-5aec-c96e-52a1-936e950d5ec4"),
                             Age = 24,
                             Birthplace = "Istanbul, Turkey",
-                            CountryId = 180,
+                            CountryId = new Guid("030a4b3c-9650-a761-143c-b5d512416450"),
                             FirstName = "Zeynep",
                             Gender = "Female",
                             Height = "5'7\"/(170cm)",
@@ -4389,10 +4379,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 1064,
+                            Id = new Guid("0b60b537-9557-ce79-b1b0-5d7906e3a677"),
                             Age = 25,
                             Birthplace = "Atlanta, Georgia, USA",
-                            CountryId = 187,
+                            CountryId = new Guid("e5948bc3-6513-2bab-7f42-e6ce69e45199"),
                             FirstName = "Alycia",
                             Gender = "Female",
                             Height = "6'1\"/(185cm)",
@@ -4404,10 +4394,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 1065,
+                            Id = new Guid("dd9c901f-2317-5c07-2648-66a51f58597a"),
                             Age = 25,
                             Birthplace = "Ancona, Italy",
-                            CountryId = 84,
+                            CountryId = new Guid("5d5e3c89-2beb-f2bd-7773-ce812f45bebe"),
                             FirstName = "Elisabetta",
                             Gender = "Female",
                             Height = "5'5\"/(166cm)",
@@ -4419,10 +4409,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 1066,
+                            Id = new Guid("f2e1186d-814d-4e9d-2e13-976ecd19354a"),
                             Age = 31,
                             Birthplace = "Moscow, Russia",
-                            CountryId = 88,
+                            CountryId = new Guid("71dd9f8e-0ac6-8873-e309-4710e48eeaef"),
                             FirstName = "Yulia",
                             Gender = "Female",
                             Height = "5'4\"/(163cm)",
@@ -4434,10 +4424,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 1067,
+                            Id = new Guid("9a93b546-0211-6944-e96f-535435808e9a"),
                             Age = 25,
                             Birthplace = "Yekaterinburg, Russia",
-                            CountryId = 189,
+                            CountryId = new Guid("6e20db1b-a1ea-86e5-8ed2-59eb01b8f091"),
                             FirstName = "Kamilla",
                             Gender = "Female",
                             Height = "5'7\"/(170cm)",
@@ -4449,10 +4439,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 1068,
+                            Id = new Guid("bd537c65-bf21-f85c-78bb-5f0005bcf773"),
                             Age = 24,
                             Birthplace = "Cúcuta, Colombia",
-                            CountryId = 37,
+                            CountryId = new Guid("a1d65bf8-02d6-df04-ce84-9b614353f054"),
                             FirstName = "Camila",
                             Gender = "Female",
                             Height = "5'3\"/(160cm)",
@@ -4464,10 +4454,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 1069,
+                            Id = new Guid("f0329f64-989c-edd3-d7ce-a7c6a7a8000f"),
                             Age = 39,
                             Birthplace = "Bad Saulgau, Germany",
-                            CountryId = 65,
+                            CountryId = new Guid("5f096f4b-8929-65de-fd36-db7558756437"),
                             FirstName = "Tatjana",
                             Gender = "Female",
                             Height = "5'8\"/(172cm)",
@@ -4479,10 +4469,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 1070,
+                            Id = new Guid("8f17201d-9a73-0171-73ef-5324c2318cd7"),
                             Age = 22,
                             Birthplace = "Moscow, Russia",
-                            CountryId = 189,
+                            CountryId = new Guid("6e20db1b-a1ea-86e5-8ed2-59eb01b8f091"),
                             FirstName = "Maria",
                             Gender = "Female",
                             Height = "5'6\"/(167cm)",
@@ -4494,10 +4484,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 1071,
+                            Id = new Guid("903eabb3-e155-276c-4440-4e43e4f47a1c"),
                             Age = 28,
                             Birthplace = "Bucharest, Romania",
-                            CountryId = 143,
+                            CountryId = new Guid("a5a94fd0-3af9-a186-fbde-1ba8c50f141c"),
                             FirstName = "Jaqueline",
                             Gender = "Female",
                             Height = "5'11\"/(180cm)",
@@ -4509,10 +4499,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 1072,
+                            Id = new Guid("9a64d86a-4603-9821-63c6-06ef38c98dd8"),
                             Age = 28,
                             Birthplace = "Moscow, Russia",
-                            CountryId = 61,
+                            CountryId = new Guid("133ed024-88c6-251c-6207-e2469cd1b5b9"),
                             FirstName = "Anna",
                             Gender = "Female",
                             Height = "5'10\"/(179cm)",
@@ -4524,55 +4514,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 1073,
+                            Id = new Guid("b788aa3d-4899-a917-fbec-4bf950f2f8b4"),
                             Age = 24,
-                            Birthplace = "Walnut Creek, California, USA",
-                            CountryId = 187,
-                            FirstName = "Katie",
-                            Gender = "Female",
-                            Height = "5'7\"/(170cm)",
-                            LastName = "Volynets",
-                            Points = 919,
-                            Rank = 73,
-                            TournamentsPlayed = 27,
-                            Weight = "130 lbs/(59kg)"
-                        },
-                        new
-                        {
-                            Id = 1074,
-                            Age = 29,
-                            Birthplace = "Tolyatti, Russia",
-                            CountryId = 9,
-                            FirstName = "Daria",
-                            Gender = "Female",
-                            Height = "5'7\"/(170cm)",
-                            LastName = "Kasatkina",
-                            Points = 913,
-                            Rank = 74,
-                            TournamentsPlayed = 25,
-                            Weight = "137 lbs/(62kg)"
-                        },
-                        new
-                        {
-                            Id = 1075,
-                            Age = 29,
-                            Birthplace = "Szeghalom, Hungary",
-                            CountryId = 76,
-                            FirstName = "Anna",
-                            Gender = "Female",
-                            Height = "5'9\"/(175cm)",
-                            LastName = "Bondar",
-                            Points = 913,
-                            Rank = 75,
-                            TournamentsPlayed = 28,
-                            Weight = "137 lbs/(62kg)"
-                        },
-                        new
-                        {
-                            Id = 1076,
-                            Age = 24,
-                            Birthplace = "Vienna, Austria",
-                            CountryId = 10,
+                            Birthplace = "Lienz, Austria",
+                            CountryId = new Guid("aaa12cd3-4b12-d434-874e-d5ee1f99397a"),
                             FirstName = "Sinja",
                             Gender = "Female",
                             Height = "5'8\"/(172cm)",
@@ -4584,10 +4529,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 1077,
+                            Id = new Guid("777f58f4-fb79-5447-702f-4a24341b539b"),
                             Age = 34,
                             Birthplace = "Poznań, Poland",
-                            CountryId = 140,
+                            CountryId = new Guid("ac05715a-891e-88df-93cf-93012a398933"),
                             FirstName = "Magda",
                             Gender = "Female",
                             Height = "5'7\"/(171cm)",
@@ -4599,10 +4544,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 1078,
+                            Id = new Guid("a39cc0bb-822f-5d1c-e182-d0e5edf49820"),
                             Age = 20,
                             Birthplace = "Zagreb, Croatia",
-                            CountryId = 42,
+                            CountryId = new Guid("fafe6ec9-732a-44f2-e128-cf590e7bd447"),
                             FirstName = "Petra",
                             Gender = "Female",
                             Height = "5'9\"/(175cm)",
@@ -4614,10 +4559,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 1079,
+                            Id = new Guid("07a2a155-37fe-2e65-5814-996fd39df5fe"),
                             Age = 20,
                             Birthplace = "Naples, Florida, USA",
-                            CountryId = 165,
+                            CountryId = new Guid("6cd49520-ad18-21af-4b07-3b15a7626b1d"),
                             FirstName = "Kaitlin",
                             Gender = "Female",
                             Height = "5'7\"/(170cm)",
@@ -4629,10 +4574,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 1080,
+                            Id = new Guid("d643e042-f677-2f4a-3769-cd9a29cc4189"),
                             Age = 19,
                             Birthplace = "Moscow, Russia",
-                            CountryId = 144,
+                            CountryId = new Guid("7cd806df-4622-802c-1e6f-5ebbbd58762d"),
                             FirstName = "Alina",
                             Gender = "Female",
                             Height = "5'9\"/(175cm)",
@@ -4644,10 +4589,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 1081,
+                            Id = new Guid("8ee5b3c9-8d02-bbc1-4a0f-774064ad9a35"),
                             Age = 25,
                             Birthplace = "Taixing, Jiangsu, China",
-                            CountryId = 36,
+                            CountryId = new Guid("185127cd-c953-e57d-3c8e-21bc517e67a6"),
                             FirstName = "Xiyu",
                             Gender = "Female",
                             Height = "5'11\"/(180cm)",
@@ -4659,10 +4604,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 1082,
+                            Id = new Guid("73bb0615-9974-83c3-8269-93caa85a0cb9"),
                             Age = 34,
                             Birthplace = "Zurich, Switzerland",
-                            CountryId = 170,
+                            CountryId = new Guid("b17223a3-ff40-8c56-3136-e4c95b187f48"),
                             FirstName = "Viktorija",
                             Gender = "Female",
                             Height = "5'7\"/(169cm)",
@@ -4674,10 +4619,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 1083,
+                            Id = new Guid("deada995-ceac-fbe2-d434-4f391e44653f"),
                             Age = 28,
                             Birthplace = "Kaposvár, Hungary",
-                            CountryId = 76,
+                            CountryId = new Guid("d3ff130b-5386-50ad-568a-09890b9fa9b9"),
                             FirstName = "Panna",
                             Gender = "Female",
                             Height = "5'7\"/(170cm)",
@@ -4689,10 +4634,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 1084,
+                            Id = new Guid("1f7a0998-b142-5682-d75a-4e1f3011c2cf"),
                             Age = 24,
                             Birthplace = "Chanthaburi, Thailand",
-                            CountryId = 174,
+                            CountryId = new Guid("ee0d57c9-f60c-b24e-1be2-a76aa645bc22"),
                             FirstName = "Mananchaya",
                             Gender = "Female",
                             Height = "5'6\"/(168cm)",
@@ -4704,10 +4649,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 1085,
+                            Id = new Guid("c90e5e41-1fe5-b43b-fdfa-206ed2611dd9"),
                             Age = 37,
                             Birthplace = "Tianjin, China",
-                            CountryId = 36,
+                            CountryId = new Guid("185127cd-c953-e57d-3c8e-21bc517e67a6"),
                             FirstName = "Shuai",
                             Gender = "Female",
                             Height = "5'10\"/(177cm)",
@@ -4719,10 +4664,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 1086,
+                            Id = new Guid("742f6674-0807-6387-b06f-7fccde55860e"),
                             Age = 30,
                             Birthplace = "Hradec Králové, Czech Republic",
-                            CountryId = 45,
+                            CountryId = new Guid("1265c601-0d79-510b-f5c2-dca5d6db2050"),
                             FirstName = "Katerina",
                             Gender = "Female",
                             Height = "5'9\"/(174cm)",
@@ -4734,10 +4679,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 1087,
+                            Id = new Guid("a07cad03-7503-3703-0127-8cb36e4d07d1"),
                             Age = 20,
                             Birthplace = "Perth, Australia",
-                            CountryId = 9,
+                            CountryId = new Guid("38cb61dd-3fb5-4481-fa07-bcc7d36f5690"),
                             FirstName = "Taylah",
                             Gender = "Female",
                             Height = "5'8\"/(172cm)",
@@ -4749,10 +4694,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 1088,
+                            Id = new Guid("f46c664d-d9a4-65c6-f467-aa67cd9fd3de"),
                             Age = 19,
                             Birthplace = "Prague, Czech Republic",
-                            CountryId = 45,
+                            CountryId = new Guid("1265c601-0d79-510b-f5c2-dca5d6db2050"),
                             FirstName = "Tereza",
                             Gender = "Female",
                             Height = "5'10\"/(178cm)",
@@ -4764,10 +4709,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 1089,
+                            Id = new Guid("f72b8741-39b5-474b-e9d7-8f76948a10f8"),
                             Age = 30,
                             Birthplace = "Chicago, Illinois, USA",
-                            CountryId = 187,
+                            CountryId = new Guid("e5948bc3-6513-2bab-7f42-e6ce69e45199"),
                             FirstName = "Taylor",
                             Gender = "Female",
                             Height = "5'7\"/(170cm)",
@@ -4779,10 +4724,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 1090,
+                            Id = new Guid("0cef4f8a-ac1b-38a7-3078-9e63b6e10fd4"),
                             Age = 20,
                             Birthplace = "Grosse Pointe, Michigan, USA",
-                            CountryId = 9,
+                            CountryId = new Guid("38cb61dd-3fb5-4481-fa07-bcc7d36f5690"),
                             FirstName = "Maya",
                             Gender = "Female",
                             Height = "5'7\"/(170cm)",
@@ -4794,10 +4739,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 1091,
+                            Id = new Guid("cee30799-42bc-db04-b50d-9c68565dbdef"),
                             Age = 23,
                             Birthplace = "Oroslavje, Croatia",
-                            CountryId = 42,
+                            CountryId = new Guid("fafe6ec9-732a-44f2-e128-cf590e7bd447"),
                             FirstName = "Antonia",
                             Gender = "Female",
                             Height = "5'9\"/(175cm)",
@@ -4809,10 +4754,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 1092,
+                            Id = new Guid("7d36620c-686a-8f01-5c43-5af4d12fd433"),
                             Age = 31,
                             Birthplace = "Montpellier, France",
-                            CountryId = 61,
+                            CountryId = new Guid("133ed024-88c6-251c-6207-e2469cd1b5b9"),
                             FirstName = "Leolia",
                             Gender = "Female",
                             Height = "5'6\"/(168cm)",
@@ -4824,10 +4769,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 1093,
+                            Id = new Guid("67bd1be1-e7db-ad71-871b-de84d228422f"),
                             Age = 23,
                             Birthplace = "Moscow, Russia",
-                            CountryId = 45,
+                            CountryId = new Guid("1265c601-0d79-510b-f5c2-dca5d6db2050"),
                             FirstName = "Darja",
                             Gender = "Female",
                             Height = "5'8\"/(173cm)",
@@ -4839,10 +4784,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 1094,
+                            Id = new Guid("ab44a1b3-9dfc-4792-b0f0-e3c98f0b2a6e"),
                             Age = 29,
                             Birthplace = "Mexico City, Mexico",
-                            CountryId = 111,
+                            CountryId = new Guid("a9652dc0-ac92-433b-dd92-d6598149823b"),
                             FirstName = "Renata",
                             Gender = "Female",
                             Height = "5'3\"/(160cm)",
@@ -4854,10 +4799,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 1095,
+                            Id = new Guid("28e63e7c-60bd-4e5a-497c-3a7b1d9fabf0"),
                             Age = 26,
                             Birthplace = "Thousand Oaks, California, USA",
-                            CountryId = 187,
+                            CountryId = new Guid("e5948bc3-6513-2bab-7f42-e6ce69e45199"),
                             FirstName = "Claire",
                             Gender = "Female",
                             Height = "5'7\"/(170cm)",
@@ -4869,10 +4814,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 1096,
+                            Id = new Guid("e1ad94da-4d2f-60e0-a726-9afb3851e4a7"),
                             Age = 24,
                             Birthplace = "Vilagarcía de Arousa, Spain",
-                            CountryId = 165,
+                            CountryId = new Guid("6cd49520-ad18-21af-4b07-3b15a7626b1d"),
                             FirstName = "Jessica",
                             Gender = "Female",
                             Height = "5'8\"/(173cm)",
@@ -4884,10 +4829,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 1097,
+                            Id = new Guid("033535aa-9abb-8093-3a14-d013333fcfd2"),
                             Age = 24,
                             Birthplace = "Moscow, Russia",
-                            CountryId = 8,
+                            CountryId = new Guid("63e8301a-102e-9527-651a-fafe14c50951"),
                             FirstName = "Alina",
                             Gender = "Female",
                             Height = "5'7\"/(170cm)",
@@ -4899,10 +4844,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 1098,
+                            Id = new Guid("4c17c5d0-99f1-a3f1-3a01-069e82f10b1e"),
                             Age = 22,
                             Birthplace = "Lommel, Belgium",
-                            CountryId = 17,
+                            CountryId = new Guid("a07e8fbb-e337-1765-6b98-62fc46244a7a"),
                             FirstName = "Hanne",
                             Gender = "Female",
                             Height = "5'7\"/(170cm)",
@@ -4914,10 +4859,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 1099,
+                            Id = new Guid("31bb326a-b097-9fbe-95d7-368ae7cea6dc"),
                             Age = 26,
                             Birthplace = "Leeds, United Kingdom",
-                            CountryId = 186,
+                            CountryId = new Guid("e20b2069-d8fe-ec08-f16e-dc2fae4e6b20"),
                             FirstName = "Francesca",
                             Gender = "Female",
                             Height = "5'8\"/(172cm)",
@@ -4929,10 +4874,10 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 1100,
+                            Id = new Guid("e03eec8a-27b3-83e0-df40-704a52f7227d"),
                             Age = 29,
                             Birthplace = "Libreville, Gabon",
-                            CountryId = 61,
+                            CountryId = new Guid("133ed024-88c6-251c-6207-e2469cd1b5b9"),
                             FirstName = "Fiona",
                             Gender = "Female",
                             Height = "5'7\"/(170cm)",
@@ -4946,11 +4891,9 @@ namespace CourtSide.Data.Migrations
 
             modelBuilder.Entity("CourtSide.Data.Models.Tournament", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("CourtEnvironment")
                         .IsRequired()
@@ -5003,7 +4946,7 @@ namespace CourtSide.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = 1,
+                            Id = new Guid("7f89f574-ceff-bb37-dde5-a1445391021a"),
                             CourtEnvironment = "Indoor",
                             CourtSurface = "Hard",
                             Discipline = "Men's singles",
@@ -5017,7 +4960,7 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 2,
+                            Id = new Guid("be1bb675-aa94-289a-a381-be545fb9222b"),
                             CourtEnvironment = "Indoor",
                             CourtSurface = "Hard",
                             Discipline = "Men's singles",
@@ -5031,7 +4974,7 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 3,
+                            Id = new Guid("ab9923f4-66ee-81b4-220b-a5e6781b5bf4"),
                             CourtEnvironment = "Outdoor",
                             CourtSurface = "Hard",
                             Discipline = "Men's singles",
@@ -5045,7 +4988,7 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 4,
+                            Id = new Guid("21b75548-50bb-f5a8-3e04-4df9dd776715"),
                             CourtEnvironment = "Indoor",
                             CourtSurface = "Hard",
                             Discipline = "Men's singles",
@@ -5059,7 +5002,7 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 5,
+                            Id = new Guid("9211f2c5-459b-2574-3e1b-eab2f5dd945f"),
                             CourtEnvironment = "Outdoor",
                             CourtSurface = "Hard",
                             Discipline = "Men's singles",
@@ -5073,7 +5016,7 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 6,
+                            Id = new Guid("c5608612-d979-6e0f-fd0c-0d4676e820f8"),
                             CourtEnvironment = "Outdoor",
                             CourtSurface = "Clay",
                             Discipline = "Men's singles",
@@ -5087,7 +5030,7 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 7,
+                            Id = new Guid("7fdfc872-c0aa-8cda-e9ad-768733c7d7d1"),
                             CourtEnvironment = "Outdoor",
                             CourtSurface = "Clay",
                             Discipline = "Men's singles",
@@ -5101,7 +5044,7 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 8,
+                            Id = new Guid("e9f7a94b-bfe0-3aac-6912-900da822d6cc"),
                             CourtEnvironment = "Outdoor",
                             CourtSurface = "Clay",
                             Discipline = "Men's singles",
@@ -5115,7 +5058,7 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 9,
+                            Id = new Guid("4b5fa7f6-1f63-746a-5147-8ba5e549ed4f"),
                             CourtEnvironment = "Outdoor",
                             CourtSurface = "Grass",
                             Discipline = "Men's singles",
@@ -5129,7 +5072,7 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 10,
+                            Id = new Guid("73f7bad5-fb6b-89c1-d5b4-5026e24b4778"),
                             CourtEnvironment = "Indoor",
                             CourtSurface = "Hard",
                             Discipline = "Men's singles",
@@ -5143,7 +5086,7 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 11,
+                            Id = new Guid("c4677b80-d746-8861-2f25-fd69b9e5b0cd"),
                             CourtEnvironment = "Outdoor",
                             CourtSurface = "Hard",
                             Discipline = "Men's singles",
@@ -5157,7 +5100,7 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 12,
+                            Id = new Guid("9ff588d9-efd7-5998-7564-0c60cfa790bd"),
                             CourtEnvironment = "Indoor",
                             CourtSurface = "Hard",
                             Discipline = "Men's singles",
@@ -5171,7 +5114,7 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 13,
+                            Id = new Guid("8c9b1e85-f41d-6795-8c87-d61bc14a51c3"),
                             CourtEnvironment = "Indoor",
                             CourtSurface = "Hard",
                             Discipline = "Men's singles",
@@ -5185,7 +5128,7 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 14,
+                            Id = new Guid("6375b49e-77da-ea35-07cf-d6f9e263edbe"),
                             CourtEnvironment = "Indoor",
                             CourtSurface = "Hard",
                             Discipline = "Men's singles",
@@ -5199,7 +5142,7 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 15,
+                            Id = new Guid("1aa45a9a-4015-560d-d7c2-f594cf300eab"),
                             CourtEnvironment = "Indoor",
                             CourtSurface = "Hard",
                             Discipline = "Men's singles",
@@ -5213,7 +5156,7 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 16,
+                            Id = new Guid("66764405-2070-1aa3-032f-59d5bbc2e03f"),
                             CourtEnvironment = "Indoor",
                             CourtSurface = "Hard",
                             Discipline = "Men's singles",
@@ -5227,7 +5170,7 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 101,
+                            Id = new Guid("f881058f-4995-999e-4dc9-b1ac17571219"),
                             CourtEnvironment = "Indoor",
                             CourtSurface = "Hard",
                             Discipline = "Women's singles",
@@ -5241,7 +5184,7 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 102,
+                            Id = new Guid("3ba6f36e-30af-72d9-f4e1-b8c540537633"),
                             CourtEnvironment = "Outdoor",
                             CourtSurface = "Hard",
                             Discipline = "Women's singles",
@@ -5255,63 +5198,7 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 103,
-                            CourtEnvironment = "Outdoor",
-                            CourtSurface = "Hard",
-                            Discipline = "Women's singles",
-                            EndDate = new DateTime(2026, 1, 31, 0, 0, 0, 0, DateTimeKind.Utc),
-                            Location = "Melbourne, Australia",
-                            MatchFormat = 0,
-                            StartDate = new DateTime(2026, 1, 18, 0, 0, 0, 0, DateTimeKind.Utc),
-                            TieBreakRule = 1,
-                            TournamentName = "Australian Open",
-                            TournamentType = "Grand Slam Women"
-                        },
-                        new
-                        {
-                            Id = 104,
-                            CourtEnvironment = "Outdoor",
-                            CourtSurface = "Clay",
-                            Discipline = "Women's singles",
-                            EndDate = new DateTime(2026, 5, 9, 0, 0, 0, 0, DateTimeKind.Utc),
-                            Location = "Madrid, Spain",
-                            MatchFormat = 0,
-                            StartDate = new DateTime(2026, 4, 27, 0, 0, 0, 0, DateTimeKind.Utc),
-                            TieBreakRule = 0,
-                            TournamentName = "Mutua Madrid Open",
-                            TournamentType = "WTA 1000"
-                        },
-                        new
-                        {
-                            Id = 105,
-                            CourtEnvironment = "Outdoor",
-                            CourtSurface = "Clay",
-                            Discipline = "Women's singles",
-                            EndDate = new DateTime(2026, 5, 17, 0, 0, 0, 0, DateTimeKind.Utc),
-                            Location = "Rome, Italy",
-                            MatchFormat = 0,
-                            StartDate = new DateTime(2026, 5, 11, 0, 0, 0, 0, DateTimeKind.Utc),
-                            TieBreakRule = 0,
-                            TournamentName = "Internazionali BNL d'Italia",
-                            TournamentType = "WTA 1000"
-                        },
-                        new
-                        {
-                            Id = 106,
-                            CourtEnvironment = "Indoor",
-                            CourtSurface = "Hard",
-                            Discipline = "Women's singles",
-                            EndDate = new DateTime(2026, 11, 20, 0, 0, 0, 0, DateTimeKind.Utc),
-                            Location = "Seville, Spain",
-                            MatchFormat = 0,
-                            StartDate = new DateTime(2026, 11, 12, 0, 0, 0, 0, DateTimeKind.Utc),
-                            TieBreakRule = 0,
-                            TournamentName = "Billie Jean King Cup Finals",
-                            TournamentType = "ITF Women"
-                        },
-                        new
-                        {
-                            Id = 107,
+                            Id = new Guid("95225147-8237-4107-6495-22a2b87de875"),
                             CourtEnvironment = "Outdoor",
                             CourtSurface = "Hard",
                             Discipline = "Women's singles",
@@ -5325,7 +5212,7 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 108,
+                            Id = new Guid("fb38fe7e-51bb-4ace-f719-de15c72f6d69"),
                             CourtEnvironment = "Outdoor",
                             CourtSurface = "Hard",
                             Discipline = "Women's singles",
@@ -5339,7 +5226,7 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 109,
+                            Id = new Guid("913b563c-6c8d-af99-6835-a6b98d790768"),
                             CourtEnvironment = "Outdoor",
                             CourtSurface = "Hard",
                             Discipline = "Women's singles",
@@ -5353,7 +5240,7 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 110,
+                            Id = new Guid("fe67857d-f279-1751-fd7b-2e81b27a5d5f"),
                             CourtEnvironment = "Indoor",
                             CourtSurface = "Clay",
                             Discipline = "Women's singles",
@@ -5367,7 +5254,7 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 111,
+                            Id = new Guid("85223fc0-d5d6-c0fc-a668-1fdb607e915a"),
                             CourtEnvironment = "Outdoor",
                             CourtSurface = "Clay",
                             Discipline = "Women's singles",
@@ -5381,7 +5268,7 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 112,
+                            Id = new Guid("a6dbadba-13a4-4c1a-77be-b94f0e328bad"),
                             CourtEnvironment = "Outdoor",
                             CourtSurface = "Grass",
                             Discipline = "Women's singles",
@@ -5395,7 +5282,7 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 113,
+                            Id = new Guid("878dbd49-9843-c952-f812-cc5fde377431"),
                             CourtEnvironment = "Outdoor",
                             CourtSurface = "Grass",
                             Discipline = "Women's singles",
@@ -5409,7 +5296,7 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 114,
+                            Id = new Guid("65785e2e-be20-5a3c-3d3f-58aa7ecf99cf"),
                             CourtEnvironment = "Outdoor",
                             CourtSurface = "Hard",
                             Discipline = "Women's singles",
@@ -5423,7 +5310,7 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 115,
+                            Id = new Guid("a1596083-41ad-327f-a87a-538e657f4f1c"),
                             CourtEnvironment = "Outdoor",
                             CourtSurface = "Hard",
                             Discipline = "Women's singles",
@@ -5437,7 +5324,7 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
-                            Id = 116,
+                            Id = new Guid("eee5e1a5-fe8a-dea9-d5c0-d67e751592b7"),
                             CourtEnvironment = "Indoor",
                             CourtSurface = "Hard",
                             Discipline = "Women's singles",
@@ -5453,11 +5340,11 @@ namespace CourtSide.Data.Migrations
 
             modelBuilder.Entity("CourtSide.Data.Models.TournamentVenue", b =>
                 {
-                    b.Property<int>("TournamentId")
-                        .HasColumnType("int");
+                    b.Property<Guid>("TournamentId")
+                        .HasColumnType("uniqueidentifier");
 
-                    b.Property<int>("VenueId")
-                        .HasColumnType("int");
+                    b.Property<Guid>("VenueId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("TournamentId", "VenueId");
 
@@ -5468,173 +5355,151 @@ namespace CourtSide.Data.Migrations
                     b.HasData(
                         new
                         {
-                            TournamentId = 1,
-                            VenueId = 1
+                            TournamentId = new Guid("7f89f574-ceff-bb37-dde5-a1445391021a"),
+                            VenueId = new Guid("b2026a06-3e90-7c25-b97e-ae3cff9975a5")
                         },
                         new
                         {
-                            TournamentId = 2,
-                            VenueId = 2
+                            TournamentId = new Guid("be1bb675-aa94-289a-a381-be545fb9222b"),
+                            VenueId = new Guid("fd8a4796-4b11-af79-77ff-367a3a157017")
                         },
                         new
                         {
-                            TournamentId = 3,
-                            VenueId = 3
+                            TournamentId = new Guid("ab9923f4-66ee-81b4-220b-a5e6781b5bf4"),
+                            VenueId = new Guid("285e787f-ba96-5559-64ea-77fdb69d3e9a")
                         },
                         new
                         {
-                            TournamentId = 4,
-                            VenueId = 4
+                            TournamentId = new Guid("21b75548-50bb-f5a8-3e04-4df9dd776715"),
+                            VenueId = new Guid("4802b018-5151-da85-21a6-4be35a67fd85")
                         },
                         new
                         {
-                            TournamentId = 5,
-                            VenueId = 5
+                            TournamentId = new Guid("9211f2c5-459b-2574-3e1b-eab2f5dd945f"),
+                            VenueId = new Guid("8b5b88b3-8c2f-f2fe-ae8b-b3c8ed532cd8")
                         },
                         new
                         {
-                            TournamentId = 6,
-                            VenueId = 6
+                            TournamentId = new Guid("c5608612-d979-6e0f-fd0c-0d4676e820f8"),
+                            VenueId = new Guid("28b193c2-afff-79d2-0375-161185f00d6a")
                         },
                         new
                         {
-                            TournamentId = 7,
-                            VenueId = 7
+                            TournamentId = new Guid("7fdfc872-c0aa-8cda-e9ad-768733c7d7d1"),
+                            VenueId = new Guid("e901ac40-4167-6ed4-33c5-38adef64d6aa")
                         },
                         new
                         {
-                            TournamentId = 8,
-                            VenueId = 8
+                            TournamentId = new Guid("e9f7a94b-bfe0-3aac-6912-900da822d6cc"),
+                            VenueId = new Guid("fed03ef4-494e-b021-1973-2389bd8f283e")
                         },
                         new
                         {
-                            TournamentId = 9,
-                            VenueId = 9
+                            TournamentId = new Guid("4b5fa7f6-1f63-746a-5147-8ba5e549ed4f"),
+                            VenueId = new Guid("01398289-742d-3688-178d-0b7ac0f3db44")
                         },
                         new
                         {
-                            TournamentId = 10,
-                            VenueId = 10
+                            TournamentId = new Guid("73f7bad5-fb6b-89c1-d5b4-5026e24b4778"),
+                            VenueId = new Guid("b46bf0d7-9420-f9bb-8cb7-551b28e533e9")
                         },
                         new
                         {
-                            TournamentId = 11,
-                            VenueId = 11
+                            TournamentId = new Guid("c4677b80-d746-8861-2f25-fd69b9e5b0cd"),
+                            VenueId = new Guid("f4e815bd-2c5a-8a71-e0d2-deb6e4180f28")
                         },
                         new
                         {
-                            TournamentId = 12,
-                            VenueId = 12
+                            TournamentId = new Guid("9ff588d9-efd7-5998-7564-0c60cfa790bd"),
+                            VenueId = new Guid("6caac657-0e0b-25d4-226f-4a6cdd07c7e9")
                         },
                         new
                         {
-                            TournamentId = 13,
-                            VenueId = 13
+                            TournamentId = new Guid("8c9b1e85-f41d-6795-8c87-d61bc14a51c3"),
+                            VenueId = new Guid("dcbca76e-1aa3-cd66-7d38-6b547fb207f4")
                         },
                         new
                         {
-                            TournamentId = 14,
-                            VenueId = 14
+                            TournamentId = new Guid("6375b49e-77da-ea35-07cf-d6f9e263edbe"),
+                            VenueId = new Guid("812c72e4-2f62-6626-265e-4e26c1b40174")
                         },
                         new
                         {
-                            TournamentId = 15,
-                            VenueId = 15
+                            TournamentId = new Guid("1aa45a9a-4015-560d-d7c2-f594cf300eab"),
+                            VenueId = new Guid("4240c5f1-47f3-8993-9f84-c34f886a8fa8")
                         },
                         new
                         {
-                            TournamentId = 16,
-                            VenueId = 16
+                            TournamentId = new Guid("66764405-2070-1aa3-032f-59d5bbc2e03f"),
+                            VenueId = new Guid("1b10f29e-d2d7-4b17-1370-ce61e2826157")
                         },
                         new
                         {
-                            TournamentId = 101,
-                            VenueId = 1
+                            TournamentId = new Guid("f881058f-4995-999e-4dc9-b1ac17571219"),
+                            VenueId = new Guid("66eabd34-a820-bb37-c757-4081b5dc4f39")
                         },
                         new
                         {
-                            TournamentId = 102,
-                            VenueId = 3
+                            TournamentId = new Guid("3ba6f36e-30af-72d9-f4e1-b8c540537633"),
+                            VenueId = new Guid("285e787f-ba96-5559-64ea-77fdb69d3e9a")
                         },
                         new
                         {
-                            TournamentId = 103,
-                            VenueId = 5
+                            TournamentId = new Guid("95225147-8237-4107-6495-22a2b87de875"),
+                            VenueId = new Guid("8b9928a7-30eb-959c-3878-24bf034406cd")
                         },
                         new
                         {
-                            TournamentId = 104,
-                            VenueId = 7
+                            TournamentId = new Guid("fb38fe7e-51bb-4ace-f719-de15c72f6d69"),
+                            VenueId = new Guid("19b8a897-43ca-78c6-1405-0a5b63aa02c7")
                         },
                         new
                         {
-                            TournamentId = 105,
-                            VenueId = 8
+                            TournamentId = new Guid("913b563c-6c8d-af99-6835-a6b98d790768"),
+                            VenueId = new Guid("247d28ed-57e6-07e8-580a-dd4f43548bcd")
                         },
                         new
                         {
-                            TournamentId = 106,
-                            VenueId = 17
+                            TournamentId = new Guid("fe67857d-f279-1751-fd7b-2e81b27a5d5f"),
+                            VenueId = new Guid("9c712670-3363-37fa-3a4e-237e22c90951")
                         },
                         new
                         {
-                            TournamentId = 107,
-                            VenueId = 18
+                            TournamentId = new Guid("85223fc0-d5d6-c0fc-a668-1fdb607e915a"),
+                            VenueId = new Guid("ee8e8214-bff6-9fea-66bc-83713f1781ec")
                         },
                         new
                         {
-                            TournamentId = 108,
-                            VenueId = 19
+                            TournamentId = new Guid("a6dbadba-13a4-4c1a-77be-b94f0e328bad"),
+                            VenueId = new Guid("efa8e236-d522-f001-fc5a-ebd68c1ca1b4")
                         },
                         new
                         {
-                            TournamentId = 109,
-                            VenueId = 20
+                            TournamentId = new Guid("878dbd49-9843-c952-f812-cc5fde377431"),
+                            VenueId = new Guid("0a093d19-917e-4a21-972e-b1e89b39416d")
                         },
                         new
                         {
-                            TournamentId = 110,
-                            VenueId = 21
+                            TournamentId = new Guid("65785e2e-be20-5a3c-3d3f-58aa7ecf99cf"),
+                            VenueId = new Guid("1d0f7e07-6c4c-2b8b-1631-216839c5fd2e")
                         },
                         new
                         {
-                            TournamentId = 111,
-                            VenueId = 22
+                            TournamentId = new Guid("a1596083-41ad-327f-a87a-538e657f4f1c"),
+                            VenueId = new Guid("dbd84836-dd9d-2a5e-0f03-5df858ea8851")
                         },
                         new
                         {
-                            TournamentId = 112,
-                            VenueId = 23
-                        },
-                        new
-                        {
-                            TournamentId = 113,
-                            VenueId = 24
-                        },
-                        new
-                        {
-                            TournamentId = 114,
-                            VenueId = 25
-                        },
-                        new
-                        {
-                            TournamentId = 115,
-                            VenueId = 26
-                        },
-                        new
-                        {
-                            TournamentId = 116,
-                            VenueId = 27
+                            TournamentId = new Guid("eee5e1a5-fe8a-dea9-d5c0-d67e751592b7"),
+                            VenueId = new Guid("4525054a-483d-f44f-f772-addd74b9daeb")
                         });
                 });
 
             modelBuilder.Entity("CourtSide.Data.Models.Venue", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -5648,137 +5513,142 @@ namespace CourtSide.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = 1,
-                            Name = "Palais des Sports de Gerland"
+                            Id = new Guid("b2026a06-3e90-7c25-b97e-ae3cff9975a5"),
+                            Name = "LDLC Arena"
                         },
                         new
                         {
-                            Id = 2,
-                            Name = "Accor Arena / Paris La Défense Arena"
+                            Id = new Guid("fd8a4796-4b11-af79-77ff-367a3a157017"),
+                            Name = "Paris La Défense Arena"
                         },
                         new
                         {
-                            Id = 3,
+                            Id = new Guid("285e787f-ba96-5559-64ea-77fdb69d3e9a"),
                             Name = "USTA Billie Jean King National Tennis Center"
                         },
                         new
                         {
-                            Id = 4,
+                            Id = new Guid("4802b018-5151-da85-21a6-4be35a67fd85"),
                             Name = "Almaty Arena"
                         },
                         new
                         {
-                            Id = 5,
+                            Id = new Guid("8b5b88b3-8c2f-f2fe-ae8b-b3c8ed532cd8"),
                             Name = "Melbourne Park"
                         },
                         new
                         {
-                            Id = 6,
+                            Id = new Guid("28b193c2-afff-79d2-0375-161185f00d6a"),
                             Name = "Monte-Carlo Country Club"
                         },
                         new
                         {
-                            Id = 7,
+                            Id = new Guid("e901ac40-4167-6ed4-33c5-38adef64d6aa"),
                             Name = "Caja Mágica"
                         },
                         new
                         {
-                            Id = 8,
+                            Id = new Guid("fed03ef4-494e-b021-1973-2389bd8f283e"),
                             Name = "Foro Italico"
                         },
                         new
                         {
-                            Id = 9,
+                            Id = new Guid("01398289-742d-3688-178d-0b7ac0f3db44"),
                             Name = "Queen's Club"
                         },
                         new
                         {
-                            Id = 10,
+                            Id = new Guid("b46bf0d7-9420-f9bb-8cb7-551b28e533e9"),
                             Name = "St. Jakobshalle"
                         },
                         new
                         {
-                            Id = 11,
+                            Id = new Guid("f4e815bd-2c5a-8a71-e0d2-deb6e4180f28"),
                             Name = "Qizhong Forest Sports City Arena"
                         },
                         new
                         {
-                            Id = 12,
-                            Name = "Sportpaleis Antwerp / Lotto Arena"
+                            Id = new Guid("6caac657-0e0b-25d4-226f-4a6cdd07c7e9"),
+                            Name = "Lotto Arena"
                         },
                         new
                         {
-                            Id = 13,
+                            Id = new Guid("dcbca76e-1aa3-cd66-7d38-6b547fb207f4"),
                             Name = "Kungliga Tennishallen"
                         },
                         new
                         {
-                            Id = 14,
+                            Id = new Guid("812c72e4-2f62-6626-265e-4e26c1b40174"),
                             Name = "Inalpi Arena"
                         },
                         new
                         {
-                            Id = 15,
+                            Id = new Guid("4240c5f1-47f3-8993-9f84-c34f886a8fa8"),
                             Name = "Unipol Arena"
                         },
                         new
                         {
-                            Id = 16,
+                            Id = new Guid("1b10f29e-d2d7-4b17-1370-ce61e2826157"),
                             Name = "PalaTennis 'Corrado Barazzutti'"
                         },
                         new
                         {
-                            Id = 17,
+                            Id = new Guid("3248537d-9728-1dda-efd3-5d6baedcff40"),
                             Name = "Estadio La Cartuja"
                         },
                         new
                         {
-                            Id = 18,
+                            Id = new Guid("66eabd34-a820-bb37-c757-4081b5dc4f39"),
+                            Name = "Palais des Sports de Gerland"
+                        },
+                        new
+                        {
+                            Id = new Guid("8b9928a7-30eb-959c-3878-24bf034406cd"),
                             Name = "Khalifa International Tennis & Squash Complex"
                         },
                         new
                         {
-                            Id = 19,
+                            Id = new Guid("19b8a897-43ca-78c6-1405-0a5b63aa02c7"),
                             Name = "Indian Wells Tennis Garden"
                         },
                         new
                         {
-                            Id = 20,
+                            Id = new Guid("247d28ed-57e6-07e8-580a-dd4f43548bcd"),
                             Name = "Hard Rock Stadium"
                         },
                         new
                         {
-                            Id = 21,
+                            Id = new Guid("9c712670-3363-37fa-3a4e-237e22c90951"),
                             Name = "Porsche-Arena"
                         },
                         new
                         {
-                            Id = 22,
+                            Id = new Guid("ee8e8214-bff6-9fea-66bc-83713f1781ec"),
                             Name = "Stade Roland Garros"
                         },
                         new
                         {
-                            Id = 23,
+                            Id = new Guid("efa8e236-d522-f001-fc5a-ebd68c1ca1b4"),
                             Name = "Devonshire Park Lawn Tennis Club"
                         },
                         new
                         {
-                            Id = 24,
+                            Id = new Guid("0a093d19-917e-4a21-972e-b1e89b39416d"),
                             Name = "All England Lawn Tennis and Croquet Club"
                         },
                         new
                         {
-                            Id = 25,
+                            Id = new Guid("1d0f7e07-6c4c-2b8b-1631-216839c5fd2e"),
                             Name = "IGA Stadium / Stade IGA"
                         },
                         new
                         {
-                            Id = 26,
+                            Id = new Guid("dbd84836-dd9d-2a5e-0f03-5df858ea8851"),
                             Name = "National Tennis Center"
                         },
                         new
                         {
-                            Id = 27,
+                            Id = new Guid("4525054a-483d-f44f-f772-addd74b9daeb"),
                             Name = "King Saud University Indoor Arena"
                         });
                 });
@@ -6009,6 +5879,12 @@ namespace CourtSide.Data.Migrations
 
             modelBuilder.Entity("CourtSide.Data.Models.Match", b =>
                 {
+                    b.HasOne("CourtSide.Data.Models.Court", "Court")
+                        .WithMany("Matches")
+                        .HasForeignKey("CourtId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
                     b.HasOne("CourtSide.Data.Models.Player", "FirstPlayer")
                         .WithMany()
                         .HasForeignKey("FirstPlayerId")
@@ -6037,6 +5913,8 @@ namespace CourtSide.Data.Migrations
                         .WithMany()
                         .HasForeignKey("WinnerId")
                         .OnDelete(DeleteBehavior.Restrict);
+
+                    b.Navigation("Court");
 
                     b.Navigation("FirstPlayer");
 
@@ -6128,6 +6006,11 @@ namespace CourtSide.Data.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("CourtSide.Data.Models.Court", b =>
+                {
+                    b.Navigation("Matches");
                 });
 
             modelBuilder.Entity("CourtSide.Data.Models.Player", b =>

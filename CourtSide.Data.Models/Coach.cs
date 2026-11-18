@@ -8,7 +8,7 @@
     public class Coach
     {
         [Key]
-        public int Id { get; set; }
+        public Guid Id { get; set; }
 
         [Required]
         [MaxLength(FirstNameMaxLength)]
@@ -18,7 +18,7 @@
         [MaxLength(LastNameMaxLength)]
         public required string LastName { get; set; }
 
-        public required int PlayerId { get; set; }
+        public required Guid PlayerId { get; set; }
 
         [ForeignKey(nameof(PlayerId))]
         [DeleteBehavior(DeleteBehavior.Restrict)]

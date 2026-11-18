@@ -33,7 +33,7 @@
             this.courtService = courtService;
         }
 
-        public async Task<int> CreateMatchAsync(MatchFormViewModel matchForm)
+        public async Task<Guid> CreateMatchAsync(MatchFormViewModel matchForm)
         {
             Match newMatch = this.mapper.Map<Match>(matchForm);
 
@@ -43,7 +43,7 @@
             return newMatch.Id;
         }
 
-        public async Task<bool> UpdateMatchAsync(int id, MatchFormViewModel matchForm)
+        public async Task<bool> UpdateMatchAsync(Guid id, MatchFormViewModel matchForm)
         {
             Match? matchToUpdate = await this.context.Matches.FindAsync(id);
 
@@ -61,7 +61,7 @@
             return true;
         }
 
-        public async Task<bool> DeleteMatchAsync(int id)
+        public async Task<bool> DeleteMatchAsync(Guid id)
         {
             int rowsAffected = await this.context.Matches
                 .Where(m => m.Id == id)
@@ -70,7 +70,7 @@
             return rowsAffected > 0;
         }
 
-        public async Task<MatchDetailsViewModel?> GetMatchDetailsByIdAsync(int id)
+        public async Task<MatchDetailsViewModel?> GetMatchDetailsByIdAsync(Guid id)
         {
             return await this.context.Matches
                 .AsNoTracking()
@@ -78,7 +78,7 @@
                 .ProjectTo<MatchDetailsViewModel>(this.mapper.ConfigurationProvider)
                 .FirstOrDefaultAsync();
         }
-        public async Task<MatchFormViewModel?> GetMatchForEditByIdAsync(int id)
+        public async Task<MatchFormViewModel?> GetMatchForEditByIdAsync(Guid id)
         {
             return await this.context.Matches
                 .AsNoTracking()
@@ -102,9 +102,9 @@
             if (!string.IsNullOrWhiteSpace(model.Tour))
             {
                 model.Tournaments = await this.tournamentService.GetTournamentsByTourWithVenueAsync(model.Tour)
-                            ??Enumerable.Empty<CourtSide.ViewModels.Tournaments.TournamentSelectItemViewModel>();
+                    ?? Enumerable.Empty<TournamentSelectItemViewModel>();
 
-                IEnumerable<ViewModels.Players.PlayerSelectViewModel>? tourPlayers = await this.playerService.GetPlayersByTourAsync(model.Tour);
+                IEnumerable<PlayerSelectViewModel>? tourPlayers = await this.playerService.GetPlayersByTourAsync(model.Tour);
                 model.Players = tourPlayers.Select(p => new SelectListItem
                 {
                     Value = p.Id.ToString(),
@@ -121,20 +121,7 @@
                     Text = p.FullName
                 });
             }
-
-            if (model.VenueId > 0)
-            {
-                IEnumerable<CourtSelectViewModel>? courts = await this.courtService.GetCourtsByVenueIdAsync((int)model.VenueId);
-                model.Courts = courts.Select(c => new SelectListItem
-                {
-                    Value = c.Name,
-                    Text = c.Name
-                });
-            }
-            else
-            {
-                model.Courts = Enumerable.Empty<SelectListItem>();
-            }
         }
     }
 }
+

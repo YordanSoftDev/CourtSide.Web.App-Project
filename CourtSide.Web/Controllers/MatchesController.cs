@@ -43,9 +43,9 @@
 
         [HttpGet]
         [AllowAnonymous]
-        public async Task<IActionResult> Details(int id)
+        public async Task<IActionResult> Details(Guid id)
         {
-            if (id <= 0)
+            if (id == Guid.Empty)
             {
                 return this.BadRequest();
             }
@@ -107,7 +107,7 @@
                 return this.View(matchForm);
             }
 
-            int createdMatchId = await this.matchService
+            Guid createdMatchId = await this.matchService
                 .CreateMatchAsync(matchForm);
 
             return this.RedirectToAction(nameof(Details),
@@ -116,9 +116,9 @@
 
         [HttpGet]
         [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> Edit(int id)
+        public async Task<IActionResult> Edit(Guid id)
         {
-            if (id <= 0)
+            if (id == Guid.Empty)
             {
                 return this.BadRequest();
             }
@@ -138,9 +138,9 @@
         [HttpPost]
         [Authorize(Roles = "Admin")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, MatchFormViewModel matchForm)
+        public async Task<IActionResult> Edit(Guid id, MatchFormViewModel matchForm)
         {
-            if (id <= 0)
+            if (id == Guid.Empty)
             {
                 return this.BadRequest();
             }
@@ -189,9 +189,9 @@
 
         [HttpGet]
         [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> Delete(int id)
+        public async Task<IActionResult> Delete(Guid id)
         {
-            if (id <= 0)
+            if (id == Guid.Empty)
             {
                 return this.BadRequest();
             }
@@ -210,7 +210,7 @@
         [HttpPost, ActionName("DeleteConfirmed")]
         [Authorize(Roles = "Admin")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> DeleteConfirmed(Guid id)
         {
             bool isDeleted = await this.matchService.DeleteMatchAsync(id);
 
@@ -223,11 +223,11 @@
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetPlayersByTournament(int? tournamentId, string? tour)
+        public async Task<IActionResult> GetPlayersByTournament(Guid? tournamentId, string? tour)
         {
             IEnumerable<PlayerSelectViewModel> players;
 
-            if (tournamentId.HasValue && tournamentId.Value > 0)
+            if (tournamentId.HasValue && tournamentId.Value != Guid.Empty)
             {
                 players = await this.playerService.GetPlayersByTournamentIdAsync(tournamentId.Value);
             }
@@ -285,7 +285,7 @@
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetCourtsByVenue(int venueId)
+        public async Task<IActionResult> GetCourtsByVenue(Guid venueId)
         {
           IEnumerable<CourtSelectViewModel> courts = await this.courtService.GetCourtsByVenueIdAsync(venueId);
 

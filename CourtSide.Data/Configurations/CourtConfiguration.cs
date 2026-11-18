@@ -4,6 +4,7 @@
     using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
     using CourtSide.Data.Models;
+    using CourtSide.Data.Seeding;
 
     public class CourtConfiguration : IEntityTypeConfiguration<Court>
     {
@@ -16,122 +17,405 @@
 
             builder.HasData(DefaultCourts);
         }
+
         public static IEnumerable<Court> DefaultCourts =>
         new List<Court>
         {     
                 // 1. Palais des Sports de Gerland (Lyon Open)
-                new Court { Id = 1, Name = "Centre Court", VenueId = 1 },
-                new Court { Id = 2, Name = "Court 1", VenueId = 1 },
+                new Court
+                {
+                    Id = DeterministicGuid.Create("Court_Palais des Sports de Gerland_Centre Court"),
+                    Name = "Centre Court",
+                    VenueId = DeterministicGuid.Create("Venue_Palais des Sports de Gerland")
+                },
+                new Court
+                {
+                    Id = DeterministicGuid.Create("Court_Palais des Sports de Gerland_Court 1"),
+                    Name = "Court 1",
+                    VenueId = DeterministicGuid.Create("Venue_Palais des Sports de Gerland")
+                },
 
                 // 2. Accor Arena / Paris La Défense Arena (Rolex Paris Masters)
-                new Court { Id = 3, Name = "Court Central", VenueId = 2 },
-                new Court { Id = 4, Name = "Court 1", VenueId = 2 },
+                new Court
+                {
+                    Id = DeterministicGuid.Create("Court_Paris La Défense Arena_Court Central"),
+                    Name = "Court Central",
+                    VenueId = DeterministicGuid.Create("Venue_Paris La Défense Arena")
+                },
+                new Court
+                {
+                    Id = DeterministicGuid.Create("Court_Paris La Défense Arena_Court 1"),
+                    Name = "Court 1",
+                    VenueId = DeterministicGuid.Create("Venue_Paris La Défense Arena")
+                },
 
                 // 3. USTA Billie Jean King National Tennis Center (US Open)
-                new Court { Id = 5, Name = "Arthur Ashe Stadium", VenueId = 3 },
-                new Court { Id = 6, Name = "Louis Armstrong Stadium", VenueId = 3 },
-                new Court { Id = 7, Name = "Grandstand", VenueId = 3 },
-                new Court { Id = 8, Name = "Court 17", VenueId = 3 },
+                new Court
+                {
+                    Id = DeterministicGuid.Create("Court_USTA Billie Jean King National Tennis Center_Arthur Ashe Stadium"),
+                    Name = "Arthur Ashe Stadium",
+                    VenueId = DeterministicGuid.Create("Venue_USTA Billie Jean King National Tennis Center")
+                },
+                new Court
+                {
+                    Id = DeterministicGuid.Create("Court_USTA Billie Jean King National Tennis Center_Louis Armstrong Stadium"),
+                    Name = "Louis Armstrong Stadium",
+                    VenueId = DeterministicGuid.Create("Venue_USTA Billie Jean King National Tennis Center")
+                },
+                new Court
+                {
+                    Id = DeterministicGuid.Create("Court_USTA Billie Jean King National Tennis Center_Grandstand"),
+                    Name = "Grandstand",
+                    VenueId = DeterministicGuid.Create("Venue_USTA Billie Jean King National Tennis Center")
+                },
+                new Court
+                {
+                    Id = DeterministicGuid.Create("Court_USTA Billie Jean King National Tennis Center_Court 17"),
+                    Name = "Court 17",
+                    VenueId = DeterministicGuid.Create("Venue_USTA Billie Jean King National Tennis Center")
+                },
 
                 // 4. Almaty Arena (Almaty Open)
-                new Court { Id = 9, Name = "Center Court", VenueId = 4 },
-                new Court { Id = 10, Name = "Court 1", VenueId = 4 },
+                new Court
+                {
+                    Id = DeterministicGuid.Create("Court_Almaty Arena_Center Court"),
+                    Name = "Center Court",
+                    VenueId = DeterministicGuid.Create("Venue_Almaty Arena")
+                },
+                new Court
+                {
+                    Id = DeterministicGuid.Create("Court_Almaty Arena_Court 1"),
+                    Name = "Court 1",
+                    VenueId = DeterministicGuid.Create("Venue_Almaty Arena")
+                },
 
                 // 5. Melbourne Park (Australian Open)
-                new Court { Id = 11, Name = "Rod Laver Arena", VenueId = 5 },
-                new Court { Id = 12, Name = "John Cain Arena", VenueId = 5 },
-                new Court { Id = 13, Name = "Margaret Court Arena", VenueId = 5 },
-                new Court { Id = 14, Name = "Kia Arena", VenueId = 5 },
+                new Court
+                {
+                    Id = DeterministicGuid.Create("Court_Melbourne Park_Rod Laver Arena"),
+                    Name = "Rod Laver Arena",
+                    VenueId = DeterministicGuid.Create("Venue_Melbourne Park")
+                },
+                new Court
+                {
+                    Id = DeterministicGuid.Create("Court_Melbourne Park_John Cain Arena"),
+                    Name = "John Cain Arena",
+                    VenueId = DeterministicGuid.Create("Venue_Melbourne Park")
+                },
+                new Court
+                {
+                    Id = DeterministicGuid.Create("Court_Melbourne Park_Margaret Court Arena"),
+                    Name = "Margaret Court Arena",
+                    VenueId = DeterministicGuid.Create("Venue_Melbourne Park")
+                },
+                new Court
+                {
+                    Id = DeterministicGuid.Create("Court_Melbourne Park_Kia Arena"),
+                    Name = "Kia Arena",
+                    VenueId = DeterministicGuid.Create("Venue_Melbourne Park")
+                },
 
                 // 6. Monte-Carlo Country Club (Monte-Carlo Masters)
-                new Court { Id = 15, Name = "Court Rainier III", VenueId = 6 },
-                new Court { Id = 16, Name = "Court Des Princes", VenueId = 6 },
+                new Court
+                {
+                    Id = DeterministicGuid.Create("Court_Monte-Carlo Country Club_Court Rainier III"),
+                    Name = "Court Rainier III",
+                    VenueId = DeterministicGuid.Create("Venue_Monte-Carlo Country Club")
+                },
+                new Court
+                {
+                    Id = DeterministicGuid.Create("Court_Monte-Carlo Country Club_Court Des Princes"),
+                    Name = "Court Des Princes",
+                    VenueId = DeterministicGuid.Create("Venue_Monte-Carlo Country Club")
+                },
 
                 // 7. Caja Mágica (Mutua Madrid Open)
-                new Court { Id = 17, Name = "Manolo Santana Stadium", VenueId = 7 },
-                new Court { Id = 18, Name = "Arantxa Sánchez Vicario Stadium", VenueId = 7 },
-                new Court { Id = 19, Name = "Stadium 3", VenueId = 7 },
+                new Court
+                {
+                    Id = DeterministicGuid.Create("Court_Caja Mágica_Manolo Santana Stadium"),
+                    Name = "Manolo Santana Stadium",
+                    VenueId = DeterministicGuid.Create("Venue_Caja Mágica")
+                },
+                new Court
+                {
+                    Id = DeterministicGuid.Create("Court_Caja Mágica_Arantxa Sánchez Vicario Stadium"),
+                    Name = "Arantxa Sánchez Vicario Stadium",
+                    VenueId = DeterministicGuid.Create("Venue_Caja Mágica")
+                },
+                new Court
+                {
+                    Id = DeterministicGuid.Create("Court_Caja Mágica_Stadium 3"),
+                    Name = "Stadium 3",
+                    VenueId = DeterministicGuid.Create("Venue_Caja Mágica")
+                },
 
                 // 8. Foro Italico (Italian Open)
-                new Court { Id = 20, Name = "Campo Centrale", VenueId = 8 },
-                new Court { Id = 21, Name = "Grandstand Arena", VenueId = 8 },
-                new Court { Id = 22, Name = "Pietrangeli", VenueId = 8 },
+                new Court
+                {
+                    Id = DeterministicGuid.Create("Court_Foro Italico_Campo Centrale"),
+                    Name = "Campo Centrale",
+                    VenueId = DeterministicGuid.Create("Venue_Foro Italico")
+                },
+                new Court
+                {
+                    Id = DeterministicGuid.Create("Court_Foro Italico_Grandstand Arena"),
+                    Name = "Grandstand Arena",
+                    VenueId = DeterministicGuid.Create("Venue_Foro Italico")
+                },
+                new Court
+                {
+                    Id = DeterministicGuid.Create("Court_Foro Italico_Pietrangeli"),
+                    Name = "Pietrangeli",
+                    VenueId = DeterministicGuid.Create("Venue_Foro Italico")
+                },
 
                 // 9. Queen's Club (Cinch Championships)
-                new Court { Id = 23, Name = "Centre Court", VenueId = 9 },
-                new Court { Id = 24, Name = "Court 1", VenueId = 9 },
+                new Court
+                {
+                    Id = DeterministicGuid.Create("Court_Queen's Club_Centre Court"),
+                    Name = "Centre Court",
+                    VenueId = DeterministicGuid.Create("Venue_Queen's Club")
+                },
+                new Court
+                {
+                    Id = DeterministicGuid.Create("Court_Queen's Club_Court 1"),
+                    Name = "Court 1",
+                    VenueId = DeterministicGuid.Create("Venue_Queen's Club")
+                },
 
                 // 10. St. Jakobshalle (Swiss Indoors Basel)
-                new Court { Id = 25, Name = "Centre Court", VenueId = 10 },
-                new Court { Id = 26, Name = "Court 1", VenueId = 10 },
+                new Court
+                {
+                    Id = DeterministicGuid.Create("Court_St. Jakobshalle_Centre Court"),
+                    Name = "Centre Court",
+                    VenueId = DeterministicGuid.Create("Venue_St. Jakobshalle")
+                },
+                new Court
+                {
+                    Id = DeterministicGuid.Create("Court_St. Jakobshalle_Court 1"),
+                    Name = "Court 1",
+                    VenueId = DeterministicGuid.Create("Venue_St. Jakobshalle")
+                },
 
                 // 11. Qizhong Forest Sports City Arena (Shanghai Masters)
-                new Court { Id = 27, Name = "Center Court", VenueId = 11 },
-                new Court { Id = 28, Name = "Grandstand", VenueId = 11 },
+                new Court
+                {
+                    Id = DeterministicGuid.Create("Court_Qizhong Forest Sports City Arena_Center Court"),
+                    Name = "Center Court",
+                    VenueId = DeterministicGuid.Create("Venue_Qizhong Forest Sports City Arena")
+                },
+                new Court
+                {
+                    Id = DeterministicGuid.Create("Court_Qizhong Forest Sports City Arena_Grandstand"),
+                    Name = "Grandstand",
+                    VenueId = DeterministicGuid.Create("Venue_Qizhong Forest Sports City Arena")
+                },
 
                 // 12. Sportpaleis Antwerp / Lotto Arena (European Open)
-                new Court { Id = 29, Name = "Center Court", VenueId = 12 },
+                new Court
+                {
+                    Id = DeterministicGuid.Create("Court_Lotto Arena_Center Court"),
+                    Name = "Center Court",
+                    VenueId = DeterministicGuid.Create("Venue_Lotto Arena")
+                },
 
                 // 13. Kungliga Tennishallen (Bybit Stockholm Open)
-                new Court { Id = 30, Name = "Centre Court", VenueId = 13 },
+                new Court
+                {
+                    Id = DeterministicGuid.Create("Court_Kungliga Tennishallen_Centre Court"),
+                    Name = "Centre Court",
+                    VenueId = DeterministicGuid.Create("Venue_Kungliga Tennishallen")
+                },
 
                 // 14. Inalpi Arena (Nitto Finals)
-                new Court { Id = 31, Name = "Centre Court", VenueId = 14 },
+                new Court
+                {
+                    Id = DeterministicGuid.Create("Court_Inalpi Arena_Centre Court"),
+                    Name = "Centre Court",
+                    VenueId = DeterministicGuid.Create("Venue_Inalpi Arena")
+                },
 
                 // 15. Unipol Arena (Davis Cup Finals)
-                new Court { Id = 32, Name = "Centre Court", VenueId = 15 },
+                new Court
+                {
+                    Id = DeterministicGuid.Create("Court_Unipol Arena_Centre Court"),
+                    Name = "Centre Court",
+                    VenueId = DeterministicGuid.Create("Venue_Unipol Arena")
+                },
 
                 // 16. PalaTennis 'Corrado Barazzutti' (Next Gen Finals)
-                new Court { Id = 33, Name = "Centre Court", VenueId = 16 },
+                new Court
+                {
+                    Id = DeterministicGuid.Create("Court_PalaTennis 'Corrado Barazzutti'_Centre Court"),
+                    Name = "Centre Court",
+                    VenueId = DeterministicGuid.Create("Venue_PalaTennis 'Corrado Barazzutti'")
+                },
 
                 // 17. Estadio La Cartuja (Billie Jean King Cup Finals)
-                new Court { Id = 34, Name = "Centre Court", VenueId = 17 },
+                new Court
+                {
+                    Id = DeterministicGuid.Create("Court_Estadio La Cartuja_Centre Court"),
+                    Name = "Centre Court",
+                    VenueId = DeterministicGuid.Create("Venue_Estadio La Cartuja")
+                },
 
                 // 18. Khalifa International Tennis & Squash Complex (Qatar TotalEnergies Open)
-                new Court { Id = 35, Name = "Centre Court", VenueId = 18 },
-                new Court { Id = 36, Name = "Grandstand 1", VenueId = 18 },
+                new Court
+                {
+                    Id = DeterministicGuid.Create("Court_Khalifa International Tennis & Squash Complex_Centre Court"),
+                    Name = "Centre Court",
+                    VenueId = DeterministicGuid.Create("Venue_Khalifa International Tennis & Squash Complex")
+                },
+                new Court
+                {
+                    Id = DeterministicGuid.Create("Court_Khalifa International Tennis & Squash Complex_Grandstand 1"),
+                    Name = "Grandstand 1",
+                    VenueId = DeterministicGuid.Create("Venue_Khalifa International Tennis & Squash Complex")
+                },
 
                 // 19. Indian Wells Tennis Garden (BNP Paribas Open)
-                new Court { Id = 37, Name = "Stadium 1", VenueId = 19 },
-                new Court { Id = 38, Name = "Stadium 2", VenueId = 19 },
-                new Court { Id = 39, Name = "Stadium 3", VenueId = 19 },
+                new Court
+                {
+                    Id = DeterministicGuid.Create("Court_Indian Wells Tennis Garden_Stadium 1"),
+                    Name = "Stadium 1",
+                    VenueId = DeterministicGuid.Create("Venue_Indian Wells Tennis Garden")
+                },
+                new Court
+                {
+                    Id = DeterministicGuid.Create("Court_Indian Wells Tennis Garden_Stadium 2"),
+                    Name = "Stadium 2",
+                    VenueId = DeterministicGuid.Create("Venue_Indian Wells Tennis Garden")
+                },
+                new Court
+                {
+                    Id = DeterministicGuid.Create("Court_Indian Wells Tennis Garden_Stadium 3"),
+                    Name = "Stadium 3",
+                    VenueId = DeterministicGuid.Create("Venue_Indian Wells Tennis Garden")
+                },
 
                 // 20. Hard Rock Stadium (Miami Open)
-                new Court { Id = 40, Name = "Stadium Court", VenueId = 20 },
-                new Court { Id = 41, Name = "Grandstand", VenueId = 20 },
+                new Court
+                {
+                    Id = DeterministicGuid.Create("Court_Hard Rock Stadium_Stadium Court"),
+                    Name = "Stadium Court",
+                    VenueId = DeterministicGuid.Create("Venue_Hard Rock Stadium")
+                },
+                new Court
+                {
+                    Id = DeterministicGuid.Create("Court_Hard Rock Stadium_Grandstand"),
+                    Name = "Grandstand",
+                    VenueId = DeterministicGuid.Create("Venue_Hard Rock Stadium")
+                },
 
                 // 21. Porsche-Arena (Porsche Tennis Grand Prix)
-                new Court { Id = 42, Name = "Centre Court", VenueId = 21 },
+                new Court
+                {
+                    Id = DeterministicGuid.Create("Court_Porsche-Arena_Centre Court"),
+                    Name = "Centre Court",
+                    VenueId = DeterministicGuid.Create("Venue_Porsche-Arena")
+                },
 
                 // 22. Stade Roland Garros (Roland Garros)
-                new Court { Id = 43, Name = "Court Philippe-Chatrier", VenueId = 22 },
-                new Court { Id = 44, Name = "Court Suzanne-Lenglen", VenueId = 22 },
-                new Court { Id = 45, Name = "Court Simonne-Mathieu", VenueId = 22 },
+                new Court
+                {
+                    Id = DeterministicGuid.Create("Court_Stade Roland Garros_Court Philippe-Chatrier"),
+                    Name = "Court Philippe-Chatrier",
+                    VenueId = DeterministicGuid.Create("Venue_Stade Roland Garros")
+                },
+                new Court
+                {
+                    Id = DeterministicGuid.Create("Court_Stade Roland Garros_Court Suzanne-Lenglen"),
+                    Name = "Court Suzanne-Lenglen",
+                    VenueId = DeterministicGuid.Create("Venue_Stade Roland Garros")
+                },
+                new Court
+                {
+                    Id = DeterministicGuid.Create("Court_Stade Roland Garros_Court Simonne-Mathieu"),
+                    Name = "Court Simonne-Mathieu",
+                    VenueId = DeterministicGuid.Create("Venue_Stade Roland Garros")
+                },
 
                 // 23. Devonshire Park Lawn Tennis Club (Rothesay International Eastbourne)
-                new Court { Id = 46, Name = "Centre Court", VenueId = 23 },
-                new Court { Id = 47, Name = "Court 1", VenueId = 23 },
+                new Court
+                {
+                    Id = DeterministicGuid.Create("Court_Devonshire Park Lawn Tennis Club_Centre Court"),
+                    Name = "Centre Court",
+                    VenueId = DeterministicGuid.Create("Venue_Devonshire Park Lawn Tennis Club")
+                },
+                new Court
+                {
+                    Id = DeterministicGuid.Create("Court_Devonshire Park Lawn Tennis Club_Court 1"),
+                    Name = "Court 1",
+                    VenueId = DeterministicGuid.Create("Venue_Devonshire Park Lawn Tennis Club")
+                },
 
                 // 24. All England Lawn Tennis and Croquet Club (Wimbledon)
-                new Court { Id = 48, Name = "Centre Court", VenueId = 24 },
-                new Court { Id = 49, Name = "No. 1 Court", VenueId = 24 },
-                new Court { Id = 50, Name = "No. 2 Court", VenueId = 24 },
-                new Court { Id = 51, Name = "No. 3 Court", VenueId = 24 },
+                new Court
+                {
+                    Id = DeterministicGuid.Create("Court_All England Lawn Tennis and Croquet Club_Centre Court"),
+                    Name = "Centre Court",
+                    VenueId = DeterministicGuid.Create("Venue_All England Lawn Tennis and Croquet Club")
+                },
+                new Court
+                {
+                    Id = DeterministicGuid.Create("Court_All England Lawn Tennis and Croquet Club_No. 1 Court"),
+                    Name = "No. 1 Court",
+                    VenueId = DeterministicGuid.Create("Venue_All England Lawn Tennis and Croquet Club")
+                },
+                new Court
+                {
+                    Id = DeterministicGuid.Create("Court_All England Lawn Tennis and Croquet Club_No. 2 Court"),
+                    Name = "No. 2 Court",
+                    VenueId = DeterministicGuid.Create("Venue_All England Lawn Tennis and Croquet Club")
+                },
+                new Court
+                {
+                    Id = DeterministicGuid.Create("Court_All England Lawn Tennis and Croquet Club_No. 3 Court"),
+                    Name = "No. 3 Court",
+                    VenueId = DeterministicGuid.Create("Venue_All England Lawn Tennis and Croquet Club")
+                },
 
                 // 25. IGA Stadium / Stade IGA (National Bank Open)
-                new Court { Id = 52, Name = "Court Central", VenueId = 25 },
-                new Court { Id = 53, Name = "National Bank Court", VenueId = 25 },
+                new Court
+                {
+                    Id = DeterministicGuid.Create("Court_IGA Stadium_Court Central"),
+                    Name = "Court Central",
+                    VenueId = DeterministicGuid.Create("Venue_IGA Stadium")
+                },
+                new Court
+                {
+                    Id = DeterministicGuid.Create("Court_IGA Stadium_National Bank Court"),
+                    Name = "National Bank Court",
+                    VenueId = DeterministicGuid.Create("Venue_IGA Stadium")
+                },
 
                 // 26. National Tennis Center (China Open)
-                new Court { Id = 54, Name = "Diamond Court", VenueId = 26 },
-                new Court { Id = 55, Name = "Lotus Court", VenueId = 26 },
-                new Court { Id = 56, Name = "Moon Court", VenueId = 26 },
+                new Court
+                {
+                    Id = DeterministicGuid.Create("Court_National Tennis Center_Diamond Court"),
+                    Name = "Diamond Court",
+                    VenueId = DeterministicGuid.Create("Venue_National Tennis Center")
+                },
+                new Court
+                {
+                    Id = DeterministicGuid.Create("Court_National Tennis Center_Lotus Court"),
+                    Name = "Lotus Court",
+                    VenueId = DeterministicGuid.Create("Venue_National Tennis Center")
+                },
+                new Court
+                {
+                    Id = DeterministicGuid.Create("Court_National Tennis Center_Moon Court"),
+                    Name = "Moon Court",
+                    VenueId = DeterministicGuid.Create("Venue_National Tennis Center")
+                },
 
                 // 27. King Saud University Indoor Arena (WTA Finals Riyadh)
-                new Court { Id = 57, Name = "Center Court", VenueId = 27 }
-                };
+                new Court
+                {
+                    Id = DeterministicGuid.Create("Court_King Saud University Indoor Arena_Center Court"),
+                    Name = "Center Court",
+                    VenueId = DeterministicGuid.Create("Venue_King Saud University Indoor Arena")
+                }
+        };
     }
 }
-
-
-

@@ -4,28 +4,216 @@
     ViewData["Title"] = "Delete Match";
 }
 
-<div class="container py-5" style="max-width: 700px;">
-    <div class="card shadow-sm border-danger">
-        <div class="card-header bg-danger text-white">
-            <h3 class="mb-0">Are you sure you want to delete this match?</h3>
+<style>
+    .delete-match-wrapper {
+        padding: 2rem 1rem;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    .delete-match-modal {
+        background-color: #FFFFFF;
+        border-radius: 20px;
+        width: 100%;
+        max-width: 520px;
+        padding: 32px;
+        box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+        border: 1px solid #E5E3DC;
+    }
+
+    /* ADMINISTRATORS ONLY Badge */
+    .admin-badge {
+        background-color: #EDF6F1 !important;
+        color: #143E30 !important;
+        font-size: 10px !important;
+        font-weight: 600 !important;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        padding: 4px 10px;
+        border-radius: 6px;
+        display: inline-block;
+        margin-bottom: 16px;
+    }
+
+    /* Delete item? Title */
+    .delete-title {
+        font-size: 24px !important;
+        font-weight: 600 !important;
+        color: #101828 !important;
+        margin-bottom: 8px;
+    }
+
+    /* Subtitle */
+    .delete-subtitle {
+        font-size: 14px !important;
+        font-weight: 400 !important;
+        color: #475467 !important;
+        margin-bottom: 24px;
+        line-height: 1.5;
+    }
+
+    /* Warning Box */
+    .warning-box {
+        background-color: #FECDCA !important;
+        border: 1px solid #F97066;
+        border-radius: 12px;
+        padding: 16px 20px;
+        margin-bottom: 24px;
+    }
+
+    /* Warning Heading */
+    .warning-heading {
+        font-size: 14px !important;
+        font-weight: 600 !important;
+        color: #912018 !important;
+        margin-bottom: 4px;
+    }
+
+    /* Warning Text */
+    .warning-text {
+        font-size: 13px !important;
+        font-weight: 400 !important;
+        color: #912018 !important;
+        margin-bottom: 0;
+        line-height: 1.4;
+    }
+
+    /* Type DELETE to confirm Label */
+    .confirmation-label {
+        font-size: 13px !important;
+        font-weight: 600 !important;
+        color: #334054 !important;
+        display: block;
+        margin-bottom: 8px;
+    }
+
+    .confirmation-input {
+        border: 1px solid #CBD5E1;
+        border-radius: 8px;
+        padding: 10px 14px;
+        font-size: 14px;
+        color: #1D3028;
+        width: 100%;
+        margin-bottom: 8px;
+        transition: border-color 0.15s ease;
+    }
+
+        /* Placeholder */
+        .confirmation-input::placeholder {
+            font-size: 14px !important;
+            font-weight: 400 !important;
+            color: #667085 !important;
+        }
+
+        .confirmation-input:focus {
+            border-color: #912018;
+            box-shadow: 0 0 0 3px rgba(145, 32, 24, 0.1);
+            outline: none;
+        }
+
+    /* Hint */
+    .confirmation-hint {
+        font-size: 12px !important;
+        font-weight: 400 !important;
+        color: #667085 !important;
+        margin-bottom: 28px;
+    }
+
+    .delete-footer {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        gap: 12px;
+        border-top: 1px solid #F1F5F9;
+        padding-top: 20px;
+        margin-top: 10px;
+    }
+
+    .btn-cancel {
+        background-color: #FFFFFF;
+        color: #334054 !important;
+        border: 1px solid #CBD5E1;
+        font-size: 13px;
+        font-weight: 600;
+        padding: 9px 20px;
+        border-radius: 8px;
+        text-decoration: none;
+        transition: background-color 0.15s ease;
+    }
+
+        .btn-cancel:hover {
+            background-color: #F8FAFC;
+        }
+
+    /* Delete Button: background FEE4E2, inscription semi bold 14 9B514C */
+    .btn-delete {
+        background-color: #FEE4E2 !important;
+        color: #9B514C !important;
+        border: none;
+        font-size: 14px !important;
+        font-weight: 600 !important;
+        padding: 9px 20px;
+        border-radius: 8px;
+        text-decoration: none;
+        transition: background-color 0.15s ease;
+    }
+
+        .btn-delete:hover:not(:disabled) {
+            background-color: #FECDCA !important;
+        }
+</style>
+
+<div class="delete-match-wrapper">
+    <div class="delete-match-modal">
+        <div class="admin-badge">Administrators Only</div>
+        <h1 class="delete-title">Delete item?</h1>
+        <p class="delete-subtitle">
+            Permanently remove this match between <strong>@Model.FirstPlayerFullName</strong> and <strong>@Model.SecondPlayerFullName</strong>. Review the warning below before you continue.
+        </p>
+
+        <div class="warning-box">
+            <div class="warning-heading">This action cannot be undone</div>
+            <p class="warning-text">The item will be permanently deleted and cannot be restored.</p>
         </div>
-        <div class="card-body">
-            <dl class="row">
-                <dt class="col-sm-3">Tournament</dt>
-                <dd class="col-sm-9">@Model.TournamentName</dd>
 
-                <dt class="col-sm-3">Players</dt>
-                <dd class="col-sm-9">@Model.FirstPlayerFullName vs @Model.SecondPlayerFullName</dd>
+        <form asp-action="Delete" method="post">
+            <input type="hidden" asp-for="Id" />
 
-                <dt class="col-sm-3">Date Time</dt>
-                <dd class="col-sm-9">@Model.DateTime.ToString("dd MMM yyyy HH:mm")</dd>
-            </dl>
+            <label class="confirmation-label" for="confirmDeleteInput">Type DELETE to confirm</label>
+            <input type="text" id="confirmDeleteInput" class="confirmation-input" placeholder="DELETE" autocomplete="off" />
+            <div class="confirmation-hint">Enter the word exactly as shown to enable deletion.</div>
 
-            <form asp-action="DeleteConfirmed" method="post">
-                <input type="hidden" asp-for="Id" />
-                <button type="submit" class="btn btn-danger fw-bold">Yes, Delete</button>
-                <a asp-action="Index" class="btn btn-secondary">Cancel</a>
-            </form>
-        </div>
+            <div class="delete-footer">
+                <a asp-action="Index" class="btn-cancel">Cancel</a>
+                <button type="submit" id="deleteSubmitBtn" class="btn-delete" disabled style="opacity: 0.6; cursor: not-allowed;">
+                    Delete item
+                </button>
+            </div>
+        </form>
     </div>
 </div>
+
+@section Scripts {
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const input = document.getElementById('confirmDeleteInput');
+            const submitBtn = document.getElementById('deleteSubmitBtn');
+
+            if (input && submitBtn) {
+                input.addEventListener('input', function() {
+                    if (input.value.trim() === 'DELETE') {
+                        submitBtn.removeAttribute('disabled');
+                        submitBtn.style.opacity = '1';
+                        submitBtn.style.cursor = 'pointer';
+                    } else {
+                        submitBtn.setAttribute('disabled', 'true');
+                        submitBtn.style.opacity = '0.6';
+                        submitBtn.style.cursor = 'not-allowed';
+                    }
+                });
+            }
+        });
+    </script>
+}

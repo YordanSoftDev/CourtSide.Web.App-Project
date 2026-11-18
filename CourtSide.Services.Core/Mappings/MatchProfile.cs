@@ -13,11 +13,12 @@
                 .ForMember(dest => dest.Id, opt => opt.Ignore())
                 .ForMember(dest => dest.Tournament, opt => opt.Ignore())
                 .ForMember(dest => dest.Venue, opt => opt.Ignore())
+                .ForMember(dest => dest.Court, opt => opt.Ignore())
                 .ForMember(dest => dest.FirstPlayer, opt => opt.Ignore())
                 .ForMember(dest => dest.SecondPlayer, opt => opt.Ignore())
                 .ForMember(dest => dest.Winner, opt => opt.Ignore())
                 .ForMember(dest => dest.MatchStatus, opt => opt.MapFrom(src => src.MatchStatus))
-                .ForMember(dest => dest.CourtName, opt => opt.MapFrom(src => src.CourtName)); 
+                .ForMember(dest => dest.CourtId, opt => opt.MapFrom(src => src.CourtId)); 
 
             this.CreateMap<Match, MatchFormViewModel>()
                 .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
@@ -25,7 +26,7 @@
             ? "WTA"
             : "ATP"))
                 .ForMember(dest => dest.MatchStatus, opt => opt.MapFrom(src => src.MatchStatus))
-                .ForMember(dest => dest.CourtName, opt => opt.MapFrom(src => src.CourtName));
+                .ForMember(dest => dest.CourtId, opt => opt.MapFrom(src => src.CourtId));
 
              this.CreateMap<Match, MatchDetailsViewModel>()
                 .ForMember(dest => dest.FirstPlayerFullName,
@@ -57,6 +58,7 @@
                 $"{src.Winner.LastName}" : null));
 
             this.CreateMap<Match, MatchInfoViewModel>()
+                .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id)) 
                 .ForMember(dest => dest.VenueName, opt => opt.MapFrom(src =>
                     src.Tournament.TournamentVenues.Select(tv => tv.Venue.Name).FirstOrDefault()
                     ?? src.Venue.Name))

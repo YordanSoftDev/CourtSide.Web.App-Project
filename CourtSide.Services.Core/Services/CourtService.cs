@@ -18,7 +18,7 @@
             this.context = context;
             this.mapper = mapper;
         }
-        public async Task<IEnumerable<CourtSelectViewModel>> GetCourtsByVenueIdAsync(int venueId)
+        public async Task<IEnumerable<CourtSelectViewModel>> GetCourtsByVenueIdAsync(Guid venueId)
         {
             return await this.context.Courts
                 .AsNoTracking()

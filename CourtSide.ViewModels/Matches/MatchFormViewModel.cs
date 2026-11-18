@@ -1,23 +1,23 @@
 ﻿namespace CourtSide.ViewModels.Matches
 {
-    using CourtSide.Common.MatchEnumerations;
-    using CourtSide.ViewModels.Tournaments;
     using Microsoft.AspNetCore.Mvc.Rendering;
     using System.ComponentModel.DataAnnotations;
-    using static CourtSide.Common.ValidationConstants.Match;
 
+    using CourtSide.Common.MatchEnumerations;
+    using CourtSide.ViewModels.Tournaments;
+    using static CourtSide.Common.ValidationConstants.Match;
 
     public class MatchFormViewModel
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
 
         [Required(ErrorMessage = "Please select a First Player.")]
         [Display(Name = "First Player")]
-        public int? FirstPlayerId { get; set; }
+        public Guid? FirstPlayerId { get; set; }
 
         [Required(ErrorMessage = "Please select a Second Player.")]
         [Display(Name = "Second Player")]
-        public int? SecondPlayerId { get; set; }
+        public Guid? SecondPlayerId { get; set; }
         //When the user selects First Player from the dropdown menu, 
         //the player's name is removed automatically so that the Second Player
         //list does not already contain the name. The same applies
@@ -52,27 +52,29 @@
         //[Display(Name = "Match Duration")]
         //public string? MatchDuration { get; set; }
 
+
+        // the field is set automatically in the form when the tournament is chosen
         [Required(ErrorMessage = "Please select a Court Name.")]
-        [StringLength(CourtNameMaxLength, 
-            ErrorMessage = "Court Name cannot exceed 50 characters long.")]
         [Display(Name = "Court Name")]
-        public string? CourtName { get; set; }
-        public IEnumerable<SelectListItem> Courts { get; set; } = new List<SelectListItem>();
+        public Guid CourtId { get; set; }
 
         [Required(ErrorMessage = "Please select a Venue.")]
         [Display(Name = "Venue")]
-        public int? VenueId { get; set; }
+        public Guid? VenueId { get; set; }
         public IEnumerable<SelectListItem> Venues { get; set; } =
             new List<SelectListItem>();
 
         [Required(ErrorMessage = "Please select a Tournament.")]
         [Display(Name = "Tournament")]
-        public int? TournamentId { get; set; }
+        public Guid? TournamentId { get; set; }
 
         public IEnumerable<TournamentSelectItemViewModel> Tournaments { get; set; } =
             new List<TournamentSelectItemViewModel>();
 
+        // the field is set automatically in the form when the tournament is chosen
         public CourtSurface CourtSurface { get; set; }
+
+        // the field is set automatically in the form when the tournament is chosen
         public CourtEnvironment CourtEnvironment { get; set; }
 
         [Display(Name = "Score Result")]
@@ -82,7 +84,7 @@
         //The user can select an option from the dropdown menu 
         //only if Match Status is Completed
         [Display(Name = "Winner")]
-        public int? WinnerId { get; set; }
+        public Guid? WinnerId { get; set; }
         public IEnumerable<SelectListItem> Winners { get; set; } =
             new List<SelectListItem>();
     }

@@ -27,9 +27,9 @@
         }
 
         [HttpGet]
-        public async Task<IActionResult> Details(int id) //Tournament overview
+        public async Task<IActionResult> Details(Guid id) //Tournament overview
         {
-            if (id <= 0)
+            if (id == Guid.Empty)
             {
                 return this.BadRequest();
             }
@@ -69,15 +69,15 @@
                 return this.View(model);
             }
 
-            int createdId = await this.service
+            Guid createdId = await this.service
                 .CreateTournamentAsync(model);
             return this.RedirectToAction(nameof(Details), new { id = createdId });
         }
 
         [HttpGet]
-        public async Task<IActionResult> Edit(int id) //Display the form to edit an existing tournament
+        public async Task<IActionResult> Edit(Guid id) //Display the form to edit an existing tournament
         {
-            if (id <= 0)
+            if (id == Guid.Empty)
             {
                 return this.BadRequest();
             }
@@ -95,9 +95,9 @@
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, TournamentFormViewModel model) //Process and save the updated tournament changes 
+        public async Task<IActionResult> Edit(Guid id, TournamentFormViewModel model) //Process and save the updated tournament changes 
         {
-            if (id <= 0)
+            if (id == Guid.Empty)
             {
                 return this.BadRequest();
             }
@@ -125,9 +125,9 @@
         }
 
         [HttpGet]
-        public async Task<IActionResult> Delete(int id) //Display the delete confirmation page for a tournament
+        public async Task<IActionResult> Delete(Guid id) //Display the delete confirmation page for a tournament
         {
-            if (id <= 0)
+            if (id == Guid.Empty)
             {
                 return this.BadRequest();
             }
@@ -152,7 +152,7 @@
         [HttpPost]
         [ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id) //Process and permanently delete the tournament record
+        public async Task<IActionResult> DeleteConfirmed(Guid id) //Process and permanently delete the tournament record
         {
             bool isDeleted = await this.service.DeleteTournamentAsync(id);
 

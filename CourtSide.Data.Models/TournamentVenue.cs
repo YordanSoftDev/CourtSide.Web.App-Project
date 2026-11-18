@@ -7,12 +7,12 @@
     [PrimaryKey(nameof(TournamentId), nameof(VenueId))]
     public class TournamentVenue
     {
-        public required int TournamentId { get; set; }
+        public required Guid TournamentId { get; set; }
 
         [ForeignKey(nameof(TournamentId))]
         public virtual Tournament Tournament { get; set; } = null!;
 
-        public required int VenueId { get; set; }
+        public required Guid VenueId { get; set; }
 
         [ForeignKey(nameof(VenueId))]
         public virtual Venue Venue { get; set; } = null!;
