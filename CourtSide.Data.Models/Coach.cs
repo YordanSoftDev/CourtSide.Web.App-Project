@@ -3,9 +3,11 @@
     using Microsoft.EntityFrameworkCore;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
+
+    using CourtSide.Common.Models;
     using static CourtSide.Common.ValidationConstants.Coach;
 
-    public class Coach
+    public class Coach : ISoftDeleteableEntity
     {
         [Key]
         public Guid Id { get; set; }
@@ -17,6 +19,8 @@
         [Required]
         [MaxLength(LastNameMaxLength)]
         public required string LastName { get; set; }
+
+        public bool IsDeleted { get; set; }
 
         public required Guid PlayerId { get; set; }
 

@@ -1,12 +1,13 @@
 ﻿namespace CourtSide.Data.Models
 {
     using CourtSide.Common.MatchEnumerations;
+    using CourtSide.Common.Models;
     using Microsoft.EntityFrameworkCore;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using static CourtSide.Common.ValidationConstants.Player;
 
-    public class Player
+    public class Player : ISoftDeleteableEntity
     {
         [Key]
         public Guid Id { get; set; }
@@ -50,6 +51,8 @@
         public int? Points { get; set; }
 
         public int? TournamentsPlayed { get; set; }
+
+        public bool IsDeleted { get; set; }
 
         public virtual ICollection<Coach> Coaches { get; set; } = new List<Coach>();
     }

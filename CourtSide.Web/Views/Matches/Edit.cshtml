@@ -339,29 +339,29 @@
                 </div>
             </div>
 
-    <div class="mb-3">
-    <label asp-for="TournamentId" class="custom-form-label">
-        Tournament <span class="required-asterisk">*</span>
-    </label>
-    <select asp-for="TournamentId" id="TournamentId" class="form-select custom-form-control">
-        <option value="">-- Please select a tour first --</option>
-        @if (Model.Tournaments != null)
-        {
-            @foreach (var t in Model.Tournaments)
-            {
-                <option value="@t.Id"
-                        selected="@(t.Id == Model.TournamentId ? "selected" : null)"
-                        data-venue-id="@t.VenueId"
-                        data-surface="@((int)t.CourtSurface)"
-                        data-environment="@((int)t.CourtEnvironment)">
-                    @t.Name
-                </option>
-            }
-        }
-    </select>
-    <span asp-validation-for="TournamentId" class="text-danger"></span>
-    <div id="tournamentSubtext" class="field-subtext">Select an ATP or WTA tour above to populate the available tournaments.</div>
-</div>
+            <div class="mb-3">
+                <label asp-for="TournamentId" class="custom-form-label">
+                    Tournament <span class="required-asterisk">*</span>
+                </label>
+                <select asp-for="TournamentId" id="TournamentId" class="form-select custom-form-control">
+                    <option value="">-- Please select a tour first --</option>
+                    @if (Model.Tournaments != null)
+                    {
+                        @foreach (var t in Model.Tournaments)
+                        {
+                            <option value="@t.Id"
+                                    selected="@(t.Id == Model.TournamentId ? "selected" : null)"
+                                    data-venue-id="@t.VenueId"
+                                    data-surface="@((int)t.CourtSurface)"
+                                    data-environment="@((int)t.CourtEnvironment)">
+                                @t.Name
+                            </option>
+                        }
+                    }
+                </select>
+                <span asp-validation-for="TournamentId" class="text-danger"></span>
+                <div id="tournamentSubtext" class="field-subtext">Select an ATP or WTA tour above to populate the available tournaments.</div>
+            </div>
 
             <!-- SECTION 2: OPPONENTS -->
             <div class="form-section-header">
@@ -482,7 +482,6 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', async function() {
-            // Initialize Flatpickr for Date & Time
             flatpickr("#dateTimePicker", {
                 enableTime: true,
                 dateFormat: "Y-m-d H:i",
@@ -519,9 +518,7 @@
             const initialTourValue = @Json.Serialize(Model.Tour?.ToString() ?? "");
             const initialFirstPlayer = @Json.Serialize(Model.FirstPlayerId?.ToString() ?? "");
             const initialSecondPlayer = @Json.Serialize(Model.SecondPlayerId?.ToString() ?? "");
-            const initialRoundValue = @Json.Serialize(Model.MatchRound?.ToString() ?? "");
 
-            // Enum Lookup Mappings
             const surfaceMap = {
                 0: 'Grass',
                 1: 'Clay',
@@ -536,6 +533,40 @@
 
             let allVenuesMap = {};
 
+            function updateOpponentsSubtext() {
+                if (!opponentsSubtext) return;
+                const tour = tourSelect ? tourSelect.value : '';
+                const discipline = disciplineInput ? disciplineInput.value : 'Singles';
+
+                let genderPrefix = '';
+                if (tour === 'ATP') genderPrefix = "Men's";
+                else if (tour === 'WTA') genderPrefix = "Women's";
+
+                if (genderPrefix && discipline) {
+                    opponentsSubtext.textContent = `${genderPrefix} ${discipline.toLowerCase()}`;
+                } else if (discipline) {
+                    opponentsSubtext.textContent = discipline;
+                } else {
+                    opponentsSubtext.textContent = "";
+                }
+            }
+
+            if (disciplineToggleGroup) {
+                const buttons = disciplineToggleGroup.querySelectorAll('.toggle-btn');
+                buttons.forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        buttons.forEach(b => b.classList.remove('active'));
+                        this.classList.add('active');
+
+                        const selectedDiscipline = this.getAttribute('data-value');
+                        if (disciplineInput) {
+                            disciplineInput.value = selectedDiscipline;
+                        }
+                        updateOpponentsSubtext();
+                    });
+                });
+            }
+
             async function loadAllVenues() {
                 try {
                     const response = await fetch('/Matches/GetAllVenues');
@@ -548,8 +579,8 @@
                     });
 
                     if (initialVenueId && initialVenueId !== "0" && allVenuesMap[initialVenueId]) {
-                        venueIdInput.value = initialVenueId;
-                        venueNameInput.value = allVenuesMap[initialVenueId];
+                        if (venueIdInput) venueIdInput.value = initialVenueId;
+                        if (venueNameInput) venueNameInput.value = allVenuesMap[initialVenueId];
                     }
                 } catch (error) {
                     console.error('Error loading venues:', error);
@@ -574,7 +605,7 @@
                             players.forEach(p => {
                                 const option = document.createElement('option');
                                 option.value = p.id || p.Id;
-                                option.textContent = p.fullName || p.FullName || (p.firstName + ' ' + p.lastName);
+                                option.textContent = p.fullName || p.FullName || ((p.firstName || p.FirstName || '') + ' ' + (p.lastName || p.LastName || '')).trim();
                                 selectElement.appendChild(option);
                             });
 
@@ -617,8 +648,7 @@
                         const option = document.createElement('option');
                         const courtId = c.id || c.Id;
                         const courtName = c.name || c.Name || c.courtName || c.CourtName;
-                        
-                        // CRITICAL FIX: Assign the Guid ID as the option value for model binding
+
                         option.value = courtId;
                         option.textContent = courtName;
                         courtSelect.appendChild(option);
@@ -657,34 +687,34 @@
 
             async function syncTournamentMetadata() {
                 if (!tournamentSelect) return;
-               
+
                 const selectedOption = tournamentSelect.options[tournamentSelect.selectedIndex];
                 const venueId = selectedOption ? selectedOption.getAttribute('data-venue-id') : null;
-               
+
                 if (venueId && venueId !== "0") {
                     if (venueIdInput) venueIdInput.value = venueId;
-                   
-                    if (venueNameInput && typeof allVenuesMap !== 'undefined' && allVenuesMap[venueId]) {
+
+                    if (venueNameInput && allVenuesMap[venueId]) {
                         venueNameInput.value = allVenuesMap[venueId];
                     }
-               
+
                     await fetchAndPopulateCourts(venueId);
                 } else {
                     if (venueIdInput) venueIdInput.value = "";
                     if (venueNameInput) venueNameInput.value = "";
                     clearAndDisableCourts();
                 }
-               
+
                 const surfaceVal = selectedOption ? selectedOption.getAttribute('data-surface') : null;
                 const envVal = selectedOption ? selectedOption.getAttribute('data-environment') : null;
-               
-                if (surfaceVal && envVal) {
+
+                if (surfaceVal !== null && surfaceVal !== "" && envVal !== null && envVal !== "") {
                     if (courtSurfaceInput) courtSurfaceInput.value = surfaceVal;
                     if (courtEnvironmentInput) courtEnvironmentInput.value = envVal;
-               
-                    const envText = (typeof environmentMap !== 'undefined' && environmentMap[envVal]) ? environmentMap[envVal] : envVal;
-                    const surfText = (typeof surfaceMap !== 'undefined' && surfaceMap[surfaceVal]) ? surfaceMap[surfaceVal] : surfaceVal;
-               
+
+                    const envText = environmentMap[envVal] ?? envVal;
+                    const surfText = surfaceMap[surfaceVal] ?? surfaceVal;
+
                     if (surfaceEnvironmentInput) {
                         surfaceEnvironmentInput.value = `${envText} ${surfText}`.trim();
                     }
@@ -706,8 +736,8 @@
                     updateOpponentsSubtext();
                     tournamentSelect.innerHTML = '<option value="">-- Please select a tour first --</option>';
                     tournamentSelect.disabled = true;
-                    venueIdInput.value = "";
-                    venueNameInput.value = "";
+                    if (venueIdInput) venueIdInput.value = "";
+                    if (venueNameInput) venueNameInput.value = "";
                     if (courtSurfaceInput) courtSurfaceInput.value = "";
                     if (courtEnvironmentInput) courtEnvironmentInput.value = "";
                     if (surfaceEnvironmentInput) surfaceEnvironmentInput.value = "";
@@ -739,8 +769,8 @@
                             const environment = t.courtEnvironment ?? t.CourtEnvironment;
 
                             if (venueId && venueId != 0) option.setAttribute('data-venue-id', venueId);
-                            if (surface !== undefined) option.setAttribute('data-surface', surface);
-                            if (environment !== undefined) option.setAttribute('data-environment', environment);
+                            if (surface !== undefined && surface !== null) option.setAttribute('data-surface', surface);
+                            if (environment !== undefined && environment !== null) option.setAttribute('data-environment', environment);
 
                             tournamentSelect.appendChild(option);
                         });
@@ -778,23 +808,22 @@
                 });
             }
 
-            function isMatchCompleted() {
-                if (!matchStatusSelect || !matchStatusSelect.value) return false;
+            function getNormalizedStatusText() {
+                if (!matchStatusSelect || !matchStatusSelect.value) return '';
                 const selectedOption = matchStatusSelect.options[matchStatusSelect.selectedIndex];
-                return selectedOption && selectedOption.text.trim().toLowerCase() === 'completed';
+                return selectedOption ? selectedOption.text.trim().toLowerCase().replace(/\s+/g, '') : '';
+            }
+
+            function isMatchCompleted() {
+                return getNormalizedStatusText() === 'completed';
             }
 
             function isMatchScheduled() {
-                if (!matchStatusSelect || !matchStatusSelect.value) return false;
-                const selectedOption = matchStatusSelect.options[matchStatusSelect.selectedIndex];
-                return selectedOption && selectedOption.text.trim().toLowerCase() === 'scheduled';
+                return getNormalizedStatusText() === 'scheduled';
             }
 
             function isMatchInProgress() {
-                if (!matchStatusSelect || !matchStatusSelect.value) return false;
-                const selectedOption = matchStatusSelect.options[matchStatusSelect.selectedIndex];
-                const text = selectedOption ? selectedOption.text.trim().toLowerCase() : '';
-                return text === 'inprogress' || text === 'in progress' || matchStatusSelect.value === '1';
+                return getNormalizedStatusText() === 'inprogress';
             }
 
             function updateMatchStatusBehaviors() {
@@ -819,13 +848,15 @@
                 const secondVal = secondPlayer.value;
 
                 Array.from(secondPlayer.options).forEach(option => {
-                    option.disabled = (option.value && option.value === firstVal);
-                    option.hidden = (option.value && option.value === firstVal);
+                    const isDuplicate = Boolean(option.value && option.value === firstVal);
+                    option.disabled = isDuplicate;
+                    option.hidden = isDuplicate;
                 });
 
                 Array.from(firstPlayer.options).forEach(option => {
-                    option.disabled = (option.value && option.value === secondVal);
-                    option.hidden = (option.value && option.value === secondVal);
+                    const isDuplicate = Boolean(option.value && option.value === secondVal);
+                    option.disabled = isDuplicate;
+                    option.hidden = isDuplicate;
                 });
 
                 updateMatchStatusBehaviors();
@@ -886,15 +917,20 @@
                 });
             }
 
+            if (matchStatusSelect && initialStatusValue) {
+                matchStatusSelect.value = initialStatusValue;
+            }
+
             await loadAllVenues();
 
-            if (tourSelect && tourSelect.value) {
+            if (tourSelect && initialTourValue) {
                 tourSelect.value = initialTourValue;
                 await handleTourChange();
             } else {
                 if (tournamentSelect) tournamentSelect.disabled = true;
                 clearAndDisablePlayers();
                 clearAndDisableCourts();
+                updateOpponentsSubtext();
             }
 
             if (tournamentSelect && initialTournamentId) {
@@ -902,7 +938,6 @@
                 await syncTournamentMetadata();
             }
 
-            // Ensure initial CourtId is re-selected if present (e.g. after validation failure redisplay)
             if (initialCourtValue && courtSelect) {
                 const optionExists = Array.from(courtSelect.options).some(o => o.value === initialCourtValue);
                 if (optionExists) {

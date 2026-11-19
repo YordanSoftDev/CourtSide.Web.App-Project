@@ -2,6 +2,7 @@
 {
     using Microsoft.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore.Metadata.Builders;
+
     using CourtSide.Data.Models;
     using CourtSide.Data.Seeding;
 
@@ -13,6 +14,8 @@
                .WithOne(tv => tv.Venue)
                .HasForeignKey(tv => tv.VenueId)
                .OnDelete(DeleteBehavior.Restrict);
+
+            builder.HasQueryFilter(v => v.IsDeleted == false);
 
             builder.HasData(DefaultVenues);
         }

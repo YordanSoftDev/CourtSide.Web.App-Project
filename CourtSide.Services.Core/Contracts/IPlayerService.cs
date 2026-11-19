@@ -18,10 +18,10 @@
 
         public Task<IEnumerable<PlayerInfoViewModel>> GetAllWomensPlayersForIndexAsync();
 
-        public Task<IEnumerable<PlayerSelectViewModel>> GetPlayersForSelectAsync();
+        public Task<IEnumerable<PlayerSelectItemViewModel>> GetPlayersForSelectAsync();
 
-        public Task<IEnumerable<PlayerSelectViewModel>> GetPlayersByTournamentIdAsync(Guid tournamentId);
+        public Task<IEnumerable<PlayerSelectItemViewModel>> GetPlayersByTournamentIdAsync(Guid tournamentId);
 
-        public Task<IEnumerable<PlayerSelectViewModel>> GetPlayersByTourAsync(string tour);
+        public Task<IEnumerable<PlayerSelectItemViewModel>> GetPlayersByTourAsync(string tour);
     }
 }

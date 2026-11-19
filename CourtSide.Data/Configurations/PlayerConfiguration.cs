@@ -19,6 +19,8 @@
                 .IsRequired(true)
                 .OnDelete(DeleteBehavior.Restrict);
 
+            builder.HasQueryFilter(p => p.IsDeleted == false);
+
             builder.HasData(DefaultMensPlayers.Concat(DefaultWomensPlayers));
 
         }

@@ -3,9 +3,12 @@
     using Microsoft.EntityFrameworkCore;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
+
     using CourtSide.Common.MatchEnumerations;
     using static CourtSide.Common.ValidationConstants.Match;
-    public class Match
+    using CourtSide.Common.Models;
+
+    public class Match : ISoftDeleteableEntity
     {
         [Key]
         public Guid Id { get; set; }
@@ -47,6 +50,8 @@
         //The variants are Indoor and Outdoor
         [MaxLength(CourtEnvironmentMaxLength)]
         public required CourtEnvironment? CourtEnvironment { get; set; }
+
+        public bool IsDeleted { get; set; }
 
         //The venue(tennis club or a stadium)
         //where the match will be played or was played

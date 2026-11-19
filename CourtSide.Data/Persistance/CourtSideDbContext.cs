@@ -2,8 +2,9 @@
 {
     using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore;
-    using CourtSide.Data.Models;
     using Microsoft.AspNetCore.Identity;
+
+    using CourtSide.Data.Models;
 
     public partial class CourtSideDbContext : IdentityDbContext<IdentityUser>
     {
@@ -24,17 +25,7 @@
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            base.OnModelCreating(modelBuilder);
-
-            var playerEntityType = modelBuilder.Model.FindEntityType(typeof(Player));
-            if (playerEntityType != null)
-            {
-                var seeds = playerEntityType.GetSeedData();
-                foreach (var seed in seeds)
-                {
-                    System.Diagnostics.Debug.WriteLine($"Player Seed -> ID: {seed["Id"]}, Name: {(seed.ContainsKey("FirstName") ? seed["FirstName"] : "N/A")} {(seed.ContainsKey("LastName") ? seed["LastName"] : "")}");
-                }
-            }
+            base.OnModelCreating(modelBuilder);   
 
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(CourtSideDbContext).Assembly);
 

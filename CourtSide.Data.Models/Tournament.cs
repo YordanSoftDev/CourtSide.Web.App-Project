@@ -4,9 +4,10 @@
     using System.ComponentModel.DataAnnotations.Schema;
 
     using CourtSide.Common.MatchEnumerations;
+    using CourtSide.Common.Models;
     using CourtSide.Common.TournamentEnumerations;
     using static CourtSide.Common.ValidationConstants.Tournament;
-    public class Tournament
+    public class Tournament : ISoftDeleteableEntity
     {
         [Key]
         public Guid Id { get; set; }
@@ -62,6 +63,8 @@
         [NotMapped]
         public bool IsActive =>
             DateTime.Now >= this.StartDate && DateTime.Now <= this.EndDate;
+
+        public bool IsDeleted { get; set; }
 
         public virtual ICollection<TournamentVenue> TournamentVenues { get; set; } =
             new HashSet<TournamentVenue>();

@@ -18,6 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\CourtSide.Data.Common\CourtSide.Data.Common.csproj" />
     <ProjectReference Include="..\CourtSide.Data.Models\CourtSide.Data.Models.csproj" />
     <ProjectReference Include="..\CourtSide.Data.Models\CourtSide.Data.Models.csproj" />
   </ItemGroup>

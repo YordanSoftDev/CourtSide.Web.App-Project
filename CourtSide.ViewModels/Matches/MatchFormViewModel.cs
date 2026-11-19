@@ -6,6 +6,7 @@
     using CourtSide.Common.MatchEnumerations;
     using CourtSide.ViewModels.Tournaments;
     using static CourtSide.Common.ValidationConstants.Match;
+    using CourtSide.ViewModels.Courts;
 
     public class MatchFormViewModel
     {
@@ -52,11 +53,12 @@
         //[Display(Name = "Match Duration")]
         //public string? MatchDuration { get; set; }
 
-
-        // the field is set automatically in the form when the tournament is chosen
         [Required(ErrorMessage = "Please select a Court Name.")]
         [Display(Name = "Court Name")]
-        public Guid CourtId { get; set; }
+        public Guid? CourtId { get; set; }
+
+        public IEnumerable<CourtSelectItemViewModel> Courts { get; set; } =
+            new List<CourtSelectItemViewModel>();
 
         [Required(ErrorMessage = "Please select a Venue.")]
         [Display(Name = "Venue")]

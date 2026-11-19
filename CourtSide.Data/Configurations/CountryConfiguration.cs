@@ -10,6 +10,8 @@
     {
         public void Configure(EntityTypeBuilder<Country> builder)
         {
+            builder.HasQueryFilter(c => c.IsDeleted == false);
+
             builder.HasData(DefaultCountries);
         }
 

@@ -104,7 +104,7 @@
                 model.Tournaments = await this.tournamentService.GetTournamentsByTourWithVenueAsync(model.Tour)
                     ?? Enumerable.Empty<TournamentSelectItemViewModel>();
 
-                IEnumerable<PlayerSelectViewModel>? tourPlayers = await this.playerService.GetPlayersByTourAsync(model.Tour);
+                IEnumerable<PlayerSelectItemViewModel>? tourPlayers = await this.playerService.GetPlayersByTourAsync(model.Tour);
                 model.Players = tourPlayers.Select(p => new SelectListItem
                 {
                     Value = p.Id.ToString(),
@@ -114,7 +114,7 @@
             else
             {
                 model.Tournaments = Enumerable.Empty<TournamentSelectItemViewModel>();
-                IEnumerable<PlayerSelectViewModel>? players = await this.playerService.GetPlayersForSelectAsync();
+                IEnumerable<PlayerSelectItemViewModel>? players = await this.playerService.GetPlayersForSelectAsync();
                 model.Players = players.Select(p => new SelectListItem
                 {
                     Value = p.Id.ToString(),

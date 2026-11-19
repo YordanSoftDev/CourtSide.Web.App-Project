@@ -13,6 +13,7 @@
   <ItemGroup>
     <ProjectReference Include="..\CourtSide.Common\CourtSide.Common.csproj" />
     <ProjectReference Include="..\CourtSide.Common\CourtSide.Common.csproj" />
+    <ProjectReference Include="..\CourtSide.Data.Common\CourtSide.Data.Common.csproj" />
   </ItemGroup>
 
 </Project>

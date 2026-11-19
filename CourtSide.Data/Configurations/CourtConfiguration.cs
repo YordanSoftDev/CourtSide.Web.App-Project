@@ -5,6 +5,7 @@
 
     using CourtSide.Data.Models;
     using CourtSide.Data.Seeding;
+    using Microsoft.EntityFrameworkCore.Metadata.Conventions.Infrastructure;
 
     public class CourtConfiguration : IEntityTypeConfiguration<Court>
     {
@@ -14,6 +15,8 @@
                 .WithMany(v => v.Courts)
                 .HasForeignKey(c => c.VenueId)
                 .OnDelete(DeleteBehavior.Restrict);
+
+            builder.HasQueryFilter(c => c.IsDeleted == false);
 
             builder.HasData(DefaultCourts);
         }
@@ -210,7 +213,12 @@
                     Name = "Grandstand",
                     VenueId = DeterministicGuid.Create("Venue_Qizhong Forest Sports City Arena")
                 },
-
+                new Court
+                {
+                    Id = DeterministicGuid.Create("Court_Qizhong Forest Sports City Stadium Court"),
+                    Name = "Stadium Court",
+                    VenueId = DeterministicGuid.Create("Venue_Qizhong Forest Sports City Arena")
+                },
                 // 12. Sportpaleis Antwerp / Lotto Arena (European Open)
                 new Court
                 {

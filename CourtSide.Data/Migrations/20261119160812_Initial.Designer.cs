@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CourtSide.Data.Migrations
 {
     [DbContext(typeof(CourtSideDbContext))]
-    [Migration("20261118231049_initial")]
-    partial class initial
+    [Migration("20261119160812_Initial")]
+    partial class Initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -1235,6 +1235,12 @@ namespace CourtSide.Data.Migrations
                         },
                         new
                         {
+                            Id = new Guid("b7be96c3-7e27-ce5b-6d97-92889955b269"),
+                            Name = "Stadium Court",
+                            VenueId = new Guid("f4e815bd-2c5a-8a71-e0d2-deb6e4180f28")
+                        },
+                        new
+                        {
                             Id = new Guid("fdfaa559-c2df-41e2-1877-f6c325759fe5"),
                             Name = "Center Court",
                             VenueId = new Guid("6caac657-0e0b-25d4-226f-4a6cdd07c7e9")
@@ -1478,99 +1484,99 @@ namespace CourtSide.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("d054775b-f0e8-b891-f93b-1a2080e48a24"),
+                            Id = new Guid("f284ecee-69a3-8195-c4a3-0efb290a82a2"),
                             CourtEnvironment = 1,
-                            CourtId = new Guid("fdfaa559-c2df-41e2-1877-f6c325759fe5"),
+                            CourtId = new Guid("b7be96c3-7e27-ce5b-6d97-92889955b269"),
                             CourtSurface = "Hard",
-                            DateTime = new DateTime(2026, 10, 15, 13, 10, 0, 0, DateTimeKind.Utc),
+                            DateTime = new DateTime(2026, 10, 15, 13, 30, 0, 0, DateTimeKind.Utc),
                             FirstPlayerId = new Guid("bde04240-cf13-cf6c-9e42-9a003582c2a0"),
                             MatchRound = "Quarterfinal",
                             MatchStatus = "Completed",
-                            ScoreResult = "6-4 5-4",
-                            SecondPlayerId = new Guid("d62906b4-21b9-7583-2eab-17a41fec544a"),
-                            TournamentId = new Guid("9ff588d9-efd7-5998-7564-0c60cfa790bd"),
-                            VenueId = new Guid("6caac657-0e0b-25d4-226f-4a6cdd07c7e9"),
+                            ScoreResult = "6-4 6-4",
+                            SecondPlayerId = new Guid("e198eade-6051-1063-4065-395d4889be02"),
+                            TournamentId = new Guid("c4677b80-d746-8861-2f25-fd69b9e5b0cd"),
+                            VenueId = new Guid("f4e815bd-2c5a-8a71-e0d2-deb6e4180f28"),
                             WinnerId = new Guid("bde04240-cf13-cf6c-9e42-9a003582c2a0")
                         },
                         new
                         {
-                            Id = new Guid("30b36737-769a-6f0f-31a9-9f5e2c993b12"),
+                            Id = new Guid("e99c1474-ec33-0c11-36b5-c433231a568c"),
                             CourtEnvironment = 1,
-                            CourtId = new Guid("fdfaa559-c2df-41e2-1877-f6c325759fe5"),
+                            CourtId = new Guid("b7be96c3-7e27-ce5b-6d97-92889955b269"),
                             CourtSurface = "Hard",
-                            DateTime = new DateTime(2026, 10, 15, 9, 40, 0, 0, DateTimeKind.Utc),
-                            FirstPlayerId = new Guid("afda09dd-04f8-9b84-c1d5-9bcfcfd35ce1"),
+                            DateTime = new DateTime(2026, 10, 15, 10, 0, 0, 0, DateTimeKind.Utc),
+                            FirstPlayerId = new Guid("8bc2cede-72c8-75bc-fa6b-2f2d77c9efdb"),
                             MatchRound = "Quarterfinal",
                             MatchStatus = "Completed",
                             ScoreResult = "1-4",
-                            SecondPlayerId = new Guid("8ab91b95-266e-6e1f-7c2b-9e70cb72a3db"),
-                            TournamentId = new Guid("9ff588d9-efd7-5998-7564-0c60cfa790bd"),
-                            VenueId = new Guid("6caac657-0e0b-25d4-226f-4a6cdd07c7e9"),
-                            WinnerId = new Guid("8ab91b95-266e-6e1f-7c2b-9e70cb72a3db")
+                            SecondPlayerId = new Guid("646bbb26-5fd9-7078-1b17-057c2c3c7d56"),
+                            TournamentId = new Guid("c4677b80-d746-8861-2f25-fd69b9e5b0cd"),
+                            VenueId = new Guid("f4e815bd-2c5a-8a71-e0d2-deb6e4180f28"),
+                            WinnerId = new Guid("646bbb26-5fd9-7078-1b17-057c2c3c7d56")
                         },
                         new
                         {
-                            Id = new Guid("2b616272-fe35-d823-a286-3ddf16791624"),
+                            Id = new Guid("4ca64b19-4391-d7c5-e9ca-65e7fd92852c"),
                             CourtEnvironment = 1,
-                            CourtId = new Guid("fdfaa559-c2df-41e2-1877-f6c325759fe5"),
+                            CourtId = new Guid("b7be96c3-7e27-ce5b-6d97-92889955b269"),
                             CourtSurface = "Hard",
-                            DateTime = new DateTime(2026, 10, 16, 13, 10, 0, 0, DateTimeKind.Utc),
+                            DateTime = new DateTime(2026, 10, 16, 13, 0, 0, 0, DateTimeKind.Utc),
                             FirstPlayerId = new Guid("532828a9-f83f-e29d-f49e-f56fd46deeb9"),
                             MatchRound = "Quarterfinal",
                             MatchStatus = "Completed",
                             ScoreResult = "6-3 1-6 6-3",
-                            SecondPlayerId = new Guid("c07cf102-37ed-3bc0-4bfa-a5cef09fa38d"),
-                            TournamentId = new Guid("9ff588d9-efd7-5998-7564-0c60cfa790bd"),
-                            VenueId = new Guid("6caac657-0e0b-25d4-226f-4a6cdd07c7e9"),
+                            SecondPlayerId = new Guid("25298752-2a35-960f-6ec8-11e85558fcd0"),
+                            TournamentId = new Guid("c4677b80-d746-8861-2f25-fd69b9e5b0cd"),
+                            VenueId = new Guid("f4e815bd-2c5a-8a71-e0d2-deb6e4180f28"),
                             WinnerId = new Guid("532828a9-f83f-e29d-f49e-f56fd46deeb9")
                         },
                         new
                         {
-                            Id = new Guid("07328a2a-1cee-6b58-75e5-94ba73b10e4c"),
+                            Id = new Guid("7872fa47-2ab6-b5db-08f1-28fb010ba4c2"),
                             CourtEnvironment = 1,
-                            CourtId = new Guid("fdfaa559-c2df-41e2-1877-f6c325759fe5"),
+                            CourtId = new Guid("b7be96c3-7e27-ce5b-6d97-92889955b269"),
                             CourtSurface = "Hard",
-                            DateTime = new DateTime(2026, 10, 16, 9, 40, 0, 0, DateTimeKind.Utc),
-                            FirstPlayerId = new Guid("cee30799-42bc-db04-b50d-9c68565dbdef"),
+                            DateTime = new DateTime(2026, 10, 16, 11, 0, 0, 0, DateTimeKind.Utc),
+                            FirstPlayerId = new Guid("fed4e693-8dce-1d71-7c9f-c62dd88b9516"),
                             MatchRound = "Quarterfinal",
                             MatchStatus = "Completed",
                             ScoreResult = "4-6 6-4 6-3",
                             SecondPlayerId = new Guid("71c2c435-0a30-5a50-f401-df86e253e265"),
-                            TournamentId = new Guid("9ff588d9-efd7-5998-7564-0c60cfa790bd"),
-                            VenueId = new Guid("6caac657-0e0b-25d4-226f-4a6cdd07c7e9"),
-                            WinnerId = new Guid("cee30799-42bc-db04-b50d-9c68565dbdef")
+                            TournamentId = new Guid("c4677b80-d746-8861-2f25-fd69b9e5b0cd"),
+                            VenueId = new Guid("f4e815bd-2c5a-8a71-e0d2-deb6e4180f28"),
+                            WinnerId = new Guid("fed4e693-8dce-1d71-7c9f-c62dd88b9516")
                         },
                         new
                         {
-                            Id = new Guid("ed0085a7-ac88-0af0-1fd5-b346a143bc41"),
+                            Id = new Guid("5a62f94a-b159-2481-c561-f7833294d5bf"),
                             CourtEnvironment = 1,
-                            CourtId = new Guid("fdfaa559-c2df-41e2-1877-f6c325759fe5"),
+                            CourtId = new Guid("b7be96c3-7e27-ce5b-6d97-92889955b269"),
                             CourtSurface = "Hard",
                             DateTime = new DateTime(2026, 10, 17, 11, 40, 0, 0, DateTimeKind.Utc),
                             FirstPlayerId = new Guid("bde04240-cf13-cf6c-9e42-9a003582c2a0"),
                             MatchRound = "Semifinal",
                             MatchStatus = "Completed",
                             ScoreResult = "7-5 4-6 3-6",
-                            SecondPlayerId = new Guid("8ab91b95-266e-6e1f-7c2b-9e70cb72a3db"),
-                            TournamentId = new Guid("9ff588d9-efd7-5998-7564-0c60cfa790bd"),
-                            VenueId = new Guid("6caac657-0e0b-25d4-226f-4a6cdd07c7e9"),
-                            WinnerId = new Guid("8ab91b95-266e-6e1f-7c2b-9e70cb72a3db")
+                            SecondPlayerId = new Guid("646bbb26-5fd9-7078-1b17-057c2c3c7d56"),
+                            TournamentId = new Guid("c4677b80-d746-8861-2f25-fd69b9e5b0cd"),
+                            VenueId = new Guid("f4e815bd-2c5a-8a71-e0d2-deb6e4180f28"),
+                            WinnerId = new Guid("646bbb26-5fd9-7078-1b17-057c2c3c7d56")
                         },
                         new
                         {
-                            Id = new Guid("9a46a435-c545-c57a-19c1-f83eb355970a"),
+                            Id = new Guid("a6480acd-694c-5dcc-2097-f9ae525b59cf"),
                             CourtEnvironment = 1,
-                            CourtId = new Guid("fdfaa559-c2df-41e2-1877-f6c325759fe5"),
+                            CourtId = new Guid("b7be96c3-7e27-ce5b-6d97-92889955b269"),
                             CourtSurface = "Hard",
                             DateTime = new DateTime(2026, 10, 17, 14, 10, 0, 0, DateTimeKind.Utc),
-                            FirstPlayerId = new Guid("cee30799-42bc-db04-b50d-9c68565dbdef"),
+                            FirstPlayerId = new Guid("fed4e693-8dce-1d71-7c9f-c62dd88b9516"),
                             MatchRound = "Semifinal",
                             MatchStatus = "Completed",
                             ScoreResult = "6-3 6-4",
                             SecondPlayerId = new Guid("532828a9-f83f-e29d-f49e-f56fd46deeb9"),
-                            TournamentId = new Guid("9ff588d9-efd7-5998-7564-0c60cfa790bd"),
-                            VenueId = new Guid("6caac657-0e0b-25d4-226f-4a6cdd07c7e9"),
-                            WinnerId = new Guid("cee30799-42bc-db04-b50d-9c68565dbdef")
+                            TournamentId = new Guid("c4677b80-d746-8861-2f25-fd69b9e5b0cd"),
+                            VenueId = new Guid("f4e815bd-2c5a-8a71-e0d2-deb6e4180f28"),
+                            WinnerId = new Guid("fed4e693-8dce-1d71-7c9f-c62dd88b9516")
                         });
                 });
 

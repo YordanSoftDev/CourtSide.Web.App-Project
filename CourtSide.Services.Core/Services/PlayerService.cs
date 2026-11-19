@@ -110,17 +110,17 @@
                 .ToListAsync();
         }
 
-        public async Task<IEnumerable<PlayerSelectViewModel>> GetPlayersForSelectAsync()
+        public async Task<IEnumerable<PlayerSelectItemViewModel>> GetPlayersForSelectAsync()
         {
             return await this.context.Players
                 .AsNoTracking()
                 .OrderBy(p => p.LastName)
                 .ThenBy(p => p.FirstName)
-                .ProjectTo<PlayerSelectViewModel>(this.mapper.ConfigurationProvider)
+                .ProjectTo<PlayerSelectItemViewModel>(this.mapper.ConfigurationProvider)
                 .ToListAsync();
         }
 
-        public async Task<IEnumerable<PlayerSelectViewModel>> GetPlayersByTournamentIdAsync(Guid tournamentId)
+        public async Task<IEnumerable<PlayerSelectItemViewModel>> GetPlayersByTournamentIdAsync(Guid tournamentId)
         {
             var tournament = await this.context.Tournaments
                 .AsNoTracking()
@@ -128,7 +128,7 @@
 
             if (tournament == null)
             {
-                return Enumerable.Empty<PlayerSelectViewModel>();
+                return Enumerable.Empty<PlayerSelectItemViewModel>();
             }
 
             var query = this.context.Players.AsNoTracking();
@@ -149,11 +149,11 @@
             return await query
                 .OrderBy(p => p.LastName)
                 .ThenBy(p => p.FirstName)
-                .ProjectTo<PlayerSelectViewModel>(this.mapper.ConfigurationProvider)
+                .ProjectTo<PlayerSelectItemViewModel>(this.mapper.ConfigurationProvider)
                 .ToListAsync();
         }
 
-        public async Task<IEnumerable<PlayerSelectViewModel>> GetPlayersByTourAsync(string tour)
+        public async Task<IEnumerable<PlayerSelectItemViewModel>> GetPlayersByTourAsync(string tour)
         {
             var query = this.context.Players.AsNoTracking();
 
@@ -172,7 +172,7 @@
             return await query
                 .OrderBy(p => p.LastName)
                 .ThenBy(p => p.FirstName)
-                .ProjectTo<PlayerSelectViewModel>(this.mapper.ConfigurationProvider)
+                .ProjectTo<PlayerSelectItemViewModel>(this.mapper.ConfigurationProvider)
                 .ToListAsync();
         }
     }

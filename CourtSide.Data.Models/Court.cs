@@ -1,12 +1,13 @@
 ﻿namespace CourtSide.Data.Models
 {
+    using CourtSide.Common.Models;
     using Microsoft.EntityFrameworkCore;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
 
     using static CourtSide.Common.ValidationConstants.Court;
 
-    public class Court
+    public class Court : ISoftDeleteableEntity
     {
         [Key]
         public Guid Id { get; set; }
@@ -14,7 +15,9 @@
         // example value "Centre Court", "Court 1"
         [Required]
         [MaxLength(NameMaxLength)]
-        public string Name { get; set; } = string.Empty;
+        public required string Name { get; set; } 
+
+        public bool IsDeleted { get ; set; }
 
         public Guid VenueId { get; set; }
 
@@ -24,6 +27,5 @@
         public Venue Venue { get; set; } = null!;
 
         public ICollection<Match> Matches { get; set; } = new List<Match>();
-
     }
 }

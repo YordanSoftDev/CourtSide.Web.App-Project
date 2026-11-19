@@ -1,8 +1,9 @@
 ﻿namespace CourtSide.Data.Models
 {
+    using CourtSide.Common.Models;
     using System.ComponentModel.DataAnnotations;
     using static CourtSide.Common.ValidationConstants.Country;
-    public class Country
+    public class Country : ISoftDeleteableEntity
     {
         [Key]
         public Guid Id { get; set; }
@@ -10,5 +11,6 @@
         [Required]
         [MaxLength(NameMaxLength)]
         public required string Name { get; set; }
+        public bool IsDeleted { get; set; }
     }
 }

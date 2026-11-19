@@ -339,27 +339,27 @@
             </div>
 
             <div class="mb-3">
-    <label asp-for="TournamentId" class="custom-form-label">
-        Tournament <span class="required-asterisk">*</span>
-    </label>
-    <select asp-for="TournamentId" id="TournamentId" class="form-select custom-form-control">
-        <option value="">-- Please select a tour first --</option>
-        @if (Model.Tournaments != null)
-        {
-            @foreach (var t in Model.Tournaments)
-            {
-                <option value="@t.Id"
-                        data-venue-id="@t.VenueId"
-                        data-surface="@((int)t.CourtSurface)"
-                        data-environment="@((int)t.CourtEnvironment)">
-                    @t.Name
-                </option>
-            }
-        }
-    </select>
-    <span asp-validation-for="TournamentId" class="text-danger"></span>
-    <div id="tournamentSubtext" class="field-subtext">Select an ATP or WTA tour above to populate the available tournaments.</div>
-</div>
+                <label asp-for="TournamentId" class="custom-form-label">
+                    Tournament <span class="required-asterisk">*</span>
+                </label>
+                <select asp-for="TournamentId" id="TournamentId" class="form-select custom-form-control">
+                    <option value="">-- Please select a tour first --</option>
+                    @if (Model.Tournaments != null)
+                    {
+                        @foreach (var t in Model.Tournaments)
+                        {
+                            <option value="@t.Id"
+                                    data-venue-id="@t.VenueId"
+                                    data-surface="@((int)t.CourtSurface)"
+                                    data-environment="@((int)t.CourtEnvironment)">
+                                @t.Name
+                            </option>
+                        }
+                    }
+                </select>
+                <span asp-validation-for="TournamentId" class="text-danger"></span>
+                <div id="tournamentSubtext" class="field-subtext">Select an ATP or WTA tour above to populate the available tournaments.</div>
+            </div>
 
             <!-- SECTION 2: OPPONENTS -->
             <div class="form-section-header">
@@ -643,13 +643,13 @@
 
                     courts.forEach(c => {
                         const option = document.createElement('option');
-                        const courtName = c.name || c.Name || c.courtName || c.CourtName;
-                        option.value = courtName;
+                        const courtId = c.id ?? c.Id;
+                        const courtName = c.name ?? c.Name ?? c.courtName ?? c.CourtName;
+                        option.value = courtId;
                         option.textContent = courtName;
                         courtSelect.appendChild(option);
                     });
 
-                    debugger;
                     courtSelect.removeAttribute('disabled');
                     courtSelect.disabled = false;
 
@@ -660,8 +660,6 @@
                     if (currentCourt && Array.from(courtSelect.options).some(o => o.value === currentCourt)) {
                         courtSelect.value = currentCourt;
                     }
-
-                    
                 } catch (error) {
                     console.error('Error fetching courts:', error);
                 }

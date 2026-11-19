@@ -25,7 +25,7 @@
                 .MapFrom(src => src.Country.Name));
 
 
-            this.CreateMap<Player, PlayerSelectViewModel>()
+            this.CreateMap<Player, PlayerSelectItemViewModel>()
                 .ForMember(dest => dest.FullName,
                opt =>   opt
                 .MapFrom(src => $"{src.FirstName} {src.LastName}"));

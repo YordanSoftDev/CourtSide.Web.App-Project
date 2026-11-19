@@ -225,7 +225,7 @@
         [HttpGet]
         public async Task<IActionResult> GetPlayersByTournament(Guid? tournamentId, string? tour)
         {
-            IEnumerable<PlayerSelectViewModel> players;
+            IEnumerable<PlayerSelectItemViewModel> players;
 
             if (tournamentId.HasValue && tournamentId.Value != Guid.Empty)
             {
@@ -273,7 +273,7 @@
         [HttpGet]
         public async Task<IActionResult> GetPlayersByTour(string tour)
         {
-            IEnumerable<PlayerSelectViewModel> players = await this.playerService.GetPlayersByTourAsync(tour);
+            IEnumerable<PlayerSelectItemViewModel> players = await this.playerService.GetPlayersByTourAsync(tour);
 
             var result = players.Select(p => new
             {

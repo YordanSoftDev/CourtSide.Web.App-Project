@@ -10,9 +10,9 @@
     {
         public void Configure(EntityTypeBuilder<TournamentVenue> builder)
         {
-            builder.HasKey(tv => new { tv.TournamentId, tv.VenueId });
-
             builder.HasData(DefaultMensTournamentVenues.Concat(DefaultWomensTournamentVenues));
+
+            builder.HasQueryFilter(tv => tv.IsDeleted == false);
         }
 
         public static IEnumerable<TournamentVenue> DefaultMensTournamentVenues => new List<TournamentVenue>
@@ -162,8 +162,6 @@
                     VenueId = DeterministicGuid.Create("Venue_King Saud University Indoor Arena")
                 },
                  
-
-
                 //new TournamentVenue
                 //{
                 //    TournamentId = DeterministicGuid.Create("Tournament_Womens Australian Open"),

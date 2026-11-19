@@ -7,6 +7,7 @@
     using CourtSide.Data.Models;
     using CourtSide.Common.TournamentEnumerations;
     using CourtSide.Data.Seeding;
+    using Microsoft.EntityFrameworkCore.Metadata.Conventions.Infrastructure;
 
     public class TournamentConfiguration : IEntityTypeConfiguration<Tournament>
     {
@@ -22,6 +23,8 @@
            .WithOne(tv => tv.Tournament)
            .HasForeignKey(tv => tv.TournamentId)
            .OnDelete(DeleteBehavior.Restrict);
+
+            builder.HasQueryFilter(t => t.IsDeleted == false);
 
             builder.HasData(DefaultMensTournaments.Concat(DefaultWomensTournaments));
         }
