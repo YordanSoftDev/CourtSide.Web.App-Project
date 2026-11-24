@@ -4,6 +4,8 @@
     using System.Reflection;
 
     using CourtSide.Data.Repository.Common;
+    using CourtSide.Data.Repository.Contracts.Common;
+
     public static class ServiceCollectionExtensions
     {
         public static IServiceCollection RegisterRepositoriesFromAssembly(this IServiceCollection serviceCollection, Assembly repositoryAssembly)
@@ -22,9 +24,8 @@
                 Type? interfaceType = repositoryImplType
                     .GetInterfaces()
                     .SingleOrDefault(it => !it.IsGenericType &&
-                                           (it.GetInterfaces().Any(bit => bit.IsGenericType &&
-                                                                          (bit.GetGenericTypeDefinition() == typeof(IRepository<>) ||
-                                                                           bit.GetGenericTypeDefinition() == typeof(ISoftDeleteableRepository<>)))));
+                        (it.GetInterfaces().Any(bit => bit.IsGenericType &&
+                            (bit.GetGenericTypeDefinition() == typeof(IRepository<>) ||                                       bit.GetGenericTypeDefinition() == typeof(ISoftDeleteableRepository<>)))));
                 if (interfaceType != null)
                 {
                     serviceCollection.AddScoped(interfaceType, repositoryImplType);

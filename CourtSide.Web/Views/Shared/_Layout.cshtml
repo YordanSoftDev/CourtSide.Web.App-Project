@@ -16,14 +16,14 @@
     <link rel="stylesheet" href="~/CourtSide.Web.styles.css" asp-append-version="true" />
 
     <style>
-            body {
-                font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
 
-            .custom-brand {
-                font-family: 'Montserrat', sans-serif;
-                font-weight: 700;
-            }
+        .custom-brand {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+        }
     </style>
     @await RenderSectionAsync("MainStyle", required: false)
 </head>
@@ -40,7 +40,7 @@
 
                     <ul class="navbar-nav ms-4 flex-grow-1 gap-2">
                         <li class="nav-item">
-                            <a class="nav-link" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link custom-nav-link" asp-area="" asp-controller="Matches" asp-action="Index">Scores</a>
@@ -49,7 +49,7 @@
                             <a class="nav-link custom-nav-link" asp-area="" asp-controller="Players" asp-action="Index">Rankings</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" asp-controller="Tournaments" asp-action="Index">Tournaments</a>
+                            <a class="nav-link" asp-area="" asp-controller="Tournaments" asp-action="Index">Tournaments</a>
                         </li>
                     </ul>
                     <partial name="_LoginPartial" />
