@@ -3,6 +3,7 @@
   <Project Path="CourtSide.Data.Common/CourtSide.Data.Common.csproj" Id="535ea50c-9b6b-418f-9f5e-969fa4881033" />
   <Project Path="CourtSide.Data.Models/CourtSide.Data.Models.csproj" />
   <Project Path="CourtSide.Data/CourtSide.Data.csproj" />
+  <Project Path="CourtSide.Infrastructure/CourtSide.Infrastructure.csproj" Id="5e956b4c-fe77-4c5b-bdf8-609d8fad34f9" />
   <Project Path="CourtSide.Services.Core/CourtSide.Services.Core.csproj" />
   <Project Path="CourtSide.ViewModels/CourtSide.ViewModels.csproj" />
   <Project Path="CourtSide.Web/CourtSide.Web.csproj" />

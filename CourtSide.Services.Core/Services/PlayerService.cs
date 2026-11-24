@@ -2,22 +2,26 @@
 {
     using AutoMapper;
     using AutoMapper.QueryableExtensions;
+    using Microsoft.EntityFrameworkCore;
+
     using CourtSide.Common.MatchEnumerations;
     using CourtSide.Data.Models;
-    using CourtSide.Data.Persistance;
+    using CourtSide.Data.Repository.Contracts;
     using CourtSide.Services.Core.Contracts;
     using CourtSide.ViewModels.Players;
-    using Microsoft.EntityFrameworkCore;
 
     public class PlayerService : IPlayerService
     {
-        private readonly CourtSideDbContext context;
+        private readonly IPlayerRepository playerRepository;
+        private readonly ITournamentRepository tournamentRepository;
         private readonly IMapper mapper;
 
-        public PlayerService(CourtSideDbContext context,
+        public PlayerService(IPlayerRepository playerRepository,
+            ITournamentRepository tournamentRepository,
         IMapper mapper)
         {
-            this.context = context;
+            this.playerRepository = playerRepository;
+            this.tournamentRepository = tournamentRepository;
             this.mapper = mapper;
         }
 
@@ -25,15 +29,15 @@
         {
             Player newPlayer = this.mapper.Map<Player>(playerForm);
 
-            this.context.Players.Add(newPlayer);
-            await this.context.SaveChangesAsync();
+            await this.playerRepository.AddAsync(newPlayer);
+            await this.playerRepository.SaveChangesAsync();
 
             return newPlayer.Id;
         }
 
         public async Task<bool> UpdatePlayerAsync(Guid id, PlayerFormViewModel playerForm)
         {
-            Player? playerToUpdate = await this.context.Players.FindAsync(id);
+            Player? playerToUpdate = await this.playerRepository.All().FirstOrDefaultAsync(m => m.Id == id);
 
             if (playerToUpdate == null)
             {
@@ -42,14 +46,15 @@
 
             this.mapper.Map(playerForm, playerToUpdate);
 
-            await this.context.SaveChangesAsync();
+            await this.playerRepository.SaveChangesAsync();
 
             return true;
         }
 
         public async Task<bool> DeletePlayerAsync(Guid id)
         {
-            Player? playerToDelete = await this.context.Players
+            Player? playerToDelete = await this.playerRepository.All()
+                .Where(m => m.Id == id)
                 .FirstOrDefaultAsync(p => p.Id == id);
 
             if (playerToDelete == null)
@@ -59,8 +64,8 @@
 
             try
             {
-                this.context.Players.Remove(playerToDelete);
-                await this.context.SaveChangesAsync();
+                this.playerRepository.Remove(playerToDelete);
+                await this.playerRepository.SaveChangesAsync();
                 return true;
             }
             catch (DbUpdateException ex)
@@ -71,16 +76,16 @@
 
         public async Task<PlayerDetailsViewModel?> GetPlayerDetailsByIdAsync(Guid id)
         {
-            return await this.context.Players
-                .AsNoTracking()
+            return await this.playerRepository
+                .AllAsNoTracking()
                 .Where(m => m.Id == id)
                 .ProjectTo<PlayerDetailsViewModel>(this.mapper.ConfigurationProvider)
                 .FirstOrDefaultAsync();
         }
         public async Task<PlayerFormViewModel?> GetPlayerForEditByIdAsync(Guid id)
         {
-            return await this.context.Players
-                .AsNoTracking()
+            return await this.playerRepository
+                .AllAsNoTracking()
                 .Where(m => m.Id == id)
                 .ProjectTo<PlayerFormViewModel>(this.mapper.ConfigurationProvider)
                 .FirstOrDefaultAsync();
@@ -88,8 +93,8 @@
 
         public async Task<IEnumerable<PlayerInfoViewModel>> GetAllMensPlayersForIndexAsync()
         {
-            return await this.context.Players
-                .AsNoTracking()
+            return await this.playerRepository
+                .AllAsNoTracking()
                 .Where(p => p.Gender == Gender.Male)
                 .OrderBy(p => p.Rank)
                 .ThenBy(p => p.Id)
@@ -100,8 +105,8 @@
 
         public async Task<IEnumerable<PlayerInfoViewModel>> GetAllWomensPlayersForIndexAsync()
         {
-            return await this.context.Players
-                .AsNoTracking()
+            return await this.playerRepository
+                .AllAsNoTracking()
                 .Where(p => p.Gender == Gender.Female)
                 .OrderBy(p => p.Rank)
                 .ThenBy(p => p.Id)
@@ -112,8 +117,8 @@
 
         public async Task<IEnumerable<PlayerSelectItemViewModel>> GetPlayersForSelectAsync()
         {
-            return await this.context.Players
-                .AsNoTracking()
+            return await this.playerRepository
+                .AllAsNoTracking()
                 .OrderBy(p => p.LastName)
                 .ThenBy(p => p.FirstName)
                 .ProjectTo<PlayerSelectItemViewModel>(this.mapper.ConfigurationProvider)
@@ -122,8 +127,8 @@
 
         public async Task<IEnumerable<PlayerSelectItemViewModel>> GetPlayersByTournamentIdAsync(Guid tournamentId)
         {
-            var tournament = await this.context.Tournaments
-                .AsNoTracking()
+            var tournament = await this.tournamentRepository
+                .AllAsNoTracking()
                 .FirstOrDefaultAsync(t => t.Id == tournamentId);
 
             if (tournament == null)
@@ -131,7 +136,7 @@
                 return Enumerable.Empty<PlayerSelectItemViewModel>();
             }
 
-            var query = this.context.Players.AsNoTracking();
+            var query = this.playerRepository.AllAsNoTracking();
 
             string type = tournament.TournamentType;
 
@@ -155,7 +160,7 @@
 
         public async Task<IEnumerable<PlayerSelectItemViewModel>> GetPlayersByTourAsync(string tour)
         {
-            var query = this.context.Players.AsNoTracking();
+            IQueryable<Player>? query = this.playerRepository.AllAsNoTracking();
 
             if (!string.IsNullOrEmpty(tour))
             {

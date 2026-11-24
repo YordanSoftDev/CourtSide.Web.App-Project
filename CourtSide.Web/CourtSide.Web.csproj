@@ -35,6 +35,7 @@
 	<ItemGroup>
 		<ProjectReference Include="..\CourtSide.Data.Models\CourtSide.Data.Models.csproj" />
 		<ProjectReference Include="..\CourtSide.Data\CourtSide.Data.csproj" />
+		<ProjectReference Include="..\CourtSide.Infrastructure\CourtSide.Infrastructure.csproj" />
 		<ProjectReference Include="..\CourtSide.Services.Core\CourtSide.Services.Core.csproj" />
 		<ProjectReference Include="..\CourtSide.ViewModels\CourtSide.ViewModels.csproj" />
 	</ItemGroup>

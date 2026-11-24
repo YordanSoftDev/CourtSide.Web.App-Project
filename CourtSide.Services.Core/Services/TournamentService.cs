@@ -1,25 +1,26 @@
 ﻿namespace CourtSide.Services.Core.Services
 {
     using AutoMapper;
-    using AutoMapper.QueryableExtensions;
     using Microsoft.EntityFrameworkCore;
-    using System.Collections.Generic;
+    using AutoMapper.QueryableExtensions;
     using System.Linq;
+    using System.Collections.Generic;
     using System.Threading.Tasks;
+
     using CourtSide.Data.Models;
-    using CourtSide.Data.Persistance;
+    using CourtSide.Data.Repository.Contracts;
     using CourtSide.Services.Core.Contracts;
     using CourtSide.ViewModels.Tournaments;
 
     public class TournamentService : ITournamentService
     {
-        private readonly CourtSideDbContext context;
+        private readonly ITournamentRepository tournamentRepository;
         private readonly IMapper mapper;
 
-        public TournamentService(CourtSideDbContext context,
+        public TournamentService(ITournamentRepository tournamentRepository,
             IMapper mapper)
         {
-            this.context = context;
+            this.tournamentRepository = tournamentRepository;
             this.mapper = mapper;
         }
 
@@ -27,15 +28,15 @@
         {
             Tournament newTournament = this.mapper.Map<Tournament>(tournamentForm);
 
-            await this.context.Tournaments.AddAsync(newTournament);
-            await this.context.SaveChangesAsync();
+            await this.tournamentRepository.AddAsync(newTournament);
+            await this.tournamentRepository.SaveChangesAsync();
 
             return newTournament.Id;
         }
 
         public async Task<bool> UpdateTournamentAsync(Guid id, TournamentFormViewModel tournamentForm)
         {
-            var tournamentToUpdate = await this.context.Tournaments.FindAsync(id);
+            var tournamentToUpdate = await this.tournamentRepository.All().FirstOrDefaultAsync(m => m.Id == id);
 
             if (tournamentToUpdate == null)
             {
@@ -44,15 +45,16 @@
 
             this.mapper.Map(tournamentForm, tournamentToUpdate);
 
-            await this.context.SaveChangesAsync();
+            await this.tournamentRepository.SaveChangesAsync();
 
             return true;
         }
 
         public async Task<bool> DeleteTournamentAsync(Guid id)
         {
-            Tournament? tournamentToDelete = await this.context.Tournaments
-                .FirstOrDefaultAsync(m => m.Id == id);
+            Tournament? tournamentToDelete = await this.tournamentRepository.All()
+                .Where(m => m.Id == id)
+                .FirstOrDefaultAsync(p => p.Id == id);
 
             if (tournamentToDelete == null)
             {
@@ -66,8 +68,8 @@
 
             try
             {
-                this.context.Tournaments.Remove(tournamentToDelete);
-                await this.context.SaveChangesAsync();
+                this.tournamentRepository.Remove(tournamentToDelete);
+                await this.tournamentRepository.SaveChangesAsync();
                 return true;
             }
             catch (DbUpdateException ex)
@@ -78,8 +80,8 @@
 
         public async Task<TournamentDetailsViewModel?> GetTournamentDetailsByIdAsync(Guid id)
         {
-            return await this.context.Tournaments
-                .AsNoTracking()
+            return await this.tournamentRepository
+                .AllAsNoTracking()
                 .Where(t => t.Id == id)
                 .ProjectTo<TournamentDetailsViewModel>(this.mapper.ConfigurationProvider)
                 .FirstOrDefaultAsync();
@@ -87,8 +89,8 @@
 
         public async Task<TournamentFormViewModel?> GetTournamentForEditByIdAsync(Guid id)
         {
-            return await this.context.Tournaments
-                .AsNoTracking()
+            return await this.tournamentRepository
+                .AllAsNoTracking()
                 .Where(t => t.Id == id)
                 .ProjectTo<TournamentFormViewModel>(this.mapper.ConfigurationProvider)
                 .FirstOrDefaultAsync();
@@ -96,8 +98,8 @@
 
         public async Task<IEnumerable<TournamentInfoViewModel>> GetAllTournamentsForIndexAsync()
         {
-            return await this.context.Tournaments
-                .AsNoTracking()
+            return await this.tournamentRepository
+                .AllAsNoTracking()
                 .OrderByDescending(t => t.StartDate)
                 .ProjectTo<TournamentInfoViewModel>(this.mapper.ConfigurationProvider)
                 .ToListAsync();
@@ -105,8 +107,8 @@
 
         public async Task<IEnumerable<TournamentSelectItemViewModel>> GetTournamentsByTourWithVenueAsync(string tour)
         {
-            return await this.context.Tournaments
-             .AsNoTracking()
+            return await this.tournamentRepository
+             .AllAsNoTracking()
              .Where(t => tour == "ATP"
              ? (t.TournamentType.StartsWith("ATP") ||
                t.TournamentType.EndsWith(" Men"))

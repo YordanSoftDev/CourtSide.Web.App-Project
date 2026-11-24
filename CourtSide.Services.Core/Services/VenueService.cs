@@ -2,32 +2,31 @@
 {
     using AutoMapper;
     using AutoMapper.QueryableExtensions;
-    using CourtSide.Data.Models;
-    using CourtSide.Data.Persistance;
+    using Microsoft.EntityFrameworkCore;
+
+    using CourtSide.Data.Repository.Contracts;
     using CourtSide.Services.Core.Contracts;
     using CourtSide.ViewModels.Venues;
-    using Microsoft.EntityFrameworkCore;
 
     public class VenueService : IVenueService
     {
-        private readonly CourtSideDbContext context;
+        private readonly IVenueRepository venueRepository;
         private readonly IMapper mapper;
 
-        public VenueService(CourtSideDbContext context,
+        public VenueService(IVenueRepository venueRepository,
             IMapper mapper)
         {
-            this.context = context;
+            this.venueRepository = venueRepository;
             this.mapper = mapper;
         }
 
         public async Task<IEnumerable<VenueSelectViewModel>> GetAllVenuesAsync()
         {
-            return await this.context.Venues
-                .AsNoTracking()
+            return await this.venueRepository
+                .AllAsNoTracking()
                 .ProjectTo<VenueSelectViewModel>
                 (this.mapper.ConfigurationProvider)
                 .ToListAsync();
         }
-    }
-    
+    }  
 }
