@@ -1,8 +1,9 @@
 ﻿namespace CourtSide.Services.Core.Mappings
 {
     using AutoMapper;
-    using CourtSide.ViewModels.Players;
     using CourtSide.Data.Models;
+    using CourtSide.ViewModels.Players;
+    using Microsoft.AspNetCore.Mvc.Rendering;
 
     public class PlayerProfile : Profile
     {
@@ -17,6 +18,7 @@
                 .ForMember(dest => dest.Country, opt => opt
                 .MapFrom(src => src.Country.Name));
 
+
             this.CreateMap<Player, PlayerInfoViewModel>()
                 .ForMember(dest => dest.FullName, opt => opt
                 .MapFrom(src => $"{src.FirstName} {src.LastName}"))
@@ -29,6 +31,14 @@
                 .ForMember(dest => dest.FullName,
                opt =>   opt
                 .MapFrom(src => $"{src.FirstName} {src.LastName}"));
+
+
+            this.CreateMap<PlayerSelectItemViewModel, SelectListItem>()
+                .ForMember(dest => dest.Value, opt => opt.MapFrom(src => src.Id.ToString()))
+                .ForMember(dest => dest.Text, opt => opt.MapFrom(src => src.FullName))
+                .ForMember(dest => dest.Selected, opt => opt.Ignore())
+                .ForMember(dest => dest.Disabled, opt => opt.Ignore())
+                .ForMember(dest => dest.Group, opt => opt.Ignore());
         }
     }
 }

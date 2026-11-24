@@ -2,33 +2,31 @@
 {
     using AutoMapper;
     using Microsoft.EntityFrameworkCore;
+    using AutoMapper.QueryableExtensions;
 
-    using CourtSide.Data.Persistance;
     using CourtSide.ViewModels.Courts;
     using CourtSide.Services.Core.Contracts;
+    using CourtSide.Data.Repository.Contracts;
 
     public class CourtService : ICourtService
     {
-        private readonly CourtSideDbContext context;
+        private readonly ICourtRepository courtRepository;
         private readonly IMapper mapper;
 
-        public CourtService(CourtSideDbContext context,
+        public CourtService(ICourtRepository courtRepository, 
             IMapper mapper)
         {
-            this.context = context;
             this.mapper = mapper;
+            this.courtRepository = courtRepository;
         }
         public async Task<IEnumerable<CourtSelectViewModel>> GetCourtsByVenueIdAsync(Guid venueId)
         {
-            return await this.context.Courts
-                .AsNoTracking()
+            return await this.courtRepository
+                .AllAsNoTracking()
+                
                 .Where(c => c.VenueId == venueId)
-                .Select(c => new CourtSelectViewModel
-                {
-                    Id = c.Id,
-                    Name = c.Name
-                })
                 .OrderBy(c => c.Name)
+                .ProjectTo<CourtSelectViewModel>(this.mapper.ConfigurationProvider)
                 .ToListAsync();
         }
     }

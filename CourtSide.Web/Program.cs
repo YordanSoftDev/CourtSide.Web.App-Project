@@ -1,5 +1,6 @@
-using CourtSide.Data.Configurations;
 using CourtSide.Data.Persistance;
+using CourtSide.Data.Repository;
+using CourtSide.Data.Repository.Contracts;
 using CourtSide.Services.Core.Contracts;
 using CourtSide.Services.Core.Services;
 using Microsoft.AspNetCore.Identity;
@@ -29,7 +30,26 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options =>
 .AddEntityFrameworkStores<CourtSideDbContext>();
 
 builder.Services.AddAutoMapper(cfg =>
+    cfg.AddMaps(typeof(CourtService).Assembly));
+builder.Services.AddAutoMapper(cfg =>
     cfg.AddMaps(typeof(MatchService).Assembly));
+builder.Services.AddAutoMapper(cfg =>
+    cfg.AddMaps(typeof(PlayerService).Assembly));
+builder.Services.AddAutoMapper(cfg =>
+    cfg.AddMaps(typeof(TournamentService).Assembly));
+builder.Services.AddAutoMapper(cfg =>
+    cfg.AddMaps(typeof(VenueService).Assembly));
+
+
+builder.Services.AddScoped<ICoachRepository, CoachRepository>();
+builder.Services.AddScoped<ICountryRepository, CountryRepository>();
+builder.Services.AddScoped<ICourtRepository, CourtRepository>();
+builder.Services.AddScoped<IMatchRepository, MatchRepository>();
+builder.Services.AddScoped<IPlayerRepository, PlayerRepository>();
+builder.Services.AddScoped<ITournamentRepository, TournamentRepository>();
+builder.Services.AddScoped<ITournamentVenueRepository, TournamentVenueRepository>();
+builder.Services.AddScoped<IVenueRepository, VenueRepository>();
+
 
 builder.Services.AddScoped<IMatchService, MatchService>();
 builder.Services.AddScoped<IPlayerService, PlayerService>();

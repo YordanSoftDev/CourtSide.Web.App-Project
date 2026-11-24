@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CourtSide.Data.Migrations
 {
     [DbContext(typeof(CourtSideDbContext))]
-    [Migration("20261119160812_Initial")]
+    [Migration("20261123125441_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -36,6 +36,9 @@ namespace CourtSide.Data.Migrations
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)");
 
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
                     b.Property<string>("LastName")
                         .IsRequired()
                         .HasMaxLength(20)
@@ -57,6 +60,9 @@ namespace CourtSide.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(100)
@@ -70,976 +76,1171 @@ namespace CourtSide.Data.Migrations
                         new
                         {
                             Id = new Guid("7bb5dc85-2541-0a8b-06fc-3be7deb8094f"),
+                            IsDeleted = false,
                             Name = "Afghanistan"
                         },
                         new
                         {
                             Id = new Guid("75e947b9-1db1-1d25-0590-373f18b725b0"),
+                            IsDeleted = false,
                             Name = "Albania"
                         },
                         new
                         {
                             Id = new Guid("a071c251-edb4-8085-fcd6-3dc6ecb08dad"),
+                            IsDeleted = false,
                             Name = "Algeria"
                         },
                         new
                         {
                             Id = new Guid("7b6e13f1-4041-fc30-0f0c-f9c59ed8cdf4"),
+                            IsDeleted = false,
                             Name = "Andorra"
                         },
                         new
                         {
                             Id = new Guid("2cade91f-16fb-f944-82a9-843628e94e32"),
+                            IsDeleted = false,
                             Name = "Angola"
                         },
                         new
                         {
                             Id = new Guid("a4b706d4-f2b0-d6c1-827e-36163f74cb39"),
+                            IsDeleted = false,
                             Name = "Antigua and Barbuda"
                         },
                         new
                         {
                             Id = new Guid("37e511fc-60d5-4a3b-74bd-9b9b007a97fb"),
+                            IsDeleted = false,
                             Name = "Argentina"
                         },
                         new
                         {
                             Id = new Guid("63e8301a-102e-9527-651a-fafe14c50951"),
+                            IsDeleted = false,
                             Name = "Armenia"
                         },
                         new
                         {
                             Id = new Guid("38cb61dd-3fb5-4481-fa07-bcc7d36f5690"),
+                            IsDeleted = false,
                             Name = "Australia"
                         },
                         new
                         {
                             Id = new Guid("aaa12cd3-4b12-d434-874e-d5ee1f99397a"),
+                            IsDeleted = false,
                             Name = "Austria"
                         },
                         new
                         {
                             Id = new Guid("822b319e-4b4b-a5c1-b0b1-44025fc1f6c7"),
+                            IsDeleted = false,
                             Name = "Azerbaijan"
                         },
                         new
                         {
                             Id = new Guid("4bc477ac-cee6-ec99-602e-47327725bd93"),
+                            IsDeleted = false,
                             Name = "Bahamas"
                         },
                         new
                         {
                             Id = new Guid("b344a091-8586-4111-74d9-b8ee079eaa02"),
+                            IsDeleted = false,
                             Name = "Bahrain"
                         },
                         new
                         {
                             Id = new Guid("1335982f-2af1-4bd9-856b-4b254b85c23b"),
+                            IsDeleted = false,
                             Name = "Bangladesh"
                         },
                         new
                         {
                             Id = new Guid("ebcd6139-e0f8-9c8a-173c-16a54e1d12cf"),
+                            IsDeleted = false,
                             Name = "Barbados"
                         },
                         new
                         {
                             Id = new Guid("55df2aa9-83f5-b024-1ec1-5f8a2df9e24b"),
+                            IsDeleted = false,
                             Name = "Belarus"
                         },
                         new
                         {
                             Id = new Guid("a07e8fbb-e337-1765-6b98-62fc46244a7a"),
+                            IsDeleted = false,
                             Name = "Belgium"
                         },
                         new
                         {
                             Id = new Guid("6e1c0409-a38d-8f5d-07ed-e83fd9839bfc"),
+                            IsDeleted = false,
                             Name = "Belize"
                         },
                         new
                         {
                             Id = new Guid("02df6b28-fd03-7218-5910-8b859caf1e90"),
+                            IsDeleted = false,
                             Name = "Benin"
                         },
                         new
                         {
                             Id = new Guid("831e03bc-bdbc-0c48-ab88-8c05bd154435"),
+                            IsDeleted = false,
                             Name = "Bhutan"
                         },
                         new
                         {
                             Id = new Guid("699d495d-5f2d-2922-c8ae-049043d4f326"),
+                            IsDeleted = false,
                             Name = "Bolivia"
                         },
                         new
                         {
                             Id = new Guid("e9c32735-2cab-4595-25af-8ead9b5ccf77"),
+                            IsDeleted = false,
                             Name = "Bosnia and Herzegovina"
                         },
                         new
                         {
                             Id = new Guid("fab102bf-b5f1-1dc9-77c8-88a8f25ec011"),
+                            IsDeleted = false,
                             Name = "Botswana"
                         },
                         new
                         {
                             Id = new Guid("4decd5d6-b64c-9f4d-185b-d4443500a732"),
+                            IsDeleted = false,
                             Name = "Brazil"
                         },
                         new
                         {
                             Id = new Guid("434d62d9-6339-89ee-0fa2-ba0385c98b47"),
+                            IsDeleted = false,
                             Name = "Brunei"
                         },
                         new
                         {
                             Id = new Guid("71304549-dfa2-acec-aa49-2be5657ce2ab"),
+                            IsDeleted = false,
                             Name = "Bulgaria"
                         },
                         new
                         {
                             Id = new Guid("7f20a7cc-0aaa-8c85-ee73-b397ed591ef2"),
+                            IsDeleted = false,
                             Name = "Burkina Faso"
                         },
                         new
                         {
                             Id = new Guid("bf0fbb61-7cc0-0ea6-d8dc-4985981cbd28"),
+                            IsDeleted = false,
                             Name = "Burundi"
                         },
                         new
                         {
                             Id = new Guid("7e0578f9-12b8-f138-186a-f2043065af01"),
+                            IsDeleted = false,
                             Name = "Cabo Verde"
                         },
                         new
                         {
                             Id = new Guid("a30fb6a1-48da-8efc-1cfa-c70cf1c30d1d"),
+                            IsDeleted = false,
                             Name = "Cambodia"
                         },
                         new
                         {
                             Id = new Guid("f37c8a86-531a-aee7-258c-b49ff571e93f"),
+                            IsDeleted = false,
                             Name = "Cameroon"
                         },
                         new
                         {
                             Id = new Guid("8c72bb01-f139-1b8e-d31f-2520d9c63b98"),
+                            IsDeleted = false,
                             Name = "Canada"
                         },
                         new
                         {
                             Id = new Guid("b17547c4-388b-c4d0-b04e-0c68f237e2be"),
+                            IsDeleted = false,
                             Name = "Central African Republic"
                         },
                         new
                         {
                             Id = new Guid("1a9916b5-bac9-69ae-5196-7a5988152168"),
+                            IsDeleted = false,
                             Name = "Chad"
                         },
                         new
                         {
                             Id = new Guid("09678de0-a810-11e4-8792-4914194808ec"),
+                            IsDeleted = false,
                             Name = "Chile"
                         },
                         new
                         {
                             Id = new Guid("185127cd-c953-e57d-3c8e-21bc517e67a6"),
+                            IsDeleted = false,
                             Name = "China"
                         },
                         new
                         {
                             Id = new Guid("a1d65bf8-02d6-df04-ce84-9b614353f054"),
+                            IsDeleted = false,
                             Name = "Colombia"
                         },
                         new
                         {
                             Id = new Guid("66ea5e96-896d-65e8-d2c2-30c67de53fed"),
+                            IsDeleted = false,
                             Name = "Comoros"
                         },
                         new
                         {
                             Id = new Guid("f09b59c7-ff23-1589-0ce5-ba9e9bccbadc"),
+                            IsDeleted = false,
                             Name = "Congo (Brazzaville)"
                         },
                         new
                         {
                             Id = new Guid("dfd7c9b0-2e1a-4d30-d08f-a7d46b87e891"),
+                            IsDeleted = false,
                             Name = "Costa Rica"
                         },
                         new
                         {
                             Id = new Guid("2ffc56a1-8b48-2058-c5ba-73b476366843"),
+                            IsDeleted = false,
                             Name = "Côte d'Ivoire"
                         },
                         new
                         {
                             Id = new Guid("fafe6ec9-732a-44f2-e128-cf590e7bd447"),
+                            IsDeleted = false,
                             Name = "Croatia"
                         },
                         new
                         {
                             Id = new Guid("acacea66-2429-4a8a-1ff6-c21ebd65d5ce"),
+                            IsDeleted = false,
                             Name = "Cuba"
                         },
                         new
                         {
                             Id = new Guid("2eca314d-8e01-a89b-dc72-9ce4b37901ed"),
+                            IsDeleted = false,
                             Name = "Cyprus"
                         },
                         new
                         {
                             Id = new Guid("1265c601-0d79-510b-f5c2-dca5d6db2050"),
+                            IsDeleted = false,
                             Name = "Czech Republic"
                         },
                         new
                         {
                             Id = new Guid("6b08eedc-910d-78a4-1686-74bbe3428f53"),
+                            IsDeleted = false,
                             Name = "Democratic Republic of the Congo"
                         },
                         new
                         {
                             Id = new Guid("aeee815e-f648-88b2-cb54-93e6c9921b10"),
+                            IsDeleted = false,
                             Name = "Denmark"
                         },
                         new
                         {
                             Id = new Guid("49b0e9c5-b060-55d4-7164-e4c538850f92"),
+                            IsDeleted = false,
                             Name = "Djibouti"
                         },
                         new
                         {
                             Id = new Guid("6165486d-2371-1510-d806-5d17165991c1"),
+                            IsDeleted = false,
                             Name = "Dominica"
                         },
                         new
                         {
                             Id = new Guid("5a76cb54-3ce5-28b9-cc2a-3435a71f94b6"),
+                            IsDeleted = false,
                             Name = "Dominican Republic"
                         },
                         new
                         {
                             Id = new Guid("3821c37b-f4b1-6cf1-ea0c-2d2d44e25600"),
+                            IsDeleted = false,
                             Name = "Ecuador"
                         },
                         new
                         {
                             Id = new Guid("4c948dae-5b45-5037-ba9c-977cceab6750"),
+                            IsDeleted = false,
                             Name = "Egypt"
                         },
                         new
                         {
                             Id = new Guid("874f6fde-5b5f-3c5a-4b2c-fa72dca72450"),
+                            IsDeleted = false,
                             Name = "El Salvador"
                         },
                         new
                         {
                             Id = new Guid("8509ac11-f3f9-c65f-538d-466aafce2e26"),
+                            IsDeleted = false,
                             Name = "Equatorial Guinea"
                         },
                         new
                         {
                             Id = new Guid("0401f956-fea7-4ed0-18bf-33d642094729"),
+                            IsDeleted = false,
                             Name = "Eritrea"
                         },
                         new
                         {
                             Id = new Guid("793d6e08-4b5c-1895-d2cf-b3308e19d18e"),
+                            IsDeleted = false,
                             Name = "Estonia"
                         },
                         new
                         {
                             Id = new Guid("556da8cb-da33-7a7d-d668-fa6ab0aeff6f"),
+                            IsDeleted = false,
                             Name = "Eswatini"
                         },
                         new
                         {
                             Id = new Guid("4050e978-8fd3-368f-aca1-4248e366b6b3"),
+                            IsDeleted = false,
                             Name = "Ethiopia"
                         },
                         new
                         {
                             Id = new Guid("97515b37-c2fa-6b91-b3b4-df07b815bdc0"),
+                            IsDeleted = false,
                             Name = "Fiji"
                         },
                         new
                         {
                             Id = new Guid("c4eb5bb0-97a8-b3c1-14bf-02dba2fb1893"),
+                            IsDeleted = false,
                             Name = "Finland"
                         },
                         new
                         {
                             Id = new Guid("133ed024-88c6-251c-6207-e2469cd1b5b9"),
+                            IsDeleted = false,
                             Name = "France"
                         },
                         new
                         {
                             Id = new Guid("7750521e-3be7-187f-df2d-e49ef7e9f275"),
+                            IsDeleted = false,
                             Name = "Gabon"
                         },
                         new
                         {
                             Id = new Guid("d5ff4132-0bb3-897e-5d6c-2a327e79afcf"),
+                            IsDeleted = false,
                             Name = "Gambia"
                         },
                         new
                         {
                             Id = new Guid("4a392f39-ce99-6c69-5984-6d018b8c0150"),
+                            IsDeleted = false,
                             Name = "Georgia"
                         },
                         new
                         {
                             Id = new Guid("5f096f4b-8929-65de-fd36-db7558756437"),
+                            IsDeleted = false,
                             Name = "Germany"
                         },
                         new
                         {
                             Id = new Guid("034b0186-da17-fa28-0816-c47b7766fba0"),
+                            IsDeleted = false,
                             Name = "Ghana"
                         },
                         new
                         {
                             Id = new Guid("ad04f235-a5b4-84ef-fea5-0c81750d6db8"),
+                            IsDeleted = false,
                             Name = "Greece"
                         },
                         new
                         {
                             Id = new Guid("f99aba81-e494-8111-59b1-b8149a9094bd"),
+                            IsDeleted = false,
                             Name = "Grenada"
                         },
                         new
                         {
                             Id = new Guid("e898f629-48c8-5ba8-89ac-8079b4814377"),
+                            IsDeleted = false,
                             Name = "Guatemala"
                         },
                         new
                         {
                             Id = new Guid("67282f7d-7a53-e707-ebe7-8448cb23d1d3"),
+                            IsDeleted = false,
                             Name = "Guinea"
                         },
                         new
                         {
                             Id = new Guid("81549952-2be2-313f-9117-f276a18ecbcc"),
+                            IsDeleted = false,
                             Name = "Guinea-Bissau"
                         },
                         new
                         {
                             Id = new Guid("52eb80a6-ca53-b044-5291-dd534aafcb5e"),
+                            IsDeleted = false,
                             Name = "Guyana"
                         },
                         new
                         {
                             Id = new Guid("8179a68f-5711-7b1d-e014-89084ebbb6f3"),
+                            IsDeleted = false,
                             Name = "Haiti"
                         },
                         new
                         {
                             Id = new Guid("5d9503e5-da9b-1b6f-af16-394b2310e4e4"),
+                            IsDeleted = false,
                             Name = "Holy See"
                         },
                         new
                         {
                             Id = new Guid("ff1a7a06-47dd-96e8-c309-0024bacaea03"),
+                            IsDeleted = false,
                             Name = "Honduras"
                         },
                         new
                         {
                             Id = new Guid("d3ff130b-5386-50ad-568a-09890b9fa9b9"),
+                            IsDeleted = false,
                             Name = "Hungary"
                         },
                         new
                         {
                             Id = new Guid("93055199-47cf-3e0a-2bd8-c126ece743bd"),
+                            IsDeleted = false,
                             Name = "Iceland"
                         },
                         new
                         {
                             Id = new Guid("72a8812b-e88c-c3b6-53c2-41dfc273ee55"),
+                            IsDeleted = false,
                             Name = "India"
                         },
                         new
                         {
                             Id = new Guid("53fa4969-ca32-0bd3-303b-a9db2ac86f1c"),
+                            IsDeleted = false,
                             Name = "Indonesia"
                         },
                         new
                         {
                             Id = new Guid("75324c44-0aa6-2886-23fc-b5b13c330752"),
+                            IsDeleted = false,
                             Name = "Iran"
                         },
                         new
                         {
                             Id = new Guid("fc0b2577-3c07-68f2-5ad4-e22a59816df4"),
+                            IsDeleted = false,
                             Name = "Iraq"
                         },
                         new
                         {
                             Id = new Guid("8d4a5241-680c-c361-7e7e-0078f4804705"),
+                            IsDeleted = false,
                             Name = "Ireland"
                         },
                         new
                         {
                             Id = new Guid("1f7fdc55-7cab-9257-e3a2-237f741da4b4"),
+                            IsDeleted = false,
                             Name = "Israel"
                         },
                         new
                         {
                             Id = new Guid("5d5e3c89-2beb-f2bd-7773-ce812f45bebe"),
+                            IsDeleted = false,
                             Name = "Italy"
                         },
                         new
                         {
                             Id = new Guid("ce3470d1-42f0-ce8c-0137-c272d95ad33e"),
+                            IsDeleted = false,
                             Name = "Jamaica"
                         },
                         new
                         {
                             Id = new Guid("f10c1873-805a-8efd-4570-4e3acd4bb54a"),
+                            IsDeleted = false,
                             Name = "Japan"
                         },
                         new
                         {
                             Id = new Guid("62ea4034-bfd0-6f91-38a6-1cb072981e99"),
+                            IsDeleted = false,
                             Name = "Jordan"
                         },
                         new
                         {
                             Id = new Guid("71dd9f8e-0ac6-8873-e309-4710e48eeaef"),
+                            IsDeleted = false,
                             Name = "Kazakhstan"
                         },
                         new
                         {
                             Id = new Guid("39eeac90-06ea-1fbd-0f45-1dfb5027d658"),
+                            IsDeleted = false,
                             Name = "Kenya"
                         },
                         new
                         {
                             Id = new Guid("bcd8f34e-cf9e-0e27-2634-f9fd7641e75d"),
+                            IsDeleted = false,
                             Name = "Kiribati"
                         },
                         new
                         {
                             Id = new Guid("1384d758-5c6b-a7ca-7500-098a5121ecf4"),
+                            IsDeleted = false,
                             Name = "Kuwait"
                         },
                         new
                         {
                             Id = new Guid("afaf367c-a6f8-8062-58ce-a267ea019eb0"),
+                            IsDeleted = false,
                             Name = "Kyrgyzstan"
                         },
                         new
                         {
                             Id = new Guid("0632e4f3-f45f-1685-c723-b5debab46ad7"),
+                            IsDeleted = false,
                             Name = "Laos"
                         },
                         new
                         {
                             Id = new Guid("bc9618b2-5e31-be53-774d-31d580708859"),
+                            IsDeleted = false,
                             Name = "Latvia"
                         },
                         new
                         {
                             Id = new Guid("494bd034-9519-44a4-05af-41eadce5dc4b"),
+                            IsDeleted = false,
                             Name = "Lebanon"
                         },
                         new
                         {
                             Id = new Guid("b9168f16-9d17-a908-28f8-727ccafbf3ad"),
+                            IsDeleted = false,
                             Name = "Lesotho"
                         },
                         new
                         {
                             Id = new Guid("2b615fa4-84c2-8bfb-8031-502bf5f022c9"),
+                            IsDeleted = false,
                             Name = "Liberia"
                         },
                         new
                         {
                             Id = new Guid("99e87dfb-f2ea-12dc-0b5b-ccc99712a908"),
+                            IsDeleted = false,
                             Name = "Libya"
                         },
                         new
                         {
                             Id = new Guid("b7e3cb8a-6042-6b4c-e78f-23e9abfeff50"),
+                            IsDeleted = false,
                             Name = "Liechtenstein"
                         },
                         new
                         {
                             Id = new Guid("67aaa934-331b-91ed-5fa4-12e9a6e71580"),
+                            IsDeleted = false,
                             Name = "Lithuania"
                         },
                         new
                         {
                             Id = new Guid("994884f9-51f3-591d-be60-502cc7abef2c"),
+                            IsDeleted = false,
                             Name = "Luxembourg"
                         },
                         new
                         {
                             Id = new Guid("e79c95e9-66f7-7cb1-2d14-8ddfeaab185e"),
+                            IsDeleted = false,
                             Name = "Madagascar"
                         },
                         new
                         {
                             Id = new Guid("8c0d9600-f3cb-6701-02c1-f7d3e2e33751"),
+                            IsDeleted = false,
                             Name = "Malawi"
                         },
                         new
                         {
                             Id = new Guid("719c2faf-0605-0d8a-be2c-2ed2512b702d"),
+                            IsDeleted = false,
                             Name = "Malaysia"
                         },
                         new
                         {
                             Id = new Guid("6bceeccd-1374-fd7f-d91c-e60a093e07b6"),
+                            IsDeleted = false,
                             Name = "Maldives"
                         },
                         new
                         {
                             Id = new Guid("02cd4e92-696f-f50f-440d-ae6fa114a8ec"),
+                            IsDeleted = false,
                             Name = "Mali"
                         },
                         new
                         {
                             Id = new Guid("97c3ccff-1cca-e766-97c4-b7e8e7f9f1c6"),
+                            IsDeleted = false,
                             Name = "Malta"
                         },
                         new
                         {
                             Id = new Guid("d72a2a0d-83b6-d441-c40e-e82e8d57b836"),
+                            IsDeleted = false,
                             Name = "Marshall Islands"
                         },
                         new
                         {
                             Id = new Guid("772b17c4-210d-90dc-1635-aae9eb34f502"),
+                            IsDeleted = false,
                             Name = "Mauritania"
                         },
                         new
                         {
                             Id = new Guid("caf7e0b6-cb80-d36a-ef40-08edad595cba"),
+                            IsDeleted = false,
                             Name = "Mauritius"
                         },
                         new
                         {
                             Id = new Guid("a9652dc0-ac92-433b-dd92-d6598149823b"),
+                            IsDeleted = false,
                             Name = "Mexico"
                         },
                         new
                         {
                             Id = new Guid("2910aa10-3829-16a5-cd30-d6eef830df08"),
+                            IsDeleted = false,
                             Name = "Micronesia"
                         },
                         new
                         {
                             Id = new Guid("dd30551f-0c7e-6316-c248-eef7d50ba4d7"),
+                            IsDeleted = false,
                             Name = "Moldova"
                         },
                         new
                         {
                             Id = new Guid("717a1e86-e443-a658-a307-a399e8988dfe"),
+                            IsDeleted = false,
                             Name = "Monaco"
                         },
                         new
                         {
                             Id = new Guid("ab149043-0197-42f8-21fc-8d82d569650f"),
+                            IsDeleted = false,
                             Name = "Mongolia"
                         },
                         new
                         {
                             Id = new Guid("d8b5b059-d695-e610-ed34-8f73116b6a19"),
+                            IsDeleted = false,
                             Name = "Montenegro"
                         },
                         new
                         {
                             Id = new Guid("df9949c3-ebf0-1960-9031-a61ed220417b"),
+                            IsDeleted = false,
                             Name = "Morocco"
                         },
                         new
                         {
                             Id = new Guid("35898a8e-1f4e-9909-16e4-f19eeb20f6af"),
+                            IsDeleted = false,
                             Name = "Mozambique"
                         },
                         new
                         {
                             Id = new Guid("7ef8ac46-0670-9893-1b52-a6d2ecf85a62"),
+                            IsDeleted = false,
                             Name = "Myanmar (Burma)"
                         },
                         new
                         {
                             Id = new Guid("adb0fd75-1c43-25c7-ef84-1949b9a27392"),
+                            IsDeleted = false,
                             Name = "Namibia"
                         },
                         new
                         {
                             Id = new Guid("52fff4c8-4a02-8cff-0161-900bc34e7cc6"),
+                            IsDeleted = false,
                             Name = "Nauru"
                         },
                         new
                         {
                             Id = new Guid("31065125-4a0a-8226-7ef4-373d232909bb"),
+                            IsDeleted = false,
                             Name = "Nepal"
                         },
                         new
                         {
                             Id = new Guid("89fa8d38-0138-e506-b39d-9c30a8a73146"),
+                            IsDeleted = false,
                             Name = "Netherlands"
                         },
                         new
                         {
                             Id = new Guid("cf861546-ceeb-93d7-905f-c081eed2dd91"),
+                            IsDeleted = false,
                             Name = "New Zealand"
                         },
                         new
                         {
                             Id = new Guid("58d2cb88-d692-5b52-0c35-7cd3bb67819b"),
+                            IsDeleted = false,
                             Name = "Nicaragua"
                         },
                         new
                         {
                             Id = new Guid("3b497f86-4e54-0171-a87b-29f3324f5bdf"),
+                            IsDeleted = false,
                             Name = "Niger"
                         },
                         new
                         {
                             Id = new Guid("701743a7-417e-25c2-a18a-42cfa7f82daf"),
+                            IsDeleted = false,
                             Name = "Nigeria"
                         },
                         new
                         {
                             Id = new Guid("3d0073dc-3b6a-2d44-2e74-7df2aa676d9d"),
+                            IsDeleted = false,
                             Name = "North Korea"
                         },
                         new
                         {
                             Id = new Guid("89eef427-e7b0-1434-1c39-ad90877fdd4a"),
+                            IsDeleted = false,
                             Name = "North Macedonia"
                         },
                         new
                         {
                             Id = new Guid("3354ec5b-2e6c-f880-75fd-d27587980c58"),
+                            IsDeleted = false,
                             Name = "Norway"
                         },
                         new
                         {
                             Id = new Guid("50d77856-509b-5356-b628-39b9524c8e86"),
+                            IsDeleted = false,
                             Name = "Oman"
                         },
                         new
                         {
                             Id = new Guid("8742629d-e1ea-1c3d-5d35-d2886a2978a6"),
+                            IsDeleted = false,
                             Name = "Pakistan"
                         },
                         new
                         {
                             Id = new Guid("f53ac03d-f424-20e0-d3ac-50592c435647"),
+                            IsDeleted = false,
                             Name = "Palau"
                         },
                         new
                         {
                             Id = new Guid("83d3faf7-290a-0aa5-ab53-002c56c7fa43"),
+                            IsDeleted = false,
                             Name = "Palestine State"
                         },
                         new
                         {
                             Id = new Guid("2a933e76-a10e-0e19-a673-9c8ec0fc3e6b"),
+                            IsDeleted = false,
                             Name = "Panama"
                         },
                         new
                         {
                             Id = new Guid("3d1ce2f9-ba43-9525-4b48-afcd896bb7a4"),
+                            IsDeleted = false,
                             Name = "Papua New Guinea"
                         },
                         new
                         {
                             Id = new Guid("4ecc0b9c-72b3-0ac4-6334-9d63e698bf08"),
+                            IsDeleted = false,
                             Name = "Paraguay"
                         },
                         new
                         {
                             Id = new Guid("8e87e6e7-b38d-7ed7-2b47-fab7d15b0bef"),
+                            IsDeleted = false,
                             Name = "Peru"
                         },
                         new
                         {
                             Id = new Guid("b011104c-0e25-9420-322f-40eed30b96d5"),
+                            IsDeleted = false,
                             Name = "Philippines"
                         },
                         new
                         {
                             Id = new Guid("ac05715a-891e-88df-93cf-93012a398933"),
+                            IsDeleted = false,
                             Name = "Poland"
                         },
                         new
                         {
                             Id = new Guid("aeb3e1f0-0cc4-8dcd-db4d-626e1da8d798"),
+                            IsDeleted = false,
                             Name = "Portugal"
                         },
                         new
                         {
                             Id = new Guid("ba6dff51-56d1-3943-e5c9-0985e561a870"),
+                            IsDeleted = false,
                             Name = "Qatar"
                         },
                         new
                         {
                             Id = new Guid("a5a94fd0-3af9-a186-fbde-1ba8c50f141c"),
+                            IsDeleted = false,
                             Name = "Romania"
                         },
                         new
                         {
                             Id = new Guid("7cd806df-4622-802c-1e6f-5ebbbd58762d"),
+                            IsDeleted = false,
                             Name = "Russia"
                         },
                         new
                         {
                             Id = new Guid("35c84cb1-05db-6c27-1195-046233e13be5"),
+                            IsDeleted = false,
                             Name = "Rwanda"
                         },
                         new
                         {
                             Id = new Guid("96ae7aa1-92fa-1163-7479-1fb2727ee71c"),
+                            IsDeleted = false,
                             Name = "Saint Kitts and Nevis"
                         },
                         new
                         {
                             Id = new Guid("da8012e8-6afc-9ec5-9067-3792c8f835c0"),
+                            IsDeleted = false,
                             Name = "Saint Lucia"
                         },
                         new
                         {
                             Id = new Guid("0411d57e-64c2-95ce-1b39-ae218af18ee1"),
+                            IsDeleted = false,
                             Name = "Saint Vincent and the Grenadines"
                         },
                         new
                         {
                             Id = new Guid("e18409f3-13cd-03c8-d2ab-5b4a30b93ad8"),
+                            IsDeleted = false,
                             Name = "Samoa"
                         },
                         new
                         {
                             Id = new Guid("6de17520-fdb8-b123-69e6-bf17f4613dde"),
+                            IsDeleted = false,
                             Name = "San Marino"
                         },
                         new
                         {
                             Id = new Guid("8b714b91-782f-d2d8-12ea-b047ab58ed4e"),
+                            IsDeleted = false,
                             Name = "Sao Tome and Principe"
                         },
                         new
                         {
                             Id = new Guid("04ede756-d514-696e-2456-039c4837c19a"),
+                            IsDeleted = false,
                             Name = "Saudi Arabia"
                         },
                         new
                         {
                             Id = new Guid("5742bbcf-4458-5b41-346c-a0aceb814e8e"),
+                            IsDeleted = false,
                             Name = "Senegal"
                         },
                         new
                         {
                             Id = new Guid("b98c2b1b-82d0-15d4-3ec1-5adac5f856e3"),
+                            IsDeleted = false,
                             Name = "Serbia"
                         },
                         new
                         {
                             Id = new Guid("2a8a5ae7-2982-bc62-86fb-772d5d215cea"),
+                            IsDeleted = false,
                             Name = "Seychelles"
                         },
                         new
                         {
                             Id = new Guid("e7a30774-eb95-2f4f-9ee7-dfe166205c6a"),
+                            IsDeleted = false,
                             Name = "Sierra Leone"
                         },
                         new
                         {
                             Id = new Guid("e14ff148-8ede-1b4a-8ffc-c618d8a0d837"),
+                            IsDeleted = false,
                             Name = "Singapore"
                         },
                         new
                         {
                             Id = new Guid("3303b1e1-a815-51fb-de5e-44ca510e189c"),
+                            IsDeleted = false,
                             Name = "Slovakia"
                         },
                         new
                         {
                             Id = new Guid("96aed746-f45c-05ca-f53c-19abaef7b281"),
+                            IsDeleted = false,
                             Name = "Slovenia"
                         },
                         new
                         {
                             Id = new Guid("83410ea0-5e0a-76b5-0e4a-bdba5e182585"),
+                            IsDeleted = false,
                             Name = "Solomon Islands"
                         },
                         new
                         {
                             Id = new Guid("2c6571f7-3e09-9af1-18f1-007fc6a09ba1"),
+                            IsDeleted = false,
                             Name = "Somalia"
                         },
                         new
                         {
                             Id = new Guid("ec81362f-cda4-033b-ab0b-e27d95a3903f"),
+                            IsDeleted = false,
                             Name = "South Africa"
                         },
                         new
                         {
                             Id = new Guid("85030daa-b187-20ac-4b97-81ba33adc5bf"),
+                            IsDeleted = false,
                             Name = "South Korea"
                         },
                         new
                         {
                             Id = new Guid("2f775571-d309-3996-349c-9e8b256f89e5"),
+                            IsDeleted = false,
                             Name = "South Sudan"
                         },
                         new
                         {
                             Id = new Guid("6cd49520-ad18-21af-4b07-3b15a7626b1d"),
+                            IsDeleted = false,
                             Name = "Spain"
                         },
                         new
                         {
                             Id = new Guid("fc398a93-e156-321d-7e2f-0171692a70bb"),
+                            IsDeleted = false,
                             Name = "Sri Lanka"
                         },
                         new
                         {
                             Id = new Guid("6ccc4ce4-a354-3827-6ac4-81d0d122edf1"),
+                            IsDeleted = false,
                             Name = "Sudan"
                         },
                         new
                         {
                             Id = new Guid("708d839c-0311-0f27-23a6-f9b22cf9008e"),
+                            IsDeleted = false,
                             Name = "Suriname"
                         },
                         new
                         {
                             Id = new Guid("437fc064-51ca-048f-27d3-895df2f365ba"),
+                            IsDeleted = false,
                             Name = "Sweden"
                         },
                         new
                         {
                             Id = new Guid("b17223a3-ff40-8c56-3136-e4c95b187f48"),
+                            IsDeleted = false,
                             Name = "Switzerland"
                         },
                         new
                         {
                             Id = new Guid("7ac27870-70b7-f619-6b7d-fe3fce0119ab"),
+                            IsDeleted = false,
                             Name = "Syria"
                         },
                         new
                         {
                             Id = new Guid("ce9470a0-8342-648d-cc6f-78d2fcdb58c9"),
+                            IsDeleted = false,
                             Name = "Tajikistan"
                         },
                         new
                         {
                             Id = new Guid("e6bfe824-d7f7-f321-3c8f-99b823479846"),
+                            IsDeleted = false,
                             Name = "Tanzania"
                         },
                         new
                         {
                             Id = new Guid("ee0d57c9-f60c-b24e-1be2-a76aa645bc22"),
+                            IsDeleted = false,
                             Name = "Thailand"
                         },
                         new
                         {
                             Id = new Guid("063b7b24-142f-988a-d408-cedbf3739f9b"),
+                            IsDeleted = false,
                             Name = "Timor-Leste"
                         },
                         new
                         {
                             Id = new Guid("e5ede489-8b0a-518b-b299-342d9fd2eb28"),
+                            IsDeleted = false,
                             Name = "Togo"
                         },
                         new
                         {
                             Id = new Guid("8766a659-d8b0-fef0-83d0-7915341a771d"),
+                            IsDeleted = false,
                             Name = "Tonga"
                         },
                         new
                         {
                             Id = new Guid("4ddf884a-e7a4-ba46-31a9-fa1c7b44500c"),
+                            IsDeleted = false,
                             Name = "Trinidad and Tobago"
                         },
                         new
                         {
                             Id = new Guid("e582efa0-f448-9b8e-81ec-140e0759401b"),
+                            IsDeleted = false,
                             Name = "Tunisia"
                         },
                         new
                         {
                             Id = new Guid("030a4b3c-9650-a761-143c-b5d512416450"),
+                            IsDeleted = false,
                             Name = "Turkey"
                         },
                         new
                         {
                             Id = new Guid("324f36ac-a157-0376-cabf-749cb21f8da4"),
+                            IsDeleted = false,
                             Name = "Turkmenistan"
                         },
                         new
                         {
                             Id = new Guid("3b96c728-d343-f8d6-fda5-fc05c21618a7"),
+                            IsDeleted = false,
                             Name = "Tuvalu"
                         },
                         new
                         {
                             Id = new Guid("d0972e9a-d72a-78dd-13b8-7b1f37891963"),
+                            IsDeleted = false,
                             Name = "Uganda"
                         },
                         new
                         {
                             Id = new Guid("abcfdd20-fa0d-06da-8097-d34273efc7b3"),
+                            IsDeleted = false,
                             Name = "Ukraine"
                         },
                         new
                         {
                             Id = new Guid("d9d45239-54ae-585f-d8a9-65188bbd7fe2"),
+                            IsDeleted = false,
                             Name = "United Arab Emirates"
                         },
                         new
                         {
                             Id = new Guid("e20b2069-d8fe-ec08-f16e-dc2fae4e6b20"),
+                            IsDeleted = false,
                             Name = "United Kingdom"
                         },
                         new
                         {
                             Id = new Guid("e5948bc3-6513-2bab-7f42-e6ce69e45199"),
+                            IsDeleted = false,
                             Name = "United States of America"
                         },
                         new
                         {
                             Id = new Guid("4c4eec64-a1d4-3de1-2177-139fdc6e755b"),
+                            IsDeleted = false,
                             Name = "Uruguay"
                         },
                         new
                         {
                             Id = new Guid("6e20db1b-a1ea-86e5-8ed2-59eb01b8f091"),
+                            IsDeleted = false,
                             Name = "Uzbekistan"
                         },
                         new
                         {
                             Id = new Guid("3321bad3-eec7-c712-6875-64f821ea4f46"),
+                            IsDeleted = false,
                             Name = "Vanuatu"
                         },
                         new
                         {
                             Id = new Guid("e4f6c47a-df7f-3784-3885-86f86b36c656"),
+                            IsDeleted = false,
                             Name = "Venezuela"
                         },
                         new
                         {
                             Id = new Guid("628eeefb-2a3b-3132-2e0e-d39460edff05"),
+                            IsDeleted = false,
                             Name = "Vietnam"
                         },
                         new
                         {
                             Id = new Guid("72a09b33-a328-a5a7-ca35-5bad85778db8"),
+                            IsDeleted = false,
                             Name = "Yemen"
                         },
                         new
                         {
                             Id = new Guid("35543cc1-56e7-9fa1-ba20-73e9cd5bec7c"),
+                            IsDeleted = false,
                             Name = "Zambia"
                         },
                         new
                         {
                             Id = new Guid("f04d4af9-891d-81e4-842e-950d11d8a76f"),
+                            IsDeleted = false,
                             Name = "Zimbabwe"
                         });
                 });
@@ -1049,6 +1250,9 @@ namespace CourtSide.Data.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -1068,348 +1272,406 @@ namespace CourtSide.Data.Migrations
                         new
                         {
                             Id = new Guid("08ae1a86-2ae3-1d62-8721-65520137a629"),
+                            IsDeleted = false,
                             Name = "Centre Court",
                             VenueId = new Guid("66eabd34-a820-bb37-c757-4081b5dc4f39")
                         },
                         new
                         {
                             Id = new Guid("e9a2d4c9-7404-f05b-8497-5dfdc3ad5b07"),
+                            IsDeleted = false,
                             Name = "Court 1",
                             VenueId = new Guid("66eabd34-a820-bb37-c757-4081b5dc4f39")
                         },
                         new
                         {
                             Id = new Guid("3c004f5a-2baa-39b4-4091-6fd41518f9f6"),
+                            IsDeleted = false,
                             Name = "Court Central",
                             VenueId = new Guid("fd8a4796-4b11-af79-77ff-367a3a157017")
                         },
                         new
                         {
                             Id = new Guid("82b22f96-9416-7c8e-ac08-430308ab6d92"),
+                            IsDeleted = false,
                             Name = "Court 1",
                             VenueId = new Guid("fd8a4796-4b11-af79-77ff-367a3a157017")
                         },
                         new
                         {
                             Id = new Guid("cdfd9bda-afd8-b1e0-590b-b04166996175"),
+                            IsDeleted = false,
                             Name = "Arthur Ashe Stadium",
                             VenueId = new Guid("285e787f-ba96-5559-64ea-77fdb69d3e9a")
                         },
                         new
                         {
                             Id = new Guid("5d3256f6-b0a8-812c-44a7-9db8b10a6015"),
+                            IsDeleted = false,
                             Name = "Louis Armstrong Stadium",
                             VenueId = new Guid("285e787f-ba96-5559-64ea-77fdb69d3e9a")
                         },
                         new
                         {
                             Id = new Guid("c7c8a1ea-94cd-ad7c-4261-67b5727f45b1"),
+                            IsDeleted = false,
                             Name = "Grandstand",
                             VenueId = new Guid("285e787f-ba96-5559-64ea-77fdb69d3e9a")
                         },
                         new
                         {
                             Id = new Guid("6b61d437-70db-ef38-ae29-2287922c3b4a"),
+                            IsDeleted = false,
                             Name = "Court 17",
                             VenueId = new Guid("285e787f-ba96-5559-64ea-77fdb69d3e9a")
                         },
                         new
                         {
                             Id = new Guid("bb2c1f2f-e1b8-c172-8d87-220e378e9180"),
+                            IsDeleted = false,
                             Name = "Center Court",
                             VenueId = new Guid("4802b018-5151-da85-21a6-4be35a67fd85")
                         },
                         new
                         {
                             Id = new Guid("40e92c37-6fb9-8008-0593-96370b6c46e3"),
+                            IsDeleted = false,
                             Name = "Court 1",
                             VenueId = new Guid("4802b018-5151-da85-21a6-4be35a67fd85")
                         },
                         new
                         {
                             Id = new Guid("24b9c7b4-0ef5-aa8d-2fc7-2c571ed939ab"),
+                            IsDeleted = false,
                             Name = "Rod Laver Arena",
                             VenueId = new Guid("8b5b88b3-8c2f-f2fe-ae8b-b3c8ed532cd8")
                         },
                         new
                         {
                             Id = new Guid("29de55c9-f880-2bf7-19e8-df08c2ffbd29"),
+                            IsDeleted = false,
                             Name = "John Cain Arena",
                             VenueId = new Guid("8b5b88b3-8c2f-f2fe-ae8b-b3c8ed532cd8")
                         },
                         new
                         {
                             Id = new Guid("7218ae1b-cc4a-90c8-621e-ad08c29fb6e3"),
+                            IsDeleted = false,
                             Name = "Margaret Court Arena",
                             VenueId = new Guid("8b5b88b3-8c2f-f2fe-ae8b-b3c8ed532cd8")
                         },
                         new
                         {
                             Id = new Guid("6d535bc9-e84b-ee4f-4c5c-10ebb00b50c2"),
+                            IsDeleted = false,
                             Name = "Kia Arena",
                             VenueId = new Guid("8b5b88b3-8c2f-f2fe-ae8b-b3c8ed532cd8")
                         },
                         new
                         {
                             Id = new Guid("c6a6f263-1666-9d87-58e1-93dc2fab9c30"),
+                            IsDeleted = false,
                             Name = "Court Rainier III",
                             VenueId = new Guid("28b193c2-afff-79d2-0375-161185f00d6a")
                         },
                         new
                         {
                             Id = new Guid("f4b8640e-7d43-5574-b595-da49a4719275"),
+                            IsDeleted = false,
                             Name = "Court Des Princes",
                             VenueId = new Guid("28b193c2-afff-79d2-0375-161185f00d6a")
                         },
                         new
                         {
                             Id = new Guid("58e31634-c50f-7708-877f-3ced925d93ce"),
+                            IsDeleted = false,
                             Name = "Manolo Santana Stadium",
                             VenueId = new Guid("e901ac40-4167-6ed4-33c5-38adef64d6aa")
                         },
                         new
                         {
                             Id = new Guid("159cb66a-ea50-f091-98ec-65577c960527"),
+                            IsDeleted = false,
                             Name = "Arantxa Sánchez Vicario Stadium",
                             VenueId = new Guid("e901ac40-4167-6ed4-33c5-38adef64d6aa")
                         },
                         new
                         {
                             Id = new Guid("3340272b-1a10-51d1-e16c-7c7bcf897d26"),
+                            IsDeleted = false,
                             Name = "Stadium 3",
                             VenueId = new Guid("e901ac40-4167-6ed4-33c5-38adef64d6aa")
                         },
                         new
                         {
                             Id = new Guid("a16267dd-c8ff-1885-6dc9-e76dc900af05"),
+                            IsDeleted = false,
                             Name = "Campo Centrale",
                             VenueId = new Guid("fed03ef4-494e-b021-1973-2389bd8f283e")
                         },
                         new
                         {
                             Id = new Guid("360bc4f3-a086-bcc4-1dbe-3d64aa4c2b08"),
+                            IsDeleted = false,
                             Name = "Grandstand Arena",
                             VenueId = new Guid("fed03ef4-494e-b021-1973-2389bd8f283e")
                         },
                         new
                         {
                             Id = new Guid("221bd6e9-d4f8-c96c-7369-f3da518a65d6"),
+                            IsDeleted = false,
                             Name = "Pietrangeli",
                             VenueId = new Guid("fed03ef4-494e-b021-1973-2389bd8f283e")
                         },
                         new
                         {
                             Id = new Guid("e39915cb-f835-11dd-81dd-83a447f92add"),
+                            IsDeleted = false,
                             Name = "Centre Court",
                             VenueId = new Guid("01398289-742d-3688-178d-0b7ac0f3db44")
                         },
                         new
                         {
                             Id = new Guid("aa06fba9-5abd-a4e7-7b12-6f44fb3c51c0"),
+                            IsDeleted = false,
                             Name = "Court 1",
                             VenueId = new Guid("01398289-742d-3688-178d-0b7ac0f3db44")
                         },
                         new
                         {
                             Id = new Guid("b2cf4329-cb3b-90f4-68c1-7a3a18ef3201"),
+                            IsDeleted = false,
                             Name = "Centre Court",
                             VenueId = new Guid("b46bf0d7-9420-f9bb-8cb7-551b28e533e9")
                         },
                         new
                         {
                             Id = new Guid("6815f6a7-a27e-a785-dc81-0c23cc04475f"),
+                            IsDeleted = false,
                             Name = "Court 1",
                             VenueId = new Guid("b46bf0d7-9420-f9bb-8cb7-551b28e533e9")
                         },
                         new
                         {
                             Id = new Guid("b6d2527c-83b2-a58c-b226-91e2f19b74c1"),
+                            IsDeleted = false,
                             Name = "Center Court",
                             VenueId = new Guid("f4e815bd-2c5a-8a71-e0d2-deb6e4180f28")
                         },
                         new
                         {
                             Id = new Guid("30dce0a5-3b5d-e69d-9bc8-8e3e33f5a102"),
+                            IsDeleted = false,
                             Name = "Grandstand",
                             VenueId = new Guid("f4e815bd-2c5a-8a71-e0d2-deb6e4180f28")
                         },
                         new
                         {
                             Id = new Guid("b7be96c3-7e27-ce5b-6d97-92889955b269"),
+                            IsDeleted = false,
                             Name = "Stadium Court",
                             VenueId = new Guid("f4e815bd-2c5a-8a71-e0d2-deb6e4180f28")
                         },
                         new
                         {
                             Id = new Guid("fdfaa559-c2df-41e2-1877-f6c325759fe5"),
+                            IsDeleted = false,
                             Name = "Center Court",
                             VenueId = new Guid("6caac657-0e0b-25d4-226f-4a6cdd07c7e9")
                         },
                         new
                         {
                             Id = new Guid("3c9d581b-3553-d7fe-bcf0-9242493f9fb0"),
+                            IsDeleted = false,
                             Name = "Centre Court",
                             VenueId = new Guid("dcbca76e-1aa3-cd66-7d38-6b547fb207f4")
                         },
                         new
                         {
                             Id = new Guid("f42322f1-dbcb-c4e6-6e2e-8b6d7c9414ef"),
+                            IsDeleted = false,
                             Name = "Centre Court",
                             VenueId = new Guid("812c72e4-2f62-6626-265e-4e26c1b40174")
                         },
                         new
                         {
                             Id = new Guid("10e97bab-ac6a-2e4a-aea8-8d774e832253"),
+                            IsDeleted = false,
                             Name = "Centre Court",
                             VenueId = new Guid("4240c5f1-47f3-8993-9f84-c34f886a8fa8")
                         },
                         new
                         {
                             Id = new Guid("a3ea1ced-850b-c859-f6b3-ff094ef3f41c"),
+                            IsDeleted = false,
                             Name = "Centre Court",
                             VenueId = new Guid("1b10f29e-d2d7-4b17-1370-ce61e2826157")
                         },
                         new
                         {
                             Id = new Guid("f7c3eb67-97eb-a7f3-03d0-e6ec529a0365"),
+                            IsDeleted = false,
                             Name = "Centre Court",
                             VenueId = new Guid("3248537d-9728-1dda-efd3-5d6baedcff40")
                         },
                         new
                         {
                             Id = new Guid("7a6d3933-8afc-e318-0bc5-576022f834d4"),
+                            IsDeleted = false,
                             Name = "Centre Court",
                             VenueId = new Guid("8b9928a7-30eb-959c-3878-24bf034406cd")
                         },
                         new
                         {
                             Id = new Guid("51a4fdc8-3e97-e972-dd17-b23d1e76d2f1"),
+                            IsDeleted = false,
                             Name = "Grandstand 1",
                             VenueId = new Guid("8b9928a7-30eb-959c-3878-24bf034406cd")
                         },
                         new
                         {
                             Id = new Guid("520433f6-ca5b-0675-a4a7-dbe3a7560d3d"),
+                            IsDeleted = false,
                             Name = "Stadium 1",
                             VenueId = new Guid("19b8a897-43ca-78c6-1405-0a5b63aa02c7")
                         },
                         new
                         {
                             Id = new Guid("9c608ae4-e4bb-c812-4e21-523865bb56b4"),
+                            IsDeleted = false,
                             Name = "Stadium 2",
                             VenueId = new Guid("19b8a897-43ca-78c6-1405-0a5b63aa02c7")
                         },
                         new
                         {
                             Id = new Guid("f394515f-52bd-d78b-6749-8fc6b635e17b"),
+                            IsDeleted = false,
                             Name = "Stadium 3",
                             VenueId = new Guid("19b8a897-43ca-78c6-1405-0a5b63aa02c7")
                         },
                         new
                         {
                             Id = new Guid("96cc294e-348a-c317-c61f-c035977a53af"),
+                            IsDeleted = false,
                             Name = "Stadium Court",
                             VenueId = new Guid("247d28ed-57e6-07e8-580a-dd4f43548bcd")
                         },
                         new
                         {
                             Id = new Guid("0fd01a0e-2f44-933d-794a-c192f0720339"),
+                            IsDeleted = false,
                             Name = "Grandstand",
                             VenueId = new Guid("247d28ed-57e6-07e8-580a-dd4f43548bcd")
                         },
                         new
                         {
                             Id = new Guid("c8814727-671a-8e79-748c-9af3a3a723a8"),
+                            IsDeleted = false,
                             Name = "Centre Court",
                             VenueId = new Guid("9c712670-3363-37fa-3a4e-237e22c90951")
                         },
                         new
                         {
                             Id = new Guid("0ba87dde-f6c7-a158-0f10-734609e77f75"),
+                            IsDeleted = false,
                             Name = "Court Philippe-Chatrier",
                             VenueId = new Guid("ee8e8214-bff6-9fea-66bc-83713f1781ec")
                         },
                         new
                         {
                             Id = new Guid("f039dd4a-a2da-b0f1-e779-e461e97760b1"),
+                            IsDeleted = false,
                             Name = "Court Suzanne-Lenglen",
                             VenueId = new Guid("ee8e8214-bff6-9fea-66bc-83713f1781ec")
                         },
                         new
                         {
                             Id = new Guid("a06222a1-2114-03ef-2b9e-b46ab3373926"),
+                            IsDeleted = false,
                             Name = "Court Simonne-Mathieu",
                             VenueId = new Guid("ee8e8214-bff6-9fea-66bc-83713f1781ec")
                         },
                         new
                         {
                             Id = new Guid("a216b45b-cb41-23c6-8752-1ba22a4f9613"),
+                            IsDeleted = false,
                             Name = "Centre Court",
                             VenueId = new Guid("efa8e236-d522-f001-fc5a-ebd68c1ca1b4")
                         },
                         new
                         {
                             Id = new Guid("1f609712-4b54-d2fb-ccaf-04d26f2c2ef9"),
+                            IsDeleted = false,
                             Name = "Court 1",
                             VenueId = new Guid("efa8e236-d522-f001-fc5a-ebd68c1ca1b4")
                         },
                         new
                         {
                             Id = new Guid("7c63895d-cdaf-d9b9-4c58-939a206c63da"),
+                            IsDeleted = false,
                             Name = "Centre Court",
                             VenueId = new Guid("0a093d19-917e-4a21-972e-b1e89b39416d")
                         },
                         new
                         {
                             Id = new Guid("9187f722-09e7-d15b-3429-324c543b5b06"),
+                            IsDeleted = false,
                             Name = "No. 1 Court",
                             VenueId = new Guid("0a093d19-917e-4a21-972e-b1e89b39416d")
                         },
                         new
                         {
                             Id = new Guid("0dfbb3d7-831d-de9f-c878-0c3e5ce3b42d"),
+                            IsDeleted = false,
                             Name = "No. 2 Court",
                             VenueId = new Guid("0a093d19-917e-4a21-972e-b1e89b39416d")
                         },
                         new
                         {
                             Id = new Guid("82a88caa-d02a-f588-e263-fcb892a30e94"),
+                            IsDeleted = false,
                             Name = "No. 3 Court",
                             VenueId = new Guid("0a093d19-917e-4a21-972e-b1e89b39416d")
                         },
                         new
                         {
                             Id = new Guid("eab87777-d8b6-a2c8-f387-041a8f780f34"),
+                            IsDeleted = false,
                             Name = "Court Central",
                             VenueId = new Guid("1d0f7e07-6c4c-2b8b-1631-216839c5fd2e")
                         },
                         new
                         {
                             Id = new Guid("9f541f9f-de08-5439-e273-92aec834de82"),
+                            IsDeleted = false,
                             Name = "National Bank Court",
                             VenueId = new Guid("1d0f7e07-6c4c-2b8b-1631-216839c5fd2e")
                         },
                         new
                         {
                             Id = new Guid("b4187f9c-afe9-7944-3b3c-6f431aae8db1"),
+                            IsDeleted = false,
                             Name = "Diamond Court",
                             VenueId = new Guid("dbd84836-dd9d-2a5e-0f03-5df858ea8851")
                         },
                         new
                         {
                             Id = new Guid("901a7e52-ae71-bb91-83e9-cbcf06d10dbc"),
+                            IsDeleted = false,
                             Name = "Lotus Court",
                             VenueId = new Guid("dbd84836-dd9d-2a5e-0f03-5df858ea8851")
                         },
                         new
                         {
                             Id = new Guid("274c98b0-10b2-47bd-6f22-0a4a434165e9"),
+                            IsDeleted = false,
                             Name = "Moon Court",
                             VenueId = new Guid("dbd84836-dd9d-2a5e-0f03-5df858ea8851")
                         },
                         new
                         {
                             Id = new Guid("066ef2e1-c09a-5ac6-686d-865fd7d9aaef"),
+                            IsDeleted = false,
                             Name = "Center Court",
                             VenueId = new Guid("4525054a-483d-f44f-f772-addd74b9daeb")
                         });
@@ -1438,6 +1700,9 @@ namespace CourtSide.Data.Migrations
 
                     b.Property<Guid>("FirstPlayerId")
                         .HasColumnType("uniqueidentifier");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
 
                     b.Property<string>("MatchRound")
                         .IsRequired()
@@ -1490,6 +1755,7 @@ namespace CourtSide.Data.Migrations
                             CourtSurface = "Hard",
                             DateTime = new DateTime(2026, 10, 15, 13, 30, 0, 0, DateTimeKind.Utc),
                             FirstPlayerId = new Guid("bde04240-cf13-cf6c-9e42-9a003582c2a0"),
+                            IsDeleted = false,
                             MatchRound = "Quarterfinal",
                             MatchStatus = "Completed",
                             ScoreResult = "6-4 6-4",
@@ -1506,6 +1772,7 @@ namespace CourtSide.Data.Migrations
                             CourtSurface = "Hard",
                             DateTime = new DateTime(2026, 10, 15, 10, 0, 0, 0, DateTimeKind.Utc),
                             FirstPlayerId = new Guid("8bc2cede-72c8-75bc-fa6b-2f2d77c9efdb"),
+                            IsDeleted = false,
                             MatchRound = "Quarterfinal",
                             MatchStatus = "Completed",
                             ScoreResult = "1-4",
@@ -1522,6 +1789,7 @@ namespace CourtSide.Data.Migrations
                             CourtSurface = "Hard",
                             DateTime = new DateTime(2026, 10, 16, 13, 0, 0, 0, DateTimeKind.Utc),
                             FirstPlayerId = new Guid("532828a9-f83f-e29d-f49e-f56fd46deeb9"),
+                            IsDeleted = false,
                             MatchRound = "Quarterfinal",
                             MatchStatus = "Completed",
                             ScoreResult = "6-3 1-6 6-3",
@@ -1538,6 +1806,7 @@ namespace CourtSide.Data.Migrations
                             CourtSurface = "Hard",
                             DateTime = new DateTime(2026, 10, 16, 11, 0, 0, 0, DateTimeKind.Utc),
                             FirstPlayerId = new Guid("fed4e693-8dce-1d71-7c9f-c62dd88b9516"),
+                            IsDeleted = false,
                             MatchRound = "Quarterfinal",
                             MatchStatus = "Completed",
                             ScoreResult = "4-6 6-4 6-3",
@@ -1554,6 +1823,7 @@ namespace CourtSide.Data.Migrations
                             CourtSurface = "Hard",
                             DateTime = new DateTime(2026, 10, 17, 11, 40, 0, 0, DateTimeKind.Utc),
                             FirstPlayerId = new Guid("bde04240-cf13-cf6c-9e42-9a003582c2a0"),
+                            IsDeleted = false,
                             MatchRound = "Semifinal",
                             MatchStatus = "Completed",
                             ScoreResult = "7-5 4-6 3-6",
@@ -1570,6 +1840,7 @@ namespace CourtSide.Data.Migrations
                             CourtSurface = "Hard",
                             DateTime = new DateTime(2026, 10, 17, 14, 10, 0, 0, DateTimeKind.Utc),
                             FirstPlayerId = new Guid("fed4e693-8dce-1d71-7c9f-c62dd88b9516"),
+                            IsDeleted = false,
                             MatchRound = "Semifinal",
                             MatchStatus = "Completed",
                             ScoreResult = "6-3 6-4",
@@ -1612,6 +1883,9 @@ namespace CourtSide.Data.Migrations
                         .HasMaxLength(25)
                         .HasColumnType("nvarchar(25)");
 
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
                     b.Property<string>("LastName")
                         .IsRequired()
                         .HasMaxLength(20)
@@ -1647,6 +1921,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Novak",
                             Gender = "Male",
                             Height = "6'2\"/(188cm)",
+                            IsDeleted = false,
                             LastName = "Djokovic",
                             Points = 3090,
                             Rank = 12,
@@ -1662,6 +1937,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Carlos",
                             Gender = "Male",
                             Height = "6'0\"/(183cm)",
+                            IsDeleted = false,
                             LastName = "Alcaraz",
                             Points = 5610,
                             Rank = 3,
@@ -1677,6 +1953,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Jannik",
                             Gender = "Male",
                             Height = "6'3\"/(191cm)",
+                            IsDeleted = false,
                             LastName = "Sinner",
                             Points = 10450,
                             Rank = 1,
@@ -1692,6 +1969,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Daniil",
                             Gender = "Male",
                             Height = "6'6\"/(198cm)",
+                            IsDeleted = false,
                             LastName = "Medvedev",
                             Points = 3620,
                             Rank = 5,
@@ -1707,6 +1985,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Alexander",
                             Gender = "Male",
                             Height = "6'6\"/(198cm)",
+                            IsDeleted = false,
                             LastName = "Zverev",
                             Points = 9750,
                             Rank = 2,
@@ -1722,6 +2001,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Grigor",
                             Gender = "Male",
                             Height = "6'3\"/(191cm)",
+                            IsDeleted = false,
                             LastName = "Dimitrov",
                             Points = 472,
                             Rank = 124,
@@ -1737,6 +2017,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Stefanos",
                             Gender = "Male",
                             Height = "6'4\"/(193cm)",
+                            IsDeleted = false,
                             LastName = "Tsitsipas",
                             Points = 1380,
                             Rank = 35,
@@ -1752,6 +2033,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Casper",
                             Gender = "Male",
                             Height = "6'0\"/(183cm)",
+                            IsDeleted = false,
                             LastName = "Ruud",
                             Points = 1995,
                             Rank = 25,
@@ -1767,6 +2049,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Taylor",
                             Gender = "Male",
                             Height = "6'5\"/(196cm)",
+                            IsDeleted = false,
                             LastName = "Fritz",
                             Points = 2830,
                             Rank = 13,
@@ -1782,6 +2065,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Alex",
                             Gender = "Male",
                             Height = "6'0\"/(183cm)",
+                            IsDeleted = false,
                             LastName = "de Minaur",
                             Points = 3280,
                             Rank = 10,
@@ -1797,6 +2081,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Andrey",
                             Gender = "Male",
                             Height = "6'2\"/(188cm)",
+                            IsDeleted = false,
                             LastName = "Rublev",
                             Points = 2175,
                             Rank = 22,
@@ -1812,6 +2097,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Hubert",
                             Gender = "Male",
                             Height = "6'5\"/(196cm)",
+                            IsDeleted = false,
                             LastName = "Hurkacz",
                             Points = 1585,
                             Rank = 28,
@@ -1827,6 +2113,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Ben",
                             Gender = "Male",
                             Height = "6'4\"/(193cm)",
+                            IsDeleted = false,
                             LastName = "Shelton",
                             Points = 4680,
                             Rank = 4,
@@ -1842,6 +2129,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Frances",
                             Gender = "Male",
                             Height = "6'2\"/(188cm)",
+                            IsDeleted = false,
                             LastName = "Tiafoe",
                             Points = 3380,
                             Rank = 8,
@@ -1857,6 +2145,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Ugo",
                             Gender = "Male",
                             Height = "6'2\"/(188cm)",
+                            IsDeleted = false,
                             LastName = "Humbert",
                             Points = 1270,
                             Rank = 38,
@@ -1872,6 +2161,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Sebastian",
                             Gender = "Male",
                             Height = "6'5\"/(196cm)",
+                            IsDeleted = false,
                             LastName = "Korda",
                             Points = 730,
                             Rank = 81,
@@ -1887,6 +2177,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Lorenzo",
                             Gender = "Male",
                             Height = "6'1\"/(185cm)",
+                            IsDeleted = false,
                             LastName = "Musetti",
                             Points = 1720,
                             Rank = 27,
@@ -1902,6 +2193,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Jack",
                             Gender = "Male",
                             Height = "6'4\"/(193cm)",
+                            IsDeleted = false,
                             LastName = "Draper",
                             Points = 360,
                             Rank = 157,
@@ -1917,6 +2209,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Felix",
                             Gender = "Male",
                             Height = "6'4\"/(193cm)",
+                            IsDeleted = false,
                             LastName = "Auger-Aliassime",
                             Points = 3515,
                             Rank = 7,
@@ -1932,6 +2225,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Francisco",
                             Gender = "Male",
                             Height = "5'10\"/(178cm)",
+                            IsDeleted = false,
                             LastName = "Comesana",
                             Points = 455,
                             Rank = 128,
@@ -1947,6 +2241,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Cameron",
                             Gender = "Male",
                             Height = "6'2\"/(188cm)",
+                            IsDeleted = false,
                             LastName = "Norrie",
                             Points = 1195,
                             Rank = 41,
@@ -1962,6 +2257,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Stan",
                             Gender = "Male",
                             Height = "6'0\"/(183cm)",
+                            IsDeleted = false,
                             LastName = "Wawrinka",
                             Points = 376,
                             Rank = 148,
@@ -1977,6 +2273,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Matteo",
                             Gender = "Male",
                             Height = "6'5\"/(196cm)",
+                            IsDeleted = false,
                             LastName = "Berrettini",
                             Points = 1083,
                             Rank = 46,
@@ -1992,6 +2289,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Karen",
                             Gender = "Male",
                             Height = "6'6\"/(198cm)",
+                            IsDeleted = false,
                             LastName = "Khachanov",
                             Points = 2005,
                             Rank = 24,
@@ -2007,6 +2305,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Sebastian",
                             Gender = "Male",
                             Height = "5'7\"/(170cm)",
+                            IsDeleted = false,
                             LastName = "Baez",
                             Points = 1044,
                             Rank = 48,
@@ -2022,6 +2321,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Francisco",
                             Gender = "Male",
                             Height = "6'1\"/(185cm)",
+                            IsDeleted = false,
                             LastName = "Cerundolo",
                             Points = 2260,
                             Rank = 19,
@@ -2037,6 +2337,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Alejandro",
                             Gender = "Male",
                             Height = "6'2\"/(188cm)",
+                            IsDeleted = false,
                             LastName = "Tabilo",
                             Points = 1565,
                             Rank = 30,
@@ -2052,6 +2353,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Tomas Martin",
                             Gender = "Male",
                             Height = "6'5\"/(196cm)",
+                            IsDeleted = false,
                             LastName = "Etcheverry",
                             Points = 1565,
                             Rank = 29,
@@ -2067,6 +2369,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Arthur",
                             Gender = "Male",
                             Height = "6'1\"/(185cm)",
+                            IsDeleted = false,
                             LastName = "Fils",
                             Points = 3375,
                             Rank = 9,
@@ -2082,6 +2385,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Adrian",
                             Gender = "Male",
                             Height = "6'0\"/(183cm)",
+                            IsDeleted = false,
                             LastName = "Mannarino",
                             Points = 783,
                             Rank = 73,
@@ -2097,6 +2401,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Jan-Lennard",
                             Gender = "Male",
                             Height = "6'4\"/(193cm)",
+                            IsDeleted = false,
                             LastName = "Struff",
                             Points = 969,
                             Rank = 54,
@@ -2112,6 +2417,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Nuno",
                             Gender = "Male",
                             Height = "6'1\"/(185cm)",
+                            IsDeleted = false,
                             LastName = "Borges",
                             Points = 1000,
                             Rank = 51,
@@ -2127,6 +2433,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Fabian",
                             Gender = "Male",
                             Height = "6'4\"/(193cm)",
+                            IsDeleted = false,
                             LastName = "Marozsan",
                             Points = 860,
                             Rank = 61,
@@ -2142,6 +2449,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Alexei",
                             Gender = "Male",
                             Height = "6'5\"/(196cm)",
+                            IsDeleted = false,
                             LastName = "Popyrin",
                             Points = 458,
                             Rank = 127,
@@ -2157,6 +2465,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Matteo",
                             Gender = "Male",
                             Height = "5'11\"/(180cm)",
+                            IsDeleted = false,
                             LastName = "Arnaldi",
                             Points = 1311,
                             Rank = 36,
@@ -2172,6 +2481,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Giovanni",
                             Gender = "Male",
                             Height = "6'8\"/(203cm)",
+                            IsDeleted = false,
                             LastName = "Mpetshi Perricard",
                             Points = 385,
                             Rank = 146,
@@ -2187,6 +2497,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Tommy",
                             Gender = "Male",
                             Height = "6'1\"/(185cm)",
+                            IsDeleted = false,
                             LastName = "Paul",
                             Points = 2625,
                             Rank = 14,
@@ -2202,6 +2513,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Lorenzo",
                             Gender = "Male",
                             Height = "6'3\"/(191cm)",
+                            IsDeleted = false,
                             LastName = "Sonego",
                             Points = 658,
                             Rank = 90,
@@ -2217,6 +2529,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Alejandro",
                             Gender = "Male",
                             Height = "6'0\"/(183cm)",
+                            IsDeleted = false,
                             LastName = "Davidovich Fokina",
                             Points = 2610,
                             Rank = 15,
@@ -2232,6 +2545,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Laslo",
                             Gender = "Male",
                             Height = "6'1\"/(185cm)",
+                            IsDeleted = false,
                             LastName = "Djere",
                             Points = 412,
                             Rank = 136,
@@ -2247,6 +2561,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Roman",
                             Gender = "Male",
                             Height = "6'1\"/(185cm)",
+                            IsDeleted = false,
                             LastName = "Safiullin",
                             Points = 807,
                             Rank = 69,
@@ -2262,6 +2577,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Arthur",
                             Gender = "Male",
                             Height = "6'5\"/(196cm)",
+                            IsDeleted = false,
                             LastName = "Rinderknech",
                             Points = 870,
                             Rank = 60,
@@ -2277,6 +2593,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Daniel",
                             Gender = "Male",
                             Height = "6'3\"/(191cm)",
+                            IsDeleted = false,
                             LastName = "Altmaier",
                             Points = 849,
                             Rank = 62,
@@ -2292,6 +2609,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Pavel",
                             Gender = "Male",
                             Height = "6'4\"/(193cm)",
+                            IsDeleted = false,
                             LastName = "Kotov",
                             Points = 339,
                             Rank = 169,
@@ -2307,6 +2625,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Thiago",
                             Gender = "Male",
                             Height = "6'0\"/(183cm)",
+                            IsDeleted = false,
                             LastName = "Seyboth Wild",
                             Points = 545,
                             Rank = 110,
@@ -2322,6 +2641,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Marcos",
                             Gender = "Male",
                             Height = "5'11\"/(180cm)",
+                            IsDeleted = false,
                             LastName = "Giron",
                             Points = 676,
                             Rank = 87,
@@ -2337,6 +2657,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Aleksandar",
                             Gender = "Male",
                             Height = "6'2\"/(188cm)",
+                            IsDeleted = false,
                             LastName = "Vukic",
                             Points = 507,
                             Rank = 116,
@@ -2352,6 +2673,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Botic",
                             Gender = "Male",
                             Height = "6'3\"/(191cm)",
+                            IsDeleted = false,
                             LastName = "van de Zandschulp",
                             Points = 1295,
                             Rank = 37,
@@ -2367,6 +2689,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Miomir",
                             Gender = "Male",
                             Height = "6'0\"/(183cm)",
+                            IsDeleted = false,
                             LastName = "Kecmanović",
                             Points = 353,
                             Rank = 161,
@@ -2382,6 +2705,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Tallon",
                             Gender = "Male",
                             Height = "6'2\"/(188cm)",
+                            IsDeleted = false,
                             LastName = "Griekspoor",
                             Points = 835,
                             Rank = 65,
@@ -2397,6 +2721,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Flavio",
                             Gender = "Male",
                             Height = "6'0\"/(183cm)",
+                            IsDeleted = false,
                             LastName = "Cobolli",
                             Points = 3590,
                             Rank = 6,
@@ -2412,6 +2737,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Mariano",
                             Gender = "Male",
                             Height = "5'9\"/(175cm)",
+                            IsDeleted = false,
                             LastName = "Navone",
                             Points = 1164,
                             Rank = 43,
@@ -2427,6 +2753,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Brandon",
                             Gender = "Male",
                             Height = "6'1\"/(185cm)",
+                            IsDeleted = false,
                             LastName = "Nakashima",
                             Points = 2350,
                             Rank = 17,
@@ -2442,6 +2769,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Taro",
                             Gender = "Male",
                             Height = "6'3\"/(191cm)",
+                            IsDeleted = false,
                             LastName = "Daniel",
                             Points = 321,
                             Rank = 177,
@@ -2457,6 +2785,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Roberto",
                             Gender = "Male",
                             Height = "6'0\"/(183cm)",
+                            IsDeleted = false,
                             LastName = "Carballés Baena",
                             Points = 835,
                             Rank = 64,
@@ -2472,6 +2801,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Jaume",
                             Gender = "Male",
                             Height = "6'0\"/(183cm)",
+                            IsDeleted = false,
                             LastName = "Munar",
                             Points = 835,
                             Rank = 66,
@@ -2487,6 +2817,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Alex",
                             Gender = "Male",
                             Height = "6'4\"/(193cm)",
+                            IsDeleted = false,
                             LastName = "Michelsen",
                             Points = 1385,
                             Rank = 34,
@@ -2502,6 +2833,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Aleksandar",
                             Gender = "Male",
                             Height = "6'0\"/(183cm)",
+                            IsDeleted = false,
                             LastName = "Kovacevic",
                             Points = 703,
                             Rank = 84,
@@ -2517,6 +2849,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Max",
                             Gender = "Male",
                             Height = "6'1\"/(185cm)",
+                            IsDeleted = false,
                             LastName = "Purcell",
                             Points = 650,
                             Rank = 91,
@@ -2532,6 +2865,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Thanasi",
                             Gender = "Male",
                             Height = "6'4\"/(193cm)",
+                            IsDeleted = false,
                             LastName = "Kokkinakis",
                             Points = 760,
                             Rank = 75,
@@ -2547,6 +2881,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Rinky",
                             Gender = "Male",
                             Height = "5'10\"/(178cm)",
+                            IsDeleted = false,
                             LastName = "Hijikata",
                             Points = 689,
                             Rank = 85,
@@ -2562,6 +2897,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "James",
                             Gender = "Male",
                             Height = "6'0\"/(183cm)",
+                            IsDeleted = false,
                             LastName = "Duckworth",
                             Points = 814,
                             Rank = 68,
@@ -2577,6 +2913,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Luciano",
                             Gender = "Male",
                             Height = "6'1\"/(185cm)",
+                            IsDeleted = false,
                             LastName = "Darderi",
                             Points = 2160,
                             Rank = 23,
@@ -2592,6 +2929,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Gabriel",
                             Gender = "Male",
                             Height = "6'8\"/(203cm)",
+                            IsDeleted = false,
                             LastName = "Diallo",
                             Points = 382,
                             Rank = 148,
@@ -2607,6 +2945,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Thiago Agustín",
                             Gender = "Male",
                             Height = "6'2\"/(188cm)",
+                            IsDeleted = false,
                             LastName = "Tirante",
                             Points = 1024,
                             Rank = 49,
@@ -2622,6 +2961,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Quentin",
                             Gender = "Male",
                             Height = "6'4\"/(193cm)",
+                            IsDeleted = false,
                             LastName = "Halys",
                             Points = 1127,
                             Rank = 45,
@@ -2637,6 +2977,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Jesper",
                             Gender = "Male",
                             Height = "5'11\"/(180cm)",
+                            IsDeleted = false,
                             LastName = "de Jong",
                             Points = 591,
                             Rank = 100,
@@ -2652,6 +2993,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Billy",
                             Gender = "Male",
                             Height = "6'2\"/(188cm)",
+                            IsDeleted = false,
                             LastName = "Harris",
                             Points = 568,
                             Rank = 105,
@@ -2667,6 +3009,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Hamad",
                             Gender = "Male",
                             Height = "6'2\"/(188cm)",
+                            IsDeleted = false,
                             LastName = "Medjedovic",
                             Points = 751,
                             Rank = 78,
@@ -2682,6 +3025,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Kyrian",
                             Gender = "Male",
                             Height = "5'10\"/(178cm)",
+                            IsDeleted = false,
                             LastName = "Jacquet",
                             Points = 741,
                             Rank = 79,
@@ -2697,6 +3041,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Clément",
                             Gender = "Male",
                             Height = "5'8\"/(173cm)",
+                            IsDeleted = false,
                             LastName = "Tabur",
                             Points = 355,
                             Rank = 160,
@@ -2712,6 +3057,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Benjamin",
                             Gender = "Male",
                             Height = "6'0\"/(183cm)",
+                            IsDeleted = false,
                             LastName = "Bonzi",
                             Points = 617,
                             Rank = 97,
@@ -2727,6 +3073,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Luca",
                             Gender = "Male",
                             Height = "5'10\"/(178cm)",
+                            IsDeleted = false,
                             LastName = "Van Assche",
                             Points = 1080,
                             Rank = 47,
@@ -2742,6 +3089,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Titouan",
                             Gender = "Male",
                             Height = "6'3\"/(191cm)",
+                            IsDeleted = false,
                             LastName = "Droguet",
                             Points = 801,
                             Rank = 72,
@@ -2757,6 +3105,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Cristian",
                             Gender = "Male",
                             Height = "6'1\"/(185cm)",
+                            IsDeleted = false,
                             LastName = "Garin",
                             Points = 588,
                             Rank = 101,
@@ -2772,6 +3121,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Arthur",
                             Gender = "Male",
                             Height = "5'9\"/(175cm)",
+                            IsDeleted = false,
                             LastName = "Féry",
                             Points = 1406,
                             Rank = 33,
@@ -2787,6 +3137,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Borna",
                             Gender = "Male",
                             Height = "6'5\"/(196cm)",
+                            IsDeleted = false,
                             LastName = "Gojo",
                             Points = 416,
                             Rank = 135,
@@ -2802,6 +3153,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Pierre-Hugues",
                             Gender = "Male",
                             Height = "6'2\"/(188cm)",
+                            IsDeleted = false,
                             LastName = "Herbert",
                             Points = 315,
                             Rank = 248,
@@ -2817,6 +3169,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Rafael",
                             Gender = "Male",
                             Height = "6'3\"/(191cm)",
+                            IsDeleted = false,
                             LastName = "Jodar",
                             Points = 2850,
                             Rank = 11,
@@ -2832,6 +3185,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Arthur",
                             Gender = "Male",
                             Height = "6'1\"/(185cm)",
+                            IsDeleted = false,
                             LastName = "Gea",
                             Points = 295,
                             Rank = 195,
@@ -2847,6 +3201,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Holger",
                             Gender = "Male",
                             Height = "6'2\"/(188cm)",
+                            IsDeleted = false,
                             LastName = "Rune",
                             Points = 2850,
                             Rank = 194,
@@ -2862,6 +3217,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Learner",
                             Gender = "Male",
                             Height = "5'11\"/(180cm)",
+                            IsDeleted = false,
                             LastName = "Tien",
                             Points = 2345,
                             Rank = 16,
@@ -2877,6 +3233,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Alexander",
                             Gender = "Male",
                             Height = "6'5\"/(196cm)",
+                            IsDeleted = false,
                             LastName = "Bublik",
                             Points = 2285,
                             Rank = 18,
@@ -2892,6 +3249,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Jiri",
                             Gender = "Male",
                             Height = "6'1\"/(185cm)",
+                            IsDeleted = false,
                             LastName = "Lehecka",
                             Points = 2275,
                             Rank = 20,
@@ -2907,6 +3265,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Alexander",
                             Gender = "Male",
                             Height = "6'3\"/(191cm)",
+                            IsDeleted = false,
                             LastName = "Blockx",
                             Points = 1790,
                             Rank = 21,
@@ -2922,6 +3281,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Valentin",
                             Gender = "Male",
                             Height = "6'4\"/(193cm)",
+                            IsDeleted = false,
                             LastName = "Vacherot",
                             Points = 1480,
                             Rank = 26,
@@ -2937,6 +3297,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Ignacio",
                             Gender = "Male",
                             Height = "6'0\"/(183cm)",
+                            IsDeleted = false,
                             LastName = "Buse",
                             Points = 1445,
                             Rank = 31,
@@ -2952,6 +3313,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Joao",
                             Gender = "Male",
                             Height = "6'1\"/(185cm)",
+                            IsDeleted = false,
                             LastName = "Fonseca",
                             Points = 1250,
                             Rank = 32,
@@ -2967,6 +3329,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Adolfo Daniel",
                             Gender = "Male",
                             Height = "6'0\"/(183cm)",
+                            IsDeleted = false,
                             LastName = "Vallejo",
                             Points = 965,
                             Rank = 39,
@@ -2982,6 +3345,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Daniel",
                             Gender = "Male",
                             Height = "6'1\"/(185cm)",
+                            IsDeleted = false,
                             LastName = "Merida",
                             Points = 1195,
                             Rank = 40,
@@ -2997,6 +3361,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Raphael",
                             Gender = "Male",
                             Height = "6'2\"/(188cm)",
+                            IsDeleted = false,
                             LastName = "Collignon",
                             Points = 975,
                             Rank = 42,
@@ -3012,6 +3377,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Jaime",
                             Gender = "Male",
                             Height = "6'1\"/(185cm)",
+                            IsDeleted = false,
                             LastName = "Faria",
                             Points = 960,
                             Rank = 44,
@@ -3027,6 +3393,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Martin",
                             Gender = "Male",
                             Height = "6'3\"/(191cm)",
+                            IsDeleted = false,
                             LastName = "Landaluce",
                             Points = 835,
                             Rank = 50,
@@ -3042,6 +3409,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Camilo",
                             Gender = "Male",
                             Height = "6'1\"/(185cm)",
+                            IsDeleted = false,
                             LastName = "Ugo Carabelli",
                             Points = 795,
                             Rank = 52,
@@ -3057,6 +3425,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Roman Andres",
                             Gender = "Male",
                             Height = "6'0\"/(183cm)",
+                            IsDeleted = false,
                             LastName = "Burruchaga",
                             Points = 765,
                             Rank = 53,
@@ -3072,6 +3441,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Kamil",
                             Gender = "Male",
                             Height = "5'11\"/(180cm)",
+                            IsDeleted = false,
                             LastName = "Majchrzak",
                             Points = 722,
                             Rank = 55,
@@ -3087,6 +3457,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Jacob",
                             Gender = "Male",
                             Height = "6'0\"/(183cm)",
+                            IsDeleted = false,
                             LastName = "Fearnley",
                             Points = 688,
                             Rank = 56,
@@ -3102,6 +3473,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Marco",
                             Gender = "Male",
                             Height = "5'11\"/(180cm)",
+                            IsDeleted = false,
                             LastName = "Trungelliti",
                             Points = 672,
                             Rank = 57,
@@ -3117,6 +3489,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Nikoloz",
                             Gender = "Male",
                             Height = "6'1\"/(185cm)",
+                            IsDeleted = false,
                             LastName = "Basilashvili",
                             Points = 630,
                             Rank = 58,
@@ -3132,6 +3505,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Marin",
                             Gender = "Male",
                             Height = "6'6\"/(198cm)",
+                            IsDeleted = false,
                             LastName = "Cilic",
                             Points = 625,
                             Rank = 59,
@@ -3147,6 +3521,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Henrique",
                             Gender = "Male",
                             Height = "6'0\"/(183cm)",
+                            IsDeleted = false,
                             LastName = "Rocha",
                             Points = 612,
                             Rank = 67,
@@ -3162,6 +3537,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Michael",
                             Gender = "Male",
                             Height = "5'11\"/(180cm)",
+                            IsDeleted = false,
                             LastName = "Zheng",
                             Points = 605,
                             Rank = 70,
@@ -3177,6 +3553,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Valentin",
                             Gender = "Male",
                             Height = "6'2\"/(188cm)",
+                            IsDeleted = false,
                             LastName = "Royer",
                             Points = 585,
                             Rank = 71,
@@ -3192,6 +3569,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Elmer",
                             Gender = "Male",
                             Height = "6'0\"/(183cm)",
+                            IsDeleted = false,
                             LastName = "Moller",
                             Points = 570,
                             Rank = 74,
@@ -3207,6 +3585,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Vilius",
                             Gender = "Male",
                             Height = "6'1\"/(185cm)",
+                            IsDeleted = false,
                             LastName = "Gaubas",
                             Points = 555,
                             Rank = 76,
@@ -3222,6 +3601,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Borna",
                             Gender = "Male",
                             Height = "6'1\"/(185cm)",
+                            IsDeleted = false,
                             LastName = "Coric",
                             Points = 750,
                             Rank = 77,
@@ -3237,6 +3617,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "David",
                             Gender = "Male",
                             Height = "5'11\"/(180cm)",
+                            IsDeleted = false,
                             LastName = "Goffin",
                             Points = 730,
                             Rank = 80,
@@ -3252,6 +3633,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Dominic",
                             Gender = "Male",
                             Height = "6'1\"/(185cm)",
+                            IsDeleted = false,
                             LastName = "Thiem",
                             Points = 710,
                             Rank = 82,
@@ -3267,6 +3649,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Milos",
                             Gender = "Male",
                             Height = "6'5\"/(196cm)",
+                            IsDeleted = false,
                             LastName = "Raonic",
                             Points = 695,
                             Rank = 83,
@@ -3282,6 +3665,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Diego",
                             Gender = "Male",
                             Height = "5'7\"/(170cm)",
+                            IsDeleted = false,
                             LastName = "Schwartzman",
                             Points = 680,
                             Rank = 86,
@@ -3297,6 +3681,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Lukas",
                             Gender = "Male",
                             Height = "6'4\"/(193cm)",
+                            IsDeleted = false,
                             LastName = "Klein",
                             Points = 670,
                             Rank = 88,
@@ -3312,6 +3697,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Zizou",
                             Gender = "Male",
                             Height = "6'1\"/(185cm)",
+                            IsDeleted = false,
                             LastName = "Bergs",
                             Points = 660,
                             Rank = 89,
@@ -3327,6 +3713,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Bu",
                             Gender = "Male",
                             Height = "6'1\"/(185cm)",
+                            IsDeleted = false,
                             LastName = "Yunchaokete",
                             Points = 650,
                             Rank = 91,
@@ -3342,6 +3729,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Coleman",
                             Gender = "Male",
                             Height = "6'3\"/(191cm)",
+                            IsDeleted = false,
                             LastName = "Wong",
                             Points = 645,
                             Rank = 92,
@@ -3357,6 +3745,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Hugo",
                             Gender = "Male",
                             Height = "5'8\"/(173cm)",
+                            IsDeleted = false,
                             LastName = "Gaston",
                             Points = 640,
                             Rank = 93,
@@ -3372,6 +3761,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Corentin",
                             Gender = "Male",
                             Height = "5'9\"/(175cm)",
+                            IsDeleted = false,
                             LastName = "Moutet",
                             Points = 630,
                             Rank = 94,
@@ -3387,6 +3777,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Dino",
                             Gender = "Male",
                             Height = "6'2\"/(188cm)",
+                            IsDeleted = false,
                             LastName = "Prizmic",
                             Points = 625,
                             Rank = 95,
@@ -3402,6 +3793,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Toby",
                             Gender = "Male",
                             Height = "6'0\"/(183cm)",
+                            IsDeleted = false,
                             LastName = "Samuel",
                             Points = 620,
                             Rank = 96,
@@ -3417,6 +3809,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Terence",
                             Gender = "Male",
                             Height = "6'4\"/(193cm)",
+                            IsDeleted = false,
                             LastName = "Atmane",
                             Points = 612,
                             Rank = 98,
@@ -3432,6 +3825,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Jenson",
                             Gender = "Male",
                             Height = "6'4\"/(193cm)",
+                            IsDeleted = false,
                             LastName = "Brooksby",
                             Points = 605,
                             Rank = 99,
@@ -3447,6 +3841,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Elena",
                             Gender = "Female",
                             Height = "6'0\"/(184cm)",
+                            IsDeleted = false,
                             LastName = "Rybakina",
                             Points = 9196,
                             Rank = 1,
@@ -3462,6 +3857,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Aryna",
                             Gender = "Female",
                             Height = "6'0\"/(182cm)",
+                            IsDeleted = false,
                             LastName = "Sabalenka",
                             Points = 7550,
                             Rank = 2,
@@ -3477,6 +3873,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Mirra",
                             Gender = "Female",
                             Height = "5'9\"/(175cm)",
+                            IsDeleted = false,
                             LastName = "Andreeva",
                             Points = 6306,
                             Rank = 3,
@@ -3492,6 +3889,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Jessica",
                             Gender = "Female",
                             Height = "5'7\"/(170cm)",
+                            IsDeleted = false,
                             LastName = "Pegula",
                             Points = 6235,
                             Rank = 4,
@@ -3507,6 +3905,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Coco",
                             Gender = "Female",
                             Height = "5'9\"/(175cm)",
+                            IsDeleted = false,
                             LastName = "Gauff",
                             Points = 5974,
                             Rank = 5,
@@ -3522,6 +3921,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Elina",
                             Gender = "Female",
                             Height = "5'9\"/(174cm)",
+                            IsDeleted = false,
                             LastName = "Svitolina",
                             Points = 5229,
                             Rank = 6,
@@ -3537,6 +3937,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Karolina",
                             Gender = "Female",
                             Height = "5'11\"/(180cm)",
+                            IsDeleted = false,
                             LastName = "Muchova",
                             Points = 4833,
                             Rank = 7,
@@ -3552,6 +3953,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Linda",
                             Gender = "Female",
                             Height = "5'10\"/(179cm)",
+                            IsDeleted = false,
                             LastName = "Noskova",
                             Points = 4678,
                             Rank = 8,
@@ -3567,6 +3969,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Iga",
                             Gender = "Female",
                             Height = "5'9\"/(175cm)",
+                            IsDeleted = false,
                             LastName = "Swiatek",
                             Points = 4389,
                             Rank = 9,
@@ -3582,6 +3985,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Marta",
                             Gender = "Female",
                             Height = "5'9\"/(175cm)",
+                            IsDeleted = false,
                             LastName = "Kostyuk",
                             Points = 3920,
                             Rank = 10,
@@ -3597,6 +4001,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Maja",
                             Gender = "Female",
                             Height = "5'5\"/(165cm)",
+                            IsDeleted = false,
                             LastName = "Chwalinska",
                             Points = 3031,
                             Rank = 11,
@@ -3612,6 +4017,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Iva",
                             Gender = "Female",
                             Height = "5'8\"/(173cm)",
+                            IsDeleted = false,
                             LastName = "Jovic",
                             Points = 2931,
                             Rank = 12,
@@ -3627,6 +4033,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Diana",
                             Gender = "Female",
                             Height = "5'8\"/(173cm)",
+                            IsDeleted = false,
                             LastName = "Shnaider",
                             Points = 2663,
                             Rank = 13,
@@ -3642,6 +4049,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Belinda",
                             Gender = "Female",
                             Height = "5'9\"/(175cm)",
+                            IsDeleted = false,
                             LastName = "Bencic",
                             Points = 2662,
                             Rank = 14,
@@ -3657,6 +4065,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Elise",
                             Gender = "Female",
                             Height = "5'10\"/(179cm)",
+                            IsDeleted = false,
                             LastName = "Mertens",
                             Points = 2540,
                             Rank = 15,
@@ -3672,6 +4081,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Victoria",
                             Gender = "Female",
                             Height = "5'9\"/(176cm)",
+                            IsDeleted = false,
                             LastName = "Mboko",
                             Points = 2501,
                             Rank = 16,
@@ -3687,6 +4097,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Sorana",
                             Gender = "Female",
                             Height = "5'9\"/(176cm)",
+                            IsDeleted = false,
                             LastName = "Cirstea",
                             Points = 2380,
                             Rank = 17,
@@ -3702,6 +4113,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Amanda",
                             Gender = "Female",
                             Height = "5'11\"/(180cm)",
+                            IsDeleted = false,
                             LastName = "Anisimova",
                             Points = 2363,
                             Rank = 18,
@@ -3717,6 +4129,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Naomi",
                             Gender = "Female",
                             Height = "5'11\"/(180cm)",
+                            IsDeleted = false,
                             LastName = "Osaka",
                             Points = 2297,
                             Rank = 19,
@@ -3732,6 +4145,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Alexandra",
                             Gender = "Female",
                             Height = "5'9\"/(175cm)",
+                            IsDeleted = false,
                             LastName = "Eala",
                             Points = 2241,
                             Rank = 20,
@@ -3747,6 +4161,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Madison",
                             Gender = "Female",
                             Height = "5'10\"/(178cm)",
+                            IsDeleted = false,
                             LastName = "Keys",
                             Points = 2029,
                             Rank = 21,
@@ -3762,6 +4177,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Qinwen",
                             Gender = "Female",
                             Height = "5'10\"/(178cm)",
+                            IsDeleted = false,
                             LastName = "Zheng",
                             Points = 2018,
                             Rank = 22,
@@ -3777,6 +4193,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Anna",
                             Gender = "Female",
                             Height = "5'9\"/(175cm)",
+                            IsDeleted = false,
                             LastName = "Kalinskaya",
                             Points = 1989,
                             Rank = 23,
@@ -3792,6 +4209,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Jelena",
                             Gender = "Female",
                             Height = "5'10\"/(178cm)",
+                            IsDeleted = false,
                             LastName = "Ostapenko",
                             Points = 1916,
                             Rank = 24,
@@ -3807,6 +4225,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Ann",
                             Gender = "Female",
                             Height = "5'7\"/(170cm)",
+                            IsDeleted = false,
                             LastName = "Li",
                             Points = 1833,
                             Rank = 25,
@@ -3822,6 +4241,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Marie",
                             Gender = "Female",
                             Height = "5'11\"/(180cm)",
+                            IsDeleted = false,
                             LastName = "Bouzkova",
                             Points = 1818,
                             Rank = 26,
@@ -3837,6 +4257,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Anastasia",
                             Gender = "Female",
                             Height = "5'9\"/(175cm)",
+                            IsDeleted = false,
                             LastName = "Potapova",
                             Points = 1814,
                             Rank = 27,
@@ -3852,6 +4273,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Emma",
                             Gender = "Female",
                             Height = "5'7\"/(170cm)",
+                            IsDeleted = false,
                             LastName = "Navarro",
                             Points = 1794,
                             Rank = 28,
@@ -3867,6 +4289,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Nikola",
                             Gender = "Female",
                             Height = "5'8\"/(173cm)",
+                            IsDeleted = false,
                             LastName = "Bartunkova",
                             Points = 1711,
                             Rank = 29,
@@ -3882,6 +4305,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Leylah",
                             Gender = "Female",
                             Height = "5'6\"/(168cm)",
+                            IsDeleted = false,
                             LastName = "Fernandez",
                             Points = 1709,
                             Rank = 30,
@@ -3897,6 +4321,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Maria",
                             Gender = "Female",
                             Height = "5'8\"/(172cm)",
+                            IsDeleted = false,
                             LastName = "Sakkari",
                             Points = 1706,
                             Rank = 31,
@@ -3912,6 +4337,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Sara",
                             Gender = "Female",
                             Height = "5'5\"/(165cm)",
+                            IsDeleted = false,
                             LastName = "Bejlek",
                             Points = 1650,
                             Rank = 32,
@@ -3927,6 +4353,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Ekaterina",
                             Gender = "Female",
                             Height = "5'9\"/(175cm)",
+                            IsDeleted = false,
                             LastName = "Alexandrova",
                             Points = 1591,
                             Rank = 33,
@@ -3942,6 +4369,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Diane",
                             Gender = "Female",
                             Height = "5'7\"/(170cm)",
+                            IsDeleted = false,
                             LastName = "Parry",
                             Points = 1549,
                             Rank = 34,
@@ -3957,6 +4385,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Jasmine",
                             Gender = "Female",
                             Height = "5'4\"/(163cm)",
+                            IsDeleted = false,
                             LastName = "Paolini",
                             Points = 1453,
                             Rank = 35,
@@ -3972,6 +4401,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Donna",
                             Gender = "Female",
                             Height = "5'10\"/(179cm)",
+                            IsDeleted = false,
                             LastName = "Vekic",
                             Points = 1333,
                             Rank = 36,
@@ -3987,6 +4417,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Peyton",
                             Gender = "Female",
                             Height = "5'8\"/(173cm)",
+                            IsDeleted = false,
                             LastName = "Stearns",
                             Points = 1316,
                             Rank = 37,
@@ -4002,6 +4433,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Cristina",
                             Gender = "Female",
                             Height = "5'9\"/(175cm)",
+                            IsDeleted = false,
                             LastName = "Bucsa",
                             Points = 1294,
                             Rank = 38,
@@ -4017,6 +4449,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Xinyu",
                             Gender = "Female",
                             Height = "6'0\"/(182cm)",
+                            IsDeleted = false,
                             LastName = "Wang",
                             Points = 1288,
                             Rank = 39,
@@ -4032,6 +4465,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Daria",
                             Gender = "Female",
                             Height = "5'7\"/(170cm)",
+                            IsDeleted = false,
                             LastName = "Snigur",
                             Points = 1280,
                             Rank = 40,
@@ -4047,6 +4481,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Kimberly",
                             Gender = "Female",
                             Height = "5'7\"/(170cm)",
+                            IsDeleted = false,
                             LastName = "Birrell",
                             Points = 1280,
                             Rank = 41,
@@ -4062,6 +4497,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Talia",
                             Gender = "Female",
                             Height = "5'9\"/(175cm)",
+                            IsDeleted = false,
                             LastName = "Gibson",
                             Points = 1273,
                             Rank = 42,
@@ -4077,6 +4513,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Liudmila",
                             Gender = "Female",
                             Height = "5'11\"/(180cm)",
+                            IsDeleted = false,
                             LastName = "Samsonova",
                             Points = 1234,
                             Rank = 43,
@@ -4092,6 +4529,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Hailey",
                             Gender = "Female",
                             Height = "5'9\"/(175cm)",
+                            IsDeleted = false,
                             LastName = "Baptiste",
                             Points = 1154,
                             Rank = 44,
@@ -4107,6 +4545,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Barbora",
                             Gender = "Female",
                             Height = "5'10\"/(178cm)",
+                            IsDeleted = false,
                             LastName = "Krejcikova",
                             Points = 1133,
                             Rank = 45,
@@ -4122,6 +4561,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Janice",
                             Gender = "Female",
                             Height = "5'6\"/(168cm)",
+                            IsDeleted = false,
                             LastName = "Tjen",
                             Points = 1120,
                             Rank = 46,
@@ -4137,6 +4577,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Magdalena",
                             Gender = "Female",
                             Height = "5'7\"/(171cm)",
+                            IsDeleted = false,
                             LastName = "Frech",
                             Points = 1110,
                             Rank = 47,
@@ -4152,6 +4593,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Karolina",
                             Gender = "Female",
                             Height = "6'1\"/(186cm)",
+                            IsDeleted = false,
                             LastName = "Pliskova",
                             Points = 1105,
                             Rank = 48,
@@ -4167,6 +4609,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Sonay",
                             Gender = "Female",
                             Height = "5'7\"/(170cm)",
+                            IsDeleted = false,
                             LastName = "Kartal",
                             Points = 1097,
                             Rank = 49,
@@ -4182,6 +4625,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Yuliia",
                             Gender = "Female",
                             Height = "5'8\"/(172cm)",
+                            IsDeleted = false,
                             LastName = "Starodubtseva",
                             Points = 1090,
                             Rank = 50,
@@ -4197,6 +4641,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Anhelina",
                             Gender = "Female",
                             Height = "5'10\"/(179cm)",
+                            IsDeleted = false,
                             LastName = "Kalinina",
                             Points = 1087,
                             Rank = 51,
@@ -4212,6 +4657,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Mayar",
                             Gender = "Female",
                             Height = "5'11\"/(180cm)",
+                            IsDeleted = false,
                             LastName = "Sherif",
                             Points = 1085,
                             Rank = 52,
@@ -4227,6 +4673,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Lanlana",
                             Gender = "Female",
                             Height = "5'8\"/(173cm)",
+                            IsDeleted = false,
                             LastName = "Tararudee",
                             Points = 1080,
                             Rank = 53,
@@ -4242,6 +4689,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Clara",
                             Gender = "Female",
                             Height = "6'0\"/(182cm)",
+                            IsDeleted = false,
                             LastName = "Tauson",
                             Points = 1074,
                             Rank = 54,
@@ -4257,6 +4705,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Ashlyn",
                             Gender = "Female",
                             Height = "6'1\"/(185cm)",
+                            IsDeleted = false,
                             LastName = "Krueger",
                             Points = 1072,
                             Rank = 55,
@@ -4272,6 +4721,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Tamara",
                             Gender = "Female",
                             Height = "5'7\"/(170cm)",
+                            IsDeleted = false,
                             LastName = "Korpatsch",
                             Points = 1070,
                             Rank = 56,
@@ -4287,6 +4737,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Lilli",
                             Gender = "Female",
                             Height = "5'9\"/(175cm)",
+                            IsDeleted = false,
                             LastName = "Tagger",
                             Points = 1052,
                             Rank = 57,
@@ -4302,6 +4753,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Katie",
                             Gender = "Female",
                             Height = "5'11\"/(180cm)",
+                            IsDeleted = false,
                             LastName = "Boulter",
                             Points = 1042,
                             Rank = 58,
@@ -4317,6 +4769,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Caty",
                             Gender = "Female",
                             Height = "5'10\"/(178cm)",
+                            IsDeleted = false,
                             LastName = "Mcnally",
                             Points = 1035,
                             Rank = 59,
@@ -4332,6 +4785,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Elena-Gabriela",
                             Gender = "Female",
                             Height = "5'8\"/(172cm)",
+                            IsDeleted = false,
                             LastName = "Ruse",
                             Points = 1033,
                             Rank = 60,
@@ -4347,6 +4801,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Paula",
                             Gender = "Female",
                             Height = "5'11\"/(180cm)",
+                            IsDeleted = false,
                             LastName = "Badosa",
                             Points = 1023,
                             Rank = 61,
@@ -4362,6 +4817,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Oleksandra",
                             Gender = "Female",
                             Height = "5'8\"/(173cm)",
+                            IsDeleted = false,
                             LastName = "Oliynykova",
                             Points = 1022,
                             Rank = 62,
@@ -4377,6 +4833,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Zeynep",
                             Gender = "Female",
                             Height = "5'7\"/(170cm)",
+                            IsDeleted = false,
                             LastName = "Sonmez",
                             Points = 987,
                             Rank = 63,
@@ -4392,6 +4849,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Alycia",
                             Gender = "Female",
                             Height = "6'1\"/(185cm)",
+                            IsDeleted = false,
                             LastName = "Parks",
                             Points = 985,
                             Rank = 64,
@@ -4407,6 +4865,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Elisabetta",
                             Gender = "Female",
                             Height = "5'5\"/(166cm)",
+                            IsDeleted = false,
                             LastName = "Cocciaretto",
                             Points = 975,
                             Rank = 65,
@@ -4422,6 +4881,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Yulia",
                             Gender = "Female",
                             Height = "5'4\"/(163cm)",
+                            IsDeleted = false,
                             LastName = "Putintseva",
                             Points = 969,
                             Rank = 66,
@@ -4437,6 +4897,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Kamilla",
                             Gender = "Female",
                             Height = "5'7\"/(170cm)",
+                            IsDeleted = false,
                             LastName = "Rakhimova",
                             Points = 966,
                             Rank = 67,
@@ -4452,6 +4913,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Camila",
                             Gender = "Female",
                             Height = "5'3\"/(160cm)",
+                            IsDeleted = false,
                             LastName = "Osorio",
                             Points = 963,
                             Rank = 68,
@@ -4467,6 +4929,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Tatjana",
                             Gender = "Female",
                             Height = "5'8\"/(172cm)",
+                            IsDeleted = false,
                             LastName = "Maria",
                             Points = 945,
                             Rank = 69,
@@ -4482,6 +4945,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Maria",
                             Gender = "Female",
                             Height = "5'6\"/(167cm)",
+                            IsDeleted = false,
                             LastName = "Timofeeva",
                             Points = 931,
                             Rank = 70,
@@ -4497,6 +4961,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Jaqueline",
                             Gender = "Female",
                             Height = "5'11\"/(180cm)",
+                            IsDeleted = false,
                             LastName = "Cristian",
                             Points = 928,
                             Rank = 71,
@@ -4512,6 +4977,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Anna",
                             Gender = "Female",
                             Height = "5'10\"/(179cm)",
+                            IsDeleted = false,
                             LastName = "Blinkova",
                             Points = 921,
                             Rank = 72,
@@ -4527,6 +4993,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Sinja",
                             Gender = "Female",
                             Height = "5'8\"/(172cm)",
+                            IsDeleted = false,
                             LastName = "Kraus",
                             Points = 910,
                             Rank = 76,
@@ -4542,6 +5009,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Magda",
                             Gender = "Female",
                             Height = "5'7\"/(171cm)",
+                            IsDeleted = false,
                             LastName = "Linette",
                             Points = 908,
                             Rank = 77,
@@ -4557,6 +5025,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Petra",
                             Gender = "Female",
                             Height = "5'9\"/(175cm)",
+                            IsDeleted = false,
                             LastName = "Marcinko",
                             Points = 905,
                             Rank = 78,
@@ -4572,6 +5041,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Kaitlin",
                             Gender = "Female",
                             Height = "5'7\"/(170cm)",
+                            IsDeleted = false,
                             LastName = "Quevedo",
                             Points = 902,
                             Rank = 79,
@@ -4587,6 +5057,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Alina",
                             Gender = "Female",
                             Height = "5'9\"/(175cm)",
+                            IsDeleted = false,
                             LastName = "Korneeva",
                             Points = 900,
                             Rank = 80,
@@ -4602,6 +5073,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Xiyu",
                             Gender = "Female",
                             Height = "5'11\"/(180cm)",
+                            IsDeleted = false,
                             LastName = "Wang",
                             Points = 899,
                             Rank = 81,
@@ -4617,6 +5089,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Viktorija",
                             Gender = "Female",
                             Height = "5'7\"/(169cm)",
+                            IsDeleted = false,
                             LastName = "Golubic",
                             Points = 899,
                             Rank = 82,
@@ -4632,6 +5105,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Panna",
                             Gender = "Female",
                             Height = "5'7\"/(170cm)",
+                            IsDeleted = false,
                             LastName = "Udvardy",
                             Points = 899,
                             Rank = 83,
@@ -4647,6 +5121,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Mananchaya",
                             Gender = "Female",
                             Height = "5'6\"/(168cm)",
+                            IsDeleted = false,
                             LastName = "Sawangkaew",
                             Points = 886,
                             Rank = 84,
@@ -4662,6 +5137,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Shuai",
                             Gender = "Female",
                             Height = "5'10\"/(177cm)",
+                            IsDeleted = false,
                             LastName = "Zhang",
                             Points = 880,
                             Rank = 85,
@@ -4677,6 +5153,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Katerina",
                             Gender = "Female",
                             Height = "5'9\"/(174cm)",
+                            IsDeleted = false,
                             LastName = "Siniakova",
                             Points = 865,
                             Rank = 86,
@@ -4692,6 +5169,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Taylah",
                             Gender = "Female",
                             Height = "5'8\"/(172cm)",
+                            IsDeleted = false,
                             LastName = "Preston",
                             Points = 858,
                             Rank = 87,
@@ -4707,6 +5185,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Tereza",
                             Gender = "Female",
                             Height = "5'10\"/(178cm)",
+                            IsDeleted = false,
                             LastName = "Valentova",
                             Points = 833,
                             Rank = 88,
@@ -4722,6 +5201,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Taylor",
                             Gender = "Female",
                             Height = "5'7\"/(170cm)",
+                            IsDeleted = false,
                             LastName = "Townsend",
                             Points = 831,
                             Rank = 89,
@@ -4737,6 +5217,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Maya",
                             Gender = "Female",
                             Height = "5'7\"/(170cm)",
+                            IsDeleted = false,
                             LastName = "Joint",
                             Points = 824,
                             Rank = 90,
@@ -4752,6 +5233,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Antonia",
                             Gender = "Female",
                             Height = "5'9\"/(175cm)",
+                            IsDeleted = false,
                             LastName = "Ruzic",
                             Points = 823,
                             Rank = 91,
@@ -4767,6 +5249,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Leolia",
                             Gender = "Female",
                             Height = "5'6\"/(168cm)",
+                            IsDeleted = false,
                             LastName = "Jeanjean",
                             Points = 816,
                             Rank = 92,
@@ -4782,6 +5265,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Darja",
                             Gender = "Female",
                             Height = "5'8\"/(173cm)",
+                            IsDeleted = false,
                             LastName = "Vidmanova",
                             Points = 812,
                             Rank = 93,
@@ -4797,6 +5281,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Renata",
                             Gender = "Female",
                             Height = "5'3\"/(160cm)",
+                            IsDeleted = false,
                             LastName = "Zarazua",
                             Points = 801,
                             Rank = 94,
@@ -4812,6 +5297,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Claire",
                             Gender = "Female",
                             Height = "5'7\"/(170cm)",
+                            IsDeleted = false,
                             LastName = "Liu",
                             Points = 789,
                             Rank = 95,
@@ -4827,6 +5313,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Jessica",
                             Gender = "Female",
                             Height = "5'8\"/(173cm)",
+                            IsDeleted = false,
                             LastName = "Bouzas Maneiro",
                             Points = 769,
                             Rank = 96,
@@ -4842,6 +5329,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Alina",
                             Gender = "Female",
                             Height = "5'7\"/(170cm)",
+                            IsDeleted = false,
                             LastName = "Charaeva",
                             Points = 759,
                             Rank = 97,
@@ -4857,6 +5345,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Hanne",
                             Gender = "Female",
                             Height = "5'7\"/(170cm)",
+                            IsDeleted = false,
                             LastName = "Vandewinkel",
                             Points = 756,
                             Rank = 98,
@@ -4872,6 +5361,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Francesca",
                             Gender = "Female",
                             Height = "5'8\"/(172cm)",
+                            IsDeleted = false,
                             LastName = "Jones",
                             Points = 752,
                             Rank = 99,
@@ -4887,6 +5377,7 @@ namespace CourtSide.Data.Migrations
                             FirstName = "Fiona",
                             Gender = "Female",
                             Height = "5'7\"/(170cm)",
+                            IsDeleted = false,
                             LastName = "Ferro",
                             Points = 748,
                             Rank = 100,
@@ -4918,6 +5409,9 @@ namespace CourtSide.Data.Migrations
 
                     b.Property<DateTime>("EndDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
 
                     b.Property<string>("Location")
                         .IsRequired()
@@ -4957,6 +5451,7 @@ namespace CourtSide.Data.Migrations
                             CourtSurface = "Hard",
                             Discipline = "Men's singles",
                             EndDate = new DateTime(2026, 10, 25, 0, 0, 0, 0, DateTimeKind.Utc),
+                            IsDeleted = false,
                             Location = "Lyon, France",
                             MatchFormat = 0,
                             StartDate = new DateTime(2026, 10, 19, 0, 0, 0, 0, DateTimeKind.Utc),
@@ -4971,6 +5466,7 @@ namespace CourtSide.Data.Migrations
                             CourtSurface = "Hard",
                             Discipline = "Men's singles",
                             EndDate = new DateTime(2026, 11, 8, 0, 0, 0, 0, DateTimeKind.Utc),
+                            IsDeleted = false,
                             Location = "Paris, France",
                             MatchFormat = 0,
                             StartDate = new DateTime(2026, 11, 2, 0, 0, 0, 0, DateTimeKind.Utc),
@@ -4985,6 +5481,7 @@ namespace CourtSide.Data.Migrations
                             CourtSurface = "Hard",
                             Discipline = "Men's singles",
                             EndDate = new DateTime(2026, 9, 13, 0, 0, 0, 0, DateTimeKind.Utc),
+                            IsDeleted = false,
                             Location = "New York, USA",
                             MatchFormat = 1,
                             StartDate = new DateTime(2026, 8, 31, 0, 0, 0, 0, DateTimeKind.Utc),
@@ -4999,6 +5496,7 @@ namespace CourtSide.Data.Migrations
                             CourtSurface = "Hard",
                             Discipline = "Men's singles",
                             EndDate = new DateTime(2026, 10, 25, 0, 0, 0, 0, DateTimeKind.Utc),
+                            IsDeleted = false,
                             Location = "Almaty, Kazakhstan",
                             MatchFormat = 0,
                             StartDate = new DateTime(2026, 10, 19, 0, 0, 0, 0, DateTimeKind.Utc),
@@ -5013,6 +5511,7 @@ namespace CourtSide.Data.Migrations
                             CourtSurface = "Hard",
                             Discipline = "Men's singles",
                             EndDate = new DateTime(2026, 1, 31, 0, 0, 0, 0, DateTimeKind.Utc),
+                            IsDeleted = false,
                             Location = "Melbourne, Australia",
                             MatchFormat = 1,
                             StartDate = new DateTime(2026, 1, 18, 0, 0, 0, 0, DateTimeKind.Utc),
@@ -5027,6 +5526,7 @@ namespace CourtSide.Data.Migrations
                             CourtSurface = "Clay",
                             Discipline = "Men's singles",
                             EndDate = new DateTime(2026, 4, 19, 0, 0, 0, 0, DateTimeKind.Utc),
+                            IsDeleted = false,
                             Location = "Roquebrune-Cap-Martin, France",
                             MatchFormat = 0,
                             StartDate = new DateTime(2026, 4, 12, 0, 0, 0, 0, DateTimeKind.Utc),
@@ -5041,6 +5541,7 @@ namespace CourtSide.Data.Migrations
                             CourtSurface = "Clay",
                             Discipline = "Men's singles",
                             EndDate = new DateTime(2026, 5, 17, 0, 0, 0, 0, DateTimeKind.Utc),
+                            IsDeleted = false,
                             Location = "Madrid, Spain",
                             MatchFormat = 0,
                             StartDate = new DateTime(2026, 5, 4, 0, 0, 0, 0, DateTimeKind.Utc),
@@ -5055,6 +5556,7 @@ namespace CourtSide.Data.Migrations
                             CourtSurface = "Clay",
                             Discipline = "Men's singles",
                             EndDate = new DateTime(2026, 5, 24, 0, 0, 0, 0, DateTimeKind.Utc),
+                            IsDeleted = false,
                             Location = "Rome, Italy",
                             MatchFormat = 0,
                             StartDate = new DateTime(2026, 5, 11, 0, 0, 0, 0, DateTimeKind.Utc),
@@ -5069,6 +5571,7 @@ namespace CourtSide.Data.Migrations
                             CourtSurface = "Grass",
                             Discipline = "Men's singles",
                             EndDate = new DateTime(2026, 6, 21, 0, 0, 0, 0, DateTimeKind.Utc),
+                            IsDeleted = false,
                             Location = "London, United Kingdom",
                             MatchFormat = 0,
                             StartDate = new DateTime(2026, 6, 15, 0, 0, 0, 0, DateTimeKind.Utc),
@@ -5083,6 +5586,7 @@ namespace CourtSide.Data.Migrations
                             CourtSurface = "Hard",
                             Discipline = "Men's singles",
                             EndDate = new DateTime(2026, 11, 1, 0, 0, 0, 0, DateTimeKind.Utc),
+                            IsDeleted = false,
                             Location = "Basel, Switzerland",
                             MatchFormat = 0,
                             StartDate = new DateTime(2026, 10, 24, 0, 0, 0, 0, DateTimeKind.Utc),
@@ -5097,6 +5601,7 @@ namespace CourtSide.Data.Migrations
                             CourtSurface = "Hard",
                             Discipline = "Men's singles",
                             EndDate = new DateTime(2026, 10, 18, 0, 0, 0, 0, DateTimeKind.Utc),
+                            IsDeleted = false,
                             Location = "Shanghai, China",
                             MatchFormat = 0,
                             StartDate = new DateTime(2026, 10, 7, 0, 0, 0, 0, DateTimeKind.Utc),
@@ -5111,6 +5616,7 @@ namespace CourtSide.Data.Migrations
                             CourtSurface = "Hard",
                             Discipline = "Men's singles",
                             EndDate = new DateTime(2026, 10, 25, 0, 0, 0, 0, DateTimeKind.Utc),
+                            IsDeleted = false,
                             Location = "Brussels, Belgium",
                             MatchFormat = 0,
                             StartDate = new DateTime(2026, 10, 17, 0, 0, 0, 0, DateTimeKind.Utc),
@@ -5125,6 +5631,7 @@ namespace CourtSide.Data.Migrations
                             CourtSurface = "Hard",
                             Discipline = "Men's singles",
                             EndDate = new DateTime(2026, 11, 14, 0, 0, 0, 0, DateTimeKind.Utc),
+                            IsDeleted = false,
                             Location = "Stockholm, Sweden",
                             MatchFormat = 0,
                             StartDate = new DateTime(2026, 11, 8, 0, 0, 0, 0, DateTimeKind.Utc),
@@ -5139,6 +5646,7 @@ namespace CourtSide.Data.Migrations
                             CourtSurface = "Hard",
                             Discipline = "Men's singles",
                             EndDate = new DateTime(2026, 11, 22, 0, 0, 0, 0, DateTimeKind.Utc),
+                            IsDeleted = false,
                             Location = "Turin, Italy",
                             MatchFormat = 0,
                             StartDate = new DateTime(2026, 11, 15, 0, 0, 0, 0, DateTimeKind.Utc),
@@ -5153,6 +5661,7 @@ namespace CourtSide.Data.Migrations
                             CourtSurface = "Hard",
                             Discipline = "Men's singles",
                             EndDate = new DateTime(2026, 11, 29, 0, 0, 0, 0, DateTimeKind.Utc),
+                            IsDeleted = false,
                             Location = "Bologna, Italy",
                             MatchFormat = 0,
                             StartDate = new DateTime(2026, 11, 23, 0, 0, 0, 0, DateTimeKind.Utc),
@@ -5167,6 +5676,7 @@ namespace CourtSide.Data.Migrations
                             CourtSurface = "Hard",
                             Discipline = "Men's singles",
                             EndDate = new DateTime(2026, 12, 13, 0, 0, 0, 0, DateTimeKind.Utc),
+                            IsDeleted = false,
                             Location = "Reggio Calabria, Italy",
                             MatchFormat = 0,
                             StartDate = new DateTime(2026, 12, 9, 0, 0, 0, 0, DateTimeKind.Utc),
@@ -5181,6 +5691,7 @@ namespace CourtSide.Data.Migrations
                             CourtSurface = "Hard",
                             Discipline = "Women's singles",
                             EndDate = new DateTime(2026, 3, 7, 0, 0, 0, 0, DateTimeKind.Utc),
+                            IsDeleted = false,
                             Location = "Lyon, France",
                             MatchFormat = 0,
                             StartDate = new DateTime(2026, 3, 1, 0, 0, 0, 0, DateTimeKind.Utc),
@@ -5195,6 +5706,7 @@ namespace CourtSide.Data.Migrations
                             CourtSurface = "Hard",
                             Discipline = "Women's singles",
                             EndDate = new DateTime(2026, 9, 13, 0, 0, 0, 0, DateTimeKind.Utc),
+                            IsDeleted = false,
                             Location = "New York, USA",
                             MatchFormat = 0,
                             StartDate = new DateTime(2026, 8, 31, 0, 0, 0, 0, DateTimeKind.Utc),
@@ -5209,6 +5721,7 @@ namespace CourtSide.Data.Migrations
                             CourtSurface = "Hard",
                             Discipline = "Women's singles",
                             EndDate = new DateTime(2026, 2, 14, 0, 0, 0, 0, DateTimeKind.Utc),
+                            IsDeleted = false,
                             Location = "Doha, Qatar",
                             MatchFormat = 0,
                             StartDate = new DateTime(2026, 2, 8, 0, 0, 0, 0, DateTimeKind.Utc),
@@ -5223,6 +5736,7 @@ namespace CourtSide.Data.Migrations
                             CourtSurface = "Hard",
                             Discipline = "Women's singles",
                             EndDate = new DateTime(2026, 3, 15, 0, 0, 0, 0, DateTimeKind.Utc),
+                            IsDeleted = false,
                             Location = "Indian Wells, USA",
                             MatchFormat = 0,
                             StartDate = new DateTime(2026, 3, 4, 0, 0, 0, 0, DateTimeKind.Utc),
@@ -5237,6 +5751,7 @@ namespace CourtSide.Data.Migrations
                             CourtSurface = "Hard",
                             Discipline = "Women's singles",
                             EndDate = new DateTime(2026, 3, 29, 0, 0, 0, 0, DateTimeKind.Utc),
+                            IsDeleted = false,
                             Location = "Miami, USA",
                             MatchFormat = 0,
                             StartDate = new DateTime(2026, 3, 17, 0, 0, 0, 0, DateTimeKind.Utc),
@@ -5251,6 +5766,7 @@ namespace CourtSide.Data.Migrations
                             CourtSurface = "Clay",
                             Discipline = "Women's singles",
                             EndDate = new DateTime(2026, 4, 19, 0, 0, 0, 0, DateTimeKind.Utc),
+                            IsDeleted = false,
                             Location = "Stuttgart, Germany",
                             MatchFormat = 0,
                             StartDate = new DateTime(2026, 4, 13, 0, 0, 0, 0, DateTimeKind.Utc),
@@ -5265,6 +5781,7 @@ namespace CourtSide.Data.Migrations
                             CourtSurface = "Clay",
                             Discipline = "Women's singles",
                             EndDate = new DateTime(2026, 6, 7, 0, 0, 0, 0, DateTimeKind.Utc),
+                            IsDeleted = false,
                             Location = "Paris, France",
                             MatchFormat = 0,
                             StartDate = new DateTime(2026, 5, 24, 0, 0, 0, 0, DateTimeKind.Utc),
@@ -5279,6 +5796,7 @@ namespace CourtSide.Data.Migrations
                             CourtSurface = "Grass",
                             Discipline = "Women's singles",
                             EndDate = new DateTime(2026, 6, 27, 0, 0, 0, 0, DateTimeKind.Utc),
+                            IsDeleted = false,
                             Location = "Eastbourne, United Kingdom",
                             MatchFormat = 0,
                             StartDate = new DateTime(2026, 6, 22, 0, 0, 0, 0, DateTimeKind.Utc),
@@ -5293,6 +5811,7 @@ namespace CourtSide.Data.Migrations
                             CourtSurface = "Grass",
                             Discipline = "Women's singles",
                             EndDate = new DateTime(2026, 7, 12, 0, 0, 0, 0, DateTimeKind.Utc),
+                            IsDeleted = false,
                             Location = "London, United Kingdom",
                             MatchFormat = 0,
                             StartDate = new DateTime(2026, 6, 29, 0, 0, 0, 0, DateTimeKind.Utc),
@@ -5307,6 +5826,7 @@ namespace CourtSide.Data.Migrations
                             CourtSurface = "Hard",
                             Discipline = "Women's singles",
                             EndDate = new DateTime(2026, 8, 16, 0, 0, 0, 0, DateTimeKind.Utc),
+                            IsDeleted = false,
                             Location = "Montreal, Canada",
                             MatchFormat = 0,
                             StartDate = new DateTime(2026, 8, 10, 0, 0, 0, 0, DateTimeKind.Utc),
@@ -5321,6 +5841,7 @@ namespace CourtSide.Data.Migrations
                             CourtSurface = "Hard",
                             Discipline = "Women's singles",
                             EndDate = new DateTime(2026, 10, 11, 0, 0, 0, 0, DateTimeKind.Utc),
+                            IsDeleted = false,
                             Location = "Beijing, China",
                             MatchFormat = 0,
                             StartDate = new DateTime(2026, 9, 28, 0, 0, 0, 0, DateTimeKind.Utc),
@@ -5335,6 +5856,7 @@ namespace CourtSide.Data.Migrations
                             CourtSurface = "Hard",
                             Discipline = "Women's singles",
                             EndDate = new DateTime(2026, 11, 8, 0, 0, 0, 0, DateTimeKind.Utc),
+                            IsDeleted = false,
                             Location = "Riyadh, Saudi Arabia",
                             MatchFormat = 0,
                             StartDate = new DateTime(2026, 11, 1, 0, 0, 0, 0, DateTimeKind.Utc),
@@ -5352,6 +5874,9 @@ namespace CourtSide.Data.Migrations
                     b.Property<Guid>("VenueId")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
                     b.HasKey("TournamentId", "VenueId");
 
                     b.HasIndex("VenueId");
@@ -5362,142 +5887,170 @@ namespace CourtSide.Data.Migrations
                         new
                         {
                             TournamentId = new Guid("7f89f574-ceff-bb37-dde5-a1445391021a"),
-                            VenueId = new Guid("b2026a06-3e90-7c25-b97e-ae3cff9975a5")
+                            VenueId = new Guid("b2026a06-3e90-7c25-b97e-ae3cff9975a5"),
+                            IsDeleted = false
                         },
                         new
                         {
                             TournamentId = new Guid("be1bb675-aa94-289a-a381-be545fb9222b"),
-                            VenueId = new Guid("fd8a4796-4b11-af79-77ff-367a3a157017")
+                            VenueId = new Guid("fd8a4796-4b11-af79-77ff-367a3a157017"),
+                            IsDeleted = false
                         },
                         new
                         {
                             TournamentId = new Guid("ab9923f4-66ee-81b4-220b-a5e6781b5bf4"),
-                            VenueId = new Guid("285e787f-ba96-5559-64ea-77fdb69d3e9a")
+                            VenueId = new Guid("285e787f-ba96-5559-64ea-77fdb69d3e9a"),
+                            IsDeleted = false
                         },
                         new
                         {
                             TournamentId = new Guid("21b75548-50bb-f5a8-3e04-4df9dd776715"),
-                            VenueId = new Guid("4802b018-5151-da85-21a6-4be35a67fd85")
+                            VenueId = new Guid("4802b018-5151-da85-21a6-4be35a67fd85"),
+                            IsDeleted = false
                         },
                         new
                         {
                             TournamentId = new Guid("9211f2c5-459b-2574-3e1b-eab2f5dd945f"),
-                            VenueId = new Guid("8b5b88b3-8c2f-f2fe-ae8b-b3c8ed532cd8")
+                            VenueId = new Guid("8b5b88b3-8c2f-f2fe-ae8b-b3c8ed532cd8"),
+                            IsDeleted = false
                         },
                         new
                         {
                             TournamentId = new Guid("c5608612-d979-6e0f-fd0c-0d4676e820f8"),
-                            VenueId = new Guid("28b193c2-afff-79d2-0375-161185f00d6a")
+                            VenueId = new Guid("28b193c2-afff-79d2-0375-161185f00d6a"),
+                            IsDeleted = false
                         },
                         new
                         {
                             TournamentId = new Guid("7fdfc872-c0aa-8cda-e9ad-768733c7d7d1"),
-                            VenueId = new Guid("e901ac40-4167-6ed4-33c5-38adef64d6aa")
+                            VenueId = new Guid("e901ac40-4167-6ed4-33c5-38adef64d6aa"),
+                            IsDeleted = false
                         },
                         new
                         {
                             TournamentId = new Guid("e9f7a94b-bfe0-3aac-6912-900da822d6cc"),
-                            VenueId = new Guid("fed03ef4-494e-b021-1973-2389bd8f283e")
+                            VenueId = new Guid("fed03ef4-494e-b021-1973-2389bd8f283e"),
+                            IsDeleted = false
                         },
                         new
                         {
                             TournamentId = new Guid("4b5fa7f6-1f63-746a-5147-8ba5e549ed4f"),
-                            VenueId = new Guid("01398289-742d-3688-178d-0b7ac0f3db44")
+                            VenueId = new Guid("01398289-742d-3688-178d-0b7ac0f3db44"),
+                            IsDeleted = false
                         },
                         new
                         {
                             TournamentId = new Guid("73f7bad5-fb6b-89c1-d5b4-5026e24b4778"),
-                            VenueId = new Guid("b46bf0d7-9420-f9bb-8cb7-551b28e533e9")
+                            VenueId = new Guid("b46bf0d7-9420-f9bb-8cb7-551b28e533e9"),
+                            IsDeleted = false
                         },
                         new
                         {
                             TournamentId = new Guid("c4677b80-d746-8861-2f25-fd69b9e5b0cd"),
-                            VenueId = new Guid("f4e815bd-2c5a-8a71-e0d2-deb6e4180f28")
+                            VenueId = new Guid("f4e815bd-2c5a-8a71-e0d2-deb6e4180f28"),
+                            IsDeleted = false
                         },
                         new
                         {
                             TournamentId = new Guid("9ff588d9-efd7-5998-7564-0c60cfa790bd"),
-                            VenueId = new Guid("6caac657-0e0b-25d4-226f-4a6cdd07c7e9")
+                            VenueId = new Guid("6caac657-0e0b-25d4-226f-4a6cdd07c7e9"),
+                            IsDeleted = false
                         },
                         new
                         {
                             TournamentId = new Guid("8c9b1e85-f41d-6795-8c87-d61bc14a51c3"),
-                            VenueId = new Guid("dcbca76e-1aa3-cd66-7d38-6b547fb207f4")
+                            VenueId = new Guid("dcbca76e-1aa3-cd66-7d38-6b547fb207f4"),
+                            IsDeleted = false
                         },
                         new
                         {
                             TournamentId = new Guid("6375b49e-77da-ea35-07cf-d6f9e263edbe"),
-                            VenueId = new Guid("812c72e4-2f62-6626-265e-4e26c1b40174")
+                            VenueId = new Guid("812c72e4-2f62-6626-265e-4e26c1b40174"),
+                            IsDeleted = false
                         },
                         new
                         {
                             TournamentId = new Guid("1aa45a9a-4015-560d-d7c2-f594cf300eab"),
-                            VenueId = new Guid("4240c5f1-47f3-8993-9f84-c34f886a8fa8")
+                            VenueId = new Guid("4240c5f1-47f3-8993-9f84-c34f886a8fa8"),
+                            IsDeleted = false
                         },
                         new
                         {
                             TournamentId = new Guid("66764405-2070-1aa3-032f-59d5bbc2e03f"),
-                            VenueId = new Guid("1b10f29e-d2d7-4b17-1370-ce61e2826157")
+                            VenueId = new Guid("1b10f29e-d2d7-4b17-1370-ce61e2826157"),
+                            IsDeleted = false
                         },
                         new
                         {
                             TournamentId = new Guid("f881058f-4995-999e-4dc9-b1ac17571219"),
-                            VenueId = new Guid("66eabd34-a820-bb37-c757-4081b5dc4f39")
+                            VenueId = new Guid("66eabd34-a820-bb37-c757-4081b5dc4f39"),
+                            IsDeleted = false
                         },
                         new
                         {
                             TournamentId = new Guid("3ba6f36e-30af-72d9-f4e1-b8c540537633"),
-                            VenueId = new Guid("285e787f-ba96-5559-64ea-77fdb69d3e9a")
+                            VenueId = new Guid("285e787f-ba96-5559-64ea-77fdb69d3e9a"),
+                            IsDeleted = false
                         },
                         new
                         {
                             TournamentId = new Guid("95225147-8237-4107-6495-22a2b87de875"),
-                            VenueId = new Guid("8b9928a7-30eb-959c-3878-24bf034406cd")
+                            VenueId = new Guid("8b9928a7-30eb-959c-3878-24bf034406cd"),
+                            IsDeleted = false
                         },
                         new
                         {
                             TournamentId = new Guid("fb38fe7e-51bb-4ace-f719-de15c72f6d69"),
-                            VenueId = new Guid("19b8a897-43ca-78c6-1405-0a5b63aa02c7")
+                            VenueId = new Guid("19b8a897-43ca-78c6-1405-0a5b63aa02c7"),
+                            IsDeleted = false
                         },
                         new
                         {
                             TournamentId = new Guid("913b563c-6c8d-af99-6835-a6b98d790768"),
-                            VenueId = new Guid("247d28ed-57e6-07e8-580a-dd4f43548bcd")
+                            VenueId = new Guid("247d28ed-57e6-07e8-580a-dd4f43548bcd"),
+                            IsDeleted = false
                         },
                         new
                         {
                             TournamentId = new Guid("fe67857d-f279-1751-fd7b-2e81b27a5d5f"),
-                            VenueId = new Guid("9c712670-3363-37fa-3a4e-237e22c90951")
+                            VenueId = new Guid("9c712670-3363-37fa-3a4e-237e22c90951"),
+                            IsDeleted = false
                         },
                         new
                         {
                             TournamentId = new Guid("85223fc0-d5d6-c0fc-a668-1fdb607e915a"),
-                            VenueId = new Guid("ee8e8214-bff6-9fea-66bc-83713f1781ec")
+                            VenueId = new Guid("ee8e8214-bff6-9fea-66bc-83713f1781ec"),
+                            IsDeleted = false
                         },
                         new
                         {
                             TournamentId = new Guid("a6dbadba-13a4-4c1a-77be-b94f0e328bad"),
-                            VenueId = new Guid("efa8e236-d522-f001-fc5a-ebd68c1ca1b4")
+                            VenueId = new Guid("efa8e236-d522-f001-fc5a-ebd68c1ca1b4"),
+                            IsDeleted = false
                         },
                         new
                         {
                             TournamentId = new Guid("878dbd49-9843-c952-f812-cc5fde377431"),
-                            VenueId = new Guid("0a093d19-917e-4a21-972e-b1e89b39416d")
+                            VenueId = new Guid("0a093d19-917e-4a21-972e-b1e89b39416d"),
+                            IsDeleted = false
                         },
                         new
                         {
                             TournamentId = new Guid("65785e2e-be20-5a3c-3d3f-58aa7ecf99cf"),
-                            VenueId = new Guid("1d0f7e07-6c4c-2b8b-1631-216839c5fd2e")
+                            VenueId = new Guid("1d0f7e07-6c4c-2b8b-1631-216839c5fd2e"),
+                            IsDeleted = false
                         },
                         new
                         {
                             TournamentId = new Guid("a1596083-41ad-327f-a87a-538e657f4f1c"),
-                            VenueId = new Guid("dbd84836-dd9d-2a5e-0f03-5df858ea8851")
+                            VenueId = new Guid("dbd84836-dd9d-2a5e-0f03-5df858ea8851"),
+                            IsDeleted = false
                         },
                         new
                         {
                             TournamentId = new Guid("eee5e1a5-fe8a-dea9-d5c0-d67e751592b7"),
-                            VenueId = new Guid("4525054a-483d-f44f-f772-addd74b9daeb")
+                            VenueId = new Guid("4525054a-483d-f44f-f772-addd74b9daeb"),
+                            IsDeleted = false
                         });
                 });
 
@@ -5506,6 +6059,9 @@ namespace CourtSide.Data.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -5520,141 +6076,169 @@ namespace CourtSide.Data.Migrations
                         new
                         {
                             Id = new Guid("b2026a06-3e90-7c25-b97e-ae3cff9975a5"),
+                            IsDeleted = false,
                             Name = "LDLC Arena"
                         },
                         new
                         {
                             Id = new Guid("fd8a4796-4b11-af79-77ff-367a3a157017"),
+                            IsDeleted = false,
                             Name = "Paris La Défense Arena"
                         },
                         new
                         {
                             Id = new Guid("285e787f-ba96-5559-64ea-77fdb69d3e9a"),
+                            IsDeleted = false,
                             Name = "USTA Billie Jean King National Tennis Center"
                         },
                         new
                         {
                             Id = new Guid("4802b018-5151-da85-21a6-4be35a67fd85"),
+                            IsDeleted = false,
                             Name = "Almaty Arena"
                         },
                         new
                         {
                             Id = new Guid("8b5b88b3-8c2f-f2fe-ae8b-b3c8ed532cd8"),
+                            IsDeleted = false,
                             Name = "Melbourne Park"
                         },
                         new
                         {
                             Id = new Guid("28b193c2-afff-79d2-0375-161185f00d6a"),
+                            IsDeleted = false,
                             Name = "Monte-Carlo Country Club"
                         },
                         new
                         {
                             Id = new Guid("e901ac40-4167-6ed4-33c5-38adef64d6aa"),
+                            IsDeleted = false,
                             Name = "Caja Mágica"
                         },
                         new
                         {
                             Id = new Guid("fed03ef4-494e-b021-1973-2389bd8f283e"),
+                            IsDeleted = false,
                             Name = "Foro Italico"
                         },
                         new
                         {
                             Id = new Guid("01398289-742d-3688-178d-0b7ac0f3db44"),
+                            IsDeleted = false,
                             Name = "Queen's Club"
                         },
                         new
                         {
                             Id = new Guid("b46bf0d7-9420-f9bb-8cb7-551b28e533e9"),
+                            IsDeleted = false,
                             Name = "St. Jakobshalle"
                         },
                         new
                         {
                             Id = new Guid("f4e815bd-2c5a-8a71-e0d2-deb6e4180f28"),
+                            IsDeleted = false,
                             Name = "Qizhong Forest Sports City Arena"
                         },
                         new
                         {
                             Id = new Guid("6caac657-0e0b-25d4-226f-4a6cdd07c7e9"),
+                            IsDeleted = false,
                             Name = "Lotto Arena"
                         },
                         new
                         {
                             Id = new Guid("dcbca76e-1aa3-cd66-7d38-6b547fb207f4"),
+                            IsDeleted = false,
                             Name = "Kungliga Tennishallen"
                         },
                         new
                         {
                             Id = new Guid("812c72e4-2f62-6626-265e-4e26c1b40174"),
+                            IsDeleted = false,
                             Name = "Inalpi Arena"
                         },
                         new
                         {
                             Id = new Guid("4240c5f1-47f3-8993-9f84-c34f886a8fa8"),
+                            IsDeleted = false,
                             Name = "Unipol Arena"
                         },
                         new
                         {
                             Id = new Guid("1b10f29e-d2d7-4b17-1370-ce61e2826157"),
+                            IsDeleted = false,
                             Name = "PalaTennis 'Corrado Barazzutti'"
                         },
                         new
                         {
                             Id = new Guid("3248537d-9728-1dda-efd3-5d6baedcff40"),
+                            IsDeleted = false,
                             Name = "Estadio La Cartuja"
                         },
                         new
                         {
                             Id = new Guid("66eabd34-a820-bb37-c757-4081b5dc4f39"),
+                            IsDeleted = false,
                             Name = "Palais des Sports de Gerland"
                         },
                         new
                         {
                             Id = new Guid("8b9928a7-30eb-959c-3878-24bf034406cd"),
+                            IsDeleted = false,
                             Name = "Khalifa International Tennis & Squash Complex"
                         },
                         new
                         {
                             Id = new Guid("19b8a897-43ca-78c6-1405-0a5b63aa02c7"),
+                            IsDeleted = false,
                             Name = "Indian Wells Tennis Garden"
                         },
                         new
                         {
                             Id = new Guid("247d28ed-57e6-07e8-580a-dd4f43548bcd"),
+                            IsDeleted = false,
                             Name = "Hard Rock Stadium"
                         },
                         new
                         {
                             Id = new Guid("9c712670-3363-37fa-3a4e-237e22c90951"),
+                            IsDeleted = false,
                             Name = "Porsche-Arena"
                         },
                         new
                         {
                             Id = new Guid("ee8e8214-bff6-9fea-66bc-83713f1781ec"),
+                            IsDeleted = false,
                             Name = "Stade Roland Garros"
                         },
                         new
                         {
                             Id = new Guid("efa8e236-d522-f001-fc5a-ebd68c1ca1b4"),
+                            IsDeleted = false,
                             Name = "Devonshire Park Lawn Tennis Club"
                         },
                         new
                         {
                             Id = new Guid("0a093d19-917e-4a21-972e-b1e89b39416d"),
+                            IsDeleted = false,
                             Name = "All England Lawn Tennis and Croquet Club"
                         },
                         new
                         {
                             Id = new Guid("1d0f7e07-6c4c-2b8b-1631-216839c5fd2e"),
+                            IsDeleted = false,
                             Name = "IGA Stadium / Stade IGA"
                         },
                         new
                         {
                             Id = new Guid("dbd84836-dd9d-2a5e-0f03-5df858ea8851"),
+                            IsDeleted = false,
                             Name = "National Tennis Center"
                         },
                         new
                         {
                             Id = new Guid("4525054a-483d-f44f-f772-addd74b9daeb"),
+                            IsDeleted = false,
                             Name = "King Saud University Indoor Arena"
                         });
                 });
