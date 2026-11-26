@@ -1,10 +1,12 @@
 namespace CourtSide.Web.Controllers
 {
-    using CourtSide.Web.ViewModels;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
     using System.Diagnostics;
+
+    using CourtSide.Web.Infrastructure.Filters;
+    using CourtSide.Web.ViewModels;
 
     [AllowAnonymous]
     public class HomeController : BaseController
@@ -31,14 +33,14 @@ namespace CourtSide.Web.Controllers
 
         [AllowAnonymous]
         [HttpGet]
-        //[ServiceFilter(typeof(PhoneRequiredActionFilter))]
+        [ServiceFilter(typeof(PhoneRequiredActionFilter))]
         public IActionResult Privacy()
         {
             return this.View();
         }
 
         [AllowAnonymous]
-        [HttpGet]
+        [HttpGet("Home/Error/{statusCode:int?}")]
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error(int? statusCode)
         {

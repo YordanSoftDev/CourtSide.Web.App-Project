@@ -1,4 +1,4 @@
-namespace CourtSide.Web.ViewModels
+﻿namespace CourtSide.Web.ViewModels
 {
     public class ErrorViewModel
     {

@@ -7,6 +7,7 @@ namespace CourtSide.Web
     using CourtSide.Services.Core.Contracts;
     using CourtSide.Services.Core.Services;
     using CourtSide.Infrastructure.Extensions;
+    using CourtSide.Web.Infrastructure.Filters;
 
     public class Program
     {
@@ -28,15 +29,14 @@ namespace CourtSide.Web
             builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
             builder.Services.AddAutoMapper(cfg =>
-                cfg.AddMaps(typeof(CourtService).Assembly));
-            builder.Services.AddAutoMapper(cfg =>
-                cfg.AddMaps(typeof(MatchService).Assembly));
-            builder.Services.AddAutoMapper(cfg =>
-                cfg.AddMaps(typeof(PlayerService).Assembly));
-            builder.Services.AddAutoMapper(cfg =>
-                cfg.AddMaps(typeof(TournamentService).Assembly));
-            builder.Services.AddAutoMapper(cfg =>
-                cfg.AddMaps(typeof(VenueService).Assembly));
+            {
+                cfg.AddMaps
+                (typeof(CourtService).Assembly,
+                typeof(MatchService).Assembly,
+                typeof(PlayerService).Assembly,
+                typeof(TournamentService).Assembly,
+                typeof(VenueService).Assembly);
+            });
 
             builder.Services.RegisterRepositoriesFromAssembly(typeof(CourtSideDbContext).Assembly);
 
@@ -50,7 +50,7 @@ namespace CourtSide.Web
 
             builder.Services.AddCors(opt =>
             {
-                opt.AddPolicy("AllowSoftUniDomain", cfg =>
+                opt.AddPolicy("AllowCourtSideDomain", cfg =>
                 {
                     cfg.WithOrigins("https://softuni.bg")
                         .WithMethods("GET", "POST")
@@ -60,12 +60,12 @@ namespace CourtSide.Web
 
             builder.Services.AddDefaultIdentity<IdentityUser>(options =>
             {
-                ConfigureIdentityOptions(builder.Configuration, options);
+                ServiceCollectionExtensions.ConfigureIdentityOptions(builder.Configuration, options);
             })
             .AddRoles<IdentityRole>()
             .AddEntityFrameworkStores<CourtSideDbContext>();
 
-            //builder.Services.AddScoped<PhoneRequiredActionFilter>();
+            builder.Services.AddScoped<PhoneRequiredActionFilter>();
 
             //builder.Services.AddIdentity<IdentityUser, IdentityRole>(options =>
             //{
@@ -148,47 +148,10 @@ namespace CourtSide.Web
 
             app.MapRazorPages();
 
-            //UseDefaultRoles(app, app.Configuration);
+            app.UseDefaultRoles(app.Configuration);
 
             app.Run();
-        }
-
-        static void ConfigureIdentityOptions(ConfigurationManager
-            configuration, IdentityOptions options)
-        {
-            options.SignIn.RequireConfirmedAccount = configuration
-                .GetValue<bool>("IdentitySettings:SignIn:RequireConfirmedAccount");
-
-            options.Password.RequireDigit = configuration
-                .GetValue<bool>("IdentitySettings:Password:RequireDigit");
-            options.Password.RequireLowercase = configuration
-                .GetValue<bool>("IdentitySettings:Password:RequireLowercase");
-            options.Password.RequireUppercase = configuration
-                .GetValue<bool>("IdentitySettings:Password:RequireUppercase");
-            options.Password.RequireNonAlphanumeric = configuration
-                .GetValue<bool>("IdentitySettings:Password:RequireNonAlphanumeric");
-            options.Password.RequiredLength = configuration
-                .GetValue<int>("IdentitySettings:Password:RequiredLength");
-            options.Password.RequiredUniqueChars = configuration
-                .GetValue<int>("IdentitySettings:Password:RequiredUniqueChars");
-
-            options.User.RequireUniqueEmail = configuration
-                .GetValue<bool>("IdentitySettings:User:RequireUniqueEmail");
-        }
-
-        //private static void UseDefaultRoles(WebApplication app, IConfiguration configuration)
-        //{
-        //    using IServiceScope serviceScope = app.Services.CreateScope();
-        //    IServiceProvider serviceProvider = serviceScope.ServiceProvider;
-
-        //    string adminEmail = configuration.GetValue<string>("UserSeed:AdminAccount:Email")
-        //                        ?? throw new ArgumentException();
-        //    string adminPassword = configuration.GetValue<string>("UserSeed:AdminAccount:Password")
-        //                           ?? throw new ArgumentException();
-
-        //    IdentitySeeder.SeedRoles(serviceProvider);
-        //    IdentitySeeder.SeedAdminUser(serviceProvider, adminEmail, adminPassword);
-        //}
+        } 
     }
 }
 

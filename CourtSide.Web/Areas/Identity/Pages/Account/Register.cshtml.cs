@@ -1,43 +1,34 @@
 // Licensed to the .NET Foundation under one or more agreements.
 // The .NET Foundation licenses this file to you under the MIT license.
-#nullable disable
-
-using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.UI.Services;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.AspNetCore.WebUtilities;
-using System.ComponentModel.DataAnnotations;
-using System.Text;
-using System.Text.Encodings.Web;
-using CourtSide.Data.Persistance;
-
 namespace CourtSide.Web.Areas.Identity.Pages.Account
 {
+    using System.ComponentModel.DataAnnotations;
+
+    using Microsoft.AspNetCore.Identity;
+    using Microsoft.AspNetCore.Mvc;
+    using Microsoft.AspNetCore.Mvc.RazorPages;
+
+    using static CourtSide.Common.RoleConstants;
+
     public class RegisterModel : PageModel
     {
-        private readonly SignInManager<IdentityUser> _signInManager;
-        private readonly UserManager<IdentityUser> _userManager;
-        private readonly IUserStore<IdentityUser> _userStore;
-        private readonly IUserEmailStore<IdentityUser> _emailStore;
-        private readonly ILogger<RegisterModel> _logger;
-        private readonly IEmailSender _emailSender;
-        private readonly RoleManager<IdentityRole> _roleManager; 
+        private readonly SignInManager<IdentityUser> signInManager;
+        private readonly UserManager<IdentityUser> userManager;
+        private readonly IUserStore<IdentityUser> userStore;
+        private readonly IUserEmailStore<IdentityUser> emailStore;
+        private readonly ILogger<RegisterModel> logger;
 
         public RegisterModel(
             UserManager<IdentityUser> userManager,
             IUserStore<IdentityUser> userStore,
             SignInManager<IdentityUser> signInManager,
-            ILogger<RegisterModel> logger,
-            IEmailSender emailSender)
+            ILogger<RegisterModel> logger)
         {
-            _userManager = userManager;
-            _userStore = userStore;
-            _emailStore = GetEmailStore();
-            _signInManager = signInManager;
-            _logger = logger;
-            _emailSender = emailSender;
+            this.userManager = userManager;
+            this.userStore = userStore;
+            this.emailStore = this.GetEmailStore();
+            this.signInManager = signInManager;
+            this.logger = logger;
         }
 
         /// <summary>
@@ -45,19 +36,13 @@ namespace CourtSide.Web.Areas.Identity.Pages.Account
         ///     directly from your code. This API may change or be removed in future releases.
         /// </summary>
         [BindProperty]
-        public InputModel Input { get; set; }
+        public InputModel Input { get; set; } = default!;
 
         /// <summary>
         ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
         ///     directly from your code. This API may change or be removed in future releases.
         /// </summary>
-        public string ReturnUrl { get; set; }
-
-        /// <summary>
-        ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
-        ///     directly from your code. This API may change or be removed in future releases.
-        /// </summary>
-        public IList<AuthenticationScheme> ExternalLogins { get; set; }
+        public string? ReturnUrl { get; set; }
 
         /// <summary>
         ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
@@ -72,7 +57,7 @@ namespace CourtSide.Web.Areas.Identity.Pages.Account
             [Required]
             [EmailAddress]
             [Display(Name = "Email")]
-            public string Email { get; set; }
+            public string Email { get; set; } = default!;
 
             /// <summary>
             ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
@@ -82,7 +67,7 @@ namespace CourtSide.Web.Areas.Identity.Pages.Account
             [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 6)]
             [DataType(DataType.Password)]
             [Display(Name = "Password")]
-            public string Password { get; set; }
+            public string Password { get; set; } = default!;
 
             /// <summary>
             ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
@@ -91,78 +76,55 @@ namespace CourtSide.Web.Areas.Identity.Pages.Account
             [DataType(DataType.Password)]
             [Display(Name = "Confirm password")]
             [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
-            public string ConfirmPassword { get; set; }
+            public string? ConfirmPassword { get; set; }
         }
 
-
-        public async Task OnGetAsync(string returnUrl = null)
+        public async Task OnGetAsync(string? returnUrl = null)
         {
-            ReturnUrl = returnUrl;
-            ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
+            this.ReturnUrl = returnUrl;
         }
 
-        public async Task<IActionResult> OnPostAsync(string returnUrl = null)
+        public async Task<IActionResult> OnPostAsync(string? returnUrl = null)
         {
-            returnUrl ??= Url.Content("~/");
-            ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
-            if (ModelState.IsValid)
+            returnUrl ??= this.Url.Content("~/");
+
+            if (this.ModelState.IsValid)
             {
-                var user = CreateUser();
+                IdentityUser user = this.CreateUser();
 
-                await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);
-                await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);
-                var result = await _userManager.CreateAsync(user, Input.Password);
+                await this.userStore.SetUserNameAsync(user, this.Input.Email, CancellationToken.None);
+                await this.emailStore.SetEmailAsync(user, this.Input.Email, CancellationToken.None);
 
+                IdentityResult result = await this.userManager.CreateAsync(user, this.Input.Password);
                 if (result.Succeeded)
                 {
-                    _logger.LogInformation("User created a new account with password.");
+                    this.logger.LogInformation("User created a new account with password.");
 
-                    // ==========================================
-                    // AUTOMATIC ADMIN PROMOTION LOGIC
-                    // ==========================================
-                    if (string.Equals(user.Email, "admin@courtside.com", StringComparison.OrdinalIgnoreCase))
+                    result = await this.userManager.AddToRoleAsync(user, UserRoleName);
+
+                    if (result.Succeeded)
                     {
-                        var roleManager = HttpContext.RequestServices.GetRequiredService<RoleManager<IdentityRole>>();
-
-                        if (!await roleManager.RoleExistsAsync("Admin"))
+                        if (this.userManager.Options.SignIn.RequireConfirmedAccount)
                         {
-                            await roleManager.CreateAsync(new IdentityRole("Admin"));
+                            return this.RedirectToPage("RegisterConfirmation",
+                                new { email = this.Input.Email, returnUrl = returnUrl });
                         }
-
-                        await _userManager.AddToRoleAsync(user, "Admin");
-                    }
-                    // ==========================================
-
-                    var userId = await _userManager.GetUserIdAsync(user);
-                    var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
-                    code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
-                    var callbackUrl = Url.Page(
-                        "/Account/ConfirmEmail",
-                        pageHandler: null,
-                        values: new { area = "Identity", userId = userId, code = code, returnUrl = returnUrl },
-                        protocol: Request.Scheme);
-
-                    await _emailSender.SendEmailAsync(Input.Email, "Confirm your email",
-                        $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
-
-                    if (_userManager.Options.SignIn.RequireConfirmedAccount)
-                    {
-                        return RedirectToPage("RegisterConfirmation", new { email = Input.Email, returnUrl = returnUrl });
-                    }
-                    else
-                    {
-                        await _signInManager.SignInAsync(user, isPersistent: false);
-                        return LocalRedirect(returnUrl);
+                        else
+                        {
+                            await this.signInManager.SignInAsync(user, isPersistent: false);
+                            return this.LocalRedirect(returnUrl);
+                        }
                     }
                 }
+
                 foreach (var error in result.Errors)
                 {
-                    ModelState.AddModelError(string.Empty, error.Description);
+                    this.ModelState.AddModelError(string.Empty, error.Description);
                 }
             }
 
             // If we got this far, something failed, redisplay form
-            return Page();
+            return this.Page();
         }
 
         private IdentityUser CreateUser()
@@ -181,11 +143,11 @@ namespace CourtSide.Web.Areas.Identity.Pages.Account
 
         private IUserEmailStore<IdentityUser> GetEmailStore()
         {
-            if (!_userManager.SupportsUserEmail)
+            if (!this.userManager.SupportsUserEmail)
             {
                 throw new NotSupportedException("The default UI requires a user store with email support.");
             }
-            return (IUserEmailStore<IdentityUser>)_userStore;
+            return (IUserEmailStore<IdentityUser>)this.userStore;
         }
     }
 }

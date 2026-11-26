@@ -12,7 +12,8 @@
         {
             builder.HasData(DefaultMensTournamentVenues.Concat(DefaultWomensTournamentVenues));
 
-            builder.HasQueryFilter(tv => tv.IsDeleted == false);
+            builder.HasQueryFilter(tv => tv.IsDeleted == false && tv.Tournament.IsDeleted == false
+            && tv.Venue.IsDeleted == false);
         }
 
         public static IEnumerable<TournamentVenue> DefaultMensTournamentVenues => new List<TournamentVenue>

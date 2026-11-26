@@ -1,0 +1,242 @@
+﻿@using CourtSide.Web.ViewModels
+@model ErrorPageViewModel
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
+<style>
+    .err-wrapper {
+        background-color: #f8faf8;
+        font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        min-height: calc(100vh - 120px);
+        display: flex;
+        flex-direction: column;
+        padding: 0 3rem;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+
+        .err-wrapper *,
+        .err-wrapper *::before,
+        .err-wrapper *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+    .err-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1.5rem 0;
+        border-bottom: 1px solid #e6ebe7;
+    }
+
+    .err-brand {
+        color: #183D30;
+        font-weight: 600;
+        font-size: 16px;
+        text-decoration: none;
+        line-height: 1.2;
+    }
+
+    .err-breadcrumb {
+        color: #66736C;
+        font-weight: 400;
+        font-size: 13px;
+        line-height: 1.2;
+    }
+
+    .err-main {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 3rem 1rem;
+    }
+
+    .err-code {
+        color: #C9DDD0;
+        font-family: "Inter", sans-serif;
+        font-weight: 600;
+        font-size: 172px;
+        line-height: 0.92;
+        letter-spacing: -0.05em;
+        font-variant-numeric: lining-nums tabular-nums;
+        margin-bottom: 1.5rem;
+        user-select: none;
+    }
+
+    .err-kicker {
+        color: #276145;
+        font-weight: 600;
+        font-size: 12px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        margin-bottom: 0.75rem;
+    }
+
+    .err-title {
+        color: #152D23;
+        font-weight: 600;
+        font-size: 36px;
+        line-height: 1.2;
+        letter-spacing: -0.025em;
+        margin-bottom: 0.85rem;
+    }
+
+    .err-description {
+        color: #647168;
+        font-weight: 400;
+        font-size: 16px;
+        max-width: 460px;
+        line-height: 1.6;
+        margin-bottom: 2rem;
+    }
+
+    .err-actions {
+        display: flex;
+        gap: 0.75rem;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-bottom: 1.5rem;
+    }
+
+    .err-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.65rem 1.35rem;
+        font-family: "Inter", sans-serif;
+        font-weight: 600;
+        font-size: 14px;
+        border-radius: 6px;
+        text-decoration: none;
+        cursor: pointer;
+        transition: background-color 0.15s ease, border-color 0.15s ease;
+    }
+
+    .err-btn-secondary {
+        background-color: #ffffff;
+        color: #344A3E;
+        border: 1px solid #d5ddd7;
+    }
+
+        .err-btn-secondary:hover {
+            background-color: #f1f5f2;
+            border-color: #c2cdc5;
+        }
+
+    .err-btn-primary {
+        background-color: #1E513B;
+        color: #FFFFFF;
+        border: 1px solid #1E513B;
+    }
+
+        .err-btn-primary:hover {
+            background-color: #173f2e;
+            border-color: #173f2e;
+        }
+
+    .err-hint {
+        color: #6B786F;
+        font-weight: 400;
+        font-size: 12px;
+    }
+
+    .err-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1.25rem 0;
+        border-top: 1px solid #e6ebe7;
+    }
+
+    .err-footer-left {
+        color: #68766C;
+        font-weight: 500;
+        font-size: 12px;
+    }
+
+    .err-footer-right {
+        color: #68766C;
+        font-weight: 400;
+        font-size: 12px;
+    }
+
+    @@media (max-width: 640px) {
+        .err-wrapper {
+            padding: 0 1.25rem;
+        }
+
+        .err-code {
+            font-size: 108px;
+        }
+
+        .err-title {
+            font-size: 28px;
+        }
+
+        .err-footer {
+            flex-direction: column;
+            gap: 0.5rem;
+            text-align: center;
+        }
+    }
+</style>
+
+<div class="err-wrapper">
+    <header class="err-header">
+        <a asp-area="" asp-controller="Home" asp-action="Index" class="err-brand">Administration</a>
+        <span class="err-breadcrumb">@Model.Breadcrumb</span>
+    </header>
+
+    <main class="err-main">
+        <div class="err-code">@Model.Code</div>
+        <p class="err-kicker">@Model.Kicker</p>
+        <h1 class="err-title">@Model.Title</h1>
+        <p class="err-description">@Html.Raw(Model.DescriptionHtml)</p>
+
+        <div class="err-actions">
+            @if (Model.SecondaryIsBackButton)
+            {
+                <button type="button"
+                        class="err-btn err-btn-secondary"
+                        onclick="if (window.history.length > 1) { history.back(); } else { window.location.href = '@Url.Action("Index", "Home")'; }">
+                    @Model.SecondaryButtonText
+                </button>
+            }
+            else
+            {
+                <a asp-area="" asp-controller="Home" asp-action="Index" class="err-btn err-btn-secondary">@Model.SecondaryButtonText</a>
+            }
+
+            @if (Model.PrimaryIsHomeLink)
+            {
+                <a asp-area="" asp-controller="Home" asp-action="Index" class="err-btn err-btn-primary">@Model.PrimaryButtonText</a>
+            }
+            else if (string.Equals(Model.PrimaryButtonText, "Try again", StringComparison.OrdinalIgnoreCase))
+            {
+                <button type="button" class="err-btn err-btn-primary" onclick="window.location.reload()">@Model.PrimaryButtonText</button>
+            }
+            else
+            {
+                <button type="button"
+                        class="err-btn err-btn-primary"
+                        onclick="if (window.history.length > 1) { history.back(); } else { window.location.href = '@Url.Action("Index", "Home")'; }">
+                    @Model.PrimaryButtonText
+                </button>
+            }
+        </div>
+
+        <p class="err-hint">@Model.Hint</p>
+    </main>
+
+    <footer class="err-footer">
+        <span class="err-footer-left">@Model.FooterLeft</span>
+        <span class="err-footer-right">@Model.FooterRight</span>
+    </footer>
+</div>
